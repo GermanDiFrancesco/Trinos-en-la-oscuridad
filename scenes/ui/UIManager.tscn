@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bn54n2q3h7wn4"]
+
+[ext_resource type="Script" uid="uid://bkcisj3hxknkn" path="res://scripts/ui/UIManager.gd" id="1_j2j0q"]
+
+[node name="HUD" type="CanvasLayer" unique_id=667037524]
+script = ExtResource("1_j2j0q")
+
+[node name="PausePanel" type="Panel" parent="." unique_id=1313431619]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(300, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="TextureButton" type="Button" parent="PausePanel" unique_id=1687806693]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -20.0
+offset_right = 20.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "salir"
+
+[connection signal="pressed" from="PausePanel/TextureButton" to="." method="_on_texture_button_pressed"]

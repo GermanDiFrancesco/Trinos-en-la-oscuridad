@@ -126,3 +126,10 @@ func _update_animation() -> void:
 			anim_name = "idle"
 	if animation_player.has_animation(anim_name):
 		animation_player.play(anim_name)
+
+func _unhandled_input(event):
+	if event.is_action_pressed("back"):
+		if Global.ui_manager and Global.ui_manager.pause_panel.visible:
+			Global.hide_pause_menu()
+		else:
+			Global.show_pause_menu()
