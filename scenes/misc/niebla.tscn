@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://lxx67se3q8cl"]
+
+[ext_resource type="Texture2D" uid="uid://hl5cru5pifri" path="res://assets/tilesets/paredes.png" id="1_2s8f3"]
+
+[sub_resource type="Animation" id="Animation_2s8f3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Paredes:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(48, 13, 32, 25)]
+}
+
+[sub_resource type="Animation" id="Animation_on6kv"]
+resource_name = "idle"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Paredes:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 0.23325826, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(48, 13, 32, 25), Rect2(48, 112, 32, 25), Rect2(48, 213, 32, 25), Rect2(48, 316, 32, 25), Rect2(48, 412, 32, 25), Rect2(48, 510, 32, 25), Rect2(48, 606, 32, 25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mpohr"]
+_data = {
+&"RESET": SubResource("Animation_2s8f3"),
+&"idle": SubResource("Animation_on6kv")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on6kv"]
+size = Vector2(32, 15)
+
+[node name="niebla" type="Area2D" unique_id=54477982]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1189324774]
+root_node = NodePath("../CollisionShape2D")
+libraries/ = SubResource("AnimationLibrary_mpohr")
+autoplay = &"idle"
+
+[node name="Paredes" type="Sprite2D" parent="." unique_id=534173745]
+texture = ExtResource("1_2s8f3")
+region_enabled = true
+region_rect = Rect2(48, 13, 32, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=398619745]
+visible = false
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_on6kv")

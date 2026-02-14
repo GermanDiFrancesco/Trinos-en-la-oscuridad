@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cb2ney3f0hq0o"]
+
+[ext_resource type="PackedScene" path="res://Scenes/player.tscn" id="1_h4xb4"]
+[ext_resource type="PackedScene" uid="uid://dwq7f88fhamtb" path="res://scenes/TESTMAP.tscn" id="1_rtgxu"]
+[ext_resource type="PackedScene" uid="uid://dxkia4d6jwcxn" path="res://scenes/misc/tacho.tscn" id="3_4i0wp"]
+[ext_resource type="PackedScene" uid="uid://ca06faxyuol5a" path="res://scenes/misc/luz_calle.tscn" id="4_2ejdd"]
+[ext_resource type="PackedScene" uid="uid://bjxvrb3xc1gqr" path="res://scenes/npc.tscn" id="5_mpl7x"]
+
+[node name="OpernWorld" type="Node2D" unique_id=1983207092]
+
+[node name="TestMap" parent="." unique_id=1470388169 instance=ExtResource("1_rtgxu")]
+
+[node name="Level" type="Node2D" parent="." unique_id=359553549]
+y_sort_enabled = true
+position = Vector2(-859, -12)
+
+[node name="Player" parent="Level" unique_id=1646615467 instance=ExtResource("1_h4xb4")]
+position = Vector2(859, 12)
+WALK_SPEED = 150
+
+[node name="tacho" parent="Level" unique_id=807724881 instance=ExtResource("3_4i0wp")]
+position = Vector2(731, 12)
+
+[node name="tacho2" parent="Level" unique_id=47546869 instance=ExtResource("3_4i0wp")]
+position = Vector2(987, 12)
+
+[node name="luz_calle" parent="Level" unique_id=1901957286 instance=ExtResource("4_2ejdd")]
+position = Vector2(571, 12)
+
+[node name="luz_calle2" parent="Level" unique_id=1674994227 instance=ExtResource("4_2ejdd")]
+position = Vector2(187, 12)
+
+[node name="luz_calle5" parent="Level" unique_id=1862387559 instance=ExtResource("4_2ejdd")]
+position = Vector2(315, 12)
+
+[node name="luz_calle3" parent="Level" unique_id=804154142 instance=ExtResource("4_2ejdd")]
+position = Vector2(443, 12)
+
+[node name="luz_calle4" parent="Level" unique_id=1919933431 instance=ExtResource("4_2ejdd")]
+position = Vector2(699, 12)
+
+[node name="luz_calle6" parent="Level" unique_id=1791566599 instance=ExtResource("4_2ejdd")]
+position = Vector2(1403, 12)
+
+[node name="luz_calle7" parent="Level" unique_id=132964151 instance=ExtResource("4_2ejdd")]
+position = Vector2(1019, 12)
+
+[node name="luz_calle8" parent="Level" unique_id=1757606185 instance=ExtResource("4_2ejdd")]
+position = Vector2(1147, 12)
+
+[node name="luz_calle9" parent="Level" unique_id=1686042157 instance=ExtResource("4_2ejdd")]
+position = Vector2(1275, 12)
+
+[node name="luz_calle10" parent="Level" unique_id=1337092731 instance=ExtResource("4_2ejdd")]
+position = Vector2(1531, 12)
+
+[node name="Npc" parent="Level" unique_id=1904693644 instance=ExtResource("5_mpl7x")]
+position = Vector2(1209, 14)

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dxkia4d6jwcxn"]
+
+[ext_resource type="Script" uid="uid://bwl3jivqybjsr" path="res://scripts/tacho.gd" id="1_1j7xv"]
+[ext_resource type="Texture2D" uid="uid://bk0tvphxdv458" path="res://assets/misc/tacho.png" id="2_cvii5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdv46"]
+size = Vector2(16, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bce8"]
+size = Vector2(20, 21)
+
+[node name="tacho" type="Area2D" unique_id=47546869]
+y_sort_enabled = true
+script = ExtResource("1_1j7xv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=588779756]
+y_sort_enabled = true
+position = Vector2(0, -9)
+texture = ExtResource("2_cvii5")
+hframes = 2
+frame = 1
+region_rect = Rect2(27, 0, 22, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1680190525]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_kdv46")
+
+[node name="tachointeract" type="StaticBody2D" parent="." unique_id=2025666109]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tachointeract" unique_id=1340458543]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_2bce8")

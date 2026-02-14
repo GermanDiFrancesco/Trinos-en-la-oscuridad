@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://csm8s2xpbhh7"]
+
+[ext_resource type="Texture2D" uid="uid://dcf1mqglmvkec" path="res://assets/battle sprites rpg.png" id="1_4ja6o"]
+[ext_resource type="Script" uid="uid://bksy7gx5mtvxw" path="res://scripts/enemigo.gd" id="1_ujofd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6uch"]
+size = Vector2(32, 32)
+
+[node name="Enemigo" type="Area2D" unique_id=886353132]
+y_sort_enabled = true
+script = ExtResource("1_ujofd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=152684548]
+y_sort_enabled = true
+position = Vector2(1, -44)
+texture = ExtResource("1_4ja6o")
+region_enabled = true
+region_rect = Rect2(185, 427, 66, 97)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2050579802]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_o6uch")
