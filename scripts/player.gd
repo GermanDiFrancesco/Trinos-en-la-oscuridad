@@ -55,7 +55,8 @@ func _physics_process(_delta: float) -> void:
 					_do_interact(target)
 	# detect state change
 	if state != prev_state:
-		print("player-State changed:", prev_state, "->", state)
+		var state_names = State.keys()
+		#Global.debug(["player-State changed:", state_names[prev_state], "->", state_names[state]])
 		prev_state = state
 		_update_animation()
 
@@ -82,10 +83,11 @@ func _update_facing(dir: Vector2) -> void:
 		_update_animation()
 
 func _on_interaction_area_entered(area: Area2D) -> void:#los agrega a la lista de interacciones
-	print(area.name)
+	Global.debug(area.name)
 	if area.has_method("interact") or area.is_in_group("interactable"):
 		if not overlapping_interactables.has(area):
 			overlapping_interactables.append(area)
+			Global.debug('area para intearactuear '+str(area.name))
 
 func _on_interaction_area_exited(area: Area2D) -> void:#limpia la lista de interaccion
 	if overlapping_interactables.has(area):
@@ -93,7 +95,7 @@ func _on_interaction_area_exited(area: Area2D) -> void:#limpia la lista de inter
 
 func _get_interaction_target() -> Object: #devuelve el objeto interact mas cercano
 	if not overlapping_interactables:
-		print('nones')
+		Global.debug('nonesintearction')
 		return null
 	overlapping_interactables.sort_custom(_sort_by_distance)
 	return overlapping_interactables[0]
