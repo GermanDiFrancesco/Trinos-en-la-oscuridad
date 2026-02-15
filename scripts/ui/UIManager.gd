@@ -2,9 +2,11 @@ extends CanvasLayer
 
 # Referencia al panel de pausa
 @onready var pause_panel = $PausePanel
+@onready var texture_button: Button = $PausePanel/TextureButton
 
 func show_pause():
 	pause_panel.visible = true
+	texture_button.grab_focus()
 	get_tree().paused = true
 
 func hide_pause():

@@ -5,7 +5,7 @@ extends Control
 @onready var ajustes: TextureButton = $VBoxContainer/Ajustes
 
 func _ready():
-	continuar.grab_focus()
+	comenzar.grab_focus()
 	# Verificamos si existe el archivo de guardado
 	if not FileAccess.file_exists("user://save_game.dat"):
 		continuar.visible = false
