@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Trinos en la oscuridad"
-run/main_scene="uid://dcex4440i3bhv"
+run/main_scene="uid://de8af3xj5h2yf"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://be62dhbc165jx"
 

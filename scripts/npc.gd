@@ -1,10 +1,11 @@
-extends CharacterBody2D
+extends Area2D
 
 # Configuration
 @export var WALK_SPEED: int = 100
 @export var WAIT_TIME: float = 2.0
 @export var PATROL_DISTANCE: int = 64
 # Animation
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 # State Machine
 enum State { IDLE, WALKING, PATROL }
@@ -24,6 +25,13 @@ var patrol_origin: Vector2
 @onready var wait_timer: Timer = $Timer
 
 signal wait_timer_timeout
+var interacted: bool = false
+func interact(target):
+	if interacted:
+		return "ya interactuo"
+	interacted = true
+	Global.changeState('BATTLE')
+	return true
 
 func _ready() -> void:
 	state = State.PATROL
@@ -42,25 +50,24 @@ func _define_patrol_points() -> void:
 	patrol_points.append(patrol_origin + Vector2(-PATROL_DISTANCE, 0)) # Izquierda
 
 func _physics_process(delta: float) -> void:
-		var moving = false
-		match state:
-			State.IDLE:
-				velocity_vec = Vector2.ZERO
-				moving = false
-			State.PATROL:
-				moving = _handle_patrol()
-			State.WALKING:
-				moving = _handle_walking()
-		if velocity_vec != Vector2.ZERO:
-			_update_facing(velocity_vec)
-		if state != prev_state:
-			var state_names = State.keys()
-			#Global.debug(["npc state:", state_names[prev_state], "->", state_names[state]])
-			prev_state = state
-		velocity = velocity_vec
-		move_and_slide()
-		# Actualiza animación después de mover
-		_update_animation()
+	var moving = false
+	match state:
+		State.IDLE:
+			velocity_vec = Vector2.ZERO
+			moving = false
+		State.PATROL:
+			moving = _handle_patrol()
+		State.WALKING:
+			moving = _handle_walking()
+	if velocity_vec != Vector2.ZERO:
+		_update_facing(velocity_vec)
+	if state != prev_state:
+		var state_names = State.keys()
+		prev_state = state
+	# Movimiento manual para Area2D
+	global_position += velocity_vec * delta
+	# Actualiza animación después de mover
+	_update_animation()
 
 func _update_facing(dir: Vector2) -> void:
 	if abs(dir.x) > abs(dir.y):
@@ -79,8 +86,6 @@ func _update_facing(dir: Vector2) -> void:
 			interact_pivot.rotation_degrees = 0
 	if state == State.WALKING:
 		_update_animation()
-
-	
 
 func set_state(new_state: State) -> void:
 	if new_state != state:
