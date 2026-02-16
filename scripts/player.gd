@@ -56,7 +56,7 @@ func _physics_process(_delta: float) -> void:
 	# detect state change
 	if state != prev_state:
 		var state_names = State.keys()
-		#Global.debug(["player-State changed:", state_names[prev_state], "->", state_names[state]])
+		Global.debug(["player-State changed:", state_names[prev_state], "->", state_names[state]])
 		prev_state = state
 		_update_animation()
 
@@ -130,6 +130,6 @@ func _update_animation() -> void:
 func _unhandled_input(event):
 	if event.is_action_pressed("back"):
 		if Global.ui_manager and Global.ui_manager.pause_panel.visible:
-			Global.hide_pause_menu()
+			Global.changeState("GAME")
 		else:
-			Global.show_pause_menu()
+			Global.changeState("INGAME_PAUSE")

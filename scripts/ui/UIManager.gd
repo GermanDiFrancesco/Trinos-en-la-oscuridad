@@ -1,61 +1,59 @@
 extends CanvasLayer
 
 # Referencia al panel de pausa
-@onready var pause_panel = $PausePanel
-@onready var texture_button: Button = $PausePanel/TextureButton
+@onready var pause_panel : Panel = $PausePanel
+@onready var pause_continuar_btn: TextureButton = $PausePanel/VBoxContainer/ContinuarBtn
+@onready var salir_btn: TextureButton = $PausePanel/VBoxContainer/SalirBtn
 
 #refencia a los botones del menú principal
 @onready var main_menu: Control = $MainMenu
-@onready var continuar: TextureButton = $MainMenu/VBoxContainer/Continuar
-@onready var comenzar: TextureButton = $MainMenu/VBoxContainer/Comenzar
-@onready var ajustes: TextureButton = $MainMenu/VBoxContainer/Ajustes
+@onready var continuar_btn: TextureButton = $MainMenu/VBoxContainer/ContinuarBtn
+@onready var comenzar_btn: TextureButton = $MainMenu/VBoxContainer/ComenzarBtn
+@onready var ajustes_btn: TextureButton = $MainMenu/VBoxContainer/AjustesBtn
+
+#referencias battle panel
+@onready var battle_panel: Panel = $BattlePanel
 
 func _ready():
-	comenzar.grab_focus()
 	# Verificamos si existe el archivo de guardado
 	if not FileAccess.file_exists("user://save_game.dat"):
-		continuar.visible = false
+		continuar_btn.visible = false
 	else:
-		continuar.visible = true
-
-func _on_comenzar_pressed():
-	Global.changeState("GAME")
-
-func _on_ajustes_pressed():
-	Global.changeState("AJUSTES")
-
-func _on_continuar_pressed():
-	# Aquí cargaríamos la data antes de cambiar de escena
-	Global.debug("Cargando partida...")
-	Global.changeState("GAME")
+		continuar_btn.visible = true
+	show_main_menu()
 
 # Menu management functions
 func show_main_menu():
-	hide_all_menus()
+	hide_panels()
 	main_menu.visible = true
-	comenzar.grab_focus()
+	comenzar_btn.grab_focus()
+# BUTTONS LOGIC
+func _on_comenzar_pressed():
+	Global.changeState("GAME")
+func _on_ajustes_pressed():
+	Global.changeState("AJUSTES")
+func _on_continuar_pressed():
+	Global.changeState("GAME")
 
-func hide_all_menus():
+
+func hide_panels():
 	main_menu.visible = false
 	pause_panel.visible = false
+	battle_panel.visible = false
 
 # Pause management functions
 func show_pause():
+	hide_panels()
 	pause_panel.visible = true
-	texture_button.grab_focus()
-	get_tree().paused = true
+	salir_btn.grab_focus()
 
-func hide_pause():
+func _on_salir_btn_pressed() -> void:
+	Global.changeState("MENU")
+
+func _on_continuar_btn_pressed() -> void:
 	pause_panel.visible = false
-	get_tree().paused = false
-
-# Button signal handlers
-func _on_exit_button_pressed():
-	get_tree().paused = false
-	Global.changeState("MENU")
-
-func _on_texture_button_pressed() -> void:
-	get_tree().paused = false
-	hide_pause()
-	Global.changeState("MENU")
-	pass # Replace with function body.
+	Global.changeState("GAME")
+	
+func show_battle_panel():
+	hide_panels()
+	battle_panel.visible = true

@@ -1,17 +1,93 @@
 [gd_scene format=3 uid="uid://bn54n2q3h7wn4"]
 
 [ext_resource type="Script" uid="uid://bkcisj3hxknkn" path="res://scripts/ui/UIManager.gd" id="1_j2j0q"]
-[ext_resource type="Texture2D" uid="uid://cg1ji72tls383" path="res://assets/menu prueba.png" id="2_oq7y8"]
-[ext_resource type="Texture2D" uid="uid://pw0pw34n1yi6" path="res://assets/UI/botones/jugar_buton.png" id="4_hknh6"]
-[ext_resource type="Texture2D" uid="uid://bf88u6e6u828" path="res://assets/UI/botones/jugar_buton_focus.png" id="5_vkn4i"]
-[ext_resource type="Texture2D" uid="uid://d0som31sopvec" path="res://assets/UI/botones/ajustes_butonpng.png" id="6_it45l"]
-[ext_resource type="Texture2D" uid="uid://epev8mimbcqs" path="res://assets/UI/botones/ajustes_buton_focus.png" id="7_jpk1t"]
+[ext_resource type="Texture2D" uid="uid://iea17eq8ilua" path="res://assets/MAIN_MENU_SCENE/game screen base.png" id="2_0t7y4"]
+[ext_resource type="Texture2D" uid="uid://62bkmpko2g5w" path="res://assets/MAIN_MENU_SCENE/game screen prota anim 1.png" id="3_1xpeq"]
+[ext_resource type="Texture2D" uid="uid://bbbrptwvgvnk2" path="res://assets/UI/botones/jugar_buton.png" id="4_hknh6"]
+[ext_resource type="Texture2D" uid="uid://drj8tfys3buvk" path="res://assets/MAIN_MENU_SCENE/game screen prota anim luz 1.png" id="4_vxmrb"]
+[ext_resource type="Texture2D" uid="uid://bnc8mflu5yobb" path="res://assets/UI/botones/jugar_buton_focus.png" id="5_vkn4i"]
+[ext_resource type="Texture2D" uid="uid://cdkuqonxjv1cx" path="res://assets/UI/botones/ajustes_buton.png" id="7_0t7y4"]
+[ext_resource type="Texture2D" uid="uid://db4a38r5kabq8" path="res://assets/UI/botones/ajustes_buton_focus.png" id="7_jpk1t"]
+[ext_resource type="Texture2D" uid="uid://cil70rw1mhll3" path="res://assets/MAIN_MENU_SCENE/game screen prota anim 2.png" id="9_kvqow"]
+[ext_resource type="Texture2D" uid="uid://bwwxg5ohvj8bq" path="res://assets/MAIN_MENU_SCENE/game screen prota anim 3.png" id="10_cw6jd"]
+[ext_resource type="Texture2D" uid="uid://c16o4fpjucn48" path="res://assets/MAIN_MENU_SCENE/game screen prota anim 4.png" id="11_2k5s4"]
+[ext_resource type="Texture2D" uid="uid://iktruy85qma6" path="res://assets/MAIN_MENU_SCENE/game screen prota anim luz 2.png" id="12_e1w07"]
+[ext_resource type="Texture2D" uid="uid://bwfgd6438xyps" path="res://assets/MAIN_MENU_SCENE/game screen prota anim luz 3.png" id="13_tg16a"]
+[ext_resource type="Texture2D" uid="uid://b8x08bkbg3pm1" path="res://assets/MAIN_MENU_SCENE/game screen prota anim luz 4.png" id="14_n2vjx"]
+[ext_resource type="Texture2D" uid="uid://pg684o3x80n" path="res://assets/UI/botones/salir_buton_focus.png" id="15_1xpeq"]
+[ext_resource type="Texture2D" uid="uid://bilwrqhkubev3" path="res://assets/UI/botones/continuar_buton.png" id="15_kvqow"]
+[ext_resource type="Texture2D" uid="uid://r60scfrgmkqt" path="res://assets/UI/botones/continuar_buton_focus.png" id="16_cw6jd"]
+[ext_resource type="Texture2D" uid="uid://cjnvkysoff6ld" path="res://assets/UI/botones/salir_buton.png" id="17_cw6jd"]
+[ext_resource type="Texture2D" uid="uid://eg2n6ebcbpjq" path="res://assets/batle.png" id="19_2k5s4"]
 
-[node name="HUD" type="CanvasLayer" unique_id=667037524]
+[sub_resource type="Animation" id="Animation_ku1ey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_1xpeq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect3:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_vxmrb")]
+}
+
+[sub_resource type="Animation" id="Animation_iwtmf"]
+resource_name = "new_animation"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_1xpeq"), ExtResource("9_kvqow"), ExtResource("10_cw6jd"), ExtResource("11_2k5s4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect3:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.40523148, 0.609235),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_vxmrb"), ExtResource("12_e1w07"), ExtResource("13_tg16a"), ExtResource("14_n2vjx")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lyb20"]
+_data = {
+&"RESET": SubResource("Animation_ku1ey"),
+&"new_animation": SubResource("Animation_iwtmf")
+}
+
+[node name="UI" type="CanvasLayer" unique_id=667037524]
+process_mode = 3
 script = ExtResource("1_j2j0q")
 
-[node name="MainMenu" type="Control" parent="." unique_id=994026386]
-layout_mode = 3
+[node name="MainMenu" type="Panel" parent="." unique_id=1071266075]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,8 +101,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_oq7y8")
+texture = ExtResource("2_0t7y4")
 expand_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="MainMenu" unique_id=920508859]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1xpeq")
+expand_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="MainMenu" unique_id=1052995452]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 640.0
+texture = ExtResource("4_vxmrb")
 
 [node name="project_version" type="Label" parent="MainMenu" unique_id=1182139105]
 layout_mode = 1
@@ -36,7 +128,7 @@ anchor_bottom = 1.0
 offset_top = -23.0
 offset_right = 87.0
 grow_vertical = 0
-text = "kcoro_0.0.1"
+text = "kcoro_0.0.2"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu" unique_id=2004486002]
 layout_mode = 1
@@ -48,20 +140,24 @@ offset_right = 448.0
 grow_vertical = 0
 alignment = 1
 
-[node name="Comenzar" type="TextureButton" parent="MainMenu/VBoxContainer" unique_id=1802448758]
+[node name="ComenzarBtn" type="TextureButton" parent="MainMenu/VBoxContainer" unique_id=1802448758]
 layout_mode = 2
 texture_normal = ExtResource("4_hknh6")
 texture_focused = ExtResource("5_vkn4i")
 stretch_mode = 3
 
-[node name="Continuar" type="TextureButton" parent="MainMenu/VBoxContainer" unique_id=269560171]
+[node name="ContinuarBtn" type="TextureButton" parent="MainMenu/VBoxContainer" unique_id=269560171]
 layout_mode = 2
 
-[node name="Ajustes" type="TextureButton" parent="MainMenu/VBoxContainer" unique_id=1610221383]
+[node name="AjustesBtn" type="TextureButton" parent="MainMenu/VBoxContainer" unique_id=1610221383]
 layout_mode = 2
-texture_normal = ExtResource("6_it45l")
+texture_normal = ExtResource("7_0t7y4")
 texture_focused = ExtResource("7_jpk1t")
 stretch_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu" unique_id=298846193]
+libraries/ = SubResource("AnimationLibrary_lyb20")
+autoplay = &"new_animation"
 
 [node name="PausePanel" type="Panel" parent="." unique_id=1313431619]
 process_mode = 3
@@ -76,21 +172,51 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="TextureButton" type="Button" parent="PausePanel" unique_id=1687806693]
+[node name="VBoxContainer" type="VBoxContainer" parent="PausePanel" unique_id=973419683]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.5
-offset_top = -20.0
-offset_right = 20.5
-offset_bottom = 20.0
+offset_left = -73.0
+offset_top = -75.0
+offset_right = 73.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "salir"
 
-[connection signal="pressed" from="MainMenu/VBoxContainer/Comenzar" to="." method="_on_comenzar_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/Ajustes" to="MainMenu" method="_on_ajustes_pressed"]
-[connection signal="pressed" from="PausePanel/TextureButton" to="." method="_on_texture_button_pressed"]
+[node name="ContinuarBtn" type="TextureButton" parent="PausePanel/VBoxContainer" unique_id=1114767653]
+layout_mode = 2
+texture_normal = ExtResource("15_kvqow")
+texture_focused = ExtResource("16_cw6jd")
+
+[node name="SalirBtn" type="TextureButton" parent="PausePanel/VBoxContainer" unique_id=1790529039]
+layout_mode = 2
+texture_normal = ExtResource("17_cw6jd")
+texture_focused = ExtResource("15_1xpeq")
+stretch_mode = 3
+
+[node name="BattlePanel" type="Panel" parent="." unique_id=1372427501]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="BattlePanel" unique_id=293682564]
+modulate = Color(1, 1, 0.6, 0.5411765)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_2k5s4")
+stretch_mode = 5
+
+[connection signal="pressed" from="MainMenu/VBoxContainer/ComenzarBtn" to="." method="_on_comenzar_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/AjustesBtn" to="MainMenu" method="_on_ajustes_pressed"]
+[connection signal="pressed" from="PausePanel/VBoxContainer/ContinuarBtn" to="." method="_on_continuar_btn_pressed"]
+[connection signal="pressed" from="PausePanel/VBoxContainer/SalirBtn" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="PausePanel/VBoxContainer/SalirBtn" to="." method="_on_salir_btn_pressed"]
