@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://beb55hwixh6t1" path="res://scripts/npc.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://bqw46f2bwwsww" path="res://assets/base npc walking.png" id="2_rv78h"]
-[ext_resource type="Script" uid="uid://brmlpveu61es4" path="res://scripts/area_interact.gd" id="3_rv78h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(16, 16)
@@ -173,7 +172,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_rv78h"]
 radius = 6.0827627
 
-[node name="Npc" type="CharacterBody2D" unique_id=1646615467]
+[node name="Npc" type="Area2D" unique_id=1496379246]
 y_sort_enabled = true
 script = ExtResource("1_abqhh")
 
@@ -207,8 +206,7 @@ libraries/ = SubResource("AnimationLibrary_dw050")
 
 [node name="Timer" type="Timer" parent="." unique_id=583750666]
 
-[node name="Npc" type="Area2D" parent="." unique_id=1902651860]
-script = ExtResource("3_rv78h")
+[node name="Npc" type="StaticBody2D" parent="." unique_id=1018762005]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npc" unique_id=2127951904]
 position = Vector2(0, -10)
