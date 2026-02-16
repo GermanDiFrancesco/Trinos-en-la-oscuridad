@@ -1,6 +1,7 @@
 extends Node
 
 var ui_manager: Node = null
+var music_manager: Node = null
 
 func _ready():
 	#  agregar el UIManager a la escena principal
@@ -8,6 +9,11 @@ func _ready():
 		var ui_scene = load("res://scenes/ui/UIManager.tscn")
 		ui_manager = ui_scene.instantiate()
 		get_tree().get_root().add_child.call_deferred(ui_manager)
+	# agregar el MusicManager a la escena principal
+	if not music_manager:
+		var music_scene = load("res://scenes/music_manager.tscn")
+		music_manager = music_scene.instantiate()
+		get_tree().get_root().add_child.call_deferred(music_manager)
 
 func debug(param):
 	print(param)
@@ -15,9 +21,12 @@ func debug(param):
 func changeState(state):
 	match state:
 		"MENU":
-			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+			music_manager.play_menu_music()
+			ui_manager.show_main_menu()
 		"GAME":
 			get_tree().change_scene_to_file("res://scenes/open_world.tscn")
+			music_manager.play_overworld_music()
+			ui_manager.hide_all_menus()
 		"BATTLE":
 			#get_tree().
 			debug("entrando en batalla- cargar ui")
@@ -35,6 +44,3 @@ func show_pause_menu():
 func hide_pause_menu():
 	if ui_manager:
 		ui_manager.hide_pause()
-
-func goto_main_menu():
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

@@ -1,9 +1,67 @@
 [gd_scene format=3 uid="uid://bn54n2q3h7wn4"]
 
 [ext_resource type="Script" uid="uid://bkcisj3hxknkn" path="res://scripts/ui/UIManager.gd" id="1_j2j0q"]
+[ext_resource type="Texture2D" uid="uid://cg1ji72tls383" path="res://assets/menu prueba.png" id="2_oq7y8"]
+[ext_resource type="Texture2D" uid="uid://pw0pw34n1yi6" path="res://assets/UI/botones/jugar_buton.png" id="4_hknh6"]
+[ext_resource type="Texture2D" uid="uid://bf88u6e6u828" path="res://assets/UI/botones/jugar_buton_focus.png" id="5_vkn4i"]
+[ext_resource type="Texture2D" uid="uid://d0som31sopvec" path="res://assets/UI/botones/ajustes_butonpng.png" id="6_it45l"]
+[ext_resource type="Texture2D" uid="uid://epev8mimbcqs" path="res://assets/UI/botones/ajustes_buton_focus.png" id="7_jpk1t"]
 
 [node name="HUD" type="CanvasLayer" unique_id=667037524]
 script = ExtResource("1_j2j0q")
+
+[node name="MainMenu" type="Control" parent="." unique_id=994026386]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu" unique_id=194386469]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oq7y8")
+expand_mode = 5
+
+[node name="project_version" type="Label" parent="MainMenu" unique_id=1182139105]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 87.0
+grow_vertical = 0
+text = "kcoro_0.0.1"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu" unique_id=2004486002]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -470.0
+offset_right = 448.0
+grow_vertical = 0
+alignment = 1
+
+[node name="Comenzar" type="TextureButton" parent="MainMenu/VBoxContainer" unique_id=1802448758]
+layout_mode = 2
+texture_normal = ExtResource("4_hknh6")
+texture_focused = ExtResource("5_vkn4i")
+stretch_mode = 3
+
+[node name="Continuar" type="TextureButton" parent="MainMenu/VBoxContainer" unique_id=269560171]
+layout_mode = 2
+
+[node name="Ajustes" type="TextureButton" parent="MainMenu/VBoxContainer" unique_id=1610221383]
+layout_mode = 2
+texture_normal = ExtResource("6_it45l")
+texture_focused = ExtResource("7_jpk1t")
+stretch_mode = 3
 
 [node name="PausePanel" type="Panel" parent="." unique_id=1313431619]
 process_mode = 3
@@ -33,4 +91,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "salir"
 
+[connection signal="pressed" from="MainMenu/VBoxContainer/Comenzar" to="." method="_on_comenzar_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Ajustes" to="MainMenu" method="_on_ajustes_pressed"]
 [connection signal="pressed" from="PausePanel/TextureButton" to="." method="_on_texture_button_pressed"]
