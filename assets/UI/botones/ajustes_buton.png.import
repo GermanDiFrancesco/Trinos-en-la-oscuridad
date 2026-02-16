@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg1ji72tls383"
-path="res://.godot/imported/menu prueba.png-9dbb92a51e11cc695c0f6b9de91a9831.ctex"
+uid="uid://cdkuqonxjv1cx"
+path="res://.godot/imported/ajustes_buton.png-e023dfcef0f7b94d8300de8ab3eb2c40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/menu prueba.png"
-dest_files=["res://.godot/imported/menu prueba.png-9dbb92a51e11cc695c0f6b9de91a9831.ctex"]
+source_file="res://assets/UI/botones/ajustes_buton.png"
+dest_files=["res://.godot/imported/ajustes_buton.png-e023dfcef0f7b94d8300de8ab3eb2c40.ctex"]
 
 [params]
 

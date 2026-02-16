@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0som31sopvec"
-path="res://.godot/imported/ajustes_butonpng.png-45a4b6140ea99059f9036d68c59d590b.ctex"
+uid="uid://iea17eq8ilua"
+path="res://.godot/imported/game screen base.png-6432a7717bac58ddfb4af4ddaa7cc0ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/botones/ajustes_butonpng.png"
-dest_files=["res://.godot/imported/ajustes_butonpng.png-45a4b6140ea99059f9036d68c59d590b.ctex"]
+source_file="res://assets/MAIN_MENU_SCENE/game screen base.png"
+dest_files=["res://.godot/imported/game screen base.png-6432a7717bac58ddfb4af4ddaa7cc0ee.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbbrptwvgvnk2"
-path="res://.godot/imported/jugar_buton.png-03967d66c2c6da88b06877ce4d4d54d5.ctex"
+uid="uid://c16o4fpjucn48"
+path="res://.godot/imported/game screen prota anim 4.png-7df7e8f4890e862a0751b68c935f1c4f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/botones/jugar_buton.png"
-dest_files=["res://.godot/imported/jugar_buton.png-03967d66c2c6da88b06877ce4d4d54d5.ctex"]
+source_file="res://assets/MAIN_MENU_SCENE/game screen prota anim 4.png"
+dest_files=["res://.godot/imported/game screen prota anim 4.png-7df7e8f4890e862a0751b68c935f1c4f.ctex"]
 
 [params]
 

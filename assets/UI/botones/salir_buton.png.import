@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbbrptwvgvnk2"
-path="res://.godot/imported/jugar_buton.png-03967d66c2c6da88b06877ce4d4d54d5.ctex"
+uid="uid://cjnvkysoff6ld"
+path="res://.godot/imported/salir_buton.png-15e2582359ba15eb7a8ae8230eb5bab9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/botones/jugar_buton.png"
-dest_files=["res://.godot/imported/jugar_buton.png-03967d66c2c6da88b06877ce4d4d54d5.ctex"]
+source_file="res://assets/UI/botones/salir_buton.png"
+dest_files=["res://.godot/imported/salir_buton.png-15e2582359ba15eb7a8ae8230eb5bab9.ctex"]
 
 [params]
 
