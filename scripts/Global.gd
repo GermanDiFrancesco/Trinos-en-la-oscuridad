@@ -37,6 +37,7 @@ func changeState(state):
 			ui_manager.show_pause()
 			overworld_manager.pausar(true)
 		"BATTLE":
+			overworld_manager.pausar(true)
 			music_manager.play_battle_music()
 			ui_manager.show_battle_panel()
 		"CINEMATIC":

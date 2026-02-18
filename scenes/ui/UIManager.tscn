@@ -18,7 +18,27 @@
 [ext_resource type="Texture2D" uid="uid://bilwrqhkubev3" path="res://assets/UI/botones/continuar_buton.png" id="15_kvqow"]
 [ext_resource type="Texture2D" uid="uid://r60scfrgmkqt" path="res://assets/UI/botones/continuar_buton_focus.png" id="16_cw6jd"]
 [ext_resource type="Texture2D" uid="uid://cjnvkysoff6ld" path="res://assets/UI/botones/salir_buton.png" id="17_cw6jd"]
-[ext_resource type="Texture2D" uid="uid://eg2n6ebcbpjq" path="res://assets/batle.png" id="19_2k5s4"]
+[ext_resource type="Texture2D" uid="uid://eg2n6ebcbpjq" path="res://assets/UI/batalla/batle.png" id="19_2k5s4"]
+[ext_resource type="Texture2D" uid="uid://bo6pdnihqydc4" path="res://assets/UI/batalla/fondo del menu.png" id="20_ae32j"]
+[ext_resource type="Texture2D" uid="uid://dufgbs3i8qbes" path="res://assets/UI/batalla/atacar_btn.png" id="20_n2vjx"]
+[ext_resource type="Texture2D" uid="uid://bd0bnuxalpjr1" path="res://assets/UI/batalla/atacar_hover_btn.png" id="21_ku1ey"]
+[ext_resource type="Texture2D" uid="uid://dnslp5d2dwe4p" path="res://assets/UI/batalla/cantar_btn.png" id="22_4hrqc"]
+[ext_resource type="Texture2D" uid="uid://cqwd7kpm3ntrs" path="res://assets/UI/batalla/cantar_hover_btn.png" id="23_ae32j"]
+[ext_resource type="Texture2D" uid="uid://1473aocehtmi" path="res://assets/UI/batalla/usar_btn.png" id="24_yv2vo"]
+[ext_resource type="Texture2D" uid="uid://ct2o7xand1jq7" path="res://assets/UI/batalla/usar_hover_btn.png" id="25_frwdx"]
+[ext_resource type="Texture2D" uid="uid://diihi410k87l1" path="res://assets/UI/batalla/hablar_btn.png" id="26_fmmi3"]
+[ext_resource type="Texture2D" uid="uid://dym86m0fynewh" path="res://assets/UI/batalla/hablar_hover_btn.png" id="27_vnjf0"]
+[ext_resource type="Texture2D" uid="uid://xkowfh1p0wmm" path="res://assets/UI/batalla/correr_btn.png" id="28_bcwls"]
+[ext_resource type="Texture2D" uid="uid://cs4vsoxtq77ms" path="res://assets/UI/batalla/correr_hover_btn.png" id="29_emr1y"]
+[ext_resource type="Texture2D" uid="uid://c7jptkeltrjsp" path="res://assets/UI/Valky/Valky.png" id="31_o6bl3"]
+[ext_resource type="Texture2D" uid="uid://ba3turrfxbcd1" path="res://assets/UI/batalla/dialog_box.png" id="31_yv2vo"]
+[ext_resource type="Texture2D" uid="uid://h81pd63duaym" path="res://assets/UI/batalla/kocorologo.png" id="32_frwdx"]
+[ext_resource type="Texture2D" uid="uid://ctmytynwhy6mh" path="res://assets/UI/Valky/Valky head.png" id="32_yeu5p"]
+[ext_resource type="Texture2D" uid="uid://0vgblraor0l0" path="res://assets/UI/Valky/Valky l arm.png" id="33_qeuks"]
+[ext_resource type="Texture2D" uid="uid://cd7jesupgnbm5" path="res://assets/UI/Valky/Valky l leg.png" id="34_d3nkb"]
+[ext_resource type="Texture2D" uid="uid://bvlj03cvjjmuo" path="res://assets/UI/Valky/Valky r arm.png" id="35_gnt58"]
+[ext_resource type="Texture2D" uid="uid://dtfihie4y14qx" path="res://assets/UI/Valky/Valky r leg.png" id="36_rv68c"]
+[ext_resource type="Texture2D" uid="uid://c0mnyydd0xhkh" path="res://assets/UI/Valky/Valky torso.png" id="37_gfrc8"]
 
 [sub_resource type="Animation" id="Animation_ku1ey"]
 length = 0.001
@@ -205,6 +225,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="BattlePanel" unique_id=293682564]
+visible = false
 modulate = Color(1, 1, 0.6, 0.5411765)
 layout_mode = 1
 anchors_preset = 15
@@ -215,8 +236,189 @@ grow_vertical = 2
 texture = ExtResource("19_2k5s4")
 stretch_mode = 5
 
+[node name="FondoDelMenu" type="TextureRect" parent="BattlePanel" unique_id=460994811]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -297.0
+offset_right = 137.0
+offset_bottom = -48.0
+grow_vertical = 0
+texture = ExtResource("20_ae32j")
+metadata/_edit_group_ = true
+
+[node name="ActionList" type="VBoxContainer" parent="BattlePanel/FondoDelMenu" unique_id=1121695473]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -222.0
+offset_right = 89.0
+offset_bottom = -41.0
+grow_vertical = 0
+metadata/_edit_group_ = true
+
+[node name="AtacarBtn" type="TextureButton" parent="BattlePanel/FondoDelMenu/ActionList" unique_id=1009611031]
+layout_mode = 2
+texture_normal = ExtResource("20_n2vjx")
+texture_hover = ExtResource("21_ku1ey")
+texture_focused = ExtResource("21_ku1ey")
+
+[node name="CantarBtn" type="TextureButton" parent="BattlePanel/FondoDelMenu/ActionList" unique_id=1399049308]
+layout_mode = 2
+texture_normal = ExtResource("22_4hrqc")
+texture_hover = ExtResource("23_ae32j")
+texture_focused = ExtResource("23_ae32j")
+
+[node name="UsarBtn" type="TextureButton" parent="BattlePanel/FondoDelMenu/ActionList" unique_id=353300656]
+layout_mode = 2
+texture_normal = ExtResource("24_yv2vo")
+texture_hover = ExtResource("25_frwdx")
+texture_focused = ExtResource("25_frwdx")
+
+[node name="HablarBtn" type="TextureButton" parent="BattlePanel/FondoDelMenu/ActionList" unique_id=575196854]
+layout_mode = 2
+texture_normal = ExtResource("26_fmmi3")
+texture_hover = ExtResource("27_vnjf0")
+texture_focused = ExtResource("27_vnjf0")
+
+[node name="CorrerBtn" type="TextureButton" parent="BattlePanel/FondoDelMenu/ActionList" unique_id=1185384291]
+layout_mode = 2
+texture_normal = ExtResource("28_bcwls")
+texture_hover = ExtResource("29_emr1y")
+texture_focused = ExtResource("29_emr1y")
+
+[node name="EnemyContainer" type="CenterContainer" parent="BattlePanel" unique_id=416962754]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -120.0
+offset_right = 63.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Npc" type="TextureRect" parent="BattlePanel/EnemyContainer" unique_id=1458804855]
+layout_mode = 2
+texture = ExtResource("31_o6bl3")
+
+[node name="part1" type="TextureRect" parent="BattlePanel/EnemyContainer" unique_id=842075958]
+layout_mode = 2
+texture = ExtResource("32_yeu5p")
+
+[node name="part2" type="TextureRect" parent="BattlePanel/EnemyContainer" unique_id=181224845]
+layout_mode = 2
+texture = ExtResource("33_qeuks")
+
+[node name="part3" type="TextureRect" parent="BattlePanel/EnemyContainer" unique_id=501892050]
+layout_mode = 2
+texture = ExtResource("34_d3nkb")
+
+[node name="part4" type="TextureRect" parent="BattlePanel/EnemyContainer" unique_id=1393446393]
+layout_mode = 2
+texture = ExtResource("35_gnt58")
+
+[node name="part5" type="TextureRect" parent="BattlePanel/EnemyContainer" unique_id=380496370]
+layout_mode = 2
+texture = ExtResource("36_rv68c")
+
+[node name="part6" type="TextureRect" parent="BattlePanel/EnemyContainer" unique_id=449688496]
+layout_mode = 2
+texture = ExtResource("37_gfrc8")
+
+[node name="DialogBox" type="TextureRect" parent="BattlePanel" unique_id=1551596847]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -153.0
+offset_right = 250.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("31_yv2vo")
+
+[node name="TextureRect" type="TextureRect" parent="BattlePanel/DialogBox" unique_id=1711984932]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -49.5
+offset_right = 66.0
+offset_bottom = 49.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("32_frwdx")
+
+[node name="MarginContainer" type="MarginContainer" parent="BattlePanel/DialogBox" unique_id=898254114]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 10
+
+[node name="TextContainer" type="RichTextLabel" parent="BattlePanel/DialogBox/MarginContainer" unique_id=502727292]
+layout_mode = 2
+text = "Ataca al enemigo cuerpo a cuerpo"
+
+[node name="CorrerOptions" type="HBoxContainer" parent="BattlePanel/DialogBox" unique_id=844445958]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -162.0
+offset_top = -50.0
+offset_right = 161.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 100
+
+[node name="SalirBtn" type="TextureButton" parent="BattlePanel/DialogBox/CorrerOptions" unique_id=266541524]
+layout_mode = 2
+texture_normal = ExtResource("17_cw6jd")
+texture_focused = ExtResource("15_1xpeq")
+
+[node name="ContinuarBtn" type="TextureButton" parent="BattlePanel/DialogBox/CorrerOptions" unique_id=1894762291]
+layout_mode = 2
+texture_normal = ExtResource("15_kvqow")
+texture_focused = ExtResource("16_cw6jd")
+
 [connection signal="pressed" from="MainMenu/VBoxContainer/ComenzarBtn" to="." method="_on_comenzar_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/AjustesBtn" to="MainMenu" method="_on_ajustes_pressed"]
 [connection signal="pressed" from="PausePanel/VBoxContainer/ContinuarBtn" to="." method="_on_continuar_btn_pressed"]
 [connection signal="pressed" from="PausePanel/VBoxContainer/SalirBtn" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="PausePanel/VBoxContainer/SalirBtn" to="." method="_on_salir_btn_pressed"]
+[connection signal="focus_entered" from="BattlePanel/FondoDelMenu/ActionList/AtacarBtn" to="." method="_on_atacar_btn_focus_entered"]
+[connection signal="pressed" from="BattlePanel/FondoDelMenu/ActionList/AtacarBtn" to="." method="_on_atacar_btn_pressed"]
+[connection signal="focus_entered" from="BattlePanel/FondoDelMenu/ActionList/CantarBtn" to="." method="_on_cantar_btn_focus_entered"]
+[connection signal="pressed" from="BattlePanel/FondoDelMenu/ActionList/CantarBtn" to="." method="_on_cantar_btn_pressed"]
+[connection signal="focus_entered" from="BattlePanel/FondoDelMenu/ActionList/UsarBtn" to="." method="_on_usar_btn_focus_entered"]
+[connection signal="pressed" from="BattlePanel/FondoDelMenu/ActionList/UsarBtn" to="." method="_on_usar_btn_pressed"]
+[connection signal="focus_entered" from="BattlePanel/FondoDelMenu/ActionList/HablarBtn" to="." method="_on_hablar_btn_focus_entered"]
+[connection signal="pressed" from="BattlePanel/FondoDelMenu/ActionList/HablarBtn" to="." method="_on_hablar_btn_pressed"]
+[connection signal="focus_entered" from="BattlePanel/FondoDelMenu/ActionList/CorrerBtn" to="." method="_on_correr_btn_focus_entered"]
+[connection signal="pressed" from="BattlePanel/FondoDelMenu/ActionList/CorrerBtn" to="." method="_on_correr_btn_pressed"]
+[connection signal="pressed" from="BattlePanel/DialogBox/CorrerOptions/SalirBtn" to="." method="_on_correr_salir_btn_pressed"]
+[connection signal="pressed" from="BattlePanel/DialogBox/CorrerOptions/ContinuarBtn" to="." method="_on_correr_continuar_btn_pressed"]
