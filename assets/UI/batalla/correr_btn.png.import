@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eg2n6ebcbpjq"
-path="res://.godot/imported/batle.png-90af7898d1b2c0c79c7696ca61f38d2a.ctex"
+uid="uid://xkowfh1p0wmm"
+path="res://.godot/imported/correr_btn.png-02e33312bc6e98bdac35e58d96a84fc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/batle.png"
-dest_files=["res://.godot/imported/batle.png-90af7898d1b2c0c79c7696ca61f38d2a.ctex"]
+source_file="res://assets/UI/batalla/correr_btn.png"
+dest_files=["res://.godot/imported/correr_btn.png-02e33312bc6e98bdac35e58d96a84fc2.ctex"]
 
 [params]
 

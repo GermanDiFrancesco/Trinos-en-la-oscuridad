@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3srv3d3ryiys"
-path="res://.godot/imported/Battle menu elements.png-0d74dddc3c6479fe67dec95174803f39.ctex"
+uid="uid://diihi410k87l1"
+path="res://.godot/imported/hablar_btn.png-7be6866476404d61162393008f17b076.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/Battle menu elements.png"
-dest_files=["res://.godot/imported/Battle menu elements.png-0d74dddc3c6479fe67dec95174803f39.ctex"]
+source_file="res://assets/UI/batalla/hablar_btn.png"
+dest_files=["res://.godot/imported/hablar_btn.png-7be6866476404d61162393008f17b076.ctex"]
 
 [params]
 
