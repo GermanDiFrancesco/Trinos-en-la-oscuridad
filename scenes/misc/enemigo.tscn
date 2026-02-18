@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://csm8s2xpbhh7"]
 
-[ext_resource type="Texture2D" uid="uid://dcf1mqglmvkec" path="res://assets/battle sprites rpg.png" id="1_4ja6o"]
+[ext_resource type="Texture2D" uid="uid://dcf1mqglmvkec" path="res://assets/UI/batalla/battle sprites rpg.png" id="1_4ja6o"]
 [ext_resource type="Script" uid="uid://bksy7gx5mtvxw" path="res://scripts/enemigo.gd" id="1_ujofd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6uch"]

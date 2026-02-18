@@ -1,3 +1,17 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+*.tmp
+*.import~
+*.translation~
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# System/Tool-specific ignores
+.DS_Store
+*.swp
+*.swo
+*~

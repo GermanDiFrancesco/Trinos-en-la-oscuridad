@@ -27,9 +27,6 @@ var patrol_origin: Vector2
 signal wait_timer_timeout
 var interacted: bool = false
 func interact(target):
-	if interacted:
-		return "ya interactuo"
-	interacted = true
 	Global.changeState('BATTLE')
 	return true
 

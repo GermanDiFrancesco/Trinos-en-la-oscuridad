@@ -9,4 +9,7 @@ func interact(target):
 		return "already_interacted"
 	interacted = true
 	sprite.frame = 0 if interacted else 1
+	#triger dialog
+	#target.inventoryAdd
+	
 	return interacted

@@ -87,7 +87,7 @@ func _on_interaction_area_entered(area: Area2D) -> void:#los agrega a la lista d
 	if area.has_method("interact") or area.is_in_group("interactable"):
 		if not overlapping_interactables.has(area):
 			overlapping_interactables.append(area)
-			Global.debug('area para intearactuear '+str(area.name))
+			Global.debug('area para interact '+str(area.name))
 
 func _on_interaction_area_exited(area: Area2D) -> void:#limpia la lista de interaccion
 	if overlapping_interactables.has(area):

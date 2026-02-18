@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ce1sfhyy6q3w"]
 
-[ext_resource type="Texture2D" uid="uid://dcf1mqglmvkec" path="res://assets/battle sprites rpg.png" id="1_6flf7"]
+[ext_resource type="Texture2D" uid="uid://dcf1mqglmvkec" path="res://assets/UI/batalla/battle sprites rpg.png" id="1_6flf7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_doxf0"]
 size = Vector2(32, 32)

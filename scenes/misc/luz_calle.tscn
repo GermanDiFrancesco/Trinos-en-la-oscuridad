@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ca06faxyuol5a"]
 
-[ext_resource type="Texture2D" uid="uid://dcf1mqglmvkec" path="res://assets/battle sprites rpg.png" id="1_tukdh"]
+[ext_resource type="Texture2D" uid="uid://dcf1mqglmvkec" path="res://assets/UI/batalla/battle sprites rpg.png" id="1_tukdh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tukdh"]
 radius = 8.0
