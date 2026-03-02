@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfqs5lg341k0w"
-path="res://.godot/imported/batle.png-447711e886b1f4dceabe02e3e5c49916.ctex"
+uid="uid://bnkwe3t8rx7ii"
+path="res://.godot/imported/test party outlines.png-4849bf96bd534a554d07da14da2232f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/batalla/batle.png"
-dest_files=["res://.godot/imported/batle.png-447711e886b1f4dceabe02e3e5c49916.ctex"]
+source_file="res://assets/UI/batalla/test party outlines.png"
+dest_files=["res://.godot/imported/test party outlines.png-4849bf96bd534a554d07da14da2232f1.ctex"]
 
 [params]
 

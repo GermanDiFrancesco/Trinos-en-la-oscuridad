@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bbvr33xp3dq81"]
+
+[ext_resource type="Texture2D" uid="uid://iea17eq8ilua" path="res://assets/MAIN_MENU_SCENE/game screen base.png" id="1_oql4r"]
+[ext_resource type="Texture2D" uid="uid://62bkmpko2g5w" path="res://assets/MAIN_MENU_SCENE/game screen prota anim 1.png" id="2_krtt3"]
+[ext_resource type="Texture2D" uid="uid://drj8tfys3buvk" path="res://assets/MAIN_MENU_SCENE/game screen prota anim luz 1.png" id="3_fvy0o"]
+
+[node name="BGSCENE" type="Control" unique_id=40716647]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="TextureRect" parent="." unique_id=1600811244]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_oql4r")
+expand_mode = 5
+
+[node name="prota" type="TextureRect" parent="." unique_id=51415445]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_krtt3")
+expand_mode = 5
+
+[node name="prota-reflect" type="TextureRect" parent="." unique_id=1137800333]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fvy0o")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="project_version" type="Label" parent="." unique_id=293315062]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 720.0
+grow_vertical = 0
+text = "kcoro_0.0.2"

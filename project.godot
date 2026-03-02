@@ -21,8 +21,8 @@ Global="*uid://dwaljrjoq1cda"
 
 [display]
 
-window/size/viewport_width=960
-window/size/viewport_height=640
+window/size/viewport_width=720
+window/size/viewport_height=480
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

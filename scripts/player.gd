@@ -56,7 +56,7 @@ func _physics_process(_delta: float) -> void:
 	# detect state change
 	if state != prev_state:
 		var state_names = State.keys()
-		Global.debug(["player-State changed:", state_names[prev_state], "->", state_names[state]])
+		print(["player-State changed:", state_names[prev_state], "->", state_names[state]])
 		prev_state = state
 		_update_animation()
 
@@ -83,11 +83,11 @@ func _update_facing(dir: Vector2) -> void:
 		_update_animation()
 
 func _on_interaction_area_entered(area: Area2D) -> void:#los agrega a la lista de interacciones
-	Global.debug(area.name)
+	print(area.name)
 	if area.has_method("interact") or area.is_in_group("interactable"):
 		if not overlapping_interactables.has(area):
 			overlapping_interactables.append(area)
-			Global.debug('area para interact '+str(area.name))
+			print('area para interact '+str(area.name))
 
 func _on_interaction_area_exited(area: Area2D) -> void:#limpia la lista de interaccion
 	if overlapping_interactables.has(area):
@@ -95,7 +95,7 @@ func _on_interaction_area_exited(area: Area2D) -> void:#limpia la lista de inter
 
 func _get_interaction_target() -> Object: #devuelve el objeto interact mas cercano
 	if not overlapping_interactables:
-		Global.debug('nonesintearction')
+		print('nonesintearction')
 		return null
 	overlapping_interactables.sort_custom(_sort_by_distance)
 	return overlapping_interactables[0]
@@ -130,6 +130,6 @@ func _update_animation() -> void:
 func _unhandled_input(event):
 	if event.is_action_pressed("back"):
 		if Global.ui_manager and Global.ui_manager.pause_panel.visible:
-			Global.changeState("GAME")
+			Global.changeState("OVERWORLD")
 		else:
-			Global.changeState("INGAME_PAUSE")
+			Global.changeState("PAUSE")
