@@ -1,6 +1,4 @@
 extends Node
-
-
 var saveData= null
 var ui_manager: Node = null
 var music_manager: Node = null
@@ -25,7 +23,7 @@ func changeState(state):
 			overworld_manager.pausar(false)
 		"PAUSE":
 			#dim music in music manager
-			overworld_manager.pausar(true)s
+			overworld_manager.pausar(true)
 		"BATTLE":
 			overworld_manager.pausar(true)
 			music_manager.play_battle_music()
@@ -41,17 +39,15 @@ func changeState(state):
 	return state
 
 func iniciar_managers():
-	#  agregar el UIManager a la escena principal
+	
 	if not ui_manager:
 		var ui_scene = load("res://scenes/ui/UIManager.tscn")
 		ui_manager = ui_scene.instantiate()
 		get_tree().get_root().add_child.call_deferred(ui_manager)
-	# agregar el MusicManager a la escena principal
 	if not music_manager:
 		var music_scene = load("res://scenes/music_manager.tscn")
 		music_manager = music_scene.instantiate()
 		get_tree().get_root().add_child.call_deferred(music_manager)
-	#agregar el GameScene a la escena principal
 	if not overworld_manager:
 		var overworld_manager_scene = load("res://scenes/open_world.tscn")
 		overworld_manager = overworld_manager_scene.instantiate()

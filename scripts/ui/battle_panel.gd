@@ -24,19 +24,21 @@ var enemy_units: Array[Combatant] = []
 func init() -> void:
 	visible = true
 	atacar_btn.grab_focus()
-	
+
 func start_battle() -> void:
 	enemy_units.clear()
 	for child in enemies_container.get_children():
 		child.queue_free()
+
 	for e in enemies:
+		print(e.display_name)
 		var unit := Combatant.new(e)
 		enemy_units.append(unit)
+
 		var combatant_panel := combatant_scene.instantiate()
 		enemies_container.add_child(combatant_panel)
 		combatant_panel.setup(unit)
 
-	
 func display_text(text: String) -> void:
 	for child in action_options_container.get_children():
 		child.queue_free()

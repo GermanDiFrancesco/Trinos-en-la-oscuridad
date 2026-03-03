@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://b7gh7xjkxmgti"]
+
+[ext_resource type="Script" uid="uid://06kv3oi0wpoh" path="res://scripts/ui/combatant_panel.gd" id="1_w84vh"]
+[ext_resource type="Texture2D" uid="uid://c7jptkeltrjsp" path="res://assets/UI/Valky/Valky.png" id="2_k0p60"]
+
+[node name="Combatant" type="VBoxContainer" unique_id=1242968718]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -92.0
+offset_right = 63.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_w84vh")
+
+[node name="Name" type="Label" parent="." unique_id=2015320620]
+layout_mode = 2
+text = "enemigo"
+horizontal_alignment = 1
+
+[node name="LifeBar" type="ProgressBar" parent="." unique_id=80063892]
+layout_mode = 2
+
+[node name="SpriteContainer" type="CenterContainer" parent="." unique_id=1364535496]
+layout_mode = 2
+
+[node name="Npc" type="TextureRect" parent="SpriteContainer" unique_id=1226361640]
+layout_mode = 2
+texture = ExtResource("2_k0p60")
+
+[node name="part1" type="TextureRect" parent="SpriteContainer" unique_id=814187435]
+layout_mode = 2
+
+[node name="part2" type="TextureRect" parent="SpriteContainer" unique_id=2047297315]
+layout_mode = 2
+
+[node name="part3" type="TextureRect" parent="SpriteContainer" unique_id=1334896418]
+layout_mode = 2
+
+[node name="part4" type="TextureRect" parent="SpriteContainer" unique_id=607339520]
+layout_mode = 2
+
+[node name="part5" type="TextureRect" parent="SpriteContainer" unique_id=1784152045]
+layout_mode = 2
+
+[node name="part6" type="TextureRect" parent="SpriteContainer" unique_id=2043033018]
+layout_mode = 2

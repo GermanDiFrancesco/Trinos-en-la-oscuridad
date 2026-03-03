@@ -21,3 +21,8 @@ func setup(_unit: Combatant) -> void:
 func _refresh() -> void:
 	label_name.text = unit.data.display_name
 	life_bar.value = unit.hp
+	npc.texture = unit.data.portrait
+	for i in range(unit.data.parts.size()):
+		var part_data = unit.data.parts[i]
+		var part_texture_rect: TextureRect = sprite_container.get_child(i + 1) as TextureRect
+		part_texture_rect.texture = part_data.portrait

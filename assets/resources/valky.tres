@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://6pqmguqd7ll3"]
+
+[ext_resource type="Script" uid="uid://ge2tppl251nb" path="res://scripts/EnemyPartData.gd" id="1_hlqkh"]
+[ext_resource type="Resource" uid="uid://poqd7xysucxd" path="res://assets/resources/valky_head.tres" id="2_bguqo"]
+[ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://enemy_data.gd" id="2_gqqie"]
+[ext_resource type="Texture2D" uid="uid://c7jptkeltrjsp" path="res://assets/UI/Valky/Valky.png" id="2_hlqkh"]
+
+[resource]
+script = ExtResource("2_gqqie")
+display_name = "Valky"
+portrait = ExtResource("2_hlqkh")
+parts = Array[ExtResource("1_hlqkh")]([ExtResource("2_bguqo")])
+metadata/_custom_type_script = "uid://bxlx35expgkm8"
