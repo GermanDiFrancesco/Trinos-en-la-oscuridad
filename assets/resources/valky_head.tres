@@ -1,8 +1,9 @@
 [gd_resource type="Resource" script_class="EnemyPartData" format=3 uid="uid://poqd7xysucxd"]
 
-[ext_resource type="Script" uid="uid://ge2tppl251nb" path="res://scripts/EnemyPartData.gd" id="1_4qajn"]
+[ext_resource type="Script" uid="uid://ge2tppl251nb" path="res://scripts/enemy_part_data.gd" id="1_4qajn"]
 [ext_resource type="Texture2D" uid="uid://ctmytynwhy6mh" path="res://assets/UI/Valky/Valky head.png" id="1_bflow"]
 
 [resource]
 script = ExtResource("1_4qajn")
+display_name = "cabeza"
 portrait = ExtResource("1_bflow")
