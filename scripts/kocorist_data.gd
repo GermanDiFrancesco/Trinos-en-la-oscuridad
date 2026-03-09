@@ -7,7 +7,7 @@ class_name KocoristData
 ## Stats de combate
 @export var max_hp: int = 85
 @export var max_mana: int = 40
-@export var attack: int = 60
+@export var attack: int = 5
 @export var defense: int = 90
 @export var magic_defense: int = 85
 @export var speed: int = 35

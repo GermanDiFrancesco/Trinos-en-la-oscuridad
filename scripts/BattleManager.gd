@@ -65,6 +65,9 @@ var current_turn_index: int = 0
 ## El combatiente que está actuando ahora
 var active_combatant: Combatant = null
 
+## Flag para indicar si estamos esperando una acción del jugador
+var waiting_for_player: bool = false
+
 
 # ──────────────────────────────────────────────
 #  SETUP — Llamado por Global para iniciar una batalla
@@ -89,6 +92,7 @@ func setup_battle(enemy_data_list: Array, party_data_list: Array = []) -> void:
 	if party_data_list.is_empty():
 		var pit = KocoristData.new()
 		var combatant := Combatant.new(pit)
+		combatant.tipo = "party"
 		party.append(combatant)
 	else:
 		for pd in party_data_list:
@@ -140,6 +144,7 @@ func _process_next_turn() -> void:
 	if active_combatant.tipo == "party" or active_combatant.tipo == "tenor":
 		# Turno del jugador — esperamos input desde la UI
 		state = BattleState.PLAYER_TURN
+		waiting_for_player = true
 		player_action_needed.emit(active_combatant)
 	else:
 		# Turno del enemigo — IA automática
@@ -155,6 +160,7 @@ func _process_next_turn() -> void:
 func player_attack(target: Combatant) -> void:
 	if state != BattleState.PLAYER_TURN:
 		return
+	waiting_for_player = false
 	state = BattleState.ANIMATING
 	
 	var damage = _calculate_damage(active_combatant, target)
@@ -173,6 +179,7 @@ func player_attack(target: Combatant) -> void:
 func player_attack_part(target: Combatant, part_index: int) -> void:
 	if state != BattleState.PLAYER_TURN:
 		return
+	waiting_for_player = false
 	state = BattleState.ANIMATING
 	
 	var damage = _calculate_damage(active_combatant, target)
@@ -194,6 +201,7 @@ func player_attack_part(target: Combatant, part_index: int) -> void:
 func player_heal(target: Combatant, amount: int, mana_cost: int) -> void:
 	if state != BattleState.PLAYER_TURN:
 		return
+	waiting_for_player = false
 	state = BattleState.ANIMATING
 	
 	if target.heal(amount, mana_cost):
@@ -209,6 +217,7 @@ func player_heal(target: Combatant, amount: int, mana_cost: int) -> void:
 func player_escape() -> void:
 	if state != BattleState.PLAYER_TURN:
 		return
+	waiting_for_player = false
 	
 	# Por ahora escape siempre exitoso — podés agregar probabilidad después
 	var escaped = true
@@ -331,6 +340,7 @@ func _clear_battle() -> void:
 	turn_queue.clear()
 	current_turn_index = 0
 	active_combatant = null
+	waiting_for_player = false
 	state = BattleState.INACTIVE
 
 

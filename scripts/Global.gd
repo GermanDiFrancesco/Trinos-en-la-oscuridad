@@ -3,7 +3,7 @@ extends Node
 var saveData = null
 var overworld_manager: Node = null
 
-var debug: bool = true
+var debug: bool = false
 
 # Estado actual del juego
 var current_state: String = ""
@@ -97,5 +97,5 @@ func check_save_data():
 			"party": [],
 			"inventory": []
 		}
-	if debug:
+	if !debug:
 		saveData = null
