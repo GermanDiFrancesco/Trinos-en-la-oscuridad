@@ -57,7 +57,34 @@ func _on_correr_btn_focus_entered() -> void:
 	display_text("Intenta escapar de la batalla")
 
 func _on_atacar_btn_pressed() -> void:
-	show_options()
+	var enemy_options: Array = []
+	for i in range(enemy_units.size()):
+		enemy_options.append({
+			"nombre": enemy_units[i].data.display_name,
+			"funcion": "_on_enemy_selected",
+			"enemy_index": i
+		})
+	show_options("Selecciona al oponente:", enemy_options)
+
+func _on_enemy_selected(enemy_index: int) -> void:
+	var part_options: Array = []
+	var selected_enemy = enemy_units[enemy_index]
+	for part in selected_enemy.data.parts:
+		part_options.append({
+			"nombre": part.display_name,
+			"funcion": "_attack_part",
+			"enemy_index": enemy_index,
+			"part": part
+		})
+	show_options(
+		"Selecciona la parte a atacar:",
+		part_options
+	)
+
+func _attack_part(enemy_index: int, part) -> void:
+	display_text("¡Atacas la parte " + part.display_name + " de " + enemy_units[enemy_index].data.display_name + "!")
+	await get_tree().create_timer(1.5).timeout
+	init()
 
 func _on_cantar_btn_pressed() -> void:
 	show_options()
@@ -84,29 +111,40 @@ func _battle_escape() -> void:
 	display_text("Intentas escapar de la batalla...")
 	Global.changeState("OVERWORLD")
 
-#Recibe un texto general y una lista de opciones, cada opción es un diccionario con nombre, funcion y descripcion
+func _on_enemy_focus(enemy_index: int) -> void:
+	# Show information about the focused option
+	if enemy_index < enemy_units.size():
+		enemy_units[enemy_index].indicator()
 
+#Recibe un texto general y una lista de opciones, cada opción es un diccionario con nombre, funcion y descripcion
 func show_options(general_text: String = "", options: Array = []) -> void:
+	#default config
 	for child in action_options_container.get_children():
 		child.queue_free()
-	if general_text:
-		display_text(general_text)
 	if options.is_empty():
-		options = [
-		{
-			"nombre": "Opción 1",
-			"funcion": "init",
-			"descripcion": "cancelar"
-		},
-		{
-			"nombre": "Opción 2",
-			"funcion": "init",
-			"descripcion": "cancelar"
-		}
-	]
+		general_text = "No hay opciones disponibles"
+	display_text(general_text)
+	options.append({
+		"nombre": "Cancelar",
+		"funcion": "init",
+		"descripcion": "cancelar"
+	})
+	#carga de opciones
 	for option in options:
 		var btn := Button.new()
 		btn.text = option["nombre"]
-		btn.pressed.connect(Callable(self, option["funcion"]))
+		btn.focus_mode = Control.FOCUS_ALL
+		# Crea un callable con parámetros si existen
+		if option.has("enemy_index") and option.has("part"):
+			btn.pressed.connect(Callable(self, option["funcion"]).bind(option["enemy_index"], option["part"]))
+			btn.focus_entered.connect(Callable(self, "_on_enemy_focus").bind(option["enemy_index"]))
+		elif option.has("enemy_index"):
+			btn.pressed.connect(Callable(self, option["funcion"]).bind(option["enemy_index"]))
+			btn.focus_entered.connect(Callable(self, "_on_enemy_focus").bind(option["enemy_index"]))
+		else:
+			btn.pressed.connect(Callable(self, option["funcion"]))
+		
 		action_options_container.add_child(btn)
+	
+	await get_tree().process_frame
 	action_options_container.get_child(0).grab_focus()

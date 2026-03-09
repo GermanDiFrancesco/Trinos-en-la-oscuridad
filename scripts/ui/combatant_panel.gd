@@ -15,11 +15,13 @@ var unit: Combatant
 
 func setup(_unit: Combatant) -> void:
 	unit = _unit
-	print_debug(unit.data)
+	printerr(unit.data)
 	_refresh()
-
+func indicator():
+		pass
 func _refresh() -> void:
 	label_name.text = unit.data.display_name
+	life_bar.max_value = unit.hp
 	life_bar.value = unit.hp
 	npc.texture = unit.data.portrait
 	for i in range(unit.data.parts.size()):

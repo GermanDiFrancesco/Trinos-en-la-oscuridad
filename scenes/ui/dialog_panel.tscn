@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://vehvjdj6hye3"]
+
+[ext_resource type="Script" uid="uid://ci6faqk7fsx3r" path="res://scenes/ui/dialog_panel.gd" id="1_3hgc7"]
+[ext_resource type="Texture2D" uid="uid://ba3turrfxbcd1" path="res://assets/UI/batalla/dialog_box.png" id="1_mvrie"]
+[ext_resource type="Texture2D" uid="uid://bnkwe3t8rx7ii" path="res://assets/UI/batalla/test party outlines.png" id="2_3hgc7"]
+[ext_resource type="Texture2D" uid="uid://h81pd63duaym" path="res://assets/UI/batalla/kocorologo.png" id="3_0brwx"]
+
+[node name="DialogPanel" type="Panel" unique_id=300566441]
+process_mode = 3
+custom_minimum_size = Vector2(300, 300)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_3hgc7")
+
+[node name="DialogBox" type="TextureRect" parent="." unique_id=1233126672]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_mvrie")
+
+[node name="PartyContainer" type="HBoxContainer" parent="DialogBox" unique_id=1362019792]
+visible = false
+layout_mode = 1
+offset_top = -83.0
+offset_right = 351.0
+offset_bottom = 14.0
+
+[node name="player" type="TextureRect" parent="DialogBox/PartyContainer" unique_id=1621057793]
+clip_contents = true
+custom_minimum_size = Vector2(90, 40)
+layout_mode = 2
+texture = ExtResource("2_3hgc7")
+expand_mode = 4
+stretch_mode = 2
+
+[node name="npc" type="TextureRect" parent="DialogBox/PartyContainer" unique_id=151579730]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+texture = ExtResource("2_3hgc7")
+expand_mode = 4
+stretch_mode = 2
+
+[node name="logo" type="TextureRect" parent="DialogBox" unique_id=1193499490]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -49.5
+offset_right = 66.0
+offset_bottom = 49.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("3_0brwx")
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogBox" unique_id=1463690034]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextContainer" type="RichTextLabel" parent="DialogBox/MarginContainer" unique_id=1679409118]
+layout_mode = 2
+text = "dialogo"
+
+[node name="OptionsContainer" type="HBoxContainer" parent="DialogBox" unique_id=1604399128]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -238.0
+offset_top = -40.0
+offset_right = 219.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10

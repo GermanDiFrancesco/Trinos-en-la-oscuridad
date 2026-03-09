@@ -24,6 +24,9 @@ func changeState(state):
 		"PAUSE":
 			#dim music in music manager
 			overworld_manager.pausar(true)
+		"DIALOG":
+			#dim music in music manager
+			overworld_manager.pausar(true)
 		"BATTLE":
 			overworld_manager.pausar(true)
 			music_manager.play_battle_music()
@@ -49,7 +52,7 @@ func iniciar_managers():
 		music_manager = music_scene.instantiate()
 		get_tree().get_root().add_child.call_deferred(music_manager)
 	if not overworld_manager:
-		var overworld_manager_scene = load("res://scenes/open_world.tscn")
+		var overworld_manager_scene = load("res://scenes/overworld.tscn")
 		overworld_manager = overworld_manager_scene.instantiate()
 		get_tree().get_root().add_child.call_deferred(overworld_manager)	
 
