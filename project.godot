@@ -18,6 +18,9 @@ config/icon="uid://be62dhbc165jx"
 [autoload]
 
 Global="*uid://dwaljrjoq1cda"
+MusicManager="*uid://dbqybx8aua432"
+UIManager="*uid://bn54n2q3h7wn4"
+BattleManager="*uid://voay5fhxmjks"
 
 [display]
 

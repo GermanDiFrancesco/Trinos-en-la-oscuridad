@@ -1,18 +1,43 @@
 extends Resource
 class_name EnemyData
 
-@export var display_name: String = "Enemy"
+@export var display_name: String = "Enemigo"
 @export var portrait: Texture2D
-
-@export var max_hp: int = 100
-@export var max_mana: int = 50
-@export var shield: int = 50
-@export var magic_shield: int = 50
-
-@export var attack: int = 50
-@export var speed: int = 50
+@export var speed: int = 10
 @export var tipo: String = ""
 
-@export var habilities: Array = []
+## Descripción para mostrar en UI cuando se examina
+@export_multiline var description: String = ""
 
 @export var parts: Array[EnemyPartData] = []
+
+# ──────────────────────────────────────────────
+#  Getters calculados a partir de las partes
+# ──────────────────────────────────────────────
+
+## HP total = suma de HP de todas las partes targetable
+func get_total_max_hp() -> int:
+	var total := 0
+	for p in parts:
+		if p.targetable:
+			total += p.max_hp
+	return total
+
+
+## Ataque promedio (para mostrar en la UI como referencia)
+func get_average_attack() -> int:
+	if parts.is_empty():
+		return 0
+	var total := 0
+	for p in parts:
+		total += p.attack
+	return total / parts.size()
+
+
+## Velocidad efectiva: la más alta entre la base y las partes
+func get_effective_speed() -> int:
+	var max_speed := speed
+	for p in parts:
+		if p.speed > max_speed:
+			max_speed = p.speed
+	return max_speed

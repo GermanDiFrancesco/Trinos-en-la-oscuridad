@@ -1,11 +1,9 @@
 extends Panel
-class_name BattleController
 
 @onready var party_container: HBoxContainer = $DialogBox/PartyContainer
 @onready var enemies_container: HBoxContainer = $EnemiesContainer
 
 @onready var actions_container: VBoxContainer = $FondoDelMenu/ActionsContainer
-#remplazar por show options
 @onready var atacar_btn: TextureButton = $FondoDelMenu/ActionsContainer/AtacarBtn
 @onready var cantar_btn: TextureButton = $FondoDelMenu/ActionsContainer/CantarBtn
 @onready var usar_btn: TextureButton = $FondoDelMenu/ActionsContainer/UsarBtn
@@ -15,36 +13,120 @@ class_name BattleController
 @onready var text_container: RichTextLabel = $DialogBox/MarginContainer/TextContainer
 @onready var action_options_container: HBoxContainer = $DialogBox/ActionOptionsContainer
 
-#aca se cargan los recursos enemy_data
-@export var enemies: Array[EnemyData] = []
-var enemy_units: Array[Combatant] = []
 @export var combatant_scene: PackedScene
+
+# Mapa de Combatant → nodo visual en la UI
+var _enemy_panels: Dictionary = {}
+
+
+func _ready() -> void:
+	# Conectar señales del BattleManager
+	BattleManager.battle_ready.connect(_on_battle_ready)
+	BattleManager.damage_dealt.connect(_on_damage_dealt)
+	BattleManager.heal_applied.connect(_on_heal_applied)
+	BattleManager.combatant_died.connect(_on_combatant_died)
+	BattleManager.battle_ended.connect(_on_battle_ended)
+	BattleManager.player_action_needed.connect(_on_player_action_needed)
+	BattleManager.turn_started.connect(_on_turn_started)
 
 
 func init() -> void:
 	visible = true
-	atacar_btn.grab_focus()
+	_show_main_actions()
 
-func start_battle() -> void:
-	enemy_units.clear()
+
+# ──────────────────────────────────────────────
+#  SETUP VISUAL — lee datos del BattleManager
+# ──────────────────────────────────────────────
+
+func _on_battle_ready() -> void:
+	_enemy_panels.clear()
 	for child in enemies_container.get_children():
 		child.queue_free()
+	
+	# Crear paneles visuales para cada enemigo
+	for enemy in BattleManager.enemies:
+		var panel = combatant_scene.instantiate()
+		enemies_container.add_child(panel)
+		panel.setup(enemy)
+		_enemy_panels[enemy] = panel
+	
+	print("[BattlePanel] UI de batalla lista con ", BattleManager.enemies.size(), " enemigos")
 
-	for e in enemies:
-		print(e.display_name)
-		var unit := Combatant.new(e)
-		enemy_units.append(unit)
 
-		var combatant_panel := combatant_scene.instantiate()
-		enemies_container.add_child(combatant_panel)
-		combatant_panel.setup(unit)
+# ──────────────────────────────────────────────
+#  RESPUESTA A SEÑALES DEL BATTLEMANAGER
+# ──────────────────────────────────────────────
+
+func _on_turn_started(who: Combatant) -> void:
+	display_text("Turno de " + who.display_name)
+
+
+func _on_player_action_needed(_combatant: Combatant) -> void:
+	_show_main_actions()
+
+
+func _on_damage_dealt(attacker: Combatant, target: Combatant, part_index: int, amount: int) -> void:
+	var part_text = ""
+	if part_index >= 0 and part_index < target.parts.size():
+		part_text = " (parte: " + target.parts[part_index].display_name + ")"
+	
+	display_text(attacker.display_name + " ataca a " + target.display_name + part_text + " por " + str(amount) + " de daño!")
+	
+	# Actualizar la barra de vida del target
+	if _enemy_panels.has(target):
+		_enemy_panels[target].refresh()
+
+
+func _on_heal_applied(target: Combatant, amount: int) -> void:
+	display_text(target.display_name + " se cura " + str(amount) + " HP!")
+	if _enemy_panels.has(target):
+		_enemy_panels[target].refresh()
+
+
+func _on_combatant_died(who: Combatant) -> void:
+	display_text("¡" + who.display_name + " ha caído!")
+	if _enemy_panels.has(who):
+		_enemy_panels[who].refresh()
+
+
+func _on_battle_ended(result: String) -> void:
+	match result:
+		"victory":
+			display_text("¡Victoria! Has ganado la batalla.")
+			await get_tree().create_timer(2.0).timeout
+			Global.changeState("OVERWORLD")
+		"defeat":
+			display_text("Has sido derrotado...")
+			await get_tree().create_timer(2.0).timeout
+			Global.changeState("MENU")
+		"escape":
+			display_text("¡Escapaste de la batalla!")
+			await get_tree().create_timer(1.5).timeout
+			Global.changeState("OVERWORLD")
+
+
+# ──────────────────────────────────────────────
+#  UI — Mostrar acciones principales
+# ──────────────────────────────────────────────
+
+func _show_main_actions() -> void:
+	# Limpiar opciones dinámicas
+	for child in action_options_container.get_children():
+		child.queue_free()
+	atacar_btn.grab_focus()
+
 
 func display_text(text: String) -> void:
 	for child in action_options_container.get_children():
 		child.queue_free()
 	text_container.text = text
 
-#FOCUS action descriptions
+
+# ──────────────────────────────────────────────
+#  FOCUS — descripciones de acciones
+# ──────────────────────────────────────────────
+
 func _on_atacar_btn_focus_entered() -> void:
 	display_text("Ataca al enemigo cuerpo a cuerpo")
 func _on_cantar_btn_focus_entered() -> void:
@@ -56,45 +138,79 @@ func _on_hablar_btn_focus_entered() -> void:
 func _on_correr_btn_focus_entered() -> void:
 	display_text("Intenta escapar de la batalla")
 
+
+# ──────────────────────────────────────────────
+#  PRESSED — acciones del jugador (ahora delegan al BattleManager)
+# ──────────────────────────────────────────────
+
 func _on_atacar_btn_pressed() -> void:
+	var alive_enemies = BattleManager.get_alive_enemies()
 	var enemy_options: Array = []
-	for i in range(enemy_units.size()):
+	for i in range(alive_enemies.size()):
 		enemy_options.append({
-			"nombre": enemy_units[i].data.display_name,
+			"nombre": alive_enemies[i].display_name,
 			"funcion": "_on_enemy_selected",
 			"enemy_index": i
 		})
 	show_options("Selecciona al oponente:", enemy_options)
 
-func _on_enemy_selected(enemy_index: int) -> void:
-	var part_options: Array = []
-	var selected_enemy = enemy_units[enemy_index]
-	for part in selected_enemy.data.parts:
-		part_options.append({
-			"nombre": part.display_name,
-			"funcion": "_attack_part",
-			"enemy_index": enemy_index,
-			"part": part
-		})
-	show_options(
-		"Selecciona la parte a atacar:",
-		part_options
-	)
 
-func _attack_part(enemy_index: int, part) -> void:
-	display_text("¡Atacas la parte " + part.display_name + " de " + enemy_units[enemy_index].data.display_name + "!")
-	await get_tree().create_timer(1.5).timeout
-	init()
+func _on_enemy_selected(enemy_index: int) -> void:
+	var alive_enemies = BattleManager.get_alive_enemies()
+	if enemy_index >= alive_enemies.size():
+		return
+	
+	var selected_enemy = alive_enemies[enemy_index]
+	
+	# Si el enemigo tiene partes, dejar elegir parte
+	if selected_enemy.has_parts() and not selected_enemy.get_alive_parts().is_empty():
+		var part_options: Array = []
+		var alive_parts = selected_enemy.get_alive_parts()
+		for j in range(selected_enemy.parts.size()):
+			var part = selected_enemy.parts[j]
+			if part.targetable and not part.is_dead():
+				part_options.append({
+					"nombre": part.display_name,
+					"funcion": "_on_part_selected",
+					"enemy_index": enemy_index,
+					"part_index": j
+				})
+		# También opción de atacar el cuerpo principal
+		part_options.insert(0, {
+			"nombre": selected_enemy.display_name + " (cuerpo)",
+			"funcion": "_on_attack_body",
+			"enemy_index": enemy_index
+		})
+		show_options("Selecciona la parte a atacar:", part_options)
+	else:
+		# Atacar directo al cuerpo
+		BattleManager.player_attack(selected_enemy)
+
+
+func _on_attack_body(enemy_index: int) -> void:
+	var alive_enemies = BattleManager.get_alive_enemies()
+	if enemy_index < alive_enemies.size():
+		BattleManager.player_attack(alive_enemies[enemy_index])
+
+
+func _on_part_selected(enemy_index: int, part_index: int) -> void:
+	var alive_enemies = BattleManager.get_alive_enemies()
+	if enemy_index < alive_enemies.size():
+		BattleManager.player_attack_part(alive_enemies[enemy_index], part_index)
+
 
 func _on_cantar_btn_pressed() -> void:
-	show_options()
+	show_options("Habilidades de canto:", [])
+
 func _on_usar_btn_pressed() -> void:
-	show_options()
+	show_options("Inventario:", [])
+
 func _on_hablar_btn_pressed() -> void:
-	show_options()
+	show_options("Opciones de diálogo:", [])
+
 func _on_correr_btn_pressed() -> void:
-	show_options(	
-		"Quieres intentar escapar de la batalla?",
+	show_options(
+		"¿Quieres intentar escapar de la batalla?",
 		[{
 			"nombre": "Correr",
 			"funcion": "_battle_escape",
@@ -102,41 +218,49 @@ func _on_correr_btn_pressed() -> void:
 		},
 		{
 			"nombre": "Seguir luchando",
-			"funcion": "init",
+			"funcion": "_show_main_actions",
 			"descripcion": "Seguir luchando"
 		}]
 	)
 
+
 func _battle_escape() -> void:
 	display_text("Intentas escapar de la batalla...")
-	Global.changeState("OVERWORLD")
+	BattleManager.player_escape()
+
 
 func _on_enemy_focus(enemy_index: int) -> void:
-	# Show information about the focused option
-	if enemy_index < enemy_units.size():
-		enemy_units[enemy_index].indicator()
+	var alive_enemies = BattleManager.get_alive_enemies()
+	if enemy_index < alive_enemies.size() and _enemy_panels.has(alive_enemies[enemy_index]):
+		_enemy_panels[alive_enemies[enemy_index]].indicator()
 
-#Recibe un texto general y una lista de opciones, cada opción es un diccionario con nombre, funcion y descripcion
+
+# ──────────────────────────────────────────────
+#  SISTEMA DE OPCIONES DINÁMICAS (igual que antes pero mejorado)
+# ──────────────────────────────────────────────
+
 func show_options(general_text: String = "", options: Array = []) -> void:
-	#default config
 	for child in action_options_container.get_children():
 		child.queue_free()
+	
 	if options.is_empty():
 		general_text = "No hay opciones disponibles"
 	display_text(general_text)
+	
+	# Agregar botón cancelar
 	options.append({
 		"nombre": "Cancelar",
-		"funcion": "init",
+		"funcion": "_show_main_actions",
 		"descripcion": "cancelar"
 	})
-	#carga de opciones
+	
 	for option in options:
 		var btn := Button.new()
 		btn.text = option["nombre"]
 		btn.focus_mode = Control.FOCUS_ALL
-		# Crea un callable con parámetros si existen
-		if option.has("enemy_index") and option.has("part"):
-			btn.pressed.connect(Callable(self, option["funcion"]).bind(option["enemy_index"], option["part"]))
+		
+		if option.has("enemy_index") and option.has("part_index"):
+			btn.pressed.connect(Callable(self, option["funcion"]).bind(option["enemy_index"], option["part_index"]))
 			btn.focus_entered.connect(Callable(self, "_on_enemy_focus").bind(option["enemy_index"]))
 		elif option.has("enemy_index"):
 			btn.pressed.connect(Callable(self, option["funcion"]).bind(option["enemy_index"]))
@@ -147,4 +271,5 @@ func show_options(general_text: String = "", options: Array = []) -> void:
 		action_options_container.add_child(btn)
 	
 	await get_tree().process_frame
-	action_options_container.get_child(0).grab_focus()
+	if action_options_container.get_child_count() > 0:
+		action_options_container.get_child(0).grab_focus()

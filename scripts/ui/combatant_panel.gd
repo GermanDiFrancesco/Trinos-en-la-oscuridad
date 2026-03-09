@@ -13,18 +13,46 @@ extends Control
 
 var unit: Combatant
 
+
 func setup(_unit: Combatant) -> void:
 	unit = _unit
-	printerr(unit.data)
 	_refresh()
+
+
 func indicator():
-		pass
+	# TODO: Mostrar indicador visual de selección (borde, brillo, etc.)
+	pass
+
+
+func refresh() -> void:
+	_refresh()
+
+
 func _refresh() -> void:
-	label_name.text = unit.data.display_name
-	life_bar.max_value = unit.hp
+	if unit == null:
+		return
+	
+	label_name.text = unit.display_name
+	life_bar.max_value = unit.max_hp
 	life_bar.value = unit.hp
 	npc.texture = unit.data.portrait
+	
+	# Cargar texturas de las partes
 	for i in range(unit.data.parts.size()):
 		var part_data = unit.data.parts[i]
-		var part_texture_rect: TextureRect = sprite_container.get_child(i + 1) as TextureRect
-		part_texture_rect.texture = part_data.portrait
+		# +1 porque el hijo 0 es "Npc"
+		if i + 1 < sprite_container.get_child_count():
+			var part_texture_rect: TextureRect = sprite_container.get_child(i + 1) as TextureRect
+			if part_texture_rect:
+				part_texture_rect.texture = part_data.portrait
+				# Si la parte está muerta, oscurecerla
+				if i < unit.parts.size() and unit.parts[i].is_dead():
+					part_texture_rect.modulate = Color(0.3, 0.3, 0.3, 0.5)
+				else:
+					part_texture_rect.modulate = Color.WHITE
+	
+	# Si el combatiente está muerto, oscurecer todo
+	if unit.is_dead():
+		modulate = Color(0.4, 0.4, 0.4, 0.7)
+	else:
+		modulate = Color.WHITE
