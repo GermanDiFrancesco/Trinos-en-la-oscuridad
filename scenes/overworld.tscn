@@ -2,24 +2,24 @@
 
 [ext_resource type="Script" uid="uid://vlwdk87nhfr7" path="res://scripts/overworld.gd" id="1_f24o1"]
 [ext_resource type="PackedScene" uid="uid://dpp642gyvp3l3" path="res://scenes/player.tscn" id="1_h4xb4"]
-[ext_resource type="PackedScene" uid="uid://dwq7f88fhamtb" path="res://scenes/TESTMAP.tscn" id="1_rtgxu"]
+[ext_resource type="PackedScene" uid="uid://dbucryxr4p44e" path="res://scenes/scalaPlazaMorenoMap.tscn" id="2_qjxaj"]
 [ext_resource type="PackedScene" uid="uid://dxkia4d6jwcxn" path="res://scenes/misc/tacho.tscn" id="3_4i0wp"]
 [ext_resource type="PackedScene" uid="uid://ca06faxyuol5a" path="res://scenes/misc/luz_calle.tscn" id="4_2ejdd"]
 [ext_resource type="PackedScene" uid="uid://bjxvrb3xc1gqr" path="res://scenes/npc.tscn" id="5_mpl7x"]
 [ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://scripts/enemy_data.gd" id="7_qjxaj"]
-[ext_resource type="Resource" uid="uid://8apgpw5sv5sy" path="res://assets/resources/Rappi/Rappi.tres" id="8_e184d"]
+[ext_resource type="Resource" uid="uid://8apgpw5sv5sy" path="res://assets/resources/Deli/Deli.tres" id="8_e184d"]
 
 [node name="OpernWorld" type="Node2D" unique_id=1983207092]
 script = ExtResource("1_f24o1")
 
-[node name="TestMap" parent="." unique_id=1470388169 instance=ExtResource("1_rtgxu")]
+[node name="Ground2" parent="." unique_id=1470388169 instance=ExtResource("2_qjxaj")]
 
 [node name="Level" type="Node2D" parent="." unique_id=359553549]
 y_sort_enabled = true
 position = Vector2(-859, -12)
 
 [node name="Player" parent="Level" unique_id=1646615467 instance=ExtResource("1_h4xb4")]
-position = Vector2(859, 12)
+position = Vector2(1065, -13)
 WALK_SPEED = 150
 
 [node name="tacho" parent="Level" unique_id=807724881 instance=ExtResource("3_4i0wp")]
@@ -59,7 +59,7 @@ position = Vector2(1275, 12)
 position = Vector2(1531, 12)
 
 [node name="Npc" parent="Level" unique_id=1904693644 instance=ExtResource("5_mpl7x")]
-position = Vector2(860, 44)
+position = Vector2(1026, 108)
 WALK_SPEED = 50
 WAIT_TIME = 3.0
-encounter_enemies = Array[ExtResource("7_qjxaj")]([ExtResource("8_e184d")])
+encounter_enemies = Array[ExtResource("7_qjxaj")]([ExtResource("8_e184d"), ExtResource("8_e184d")])
