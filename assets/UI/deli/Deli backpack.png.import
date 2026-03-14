@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br41jhk1wkwf4"
-path="res://.godot/imported/Rappi head.png-90d3c73abd77571e435905af5e582bc0.ctex"
+uid="uid://d3yd7xef4miu0"
+path="res://.godot/imported/Deli backpack.png-6e18c91598b5c8a94cd497e9c8b9aeb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/rappi/Rappi head.png"
-dest_files=["res://.godot/imported/Rappi head.png-90d3c73abd77571e435905af5e582bc0.ctex"]
+source_file="res://assets/UI/deli/Deli backpack.png"
+dest_files=["res://.godot/imported/Deli backpack.png-6e18c91598b5c8a94cd497e9c8b9aeb7.ctex"]
 
 [params]
 

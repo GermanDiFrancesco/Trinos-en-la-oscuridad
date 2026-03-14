@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ge2tppl251nb" path="res://scripts/enemy_part_data.gd" id="1_7c5p8"]
 [ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://scripts/enemy_data.gd" id="1_enemy_data"]
-[ext_resource type="Texture2D" uid="uid://gfqs50o7i7cs" path="res://assets/UI/rappi/Rappi.png" id="2_portrait"]
-[ext_resource type="Resource" uid="uid://bstqk1cqs06lq" path="res://assets/resources/Rappi/mochila.tres" id="2_to5f1"]
+[ext_resource type="Texture2D" uid="uid://gfqs50o7i7cs" path="res://assets/UI/deli/Deli.png" id="2_portrait"]
+[ext_resource type="Resource" uid="uid://bstqk1cqs06lq" path="res://assets/resources/Deli/mochila.tres" id="2_to5f1"]
 
 [resource]
 script = ExtResource("1_enemy_data")
