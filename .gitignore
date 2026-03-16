@@ -1,6 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+task.tracker/
 *.tmp
 *.import~
 *.translation~

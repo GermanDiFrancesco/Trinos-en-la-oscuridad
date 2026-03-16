@@ -7,15 +7,11 @@ class_name EnemyData
 @export var tipo: String = ""
 
 ## Descripción para mostrar en UI cuando se examina
-@export_multiline var description: String = ""
+@export_multiline var description: String = "Descripcion del enemigo."
 
 @export var parts: Array[EnemyPartData] = []
 
-# ──────────────────────────────────────────────
-#  Getters calculados a partir de las partes
-# ──────────────────────────────────────────────
 
-## HP total = suma de HP de todas las partes targetable
 func get_total_max_hp() -> int:
 	var total := 0
 	for p in parts:

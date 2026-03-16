@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ge2tppl251nb" path="res://scripts/enemy_part_data.gd" id="1_d16rs"]
 [ext_resource type="Texture2D" uid="uid://d3yd7xef4miu0" path="res://assets/UI/deli/Deli backpack.png" id="1_d35qv"]
+[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://scripts/skill_data.gd" id="1_q00yc"]
 
 [resource]
 script = ExtResource("1_d16rs")
+display_name = "Mochila corrupta"
 portrait = ExtResource("1_d35qv")
 metadata/_custom_type_script = "uid://ge2tppl251nb"

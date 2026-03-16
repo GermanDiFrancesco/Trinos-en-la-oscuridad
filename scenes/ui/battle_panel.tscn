@@ -2,8 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://548y3ld2iaum" path="res://assets/UI/batalla/bg battle test.png" id="1_373rg"]
 [ext_resource type="Script" uid="uid://x3vda2fbicac" path="res://scripts/ui/battle_panel.gd" id="1_mv0hn"]
-[ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://scripts/enemy_data.gd" id="2_re6a2"]
-[ext_resource type="Resource" uid="uid://8apgpw5sv5sy" path="res://assets/resources/Rappi/Rappi.tres" id="3_k82uv"]
 [ext_resource type="Texture2D" uid="uid://bo6pdnihqydc4" path="res://assets/UI/batalla/fondo del menu.png" id="3_mv0hn"]
 [ext_resource type="PackedScene" uid="uid://b7gh7xjkxmgti" path="res://scenes/ui/combatant.tscn" id="4_7ydel"]
 [ext_resource type="Texture2D" uid="uid://dufgbs3i8qbes" path="res://assets/UI/batalla/atacar_btn.png" id="4_it6j2"]
@@ -27,8 +25,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mv0hn")
-enemies = Array[ExtResource("2_re6a2")]([ExtResource("3_k82uv")])
-combatant_scene = ExtResource("4_7ydel")
+combatant_panel = ExtResource("4_7ydel")
 
 [node name="fondo" type="TextureRect" parent="." unique_id=1851685680]
 layout_mode = 1

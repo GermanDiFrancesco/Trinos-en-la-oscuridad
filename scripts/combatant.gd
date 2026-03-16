@@ -28,14 +28,14 @@ class CombatantPart:
 		is_weak_point = part_data.is_weak_point
 		habilities = part_data.habilities.duplicate()
 
-	func take_damage(amount: int) -> int:
-		## Aplica daño reducido por armadura. Devuelve el daño real aplicado.
-		var effective_damage = max(amount - armor, 1)
-		hp = max(hp - effective_damage, 0)
-		return effective_damage
-
-	func take_magic_damage(amount: int) -> int:
-		var effective_damage = max(amount - magic_armor, 1)
+	func take_damage(amount: int, type: String = "normal") -> int:
+		## Aplica daño reducido por armadura o magic_armor según el tipo. Devuelve el daño real aplicado.
+		var effective_damage := 1
+		match type:
+			"magic":
+				effective_damage = max(amount - magic_armor, 1)
+			_:
+				effective_damage = max(amount - armor, 1)
 		hp = max(hp - effective_damage, 0)
 		return effective_damage
 
@@ -50,10 +50,7 @@ class CombatantPart:
 			return 0.0
 		return float(hp) / float(max_hp)
 
-
-# ──────────────────────────────────────────────
 #  Datos del Combatant
-# ─────────────────────────────────────────────���
 
 ## Referencia al Resource original (EnemyData o KocoristData)
 var data: Resource
@@ -80,42 +77,32 @@ var parts: Array[CombatantPart] = []
 ## ¿Es un party member o un enemigo?
 var is_party_member: bool = false
 
-
-# ��─────────────────────────────────────────────
 #  Constructores
-# ──────────────────────────────────────────────
-
 func _init(_data: Resource = null):
 	if _data == null:
 		return
-
 	data = _data
-
 	if _data is KocoristData:
-		_init_from_kocorist(_data as KocoristData)
+		_init_kocorist(_data as KocoristData)
 	elif _data is EnemyData:
-		_init_from_enemy(_data as EnemyData)
+		_init_enemy(_data as EnemyData)
 
-
-func _init_from_enemy(ed: EnemyData) -> void:
-	display_name = ed.display_name
-	speed = ed.get_effective_speed()
-	tipo = ed.tipo
+func _init_enemy(enemy: EnemyData) -> void:
+	display_name = enemy.display_name
+	speed = enemy.get_effective_speed()
+	tipo = enemy.tipo
 	is_party_member = false
-
 	# El enemigo NO tiene hp/attack propios — todo está en sus partes
 	# Pero calculamos totales para referencia de la UI
-	max_hp = ed.get_total_max_hp()
+	max_hp = enemy.get_total_max_hp()
 	hp = max_hp
-	attack = ed.get_average_attack()
-
+	attack = enemy.get_average_attack()
 	# Cargar partes como instancias vivas
 	parts.clear()
-	for part_data in ed.parts:
+	for part_data in enemy.parts:
 		parts.append(CombatantPart.new(part_data))
 
-
-func _init_from_kocorist(kd: KocoristData) -> void:
+func _init_kocorist(kd: KocoristData) -> void:
 	display_name = kd.display_name
 	speed = kd.speed
 	tipo = kd.tipo
@@ -130,14 +117,9 @@ func _init_from_kocorist(kd: KocoristData) -> void:
 	magic_defense = kd.magic_defense if "magic_defense" in kd else 10
 	habilities = kd.habilities.duplicate()
 
-
-# ──────────────────────────────────────────────
 #  Partes
-# ──────────────────────────────────────────────
-
 func has_parts() -> bool:
 	return not parts.is_empty()
-
 
 func take_part_damage(part_index: int, amount: int) -> int:
 	## Ataca una parte específica. Devuelve daño real aplicado.
@@ -145,17 +127,15 @@ func take_part_damage(part_index: int, amount: int) -> int:
 		return 0
 	var real_damage = parts[part_index].take_damage(amount)
 	# Recalcular hp total del enemigo
-	_sync_hp_from_parts()
+	_sync_hp_parts()
 	return real_damage
-
 
 func take_part_magic_damage(part_index: int, amount: int) -> int:
 	if part_index < 0 or part_index >= parts.size():
 		return 0
 	var real_damage = parts[part_index].take_magic_damage(amount)
-	_sync_hp_from_parts()
+	_sync_hp_parts()
 	return real_damage
-
 
 func get_alive_parts() -> Array[CombatantPart]:
 	var alive: Array[CombatantPart] = []
@@ -164,14 +144,12 @@ func get_alive_parts() -> Array[CombatantPart]:
 			alive.append(p)
 	return alive
 
-
 func is_part_dead(part_index: int) -> bool:
 	if part_index < 0 or part_index >= parts.size():
 		return true
 	return parts[part_index].is_dead()
 
-
-func _sync_hp_from_parts() -> void:
+func _sync_hp_parts() -> void:
 	## Recalcula el hp total del enemigo sumando los hp de todas las partes targetable
 	var total := 0
 	var total_max := 0
@@ -182,11 +160,7 @@ func _sync_hp_from_parts() -> void:
 	hp = total
 	max_hp = total_max
 
-
-# ──────────────────────────────────────────────
 #  Daño directo (para party members o enemigos sin partes)
-# ──────────────────────────────────────────────
-
 func take_damage(amount: int) -> int:
 	if has_parts():
 		# Si tiene partes, el daño directo se reparte entre partes vivas
@@ -196,14 +170,13 @@ func take_damage(amount: int) -> int:
 			return 0
 		var random_part = alive[randi() % alive.size()]
 		var real_damage = random_part.take_damage(amount)
-		_sync_hp_from_parts()
+		_sync_hp_parts()
 		return real_damage
 	else:
 		# Party member: daño directo
 		var effective = max(amount - defense, 1)
 		hp = max(hp - effective, 0)
 		return effective
-
 
 func take_magic_damage(amount: int) -> int:
 	if has_parts():
@@ -212,18 +185,14 @@ func take_magic_damage(amount: int) -> int:
 			return 0
 		var random_part = alive[randi() % alive.size()]
 		var real_damage = random_part.take_magic_damage(amount)
-		_sync_hp_from_parts()
+		_sync_hp_parts()
 		return real_damage
 	else:
 		var effective = max(amount - magic_defense, 1)
 		hp = max(hp - effective, 0)
 		return effective
 
-
-# ──────────────────────────────────────────────
 #  Curación
-# ──────────────────────────────────────────────
-
 func heal(amount: int, mana_cost: int = 0) -> bool:
 	if mana_cost > 0 and mana < mana_cost:
 		return false
@@ -231,17 +200,12 @@ func heal(amount: int, mana_cost: int = 0) -> bool:
 	mana -= mana_cost
 	return true
 
-
 func heal_part(part_index: int, amount: int) -> void:
 	if part_index >= 0 and part_index < parts.size():
 		parts[part_index].heal(amount)
-		_sync_hp_from_parts()
+		_sync_hp_parts()
 
-
-# ──────────────────────────────────────────────
 #  Estado
-# ──────────────────────────────────────────────
-
 func is_dead() -> bool:
 	if has_parts():
 		# Muerto si todas las partes targetable están muertas
@@ -252,7 +216,6 @@ func is_dead() -> bool:
 	else:
 		return hp <= 0
 
-
 func has_weak_point_destroyed() -> bool:
 	## Devuelve true si algún punto débil fue destruido
 	for p in parts:
@@ -260,12 +223,10 @@ func has_weak_point_destroyed() -> bool:
 			return true
 	return false
 
-
 func get_hp_percent() -> float:
 	if max_hp <= 0:
 		return 0.0
 	return float(hp) / float(max_hp)
-
 
 func indicator():
 	# Placeholder para la UI (selección visual)

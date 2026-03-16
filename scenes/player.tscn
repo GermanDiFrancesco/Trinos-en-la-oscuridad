@@ -186,7 +186,6 @@ region_rect = Rect2(51, 5, 25, 56)
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2082054061]
-zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 
 [node name="interactPivot" type="Marker2D" parent="." unique_id=1476173452]

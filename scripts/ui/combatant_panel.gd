@@ -13,30 +13,24 @@ extends Control
 
 var unit: Combatant
 
-
 func setup(_unit: Combatant) -> void:
 	unit = _unit
 	_refresh()
-
 
 func indicator():
 	# TODO: Mostrar indicador visual de selección (borde, brillo, etc.)
 	pass
 
-
 func refresh() -> void:
 	_refresh()
-
 
 func _refresh() -> void:
 	if unit == null:
 		return
-	
 	label_name.text = unit.display_name
 	life_bar.max_value = unit.max_hp
 	life_bar.value = unit.hp
 	npc.texture = unit.data.portrait
-	
 	# Cargar texturas de las partes
 	for i in range(unit.data.parts.size()):
 		var part_data = unit.data.parts[i]
@@ -50,7 +44,6 @@ func _refresh() -> void:
 					part_texture_rect.modulate = Color(0.3, 0.3, 0.3, 0.5)
 				else:
 					part_texture_rect.modulate = Color.WHITE
-	
 	# Si el combatiente está muerto, oscurecer todo
 	if unit.is_dead():
 		modulate = Color(0.4, 0.4, 0.4, 0.7)

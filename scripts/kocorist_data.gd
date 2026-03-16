@@ -11,13 +11,7 @@ class_name KocoristData
 @export var defense: int = 90
 @export var magic_defense: int = 85
 @export var speed: int = 35
-
-## Tipo de voz/rol — afecta qué habilidades de canto puede usar
-## Ejemplos: "tenor", "soprano", "bajo", "contralto"
+## Tipo de voz/rol  - "tenor", "soprano", "bajo", "contralto"
 @export var tipo: String = "Baritono"
-
-## Habilidades del personaje
 @export var habilities: Array[SkillData] = []
-
-## Descripción del personaje
 @export_multiline var description: String = ""

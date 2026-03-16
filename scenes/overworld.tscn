@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ca06faxyuol5a" path="res://scenes/misc/luz_calle.tscn" id="4_2ejdd"]
 [ext_resource type="PackedScene" uid="uid://bjxvrb3xc1gqr" path="res://scenes/npc.tscn" id="5_mpl7x"]
 [ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://scripts/enemy_data.gd" id="7_qjxaj"]
-[ext_resource type="Resource" uid="uid://8apgpw5sv5sy" path="res://assets/resources/Deli/Deli.tres" id="8_e184d"]
+[ext_resource type="Resource" uid="uid://8apgpw5sv5sy" path="res://assets/resources/Enemies/Deli/Deli.tres" id="8_e184d"]
+[ext_resource type="Resource" uid="uid://bp0d1ur1krpfm" path="res://assets/resources/Valky/Valky.tres" id="9_e184d"]
 
 [node name="OpernWorld" type="Node2D" unique_id=1983207092]
 script = ExtResource("1_f24o1")
@@ -19,47 +20,59 @@ y_sort_enabled = true
 position = Vector2(-859, -12)
 
 [node name="Player" parent="Level" unique_id=1646615467 instance=ExtResource("1_h4xb4")]
-position = Vector2(1065, -13)
+position = Vector2(379, 332)
 WALK_SPEED = 150
 
 [node name="tacho" parent="Level" unique_id=807724881 instance=ExtResource("3_4i0wp")]
-position = Vector2(731, 12)
+position = Vector2(123, 364)
 
 [node name="tacho2" parent="Level" unique_id=47546869 instance=ExtResource("3_4i0wp")]
-position = Vector2(987, 12)
+position = Vector2(667, 364)
 
 [node name="luz_calle" parent="Level" unique_id=1901957286 instance=ExtResource("4_2ejdd")]
-position = Vector2(571, 12)
+position = Vector2(-101, 364)
 
 [node name="luz_calle2" parent="Level" unique_id=1674994227 instance=ExtResource("4_2ejdd")]
-position = Vector2(187, 12)
+position = Vector2(-485, 364)
 
 [node name="luz_calle5" parent="Level" unique_id=1862387559 instance=ExtResource("4_2ejdd")]
-position = Vector2(315, 12)
+position = Vector2(-357, 364)
 
 [node name="luz_calle3" parent="Level" unique_id=804154142 instance=ExtResource("4_2ejdd")]
-position = Vector2(443, 12)
+position = Vector2(-229, 364)
 
 [node name="luz_calle4" parent="Level" unique_id=1919933431 instance=ExtResource("4_2ejdd")]
-position = Vector2(699, 12)
+position = Vector2(27, 364)
 
 [node name="luz_calle6" parent="Level" unique_id=1791566599 instance=ExtResource("4_2ejdd")]
-position = Vector2(1403, 12)
+position = Vector2(1147, 364)
 
 [node name="luz_calle7" parent="Level" unique_id=132964151 instance=ExtResource("4_2ejdd")]
-position = Vector2(1019, 12)
+position = Vector2(763, 364)
 
 [node name="luz_calle8" parent="Level" unique_id=1757606185 instance=ExtResource("4_2ejdd")]
-position = Vector2(1147, 12)
+position = Vector2(891, 364)
 
 [node name="luz_calle9" parent="Level" unique_id=1686042157 instance=ExtResource("4_2ejdd")]
-position = Vector2(1275, 12)
+position = Vector2(1019, 364)
 
 [node name="luz_calle10" parent="Level" unique_id=1337092731 instance=ExtResource("4_2ejdd")]
-position = Vector2(1531, 12)
+position = Vector2(1275, 364)
 
 [node name="Npc" parent="Level" unique_id=1904693644 instance=ExtResource("5_mpl7x")]
-position = Vector2(1026, 108)
+position = Vector2(731, 204)
 WALK_SPEED = 50
 WAIT_TIME = 3.0
 encounter_enemies = Array[ExtResource("7_qjxaj")]([ExtResource("8_e184d"), ExtResource("8_e184d")])
+
+[node name="Npc2" parent="Level" unique_id=1496379246 instance=ExtResource("5_mpl7x")]
+position = Vector2(27, 204)
+WALK_SPEED = 10
+WAIT_TIME = 3.0
+encounter_enemies = Array[ExtResource("7_qjxaj")]([ExtResource("8_e184d"), ExtResource("8_e184d")])
+
+[node name="Npc3" parent="Level" unique_id=1126174758 instance=ExtResource("5_mpl7x")]
+position = Vector2(-69, 524)
+WALK_SPEED = 10
+WAIT_TIME = 3.0
+encounter_enemies = Array[ExtResource("7_qjxaj")]([ExtResource("9_e184d")])

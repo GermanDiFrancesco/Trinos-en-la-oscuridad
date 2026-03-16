@@ -1,38 +1,14 @@
 extends Node
 
-# ──────────────────────────────────────────────
-#  SEÑALES — la UI escucha estas señales para actualizarse
-# ──────────────────────────────────────────────
-
-## Se emite cuando la batalla se configura y está lista para mostrarse
 signal battle_ready
-
-## Se emite al iniciar un nuevo turno. who = Combatant que actúa
 signal turn_started(who: Combatant)
-
-## Se emite cuando el jugador debe elegir acción
 signal player_action_needed(combatant: Combatant)
-
-## Se emite cuando se aplica daño. 
-## target = Combatant, part_index = -1 si es daño al cuerpo principal
 signal damage_dealt(attacker: Combatant, target: Combatant, part_index: int, amount: int)
-
-## Se emite cuando un combatiente se cura
 signal heal_applied(target: Combatant, amount: int)
-
-## Se emite cuando un combatiente muere
 signal combatant_died(who: Combatant)
-
-## Se emite al terminar la batalla. result = "victory", "defeat", "escape"
 signal battle_ended(result: String)
-
-## Se emite al actualizar la cola de turnos (para mostrar orden en la UI)
 signal turn_order_updated(order: Array[Combatant])
-
-# ──────────────────────────────────────────────
 #  ESTADOS DE LA BATALLA
-# ──────────────────────────────────────────────
-
 enum BattleState {
 	INACTIVE,          # No hay batalla en curso
 	SETTING_UP,        # Configurando combatientes
@@ -43,50 +19,30 @@ enum BattleState {
 	DEFEAT,
 	ESCAPED
 }
-
 var state: BattleState = BattleState.INACTIVE
-
-# ──────────────────────────────────────────────
 #  DATOS DE LA BATALLA ACTUAL
-# ──────────────────────────────────────────────
-
 ## Party del jugador (Combatant instances creadas a partir de KocoristData)
 var party: Array[Combatant] = []
-
 ## Enemigos (Combatant instances creadas a partir de EnemyData)
 var enemies: Array[Combatant] = []
-
-## Cola de turnos ordenada por velocidad
 var turn_queue: Array[Combatant] = []
-
-## Índice actual en la cola de turnos
 var current_turn_index: int = 0
-
-## El combatiente que está actuando ahora
 var active_combatant: Combatant = null
-
-## Flag para indicar si estamos esperando una acción del jugador
 var waiting_for_player: bool = false
 
-
-# ──────────────────────────────────────────────
 #  SETUP — Llamado por Global para iniciar una batalla
-# ──────────────────────────────────────────────
 
 ## Configura la batalla con los datos de enemigos y party.
+### debe recibir lista de combatientes 
 ## enemy_data_list: Array[EnemyData] — los Resources de los enemigos
 ## party_data_list: Array[KocoristData] — los Resources del party (puede venir de PlayerData en el futuro)
+
 func setup_battle(enemy_data_list: Array, party_data_list: Array = []) -> void:
 	state = BattleState.SETTING_UP
-	
-	# Limpiar batalla anterior
 	_clear_battle()
-	
-	# Crear combatientes de enemigos
 	for ed in enemy_data_list:
 		var combatant := Combatant.new(ed)
 		enemies.append(combatant)
-	
 	# Crear combatientes del party
 	# Por ahora si no hay party, creamos uno por defecto para testear
 	if party_data_list.is_empty():
@@ -99,19 +55,10 @@ func setup_battle(enemy_data_list: Array, party_data_list: Array = []) -> void:
 			var combatant := Combatant.new(pd)
 			combatant.tipo = "party"
 			party.append(combatant)
-	
-	# Generar cola de turnos
 	_build_turn_queue()
-	
 	print("[BattleManager] Batalla configurada: ", enemies.size(), " enemigos vs ", party.size(), " aliados")
 	battle_ready.emit()
-
-
-# ──────────────────────────────────────────────
-#  FLUJO DE TURNOS
-# ──────────────────────────────────────────────
-
-## Inicia el primer turno de la batalla
+#  comienza la batalla con el primer turno
 func start_battle() -> void:
 	if enemies.is_empty():
 		push_warning("[BattleManager] No hay enemigos para pelear!")
@@ -119,26 +66,15 @@ func start_battle() -> void:
 	current_turn_index = 0
 	_process_next_turn()
 
-
 ## Procesa el siguiente turno en la cola
 func _process_next_turn() -> void:
 	# Chequear condiciones de fin
 	if _check_battle_end():
 		return
-	
-	# Si recorrimos toda la cola, rebuildeamos y reseteamos
 	if current_turn_index >= turn_queue.size():
 		_build_turn_queue()
 		current_turn_index = 0
-	
 	active_combatant = turn_queue[current_turn_index]
-	
-	# Si el combatiente activo está muerto, saltamos
-	if active_combatant.is_dead():
-		current_turn_index += 1
-		_process_next_turn()
-		return
-	
 	turn_started.emit(active_combatant)
 	
 	if active_combatant.tipo == "party" or active_combatant.tipo == "tenor":
@@ -152,12 +88,10 @@ func _process_next_turn() -> void:
 		_execute_enemy_turn(active_combatant)
 
 
-# ──────────────────────────────────────────────
-#  ACCIONES DEL JUGADOR (llamadas desde la UI)
-# ──────────────────────────────────────────────
 
-## El jugador elige atacar a un enemigo en su cuerpo principal
-func player_attack(target: Combatant) -> void:
+#  ACCIONES DEL JUGADOR (llamadas desde la UI)
+
+func player_attack(target: Combatant):
 	if state != BattleState.PLAYER_TURN:
 		return
 	waiting_for_player = false
@@ -167,12 +101,9 @@ func player_attack(target: Combatant) -> void:
 	target.take_damage(damage)
 	
 	damage_dealt.emit(active_combatant, target, -1, damage)
-	print("[BattleManager] ", active_combatant.display_name, " ataca a ", target.display_name, " por ", damage, " de daño")
-	
-	if target.is_dead():
-		combatant_died.emit(target)
-	
+	_check_combatant_alive(target)
 	_advance_turn()
+	return damage
 
 
 ## El jugador elige atacar una parte específica del enemigo
@@ -191,8 +122,7 @@ func player_attack_part(target: Combatant, part_index: int) -> void:
 	var part_name = part.display_name if part else "???"
 	print("[BattleManager] ", active_combatant.display_name, " ataca ", part_name, " de ", target.display_name, " por ", damage)
 	
-	if target.is_dead():
-		combatant_died.emit(target)
+	_check_combatant_alive(target)
 	
 	_advance_turn()
 
@@ -231,14 +161,12 @@ func player_escape() -> void:
 		_advance_turn()
 
 
-# ──────────────────────────────────────────────
+
 #  IA ENEMIGA (muy simple por ahora)
-# ──────────────────────────────────────────────
+
 
 func _execute_enemy_turn(enemy: Combatant) -> void:
 	state = BattleState.ANIMATING
-	
-	# Elegir un target aleatorio del party que esté vivo
 	var alive_party: Array[Combatant] = []
 	for p in party:
 		if not p.is_dead():
@@ -255,17 +183,16 @@ func _execute_enemy_turn(enemy: Combatant) -> void:
 	damage_dealt.emit(enemy, target, -1, damage)
 	print("[BattleManager] ", enemy.display_name, " ataca a ", target.display_name, " por ", damage)
 	
-	if target.is_dead():
-		combatant_died.emit(target)
+	_check_combatant_alive(target)
 	
 	# Pequeña pausa para que la UI pueda mostrar la animación
 	await get_tree().create_timer(1.0).timeout
 	_advance_turn()
 
 
-# ──────────────────────────────────────────────
+
 #  CÁLCULO DE DAÑO
-# ──────────────────────────────────────────────
+
 
 func _calculate_damage(attacker: Combatant, _target: Combatant) -> int:
 	# Fórmula simple por ahora — podés complejizarla después
@@ -278,15 +205,23 @@ func _calculate_damage(attacker: Combatant, _target: Combatant) -> int:
 	return max(final_damage, 1)
 
 
-# ──────────────────────────────────────────────
-#  UTILIDADES INTERNAS
-# ──────────────────────────────────────────────
+
+#Evalua si un combatiente murió, y si es así lo elimina de la batalla y actualiza la cola de turnos.emite combatant_died a la UI
+func _check_combatant_alive(combatant: Combatant) -> void:
+	if combatant.is_dead():
+		combatant_died.emit(combatant)
+		# Remover de la cola de turnos
+		var index = turn_queue.find(combatant)
+		if index != -1:
+			turn_queue.remove_at(index)
+			if index < current_turn_index:
+				current_turn_index -= 1
+	return combatant.is_dead()
+
 
 func _advance_turn() -> void:
 	current_turn_index += 1
-	# Usar call_deferred para dar tiempo a la UI a actualizarse
 	call_deferred("_process_next_turn")
-
 
 func _build_turn_queue() -> void:
 	turn_queue.clear()
@@ -344,10 +279,7 @@ func _clear_battle() -> void:
 	state = BattleState.INACTIVE
 
 
-
-# ──────────────────────────────────────────────
 #  GETTERS para la UI
-# ──────────────────────────────────────────────
 
 func get_alive_enemies() -> Array[Combatant]:
 	var alive: Array[Combatant] = []

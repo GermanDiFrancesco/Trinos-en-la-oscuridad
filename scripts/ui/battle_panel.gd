@@ -13,11 +13,8 @@ extends Panel
 @onready var text_container: RichTextLabel = $DialogBox/MarginContainer/TextContainer
 @onready var action_options_container: HBoxContainer = $DialogBox/ActionOptionsContainer
 
-@export var combatant_scene: PackedScene
-
-# Mapa de Combatant → nodo visual en la UI
+@export var combatant_panel: PackedScene
 var _enemy_panels: Dictionary = {}
-
 
 func _ready() -> void:
 	# Conectar señales del BattleManager
@@ -28,35 +25,22 @@ func _ready() -> void:
 	BattleManager.battle_ended.connect(_on_battle_ended)
 	BattleManager.player_action_needed.connect(_on_player_action_needed)
 	BattleManager.turn_started.connect(_on_turn_started)
-
-
 func init() -> void:
 	visible = true
 	_show_main_actions()
 
 
-# ──────────────────────────────────────────────
-#  SETUP VISUAL — lee datos del BattleManager
-# ──────────────────────────────────────────────
-
 func _on_battle_ready() -> void:
 	_enemy_panels.clear()
 	for child in enemies_container.get_children():
 		child.queue_free()
-	
 	# Crear paneles visuales para cada enemigo
 	for enemy in BattleManager.enemies:
-		var panel = combatant_scene.instantiate()
+		var panel = combatant_panel.instantiate()
 		enemies_container.add_child(panel)
 		panel.setup(enemy)
 		_enemy_panels[enemy] = panel
-	
-	print("[BattlePanel] UI de batalla lista con ", BattleManager.enemies.size(), " enemigos")
 
-
-# ──────────────────────────────────────────────
-#  RESPUESTA A SEÑALES DEL BATTLEMANAGER
-# ──────────────────────────────────────────────
 
 func _on_turn_started(who: Combatant) -> void:
 	display_text("Turno de " + who.display_name)
@@ -106,9 +90,9 @@ func _on_battle_ended(result: String) -> void:
 			Global.changeState("OVERWORLD")
 
 
-# ──────────────────────────────────────────────
+
 #  UI — Mostrar acciones principales
-# ──────────────────────────────────────────────
+
 
 func _show_main_actions() -> void:
 	# Limpiar opciones dinámicas
@@ -123,9 +107,9 @@ func display_text(text: String) -> void:
 	text_container.text = text
 
 
-# ──────────────────────────────────────────────
+
 #  FOCUS — descripciones de acciones
-# ──────────────────────────────────────────────
+
 
 func _on_atacar_btn_focus_entered() -> void:
 	display_text("Ataca al enemigo cuerpo a cuerpo")
@@ -139,9 +123,9 @@ func _on_correr_btn_focus_entered() -> void:
 	display_text("Intenta escapar de la batalla")
 
 
-# ──────────────────────────────────────────────
+
 #  PRESSED — acciones del jugador (ahora delegan al BattleManager)
-# ──────────────────────────────────────────────
+
 
 func _on_atacar_btn_pressed() -> void:
 	var alive_enemies = BattleManager.get_alive_enemies()
@@ -175,12 +159,6 @@ func _on_enemy_selected(enemy_index: int) -> void:
 					"enemy_index": enemy_index,
 					"part_index": j
 				})
-		# También opción de atacar el cuerpo principal
-		part_options.insert(0, {
-			"nombre": selected_enemy.display_name + " (cuerpo)",
-			"funcion": "_on_attack_body",
-			"enemy_index": enemy_index
-		})
 		show_options("Selecciona la parte a atacar:", part_options)
 	else:
 		# Atacar directo al cuerpo
@@ -235,9 +213,9 @@ func _on_enemy_focus(enemy_index: int) -> void:
 		_enemy_panels[alive_enemies[enemy_index]].indicator()
 
 
-# ──────────────────────────────────────────────
+
 #  SISTEMA DE OPCIONES DINÁMICAS (igual que antes pero mejorado)
-# ──────────────────────────────────────────────
+
 
 func show_options(general_text: String = "", options: Array = []) -> void:
 	for child in action_options_container.get_children():

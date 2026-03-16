@@ -1,21 +1,16 @@
 extends Node
+var debug: bool = false
 
 var saveData = null
 var overworld_manager: Node = null
-
-var debug: bool = false
-
-# Estado actual del juego
 var current_state: String = ""
-
 
 func _ready():
 	check_save_data()
 	_iniciar_overworld()
 	call_deferred("changeState", "MENU")
 	if Global.debug:
-		# Para debug: lanzar directamente a batalla con enemigos de prueba
-		call_deferred("_debug_start_battle")
+		call_deferred("start_battle")
 
 
 func changeState(state: String) -> String:
@@ -36,38 +31,32 @@ func changeState(state: String) -> String:
 		"BATTLE":
 			overworld_manager.pausar(true)
 			MusicManager.play_battle_music()
-			# NO llamamos a battle_panel.start_battle() directamente
-			# El BattleManager ya tiene los datos, y la UI los lee al mostrarse
 		"CINEMATIC":
 			pass
 		"AJUSTES":
-			# TODO: mostrar panel de ajustes
+			# TODO: panel de ajustes
 			return current_state
 	
 	UIManager.show_panel(state)
 	return state
 
 
-## Función pública para iniciar una batalla con datos específicos.
-## Llamada desde NPCs, eventos, etc.
-func start_battle(enemy_data_list: Array, party_data_list: Array = []) -> void:
-	# 1. Configurar la batalla en el BattleManager
+## Función pública para iniciar una batalla con datos de combate.
+## enemy_data_list: Array de EnemyData resources
+## party_data_list: Array de KocoristData resources
+func start_battle(enemy_data_list: Array = [], party_data_list: Array = []) -> void:
+	# Si no se pasan recursos, usar defaults
+	if enemy_data_list.is_empty():
+		enemy_data_list = [load("res://assets/resources/Enemies/Deli/Deli.tres"),load("res://assets/resources/Valky/Valky.tres")]
+	
+	if party_data_list.is_empty():
+		# Si no hay party, el BattleManager crea uno por defecto
+		pass
+	
 	BattleManager.setup_battle(enemy_data_list, party_data_list)
-	# 2. Cambiar al estado BATTLE (esto pausa overworld, cambia música, muestra UI)
 	changeState("BATTLE")
-	# 3. Iniciar el flujo de turnos (con un frame de delay para que la UI esté lista)
 	await get_tree().process_frame
 	BattleManager.start_battle()
-
-
-func _debug_start_battle() -> void:
-	# Crea datos de prueba para debug
-	var test_enemy = load("res://assets/resources/Rappi/Rappi.tres") as EnemyData
-	if test_enemy:
-		start_battle([test_enemy])
-	else:
-		push_warning("[Global] No se encontró el resource de prueba valky.tres")
-
 
 func _iniciar_overworld():
 	if not overworld_manager:

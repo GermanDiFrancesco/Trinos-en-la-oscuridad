@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://bb43n4hdeydmt"]
+
+[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://scripts/skill_data.gd" id="1_xep0w"]
+
+[resource]
+script = ExtResource("1_xep0w")
+skill_name = "habilitache"
+power = 14
+mana_cost = 10
+description = "testeo"
+metadata/_custom_type_script = "uid://j5yol176db3a"
