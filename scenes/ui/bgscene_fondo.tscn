@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bbvr33xp3dq81"]
 
-[ext_resource type="Texture2D" uid="uid://iea17eq8ilua" path="res://assets/MAIN_MENU_SCENE/game screen base.png" id="1_oql4r"]
-[ext_resource type="Texture2D" uid="uid://62bkmpko2g5w" path="res://assets/MAIN_MENU_SCENE/game screen prota anim 1.png" id="2_krtt3"]
-[ext_resource type="Texture2D" uid="uid://drj8tfys3buvk" path="res://assets/MAIN_MENU_SCENE/game screen prota anim luz 1.png" id="3_fvy0o"]
+[ext_resource type="Texture2D" uid="uid://iea17eq8ilua" path="res://assets/cinematicas/game screen base.png" id="1_oql4r"]
+[ext_resource type="Texture2D" uid="uid://62bkmpko2g5w" path="res://assets/cinematicas/game screen prota anim 1.png" id="2_krtt3"]
+[ext_resource type="Texture2D" uid="uid://drj8tfys3buvk" path="res://assets/cinematicas/game screen prota anim luz 1.png" id="3_fvy0o"]
 
 [node name="BGSCENE" type="Control" unique_id=40716647]
 layout_mode = 3

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://boiagvsann2xv"]
+
+[ext_resource type="Script" uid="uid://b7o23gvtd0ovn" path="res://scripts/ui/inventario_panel.gd" id="1_ivudg"]
+
+[node name="InventarioPanel" type="Panel" unique_id=232706233]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ivudg")
+
+[node name="prota" type="VBoxContainer" parent="." unique_id=809982672]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="nombre" type="Label" parent="prota" unique_id=947726978]
+layout_mode = 2
+text = "asdasdasdasdasd"
+
+[node name="vida" type="Label" parent="prota" unique_id=1962463476]
+layout_mode = 2
+text = "asdasdasdasdasd"
+
+[node name="ataque" type="Label" parent="prota" unique_id=381558556]
+layout_mode = 2
+text = "asdasdasdasdasd"
+
+[node name="defensa" type="Label" parent="prota" unique_id=1364490368]
+layout_mode = 2
+text = "asdasdasdasdasd"
+
+[node name="cuerda" type="Label" parent="prota" unique_id=277561749]
+layout_mode = 2
+text = "asdasdasdasdasd"

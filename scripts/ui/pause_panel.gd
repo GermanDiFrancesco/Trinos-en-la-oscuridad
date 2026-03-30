@@ -1,17 +1,13 @@
 extends Panel
 
-@onready var continuar_btn: TextureButton = $OptionsContainer/ContinuarBtn
-@onready var salir_btn: TextureButton = $OptionsContainer/SalirBtn
-
-
-func init() -> void:
-	visible = true
-	continuar_btn.grab_focus()
+@export var continuar_btn: TextureButton 	
+@export var salir_btn: TextureButton
+@export var inventario_panel: Panel
 
 
 func _on_salir_btn_pressed() -> void:
-	Global.changeState("MENU")
-
+	Global.change_state("MENU")
 
 func _on_continuar_btn_pressed() -> void:
-	Global.changeState("OVERWORLD")
+	Global.toggle_pause(false)
+	UIManager.overworld_panel._pause(false)

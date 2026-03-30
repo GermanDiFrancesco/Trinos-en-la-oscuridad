@@ -8,10 +8,10 @@ extends Node
 
 func _ready() -> void:
 	opening_main_menu.play()
+	_stop_all()
 
 func _on_opening_main_menu_finished() -> void:
 	play_menu_music()
-
 
 func _stop_all():
 	menu_music.stop()

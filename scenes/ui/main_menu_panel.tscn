@@ -2,18 +2,20 @@
 
 [ext_resource type="Script" uid="uid://4cmg2we8lv5u" path="res://scripts/ui/main_menu_panel.gd" id="1_33qjm"]
 [ext_resource type="PackedScene" uid="uid://bbvr33xp3dq81" path="res://scenes/ui/bgscene_fondo.tscn" id="2_02id0"]
-[ext_resource type="Texture2D" uid="uid://62bkmpko2g5w" path="res://assets/MAIN_MENU_SCENE/game screen prota anim 1.png" id="2_33qjm"]
-[ext_resource type="Texture2D" uid="uid://drj8tfys3buvk" path="res://assets/MAIN_MENU_SCENE/game screen prota anim luz 1.png" id="3_02id0"]
+[ext_resource type="Texture2D" uid="uid://62bkmpko2g5w" path="res://assets/cinematicas/game screen prota anim 1.png" id="2_33qjm"]
+[ext_resource type="Texture2D" uid="uid://drj8tfys3buvk" path="res://assets/cinematicas/game screen prota anim luz 1.png" id="3_02id0"]
 [ext_resource type="Texture2D" uid="uid://bbbrptwvgvnk2" path="res://assets/UI/botones/jugar_buton.png" id="4_ynf2p"]
 [ext_resource type="Texture2D" uid="uid://bnc8mflu5yobb" path="res://assets/UI/botones/jugar_buton_focus.png" id="5_jlmnq"]
 [ext_resource type="Texture2D" uid="uid://cdkuqonxjv1cx" path="res://assets/UI/botones/ajustes_buton.png" id="6_bx78h"]
 [ext_resource type="Texture2D" uid="uid://db4a38r5kabq8" path="res://assets/UI/botones/ajustes_buton_focus.png" id="7_ab1js"]
-[ext_resource type="Texture2D" uid="uid://cil70rw1mhll3" path="res://assets/MAIN_MENU_SCENE/game screen prota anim 2.png" id="8_bdqle"]
-[ext_resource type="Texture2D" uid="uid://bwwxg5ohvj8bq" path="res://assets/MAIN_MENU_SCENE/game screen prota anim 3.png" id="9_m5xtq"]
-[ext_resource type="Texture2D" uid="uid://c16o4fpjucn48" path="res://assets/MAIN_MENU_SCENE/game screen prota anim 4.png" id="10_4qamw"]
-[ext_resource type="Texture2D" uid="uid://iktruy85qma6" path="res://assets/MAIN_MENU_SCENE/game screen prota anim luz 2.png" id="11_wpx3c"]
-[ext_resource type="Texture2D" uid="uid://bwfgd6438xyps" path="res://assets/MAIN_MENU_SCENE/game screen prota anim luz 3.png" id="12_jewci"]
-[ext_resource type="Texture2D" uid="uid://b8x08bkbg3pm1" path="res://assets/MAIN_MENU_SCENE/game screen prota anim luz 4.png" id="13_url0x"]
+[ext_resource type="Texture2D" uid="uid://cil70rw1mhll3" path="res://assets/cinematicas/game screen prota anim 2.png" id="8_bdqle"]
+[ext_resource type="Texture2D" uid="uid://bwwxg5ohvj8bq" path="res://assets/cinematicas/game screen prota anim 3.png" id="9_m5xtq"]
+[ext_resource type="Texture2D" uid="uid://c16o4fpjucn48" path="res://assets/cinematicas/game screen prota anim 4.png" id="10_4qamw"]
+[ext_resource type="Texture2D" uid="uid://iktruy85qma6" path="res://assets/cinematicas/game screen prota anim luz 2.png" id="11_wpx3c"]
+[ext_resource type="Texture2D" uid="uid://bwfgd6438xyps" path="res://assets/cinematicas/game screen prota anim luz 3.png" id="12_jewci"]
+[ext_resource type="Texture2D" uid="uid://b8x08bkbg3pm1" path="res://assets/cinematicas/game screen prota anim luz 4.png" id="13_url0x"]
+[ext_resource type="Texture2D" uid="uid://bilwrqhkubev3" path="res://assets/UI/botones/continuar_buton.png" id="13_ynf2p"]
+[ext_resource type="Texture2D" uid="uid://r60scfrgmkqt" path="res://assets/UI/botones/continuar_buton_focus.png" id="14_jlmnq"]
 
 [sub_resource type="Animation" id="Animation_ku1ey"]
 length = 0.001
@@ -84,6 +86,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_33qjm")
+playerpos = Vector2(130, 100)
 
 [node name="BGSCENE" parent="." unique_id=40716647 instance=ExtResource("2_02id0")]
 layout_mode = 1
@@ -110,9 +113,13 @@ stretch_mode = 3
 
 [node name="ContinuarBtn" type="TextureButton" parent="OptionsContainer" unique_id=1310494344]
 layout_mode = 2
+texture_normal = ExtResource("13_ynf2p")
+texture_focused = ExtResource("14_jlmnq")
+stretch_mode = 3
 
 [node name="AjustesBtn" type="TextureButton" parent="OptionsContainer" unique_id=260077099]
 layout_mode = 2
+disabled = true
 texture_normal = ExtResource("6_bx78h")
 texture_focused = ExtResource("7_ab1js")
 stretch_mode = 3

@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://buy57oaywoh8y"]
+
+[ext_resource type="Script" uid="uid://bw574fihnr4hx" path="res://scripts/ui/cinematic_panel.gd" id="1_wm5gi"]
+[ext_resource type="Texture2D" uid="uid://dwbijp6xr3fp8" path="res://assets/cinematicas/00_intro_flautista/Captura de pantalla 2026-03-27 134808.png" id="2_82evs"]
+
+[sub_resource type="Animation" id="Animation_82evs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(720, 480)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 480)]
+}
+
+[sub_resource type="Animation" id="Animation_br4t4"]
+resource_name = "intro_flautista"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(720, 480), Vector2(544.5, 363)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 480), Vector2(0, 340)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h8ysp"]
+_data = {
+&"RESET": SubResource("Animation_82evs"),
+&"intro_flautista": SubResource("Animation_br4t4")
+}
+
+[node name="Cinematic" type="Control" unique_id=1568062660]
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wm5gi")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2110058247]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1720879745]
+libraries/ = SubResource("AnimationLibrary_h8ysp")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=231427760]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_82evs")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1636010117]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 200.99884
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=418002347]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.06575812, 0.06575813, 0.06575812, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "Flautista: Que bella noche que tenemos en nuestra ciudad. 
+La ciudad que de noche brilla, la ciudad de los mil ángulos, la ciudad de los encuentros. 
+Tantas voces, pidiendo, rogando, suplicando. Tanta… Discordancia.
+El mundo solo necesita una melodía… la mía."

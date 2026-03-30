@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://r60scfrgmkqt" path="res://assets/UI/botones/continuar_buton_focus.png" id="2_vqkej"]
 [ext_resource type="Texture2D" uid="uid://cjnvkysoff6ld" path="res://assets/UI/botones/salir_buton.png" id="3_dl1m0"]
 [ext_resource type="Texture2D" uid="uid://pg684o3x80n" path="res://assets/UI/botones/salir_buton_focus.png" id="4_e40du"]
+[ext_resource type="PackedScene" uid="uid://boiagvsann2xv" path="res://scenes/ui/inventario_panel.tscn" id="6_dl1m0"]
 
-[node name="PausePanel" type="Panel" unique_id=300566441]
+[node name="PausePanel" type="Panel" unique_id=300566441 node_paths=PackedStringArray("continuar_btn", "salir_btn", "inventario_panel")]
 process_mode = 3
 custom_minimum_size = Vector2(300, 300)
 anchors_preset = 15
@@ -16,31 +17,45 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_vqkej")
+continuar_btn = NodePath("HBoxContainer/OptionsContainer/ContinuarBtn")
+salir_btn = NodePath("HBoxContainer/OptionsContainer/SalirBtn")
+inventario_panel = NodePath("HBoxContainer/inventario")
 
-[node name="OptionsContainer" type="VBoxContainer" parent="." unique_id=534652391]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=268583193]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -73.0
-offset_top = -75.0
-offset_right = 73.0
-offset_bottom = 75.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.20148283, 0.20148286, 0.2014828, 0.5372549)
 
-[node name="ContinuarBtn" type="TextureButton" parent="OptionsContainer" unique_id=111118104]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=105740645]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="OptionsContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=534652391]
+layout_mode = 2
+alignment = 1
+
+[node name="ContinuarBtn" type="TextureButton" parent="HBoxContainer/OptionsContainer" unique_id=111118104]
 layout_mode = 2
 texture_normal = ExtResource("1_sn6ky")
 texture_focused = ExtResource("2_vqkej")
 
-[node name="SalirBtn" type="TextureButton" parent="OptionsContainer" unique_id=1949296120]
+[node name="SalirBtn" type="TextureButton" parent="HBoxContainer/OptionsContainer" unique_id=1949296120]
 layout_mode = 2
 texture_normal = ExtResource("3_dl1m0")
 texture_focused = ExtResource("4_e40du")
 stretch_mode = 3
 
-[connection signal="pressed" from="OptionsContainer/ContinuarBtn" to="." method="_on_continuar_btn_pressed"]
-[connection signal="pressed" from="OptionsContainer/SalirBtn" to="." method="_on_salir_btn_pressed"]
+[node name="inventario" parent="HBoxContainer" unique_id=232706233 instance=ExtResource("6_dl1m0")]
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/OptionsContainer/ContinuarBtn" to="." method="_on_continuar_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/OptionsContainer/SalirBtn" to="." method="_on_salir_btn_pressed"]

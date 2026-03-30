@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://l7fb02cn00da"]
+
+[ext_resource type="Script" uid="uid://d35imt6xkvowy" path="res://scripts/ui/overworld_panel.gd" id="1_nfcer"]
+[ext_resource type="PackedScene" uid="uid://cg53hstm34eke" path="res://scenes/ui/pause_panel.tscn" id="3_oprsy"]
+[ext_resource type="PackedScene" uid="uid://vehvjdj6hye3" path="res://scenes/ui/dialog_panel.tscn" id="4_eurwg"]
+
+[node name="Overworld" type="Control" unique_id=1604371975 node_paths=PackedStringArray("pause_panel", "dialog_panel", "player_hud")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nfcer")
+pause_panel = NodePath("PausePanel")
+dialog_panel = NodePath("DialogPanel")
+player_hud = NodePath("Player_hud")
+
+[node name="PausePanel" parent="." unique_id=300566441 instance=ExtResource("3_oprsy")]
+visible = false
+layout_mode = 1
+anchors_preset = 9
+anchor_right = 0.0
+offset_right = 300.0
+grow_horizontal = 1
+
+[node name="DialogPanel" parent="." unique_id=2051207021 instance=ExtResource("4_eurwg")]
+visible = false
+layout_mode = 1
+
+[node name="Player_hud" type="Panel" parent="." unique_id=249387348]
+visible = false
+modulate = Color(0.38563886, 0.721153, 0.5613174, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bn54n2q3h7wn4"]
+
+[ext_resource type="Script" uid="uid://bkcisj3hxknkn" path="res://MAN/UIManager.gd" id="1_s4vl8"]
+[ext_resource type="PackedScene" uid="uid://75cscmygekig" path="res://scenes/ui/main_menu_panel.tscn" id="2_odehg"]
+[ext_resource type="PackedScene" uid="uid://cslmep0kwafng" path="res://scenes/ui/battle_panel.tscn" id="3_g8uon"]
+[ext_resource type="PackedScene" uid="uid://l7fb02cn00da" path="res://scenes/ui/overworld_panel.tscn" id="4_0r01d"]
+[ext_resource type="PackedScene" uid="uid://buy57oaywoh8y" path="res://scenes/ui/cinematic_panel.tscn" id="5_ul1w8"]
+
+[node name="UI" type="CanvasLayer" unique_id=667037524 node_paths=PackedStringArray("menu_panel", "battle_panel", "overworld_panel", "cinematic_panel")]
+process_mode = 3
+script = ExtResource("1_s4vl8")
+menu_panel = NodePath("MainMenu")
+battle_panel = NodePath("BattlePanel")
+overworld_panel = NodePath("Overworld")
+cinematic_panel = NodePath("Cinematic")
+
+[node name="MainMenu" parent="." unique_id=839390933 instance=ExtResource("2_odehg")]
+map_inicial = null
+
+[node name="Overworld" parent="." unique_id=1247009354 instance=ExtResource("4_0r01d")]
+visible = false
+
+[node name="BattlePanel" parent="." unique_id=860409160 instance=ExtResource("3_g8uon")]
+visible = false
+
+[node name="Cinematic" parent="." unique_id=149218103 instance=ExtResource("5_ul1w8")]
+visible = false

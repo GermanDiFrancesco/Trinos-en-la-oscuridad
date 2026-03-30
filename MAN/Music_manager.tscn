@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbqybx8aua432"]
 
-[ext_resource type="Script" uid="uid://bhdbxdsbbower" path="res://scripts/MusicManager.gd" id="1_tn5dr"]
+[ext_resource type="Script" uid="uid://bhdbxdsbbower" path="res://MAN/MusicManager.gd" id="1_tn5dr"]
 [ext_resource type="AudioStream" uid="uid://dtfxyrrl1dgwk" path="res://assets/audio/music/main_menu_bg.mp3" id="2_yodp2"]
 [ext_resource type="AudioStream" uid="uid://dkjicy62ffjfp" path="res://assets/audio/music/opening_main_menu.mp3" id="3_xcw26"]
 [ext_resource type="AudioStream" uid="uid://ckaek0r471wsn" path="res://assets/audio/music/overworld_00.mp3" id="4_jbem4"]
@@ -9,18 +9,18 @@
 [node name="music_manager" type="Node2D" unique_id=618284203]
 script = ExtResource("1_tn5dr")
 
+[node name="OpeningMainMenu" type="AudioStreamPlayer" parent="." unique_id=1080669239]
+stream = ExtResource("3_xcw26")
+
 [node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=1358271248]
 stream = ExtResource("2_yodp2")
 parameters/looping = false
-
-[node name="OpeningMainMenu" type="AudioStreamPlayer" parent="." unique_id=1080669239]
-stream = ExtResource("3_xcw26")
-volume_db = -6.0
 
 [node name="OverworldMusic" type="AudioStreamPlayer" parent="." unique_id=1556468376]
 stream = ExtResource("4_jbem4")
 
 [node name="BattleMusic" type="AudioStreamPlayer" parent="." unique_id=979177517]
 stream = ExtResource("5_xcw26")
+volume_db = -30.0
 
 [connection signal="finished" from="OpeningMainMenu" to="." method="_on_opening_main_menu_finished"]

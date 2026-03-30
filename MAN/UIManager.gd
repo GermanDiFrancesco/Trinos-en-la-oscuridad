@@ -1,37 +1,25 @@
-extends Panel
+extends CanvasLayer
 
-@onready var options_container: HBoxContainer = $DialogBox/OptionsContainer
-@onready var text_container: RichTextLabel = $DialogBox/MarginContainer/TextContainer
+@export var menu_panel: Control 
+@export var battle_panel: Control 
+@export var overworld_panel: Control 
+@export var cinematic_panel: Control
 
-func init() -> void:
-	visible = true
-	options_container.grab_focus()
-	show_dialog(
-		"Revolves la basura, encontras un -item-",
-		[
-			{
-				"nombre": "Tomar item",
-				"funcion": "_tomar_item",
-			},
-			{
-				"nombre": "Dejarlo",
-				"funcion": "_terminar",
-			}
-		]
-	)
+@export var text_container: RichTextLabel 
+@export var options_container: HBoxContainer 
 
-func _tomar_item() -> void:
-	show_dialog("Agarras el item")
-	await get_tree().create_timer(1.5).timeout
-	Global.changeState('OVERWORLD')
+signal showing_panel
 
-func _terminar() -> void:
-	Global.changeState('OVERWORLD')	
+func _ready() -> void:
+	if options_container : options_container.grab_focus()
 
 func display_text(text: String) -> void:
 	for child in options_container.get_children():
 		child.queue_free()
-	text_container.text = text	
+	text_container.text = text
+	
+func _end_dialog() -> void:
+	self.visible = false
 
 #Recibe un texto general y una lista de opciones, cada opción es un diccionario con nombre, funcion y descripcion
 func show_dialog(_text: String = "", options: Array = []) -> void:
@@ -41,7 +29,7 @@ func show_dialog(_text: String = "", options: Array = []) -> void:
 	display_text(_text)
 	options.append({
 		"nombre": "Terminar",
-		"funcion": "_terminar",
+		"funcion": "_end_dialog",
 		"descripcion": "cancelar"
 	})
 	#carga de opciones
@@ -63,3 +51,40 @@ func show_dialog(_text: String = "", options: Array = []) -> void:
 	
 	await get_tree().process_frame
 	options_container.get_child(0).grab_focus()
+
+func show_panel(panel: String):
+	menu_panel.hide()
+	battle_panel.hide()
+	overworld_panel.hide()
+	cinematic_panel.hide()
+
+	match panel:
+		"MENU":
+			menu_panel.show()
+			menu_panel._ready()
+		"BATTLE":
+			battle_panel.show()
+		"OVERWORLD":
+			overworld_panel.show()
+			overworld_panel._ready()
+		"CINEMATIC":
+			cinematic_panel.show()
+			pass
+	await Transition.fade_from_black()
+	showing_panel.emit()
+	print('showing '+panel)
+
+func toggle_pause(pausado:bool):
+	if pausado == true:
+		overworld_panel._pause()
+	else:
+		overworld_panel.hide_pause()
+	return pausado
+
+
+func show_cinematic(name:String):
+	print('loading cinematic ',name)
+	await Transition.fade_to_black()
+	show_panel("CINEMATIC")
+	await cinematic_panel.play(name)
+	

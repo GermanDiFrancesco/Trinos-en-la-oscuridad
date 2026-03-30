@@ -31,12 +31,7 @@ var active_combatant: Combatant = null
 var waiting_for_player: bool = false
 
 #  SETUP — Llamado por Global para iniciar una batalla
-
 ## Configura la batalla con los datos de enemigos y party.
-### debe recibir lista de combatientes 
-## enemy_data_list: Array[EnemyData] — los Resources de los enemigos
-## party_data_list: Array[KocoristData] — los Resources del party (puede venir de PlayerData en el futuro)
-
 func setup_battle(enemy_data_list: Array, party_data_list: Array = []) -> void:
 	state = BattleState.SETTING_UP
 	_clear_battle()

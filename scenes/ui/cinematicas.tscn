@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b5jttar1srsbg"]
+
+[ext_resource type="Texture2D" uid="uid://dwbijp6xr3fp8" path="res://assets/cinematicas/00_intro_flautista/Captura de pantalla 2026-03-27 134808.png" id="1_hvep0"]
+
+[node name="intro" type="ColorRect" unique_id=441179880]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="img" type="TextureRect" parent="." unique_id=873377529]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -6.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hvep0")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1630319378]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1182316297]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0.061136015, 0.061136, 0.061136, 1)
+text = "Flautista: Que bella noche que tenemos en nuestra ciudad. 
+La ciudad que de noche brilla, la ciudad de los mil ángulos, la ciudad de los encuentros. 
+Tantas voces, pidiendo, rogando, suplicando. Tanta… Discordancia.
+El mundo solo necesita una melodía… la mía."
