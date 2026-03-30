@@ -1,8 +1,7 @@
 [gd_scene format=4 uid="uid://bjngioyerdpml"]
 
-[ext_resource type="TileSet" uid="uid://cssxkj0nyblsw" path="res://assets/tilesets/tiles_base.tres" id="1_u3xu4"]
+[ext_resource type="TileSet" uid="uid://cssxkj0nyblsw" path="res://assets/overworld/tilesets/tiles_base.tres" id="1_u3xu4"]
 [ext_resource type="PackedScene" uid="uid://fghxcf7uybln" path="res://scenes/overworld/exit_scene.tscn" id="2_u3xu4"]
-[ext_resource type="PackedScene" uid="uid://bjxvrb3xc1gqr" path="res://scenes/overworld/npc.tscn" id="3_kcnav"]
 
 [node name="interior" type="TileMapLayer" unique_id=1470388169]
 z_index = -1
@@ -21,9 +20,5 @@ polygon = PackedVector2Array(-124, 127, -124, -33, 164, -33, 180, -49, -140, -49
 
 [node name="Exit" parent="." unique_id=1185498034 instance=ExtResource("2_u3xu4")]
 position = Vector2(272, 16)
-to_map = "exterior_map_1"
+to_map = "interior_map_1"
 playerpos = Vector2(-16, 16)
-
-[node name="Npc" parent="." unique_id=1496379246 instance=ExtResource("3_kcnav")]
-position = Vector2(144, 32)
-npc_type = 2

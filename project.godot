@@ -22,6 +22,7 @@ Global="*uid://dwaljrjoq1cda"
 MusicManager="*uid://dbqybx8aua432"
 UIManager="*uid://bn54n2q3h7wn4"
 BattleManager="*uid://voay5fhxmjks"
+Overworld="*uid://cb2ney3f0hq0o"
 
 [display]
 

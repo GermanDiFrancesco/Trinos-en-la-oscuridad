@@ -12,7 +12,7 @@ enum Facing { DOWN, UP, LEFT, RIGHT }
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
-	var path = "res://assets/overworld/"+npcSprite+"_walking.png"
+	var path = "res://assets/overworld/pjs_spritesheet/"+npcSprite+"_walking.png"
 	if path != "":
 		sprite_sheet.texture = load(path)
 

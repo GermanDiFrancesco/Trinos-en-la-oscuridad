@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dpp642gyvp3l3" path="res://scenes/overworld/player.tscn" id="3_jvs31"]
 
 [node name="OVERWORLD" type="Node2D" unique_id=1983207092 node_paths=PackedStringArray("player")]
+y_sort_enabled = true
 script = ExtResource("1_f24o1")
 player = NodePath("Player")
 

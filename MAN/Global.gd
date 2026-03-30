@@ -8,26 +8,7 @@ var overworld: Node = null
 func _ready():
 	RenderingServer.set_default_clear_color(Color.BLACK)
 	check_save_data()
-	if not overworld:
-		var overworld_scene = load("res://scenes/overworld/overworld.tscn")
-		overworld = overworld_scene.instantiate()
-		get_tree().get_root().add_child.call_deferred(overworld)
 	call_deferred("change_state", "MENU")
-
-
-func _load_scene(map_name=map_inicial,playerpos=playerpos_inicial):
-	await Transition.fade_to_black()
-	overworld.player.active=false
-	if current_state != "OVERWORLD": change_state("OVERWORLD")
-	#print('loading scene: ',map_name,'_',playerpos)
-	overworld.player.hide()
-	overworld.load_map(map_name)
-	overworld.position_player(playerpos)
-	overworld.player.show()
-	overworld.player.active=true
-	Global.saveData.player_position= playerpos
-	Global.saveData.current_map= map_name
-	Global.save_data()
 
 func change_state(state: String) -> String:
 	current_state = state
@@ -37,7 +18,7 @@ func change_state(state: String) -> String:
 			MusicManager.play_menu_music()
 		"OVERWORLD":
 			MusicManager.play_overworld_music()
-			overworld.toggle_pause(false)
+			Overworld.toggle_pause(false)
 		"BATTLE":
 			MusicManager.play_battle_music()
 			start_battle()

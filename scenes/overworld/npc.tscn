@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bjxvrb3xc1gqr"]
 
 [ext_resource type="Script" uid="uid://c4syqikur733q" path="res://scripts/npc.gd" id="1_abqhh"]
-[ext_resource type="Texture2D" uid="uid://bqw46f2bwwsww" path="res://assets/overworld/base npc walking.png" id="2_21txg"]
+[ext_resource type="Texture2D" uid="uid://bqw46f2bwwsww" path="res://assets/overworld/pjs_spritesheet/base npc walking.png" id="2_21txg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(16, 16)
@@ -181,7 +181,6 @@ frame = 1
 region_rect = Rect2(51, 5, 25, 56)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1012479758]
-visible = false
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_cvnsp")
 

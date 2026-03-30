@@ -9,8 +9,19 @@ func _ready() -> void:
 	player.active= false
 	print("overworld iniciado")
 
-
-
+func _load_scene(map_name:String = Global.map_inicial,playerpos:Vector2=Global.playerpos_inicial):
+	player.active=false
+	await Transition.fade_to_black()
+	if Global.current_state != "OVERWORLD": Global.change_state("OVERWORLD")
+	#print('loading scene: ',map_name,'_',playerpos)
+	load_map(map_name)
+	position_player(playerpos)
+	await Transition.fade_from_black()
+	player.active= true
+	Global.saveData.player_position= playerpos
+	Global.saveData.current_map= map_name
+	Global.save_data()
+	
 func load_map(map_name : String):
 	if map:
 		map.queue_free()
@@ -19,8 +30,6 @@ func load_map(map_name : String):
 	add_child(map_instance)
 	map = map_instance
 	print('_loaded ',map_name)
-	await Transition.fade_from_black()
-	player.active= true
 
 func position_player(pos:Vector2):
 	player.global_position = pos

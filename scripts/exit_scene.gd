@@ -7,4 +7,4 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		print('triguered:',body,body.position)
 		print('exiting to ',playerpos)
-		Global._load_scene(to_map,playerpos)
+		Overworld._load_scene(to_map,playerpos)

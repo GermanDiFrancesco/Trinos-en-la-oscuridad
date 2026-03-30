@@ -26,6 +26,9 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	$coll.disabled = !active
 	if not active:
+		velocity_vec = Vector2.ZERO
+		state = State.IDLE
+		_update_animation()
 		return	
 	match state:
 		State.IDLE, State.WALKING:

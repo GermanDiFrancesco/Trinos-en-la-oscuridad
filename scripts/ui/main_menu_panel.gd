@@ -15,8 +15,8 @@ func _ready() -> void:
 
 func _on_comenzar_btn_pressed() -> void:
 	#await UIManager.show_cinematic("intro_flautista")
-	Global._load_scene()
+	Overworld._load_scene()
 	
 func _on_continuar_btn_pressed() -> void:
-	Global._load_scene()
+	Overworld._load_scene()
 	
