@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgxcafosjdskl"
-path="res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"
+uid="uid://clp2svxye7c6j"
+path="res://.godot/imported/new-tiles.png-b88c4268a5d032b1391d202ef112a83c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/pisos.png"
-dest_files=["res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"]
+source_file="res://assets/overworld/tilesets/new-tiles.png"
+dest_files=["res://.godot/imported/new-tiles.png-b88c4268a5d032b1391d202ef112a83c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0ekacs52e500"
-path="res://.godot/imported/Smoke30Frames.png-ce6985fa4a25460aae1bf8790d3767ea.ctex"
+uid="uid://d24mo6jqhwy56"
+path="res://.godot/imported/otro archivo piter.png-e44b27ad524d03257424d17573551f8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/misc/Smoke30Frames.png"
-dest_files=["res://.godot/imported/Smoke30Frames.png-ce6985fa4a25460aae1bf8790d3767ea.ctex"]
+source_file="res://assets/overworld/tilesets/otro archivo piter.png"
+dest_files=["res://.godot/imported/otro archivo piter.png-e44b27ad524d03257424d17573551f8c.ctex"]
 
 [params]
 

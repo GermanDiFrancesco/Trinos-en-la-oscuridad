@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcv4uc2h78py3"
-path="res://.godot/imported/npc trials.png-9637354f2f1539bb762973a91a560edb.ctex"
+uid="uid://6v3b0iybj5fm"
+path="res://.godot/imported/base enemy walking.png-2cd415c74b2447586859eea287f7275e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/npc trials.png"
-dest_files=["res://.godot/imported/npc trials.png-9637354f2f1539bb762973a91a560edb.ctex"]
+source_file="res://assets/overworld/pjs_spritesheet/base enemy walking.png"
+dest_files=["res://.godot/imported/base enemy walking.png-2cd415c74b2447586859eea287f7275e.ctex"]
 
 [params]
 

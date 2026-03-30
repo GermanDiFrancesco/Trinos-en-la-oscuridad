@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6v3b0iybj5fm"
-path="res://.godot/imported/base enemy walking.png-e8bb5004a6dd61340016384a29e94765.ctex"
+uid="uid://cclsqw722io4f"
+path="res://.godot/imported/madera_corrupta.png-e2aa679a014b43a6ed6f51511a8e8fa9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/overworld/base enemy walking.png"
-dest_files=["res://.godot/imported/base enemy walking.png-e8bb5004a6dd61340016384a29e94765.ctex"]
+source_file="res://assets/overworld/tilesets/madera_corrupta.png"
+dest_files=["res://.godot/imported/madera_corrupta.png-e2aa679a014b43a6ed6f51511a8e8fa9.ctex"]
 
 [params]
 

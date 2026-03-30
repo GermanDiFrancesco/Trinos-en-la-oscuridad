@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd8yvwneymbkg"
-path="res://.godot/imported/bases.png-7d0b8bb24208cb372b237a9e5852a724.ctex"
+uid="uid://bqw46f2bwwsww"
+path="res://.godot/imported/base npc walking.png-e8c9aa1ba5e34d54d08d4b114d69e759.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/bases.png"
-dest_files=["res://.godot/imported/bases.png-7d0b8bb24208cb372b237a9e5852a724.ctex"]
+source_file="res://assets/overworld/pjs_spritesheet/base npc walking.png"
+dest_files=["res://.godot/imported/base npc walking.png-e8c9aa1ba5e34d54d08d4b114d69e759.ctex"]
 
 [params]
 

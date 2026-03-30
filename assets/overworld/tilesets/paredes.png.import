@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd3yvrysouecs"
-path="res://.godot/imported/ground sprites.png-e5a8f98b8c55ed1bdc3989d1519bd861.ctex"
+uid="uid://hl5cru5pifri"
+path="res://.godot/imported/paredes.png-6d7d5bced0a52872c3eb6355048e68ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/ground sprites.png"
-dest_files=["res://.godot/imported/ground sprites.png-e5a8f98b8c55ed1bdc3989d1519bd861.ctex"]
+source_file="res://assets/overworld/tilesets/paredes.png"
+dest_files=["res://.godot/imported/paredes.png-6d7d5bced0a52872c3eb6355048e68ad.ctex"]
 
 [params]
 

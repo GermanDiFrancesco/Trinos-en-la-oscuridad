@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc2il5g0blws"
-path="res://.godot/imported/elementos mapa.png-9cb621ac28591a3404e11934427f60fb.ctex"
+uid="uid://broqb7lre6tc5"
+path="res://.godot/imported/coreutas.png-5433a6476e83ff0093063b58273b5443.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/elementos mapa.png"
-dest_files=["res://.godot/imported/elementos mapa.png-9cb621ac28591a3404e11934427f60fb.ctex"]
+source_file="res://assets/overworld/coreutas.png"
+dest_files=["res://.godot/imported/coreutas.png-5433a6476e83ff0093063b58273b5443.ctex"]
 
 [params]
 

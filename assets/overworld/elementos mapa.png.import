@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cclsqw722io4f"
-path="res://.godot/imported/madera_corrupta.png-217e9cc3ed8f3f9e4470db00a799000a.ctex"
+uid="uid://bc2il5g0blws"
+path="res://.godot/imported/elementos mapa.png-9a6c187567f846b012add79a9f25dc2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/madera_corrupta.png"
-dest_files=["res://.godot/imported/madera_corrupta.png-217e9cc3ed8f3f9e4470db00a799000a.ctex"]
+source_file="res://assets/overworld/elementos mapa.png"
+dest_files=["res://.godot/imported/elementos mapa.png-9a6c187567f846b012add79a9f25dc2f.ctex"]
 
 [params]
 

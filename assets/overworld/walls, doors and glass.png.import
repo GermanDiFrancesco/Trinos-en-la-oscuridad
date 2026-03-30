@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d24mo6jqhwy56"
-path="res://.godot/imported/otro archivo piter.png-34c4deb2fe6aad9374859dd90d086e34.ctex"
+uid="uid://ba4wkax5k4m1y"
+path="res://.godot/imported/walls, doors and glass.png-75fe6721b15116d2738f9b721714ab18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/otro archivo piter.png"
-dest_files=["res://.godot/imported/otro archivo piter.png-34c4deb2fe6aad9374859dd90d086e34.ctex"]
+source_file="res://assets/overworld/walls, doors and glass.png"
+dest_files=["res://.godot/imported/walls, doors and glass.png-75fe6721b15116d2738f9b721714ab18.ctex"]
 
 [params]
 

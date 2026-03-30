@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4ss8aeyqyoxd"
-path="res://.godot/imported/pjs mapa.png-c35fe03fd35b763d8f0c30cd0158cc3f.ctex"
+uid="uid://qtkv1uc7g8f1"
+path="res://.godot/imported/kruta_walking.png-9430aa7090a72f341e7b977d3011e7c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pjs mapa.png"
-dest_files=["res://.godot/imported/pjs mapa.png-c35fe03fd35b763d8f0c30cd0158cc3f.ctex"]
+source_file="res://assets/overworld/pjs_spritesheet/kruta_walking.png"
+dest_files=["res://.godot/imported/kruta_walking.png-9430aa7090a72f341e7b977d3011e7c2.ctex"]
 
 [params]
 

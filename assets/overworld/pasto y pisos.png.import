@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fkfrjihuhmgq"
-path="res://.godot/imported/rejas.png-c1e69ef4fe9f53ab8261f63c0a62acb2.ctex"
+uid="uid://nu2lt4rvj5ri"
+path="res://.godot/imported/pasto y pisos.png-a9f683c970b2f7866ac90533552cfcf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/rejas.png"
-dest_files=["res://.godot/imported/rejas.png-c1e69ef4fe9f53ab8261f63c0a62acb2.ctex"]
+source_file="res://assets/overworld/pasto y pisos.png"
+dest_files=["res://.godot/imported/pasto y pisos.png-a9f683c970b2f7866ac90533552cfcf0.ctex"]
 
 [params]
 

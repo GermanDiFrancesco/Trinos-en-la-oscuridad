@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qtkv1uc7g8f1"
-path="res://.godot/imported/kruta_walking.png-b9dbf900a5e3e6c5cf0c16c00363f9c8.ctex"
+uid="uid://dd8yvwneymbkg"
+path="res://.godot/imported/bases.png-131b92dc2edd5e130d881c3219bc1198.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/overworld/kruta_walking.png"
-dest_files=["res://.godot/imported/kruta_walking.png-b9dbf900a5e3e6c5cf0c16c00363f9c8.ctex"]
+source_file="res://assets/overworld/tilesets/bases.png"
+dest_files=["res://.godot/imported/bases.png-131b92dc2edd5e130d881c3219bc1198.ctex"]
 
 [params]
 
