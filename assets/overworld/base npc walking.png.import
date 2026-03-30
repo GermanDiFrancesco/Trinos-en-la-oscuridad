@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgxcafosjdskl"
-path="res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"
+uid="uid://bqw46f2bwwsww"
+path="res://.godot/imported/base npc walking.png-38590b925c432387bca8e7a818a504e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/pisos.png"
-dest_files=["res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"]
+source_file="res://assets/overworld/base npc walking.png"
+dest_files=["res://.godot/imported/base npc walking.png-38590b925c432387bca8e7a818a504e5.ctex"]
 
 [params]
 

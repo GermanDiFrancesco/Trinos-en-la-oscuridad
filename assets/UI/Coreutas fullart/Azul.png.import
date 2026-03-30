@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgxcafosjdskl"
-path="res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"
+uid="uid://ds2igcfbrlxr1"
+path="res://.godot/imported/Azul.png-a5babb8dc283362db6f2f450e7b6fe15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/pisos.png"
-dest_files=["res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"]
+source_file="res://assets/UI/Coreutas fullart/Azul.png"
+dest_files=["res://.godot/imported/Azul.png-a5babb8dc283362db6f2f450e7b6fe15.ctex"]
 
 [params]
 

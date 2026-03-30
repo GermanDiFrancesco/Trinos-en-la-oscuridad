@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgxcafosjdskl"
-path="res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"
+uid="uid://dklync3y2i718"
+path="res://.godot/imported/Freyja.png-b71ca9afefe7e296216faa9324a77865.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/pisos.png"
-dest_files=["res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"]
+source_file="res://assets/UI/Coreutas fullart/Freyja.png"
+dest_files=["res://.godot/imported/Freyja.png-b71ca9afefe7e296216faa9324a77865.ctex"]
 
 [params]
 

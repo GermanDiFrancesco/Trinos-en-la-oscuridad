@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgxcafosjdskl"
-path="res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"
+uid="uid://cg1ji72tls383"
+path="res://.godot/imported/menu prueba.png-de587dc59262eae705289e92630708f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/pisos.png"
-dest_files=["res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"]
+source_file="res://assets/cinematicas/menu prueba.png"
+dest_files=["res://.godot/imported/menu prueba.png-de587dc59262eae705289e92630708f5.ctex"]
 
 [params]
 

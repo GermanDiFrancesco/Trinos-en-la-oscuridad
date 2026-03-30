@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgxcafosjdskl"
-path="res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"
+uid="uid://6v3b0iybj5fm"
+path="res://.godot/imported/base enemy walking.png-e8bb5004a6dd61340016384a29e94765.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/pisos.png"
-dest_files=["res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"]
+source_file="res://assets/overworld/base enemy walking.png"
+dest_files=["res://.godot/imported/base enemy walking.png-e8bb5004a6dd61340016384a29e94765.ctex"]
 
 [params]
 

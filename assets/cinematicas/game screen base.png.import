@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgxcafosjdskl"
-path="res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"
+uid="uid://iea17eq8ilua"
+path="res://.godot/imported/game screen base.png-35a759b389216d90fe57528e7cdda935.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/pisos.png"
-dest_files=["res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"]
+source_file="res://assets/cinematicas/game screen base.png"
+dest_files=["res://.godot/imported/game screen base.png-35a759b389216d90fe57528e7cdda935.ctex"]
 
 [params]
 

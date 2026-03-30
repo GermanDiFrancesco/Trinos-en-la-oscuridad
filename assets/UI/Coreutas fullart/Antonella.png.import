@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgxcafosjdskl"
-path="res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"
+uid="uid://b50whdo23g0o7"
+path="res://.godot/imported/Antonella.png-6cb695bd9a14cf21f6bc6c56ab4685ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/pisos.png"
-dest_files=["res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"]
+source_file="res://assets/UI/Coreutas fullart/Antonella.png"
+dest_files=["res://.godot/imported/Antonella.png-6cb695bd9a14cf21f6bc6c56ab4685ea.ctex"]
 
 [params]
 

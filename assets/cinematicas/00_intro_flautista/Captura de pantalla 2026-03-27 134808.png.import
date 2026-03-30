@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgxcafosjdskl"
-path="res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"
+uid="uid://dwbijp6xr3fp8"
+path="res://.godot/imported/Captura de pantalla 2026-03-27 134808.png-cb0d20279f88119d976699fa33f2025f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/pisos.png"
-dest_files=["res://.godot/imported/pisos.png-f6b1fd96abe9746c05574070a1a521ab.ctex"]
+source_file="res://assets/cinematicas/00_intro_flautista/Captura de pantalla 2026-03-27 134808.png"
+dest_files=["res://.godot/imported/Captura de pantalla 2026-03-27 134808.png-cb0d20279f88119d976699fa33f2025f.ctex"]
 
 [params]
 
