@@ -1,7 +1,7 @@
 extends Resource
 class_name KocoristData
 
-@export var display_name: String = "Peter"
+@export var display_name: String = "Prota"
 @export var portrait: Texture2D
 
 ## Stats de combate
@@ -14,4 +14,4 @@ class_name KocoristData
 ## Tipo de voz/rol  - "tenor", "soprano", "bajo", "contralto"
 @export var tipo: String = "Baritono"
 @export var habilities: Array[SkillData] = []
-@export_multiline var description: String = ""
+@export var description: String = ""

@@ -9,7 +9,19 @@ func interact(target):
 		return "already_interacted"
 	interacted = true
 	sprite.frame = 0 if interacted else 1
-	Global.changeState("DIALOG")
+	DialogManager.show_dialog(
+		"Revolves la basura, encontras un -item-",
+		[
+			{
+				"nombre": "Tomar item",
+				"funcion": "_tomar_item",
+			},
+			{
+				"nombre": "Dejarlo",
+				"funcion": "_terminar",
+			}
+		]
+	)
 	
 	#target.inventoryAdd
 	

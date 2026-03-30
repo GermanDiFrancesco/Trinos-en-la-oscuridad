@@ -79,15 +79,15 @@ func _on_battle_ended(result: String) -> void:
 		"victory":
 			display_text("¡Victoria! Has ganado la batalla.")
 			await get_tree().create_timer(2.0).timeout
-			Global.changeState("OVERWORLD")
+			Global.change_state("OVERWORLD")
 		"defeat":
 			display_text("Has sido derrotado...")
 			await get_tree().create_timer(2.0).timeout
-			Global.changeState("MENU")
+			Global.change_state("MENU")
 		"escape":
 			display_text("¡Escapaste de la batalla!")
 			await get_tree().create_timer(1.5).timeout
-			Global.changeState("OVERWORLD")
+			Global.change_state("OVERWORLD")
 
 
 

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bhspjg6hn51kr"]
+
+[ext_resource type="Texture2D" uid="uid://dcf1mqglmvkec" path="res://assets/UI/batalla/battle sprites rpg.png" id="1_4ja6o"]
+
+[sub_resource type="GDScript" id="GDScript_4ja6o"]
+script/source = "extends Area2D
+var interacted: bool = false
+@onready var sprite: Sprite2D = $Sprite2D
+
+func _ready():
+	pass
+func interact(target):
+	if interacted:
+		return \"already_interacted\"
+	interacted = true
+	sprite.frame = 0 if interacted else 1
+	return interacted
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6uch"]
+size = Vector2(32, 32)
+
+[node name="Enemigo" type="Area2D" unique_id=886353132]
+y_sort_enabled = true
+script = SubResource("GDScript_4ja6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=152684548]
+y_sort_enabled = true
+position = Vector2(1, -44)
+texture = ExtResource("1_4ja6o")
+region_enabled = true
+region_rect = Rect2(185, 427, 66, 97)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2050579802]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_o6uch")

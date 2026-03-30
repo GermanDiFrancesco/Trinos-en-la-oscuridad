@@ -5,12 +5,9 @@ class_name EnemyData
 @export var portrait: Texture2D
 @export var speed: int = 10
 @export var tipo: String = ""
-
-## Descripción para mostrar en UI cuando se examina
 @export_multiline var description: String = "Descripcion del enemigo."
 
 @export var parts: Array[EnemyPartData] = []
-
 
 func get_total_max_hp() -> int:
 	var total := 0
@@ -18,7 +15,6 @@ func get_total_max_hp() -> int:
 		if p.targetable:
 			total += p.max_hp
 	return total
-
 
 ## Ataque promedio (para mostrar en la UI como referencia)
 func get_average_attack() -> int:
@@ -28,7 +24,6 @@ func get_average_attack() -> int:
 	for p in parts:
 		total += p.attack
 	return total / parts.size()
-
 
 ## Velocidad efectiva: la más alta entre la base y las partes
 func get_effective_speed() -> int:
