@@ -1,13 +1,13 @@
 extends Node
-var saveData = null
+var saved_data = null
+var save_path = "user://kcoro_save.json"
 var current_state: String = ""
 var overworld: Node = null
-@onready var map_inicial = "intro_interior_map"
-@onready var playerpos_inicial = Vector2(120,140)
+@onready var playerpos_inicial = Vector2(120,100)
 
 func _ready():
 	RenderingServer.set_default_clear_color(Color.BLACK)
-	check_save_data()
+	#delete_save()
 	call_deferred("change_state", "MENU")
 
 func change_state(state: String) -> String:
@@ -43,24 +43,24 @@ func start_battle(enemy_data_list: Array = [], party_data_list: Array = []) -> v
 	await get_tree().process_frame
 	BattleManager.start_battle()
 
-func check_save_data():
-	var save_path = "user://save_data.json"
+func load_data():
 	var file = FileAccess.open(save_path, FileAccess.ModeFlags.READ)
 	print("reading save file")
 	if file:
-		#busca el file de guardado y obtiene el objeto saveData
+		#busca el file de guardado y obtiene el objeto saved_data
 		var json_string = file.get_as_text()
 		var parsed = JSON.parse_string(json_string)
 		if parsed:
-			saveData = parsed
+			saved_data = parsed
 		file.close()
-	else:
-		saveData = {
+	#print("loaded_data:",saved_data)
+
+func load_inital_data():
+	Global.saved_data = {
 			"cinematic_wached":{
 				"intro":false,
-				"cinematica_boss":false
 			},
-			"current_map":"",
+			"current_map":"inicial",
 			"player_position": Vector2(0, 0),
 			"player_stats": {
 				"name": "PROTA",
@@ -69,16 +69,23 @@ func check_save_data():
 				"defense": 5,
 				"chord":'sin elegir'
 			},
-			"party": [],
-			"inventory": []
 		}
-	#print("loaded_data:",saveData)
-
+	save_data()
+func delete_save():
+	if FileAccess.file_exists(save_path):
+		var error = DirAccess.remove_absolute(save_path)
+		if error == OK:
+			print("Archivo de guardado eliminado con éxito.")
+		else:
+			print("Error al intentar borrar el archivo. Código de error: ", error)
+	Global.saved_data=null
 
 func save_data():
-	var save_path = "user://save_data.json"
+	var structured_text = JSON.stringify(saved_data, "\t")
+	#print_rich("[color=green][b]Saving data:[/b][/color]\n")#, structured_text)
+	var save_path = "user://kcoro_save.json"
 	var file = FileAccess.open(save_path, FileAccess.ModeFlags.WRITE)
 	if file:
-		var json_string = JSON.stringify(saveData)
+		var json_string = JSON.stringify(saved_data)
 		file.store_string(json_string)
 		file.close()

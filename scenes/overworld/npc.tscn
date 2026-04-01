@@ -188,3 +188,9 @@ shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=75024829]
 libraries/ = SubResource("AnimationLibrary_xfg7p")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1941429570]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=150408072]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_cvnsp")

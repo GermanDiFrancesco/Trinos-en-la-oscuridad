@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://csgvgy7gecirq"]
+
+[ext_resource type="PackedScene" uid="uid://bjngioyerdpml" path="res://scenes/intro_interior_map.tscn" id="2_5dnus"]
+[ext_resource type="PackedScene" uid="uid://bjxvrb3xc1gqr" path="res://scenes/overworld/npc.tscn" id="2_epxbk"]
+
+[node name="InteriorIntroLevel" type="Node2D" unique_id=757472470]
+y_sort_enabled = true
+
+[node name="Npc" parent="." unique_id=1496379246 instance=ExtResource("2_epxbk")]
+position = Vector2(128, 32)
+
+[node name="interior" parent="." unique_id=1470388169 instance=ExtResource("2_5dnus")]

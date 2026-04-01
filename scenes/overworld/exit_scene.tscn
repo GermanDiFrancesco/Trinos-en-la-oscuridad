@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://qgt3f5mwm6js" path="res://scripts/exit_scene.gd" id="1_3vmpi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_er513"]
-size = Vector2(32, 32)
+size = Vector2(16, 16)
 
 [node name="Exit" type="Area2D" unique_id=1185498034]
 script = ExtResource("1_3vmpi")

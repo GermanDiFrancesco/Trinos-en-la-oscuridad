@@ -5,7 +5,7 @@ signal fade_end
 @onready var rect: ColorRect = $rect
 
 func fade_to_black():
-	print("Ocultando...")
+	#print("Ocultando...")
 	rect.show()
 	anim_player.play_backwards("fade_in")
 	await anim_player.animation_finished
@@ -15,7 +15,7 @@ func fade_from_black():
 	rect.show() 
 	anim_player.play("fade_in")
 	await anim_player.animation_finished
-	print("Mostrando...")
+	#print("Mostrando...")
 	rect.hide()
 	fade_end.emit()
 	return

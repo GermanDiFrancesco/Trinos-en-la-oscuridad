@@ -9,5 +9,5 @@ func _on_salir_btn_pressed() -> void:
 	Global.change_state("MENU")
 
 func _on_continuar_btn_pressed() -> void:
-	Global.toggle_pause(false)
+	Overworld.toggle_pause(false)
 	UIManager.overworld_panel._pause(false)

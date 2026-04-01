@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db4a38r5kabq8"
-path="res://.godot/imported/ajustes_buton_focus.png-0e1b415ceed4d2d78306340a05239300.ctex"
+uid="uid://b5po0g2bx4trj"
+path="res://.godot/imported/comenzar_buton.png-5cfff13a49cf32eaab19ba6e4abad626.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/botones/ajustes_buton_focus.png"
-dest_files=["res://.godot/imported/ajustes_buton_focus.png-0e1b415ceed4d2d78306340a05239300.ctex"]
+source_file="res://assets/UI/botones/comenzar_buton.png"
+dest_files=["res://.godot/imported/comenzar_buton.png-5cfff13a49cf32eaab19ba6e4abad626.ctex"]
 
 [params]
 
