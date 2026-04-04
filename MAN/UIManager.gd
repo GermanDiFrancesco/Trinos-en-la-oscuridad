@@ -72,7 +72,7 @@ func show_panel(panel: String):
 			pass
 	await Transition.fade_from_black()
 	showing_panel.emit()
-	print_rich("[color=blue]panel "+str(panel)+"[/color]\n")
+	print_rich("[color=green]panel "+str(panel)+"[/color]\n")
 
 func toggle_pause(pausado:bool):
 	if pausado == true:
