@@ -17,11 +17,17 @@ var overlapping_interactables: Array = []
 @onready var interact_pivot: Marker2D = $interactPivot
 @onready var interaction_area: Area2D = $interactPivot/InteractionArea
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
+var interacting = false
 func _ready() -> void:
-	interaction_area.area_entered.connect(_on_interaction_area_entered)
-	interaction_area.area_exited.connect(_on_interaction_area_exited)
+	UIManager.dialog_panel.dialog_start.connect(_on_dialog_start)
+	UIManager.dialog_panel.dialog_end.connect(_on_dialog_end)
 	_update_animation()
+
+func _on_dialog_start() -> void:
+	active = false
+
+func _on_dialog_end() -> void:
+	active = true
 
 func _physics_process(_delta: float) -> void:
 	$coll.disabled = !active
@@ -41,13 +47,13 @@ func _physics_process(_delta: float) -> void:
 			else:
 				velocity_vec = Vector2.ZERO
 				state = State.IDLE
-
-			if Input.is_action_just_pressed("accept"):
-				var target = _get_interaction_target()
-				print("Interaction target:", target)
-				if target:
-					state = State.INTERACT
-					_do_interact(target)
+			
+	if Input.is_action_just_pressed("accept"):
+		if !active : return
+		var target = _get_interaction_target()
+		print("~interacting:", target)
+		if target:
+			_do_interact(target)
 	_update_animation()
 
 	velocity = velocity_vec
@@ -72,36 +78,36 @@ func _update_facing(dir: Vector2) -> void:
 	if state == State.WALKING:
 		_update_animation()
 
-func _on_interaction_area_entered(area: Area2D) -> void:#los agrega a la lista de interacciones
-	if area.has_method("interact") or area.is_in_group("interactable"):
-		if not overlapping_interactables.has(area):
-			overlapping_interactables.append(area)
-			print('area para interact '+str(area.name))
-#TODO esto de la interaccion pasar al manager
-func _on_interaction_area_exited(area: Area2D) -> void:#limpia la lista de interaccion
-	if overlapping_interactables.has(area):
-		overlapping_interactables.erase(area)
-
-func _get_interaction_target() -> Object: #devuelve el objeto interact mas cercano
+#devuelve el objeto de interaccion mas cercano
+func _get_interaction_target() -> Object: 
 	if not overlapping_interactables:
-		print('interact target:none')
 		return null
 	overlapping_interactables.sort_custom(_sort_by_distance)
 	return overlapping_interactables[0]
+#llama al metodo de interaccion
+func _do_interact(target: Object) -> void:
+	if !target : state = State.IDLE
+	if target.has_method("interact"):
+		interacting=true
+		target.interact(self)
+		state = State.INTERACT
+#cunado detecta un area con interaccion lo agrega a la lista de interaccion
+func _on_interaction_area_entered(area: Area2D) -> void:
+	if area.has_method("interact"):
+		if not overlapping_interactables.has(area):
+			overlapping_interactables.append(area)
+
+#lo saca de la lista de interaccion
+func _on_interaction_area_exited(area: Area2D) -> void:
+	if overlapping_interactables.has(area):
+		overlapping_interactables.erase(area)
 
 func _sort_by_distance(a: Node, b: Node) -> int:
 	var da = (a.global_position - global_position).length_squared()
 	var db = (b.global_position - global_position).length_squared()
 	return int(da - db)
 
-func _do_interact(target: Object) -> void:
-	if target == null:
-		state = State.IDLE
-		return
-	if target.has_method("interact"):
-		target.interact(self)
-	state = State.IDLE
-## hasta aca TODO
+
 func _update_animation() -> void:
 	if not animation_player:
 		return

@@ -1,10 +1,10 @@
 extends Control
 
-func play(name):
-	$AnimationPlayer.play(name)
+func play(cinematic_name):
+	$AnimationPlayer.play(cinematic_name)
 	await $AnimationPlayer.animation_finished
 
-	if name =="intro_flautista":
+	if cinematic_name =="intro_flautista":
 		Global.saved_data.cinematic_wached.intro=true
 
 func _unhandled_input(event: InputEvent) -> void:

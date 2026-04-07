@@ -5,4 +5,4 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		Overworld._load_scene(to_map,playerpos)
+		Overworld.load_scene(to_map,playerpos)

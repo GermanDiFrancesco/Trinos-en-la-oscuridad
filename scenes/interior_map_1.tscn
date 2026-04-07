@@ -19,11 +19,16 @@ position = Vector2(92, 1)
 polygon = PackedVector2Array(-124, 127, -124, 31, -156, 31, -156, -1, -124, -1, -124, -33, 4, -33, 4, 31, 36, 31, 36, -33, 164, -33, 196, -65, -156, -65, -172, -1, -172, 31, -156, 159, -28, 175, 4, 175, 196, 159, 212, 31, 212, -1, 196, -65, 164, -33, 164, -1, 196, -1, 196, 31, 164, 31, 164, 127, 100, 127, 100, 63, 68, 63, 68, 127, 4, 127, 4, 159, -28, 159, -28, 127)
 
 [node name="ExitA" parent="." unique_id=1255504985 instance=ExtResource("2_or3qd")]
+position = Vector2(-80, -16)
+to_map = "interior_intro_level"
+playerpos = Vector2(240, 16)
+
+[node name="exterior" parent="." unique_id=1185498034 instance=ExtResource("2_or3qd")]
 position = Vector2(-64, 16)
 to_map = "interior_intro_level"
 playerpos = Vector2(240, 16)
 
-[node name="ExitB" parent="." unique_id=1185498034 instance=ExtResource("2_or3qd")]
+[node name="ExitB" parent="." unique_id=787226418 instance=ExtResource("2_or3qd")]
 position = Vector2(80, 160)
 to_map = "interior_level_02"
 playerpos = Vector2(80, 160)

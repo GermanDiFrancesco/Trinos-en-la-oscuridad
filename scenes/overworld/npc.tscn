@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bjxvrb3xc1gqr"]
 
 [ext_resource type="Script" uid="uid://c4syqikur733q" path="res://scripts/npc.gd" id="1_abqhh"]
-[ext_resource type="Texture2D" uid="uid://bqw46f2bwwsww" path="res://assets/overworld/pjs_spritesheet/base npc walking.png" id="2_21txg"]
+[ext_resource type="Texture2D" uid="uid://qtkv1uc7g8f1" path="res://assets/overworld/pjs_spritesheet/kruta_walking.png" id="2_21txg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(16, 16)

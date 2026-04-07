@@ -6,4 +6,3 @@
 y_sort_enabled = true
 
 [node name="interior_2" parent="." unique_id=1470388169 instance=ExtResource("1_eakt7")]
-position = Vector2(-64, -128)

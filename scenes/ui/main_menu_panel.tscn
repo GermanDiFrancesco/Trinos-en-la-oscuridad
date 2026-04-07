@@ -77,14 +77,22 @@ _data = {
 &"new_animation": SubResource("Animation_iwtmf")
 }
 
-[node name="MainMenuPanel" type="Panel" unique_id=839390933]
+[sub_resource type="InputEventKey" id="InputEventKey_33qjm"]
+device = -1
+keycode = 4194312
+
+[sub_resource type="Shortcut" id="Shortcut_02id0"]
+events = [SubResource("InputEventKey_33qjm")]
+
+[node name="MainMenuPanel" type="Panel" unique_id=839390933 node_paths=PackedStringArray("version")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_33qjm")
-version = "kcoro_0.0.4"
+version_text = "kcoro_0.0.4"
+version = NodePath("HBoxContainer/project_version")
 
 [node name="BGSCENE" parent="." unique_id=40716647 instance=ExtResource("2_02id0")]
 layout_mode = 1
@@ -103,27 +111,38 @@ offset_right = 384.0
 grow_vertical = 0
 alignment = 1
 
+[node name="ContinuarBtn" type="TextureButton" parent="OptionsContainer" unique_id=1310494344]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("13_ynf2p")
+texture_focused = ExtResource("14_33qjm")
+stretch_mode = 3
+
 [node name="ComenzarBtn" type="TextureButton" parent="OptionsContainer" unique_id=1855201068]
 layout_mode = 2
 texture_normal = ExtResource("11_nfkht")
 texture_focused = ExtResource("12_nfkht")
 stretch_mode = 3
 
-[node name="ContinuarBtn" type="TextureButton" parent="OptionsContainer" unique_id=1310494344]
-layout_mode = 2
-texture_normal = ExtResource("13_ynf2p")
-texture_focused = ExtResource("14_33qjm")
-stretch_mode = 3
-
-[node name="project_version" type="Label" parent="." unique_id=458237817]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=26577611]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -23.0
-offset_right = 720.0
+offset_right = 384.0
 grow_vertical = 0
+
+[node name="project_version" type="Label" parent="HBoxContainer" unique_id=458237817]
+layout_mode = 2
 text = "kcoro_version"
 
-[connection signal="pressed" from="OptionsContainer/ComenzarBtn" to="." method="_on_comenzar_btn_pressed"]
+[node name="delete" type="Button" parent="HBoxContainer" unique_id=786610709]
+layout_mode = 2
+focus_mode = 1
+shortcut = SubResource("Shortcut_02id0")
+text = "delete_save"
+
 [connection signal="pressed" from="OptionsContainer/ContinuarBtn" to="." method="_on_continuar_btn_pressed"]
+[connection signal="pressed" from="OptionsContainer/ComenzarBtn" to="." method="_on_comenzar_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/delete" to="." method="_on_button_pressed"]

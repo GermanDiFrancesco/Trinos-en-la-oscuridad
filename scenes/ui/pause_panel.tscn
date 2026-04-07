@@ -9,6 +9,7 @@
 
 [node name="PausePanel" type="Panel" unique_id=300566441 node_paths=PackedStringArray("continuar_btn", "salir_btn", "inventario_panel")]
 process_mode = 3
+self_modulate = Color(1, 1, 1, 0.1764706)
 custom_minimum_size = Vector2(300, 300)
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,15 +22,6 @@ continuar_btn = NodePath("HBoxContainer/OptionsContainer/ContinuarBtn")
 salir_btn = NodePath("HBoxContainer/OptionsContainer/SalirBtn")
 inventario_panel = NodePath("HBoxContainer/inventario")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=268583193]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.20148283, 0.20148286, 0.2014828, 0.5372549)
-
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=105740645]
 layout_mode = 1
 anchors_preset = 15
@@ -37,9 +29,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
 [node name="OptionsContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=534652391]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 alignment = 1
 
@@ -47,6 +39,7 @@ alignment = 1
 layout_mode = 2
 texture_normal = ExtResource("1_sn6ky")
 texture_focused = ExtResource("2_vqkej")
+stretch_mode = 3
 
 [node name="SalirBtn" type="TextureButton" parent="HBoxContainer/OptionsContainer" unique_id=1949296120]
 layout_mode = 2

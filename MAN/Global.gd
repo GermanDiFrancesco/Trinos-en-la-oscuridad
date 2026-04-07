@@ -8,7 +8,7 @@ var overworld: Node = null
 func _ready():
 	RenderingServer.set_default_clear_color(Color.BLACK)
 	#delete_save()
-	call_deferred("change_state", "MENU")
+	#call_deferred("change_state", "MENU")
 
 func change_state(state: String) -> String:
 	current_state = state
@@ -16,6 +16,7 @@ func change_state(state: String) -> String:
 	match state:
 		"MENU":
 			MusicManager.play_menu_music()
+			
 		"OVERWORLD":
 			MusicManager.play_overworld_music()
 			Overworld.toggle_pause(false)
@@ -45,14 +46,15 @@ func start_battle(enemy_data_list: Array = [], party_data_list: Array = []) -> v
 
 func load_data():
 	var file = FileAccess.open(save_path, FileAccess.ModeFlags.READ)
-	print("reading save file")
-	if file:
-		#busca el file de guardado y obtiene el objeto saved_data
-		var json_string = file.get_as_text()
-		var parsed = JSON.parse_string(json_string)
-		if parsed:
-			saved_data = parsed
-		file.close()
+	if !file:
+		print('file not found')
+		return
+	print("reading save FILE")
+	var json_string = file.get_as_text()
+	var parsed = JSON.parse_string(json_string)
+	if parsed:
+		saved_data = parsed
+	file.close()
 	#print("loaded_data:",saved_data)
 
 func load_inital_data():
@@ -79,13 +81,11 @@ func delete_save():
 		else:
 			print("Error al intentar borrar el archivo. Código de error: ", error)
 	Global.saved_data=null
-
 func save_data():
 	var structured_text = JSON.stringify(saved_data, "\t")
-	#print_rich("[color=green][b]Saving data:[/b][/color]\n")#, structured_text)
-	var save_path = "user://kcoro_save.json"
 	var file = FileAccess.open(save_path, FileAccess.ModeFlags.WRITE)
 	if file:
+		print_rich("[color=Steel_Blue][b]guardando[/b][/color]")#, structured_text)
 		var json_string = JSON.stringify(saved_data)
 		file.store_string(json_string)
 		file.close()

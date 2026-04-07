@@ -21,4 +21,4 @@ polygon = PackedVector2Array(-112, -32, -16, -32, -16, -64, 16, -64, 16, -32, 48
 [node name="Exit" parent="." unique_id=1185498034 instance=ExtResource("2_4fy3v")]
 position = Vector2(80, 128)
 to_map = "interior_level_01"
-playerpos = Vector2(80, 96)
+playerpos = Vector2(80, 128)

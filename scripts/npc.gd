@@ -1,4 +1,6 @@
 extends Area2D
+@export_group("Configuración de Diálogo")
+@export_multiline var texto: String = "" 
 
 # Enums para dirección y sprite
 enum Facing { DOWN, UP, LEFT, RIGHT }
@@ -25,3 +27,9 @@ func _ready() -> void:
 			animation_player.play("idle_left")
 		Facing.RIGHT:
 			animation_player.play("idle_right")
+
+func interact(target):
+	var texto_a_mostrar = texto
+	var opciones_a_mostrar = []
+	UIManager.dialog_panel.show()
+	UIManager.dialog_panel.show_dialog(texto_a_mostrar, opciones_a_mostrar)

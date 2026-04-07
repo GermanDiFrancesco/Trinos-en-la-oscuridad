@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://df0duhhgl0j4r"]
 
-[ext_resource type="PackedScene" uid="uid://cvvr0iuwb8e82" path="res://scenes/interior_map_2.tscn" id="1_m611h"]
+[ext_resource type="PackedScene" uid="uid://bvap0b4dg8jdx" path="res://scenes/exterior_map_1.tscn" id="1_m611h"]
 
 [node name="interior_1" type="Node2D" unique_id=757472470]
 y_sort_enabled = true
 
-[node name="interior_2" parent="." unique_id=1470388169 instance=ExtResource("1_m611h")]
-position = Vector2(-64, -128)
+[node name="exterior" parent="." unique_id=1470388169 instance=ExtResource("1_m611h")]
+position = Vector2(16, 0)

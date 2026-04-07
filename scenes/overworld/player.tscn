@@ -185,6 +185,13 @@ metadata/_edit_group_ = true
 polygon = PackedVector2Array(16, 0, 16, 24, -16, 24, -16, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2082054061]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+editor_draw_drag_margin = true
 
 [node name="coll" type="CollisionShape2D" parent="." unique_id=1012479758]
 position = Vector2(0, -7)
@@ -201,3 +208,6 @@ hframes = 3
 vframes = 4
 frame = 1
 region_rect = Rect2(51, 5, 25, 56)
+
+[connection signal="area_entered" from="interactPivot/InteractionArea" to="." method="_on_interaction_area_entered"]
+[connection signal="area_exited" from="interactPivot/InteractionArea" to="." method="_on_interaction_area_exited"]

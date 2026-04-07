@@ -9,7 +9,7 @@ func interact(target):
 		return "already_interacted"
 	interacted = true
 	sprite.frame = 0 if interacted else 1
-	DialogManager.show_dialog(
+	UIManager.dialog_panel.show_dialog(
 		"Revolves la basura, encontras un -item-",
 		[
 			{
