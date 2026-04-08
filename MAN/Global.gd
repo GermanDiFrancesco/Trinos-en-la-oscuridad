@@ -55,7 +55,7 @@ func load_data():
 	if parsed:
 		saved_data = parsed
 	file.close()
-	#print("loaded_data:",saved_data)
+	print("loaded_data:\n map:",saved_data.current_map,'\n pos:',saved_data.player_position)
 
 func load_inital_data():
 	Global.saved_data = {

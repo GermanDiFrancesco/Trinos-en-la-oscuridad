@@ -24,9 +24,6 @@ var current_patrol_index: int = 0
 var patrol_forward: bool = true
 var patrol_origin: Vector2
 
-# Interaction
-@onready var interact_pivot: Marker2D = $interactPivot
-
 # Timer
 @onready var wait_timer: Timer = $Timer
 @export var texto: String
@@ -83,17 +80,13 @@ func _update_facing(dir: Vector2) -> void:
 	if abs(dir.x) > abs(dir.y):
 		if dir.x < 0:
 			facing = "left"
-			interact_pivot.rotation_degrees = 90
 		else:
 			facing = "right"
-			interact_pivot.rotation_degrees = -90
 	else:
 		if dir.y < 0:
 			facing = "up"
-			interact_pivot.rotation_degrees = 180
 		else:
 			facing = "down"
-			interact_pivot.rotation_degrees = 0
 	if state == State.WALKING:
 		_update_animation()
 

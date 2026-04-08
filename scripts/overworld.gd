@@ -14,12 +14,14 @@ func load_scene(map_name:String = "interior_intro_level",playerpos:Vector2=Vecto
 	await Transition.fade_to_black()
 	if Global.current_state != "OVERWORLD": Global.change_state("OVERWORLD")
 	load_map(map_name)
+	print(playerpos)
 	player.global_position = playerpos
 	await Transition.fade_from_black()
 	player.active= true
 	Global.saved_data.player_position= playerpos
 	Global.saved_data.current_map= map_name
 	Global.save_data()
+	print('loaded_scene: ',map_name,' pos: ',playerpos)
 
 func load_map(map_name : String ="interior_intro_level"):
 	if map:
@@ -28,10 +30,10 @@ func load_map(map_name : String ="interior_intro_level"):
 	var map_instance = map_scene.instantiate()
 	add_child(map_instance)
 	map = map_instance
-	print('mapa: ',map_name)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("back"):
+		if !player.active:return
 		var pause =!get_tree().paused
 		UIManager.overworld_panel._pause(pause)
 		toggle_pause(pause)

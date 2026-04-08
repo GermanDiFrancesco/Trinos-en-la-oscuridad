@@ -4,15 +4,13 @@ extends Panel
 @export var version : Label
 @onready var comenzar_btn: TextureButton = $OptionsContainer/ComenzarBtn
 @onready var continuar_btn: TextureButton = $OptionsContainer/ContinuarBtn
-var mapa_inicial = ""
+
 func _ready() -> void:
 	version.text =version_text
 	visible = true
 	Global.load_data()
 	comenzar_btn.grab_focus()
 	if Global.saved_data: 
-		mapa_inicial = Global.saved_data.current_map
-		print('MAPA ini:', mapa_inicial)
 		if Global.saved_data != null:
 			continuar_btn.show()
 			continuar_btn.grab_focus()
@@ -26,9 +24,9 @@ func _on_comenzar_btn_pressed() -> void:
 	Overworld.load_scene()
 	
 func _on_continuar_btn_pressed() -> void:
-	Overworld.load_scene(mapa_inicial)
-	
-
+	var pos_string = Global.saved_data.player_position
+	var pos = str_to_var("Vector2" + pos_string)
+	Overworld.load_scene(Global.saved_data.current_map,pos)
 
 func _on_button_pressed() -> void:
 	Global.delete_save()

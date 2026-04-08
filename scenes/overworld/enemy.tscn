@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dvtlorgjnvae4"]
 
 [ext_resource type="Script" uid="uid://cm7hejp5eyvmj" path="res://scripts/enemy.gd" id="1_md0e3"]
-[ext_resource type="Texture2D" uid="uid://6v3b0iybj5fm" path="res://assets/overworld/base enemy walking.png" id="2_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://6v3b0iybj5fm" path="res://assets/overworld/pjs_spritesheet/base enemy walking.png" id="2_4ra3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(16, 16)
@@ -11,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D/sprite:region_rect")
+tracks/0/path = NodePath("sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +27,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D/sprite:region_rect")
+tracks/0/path = NodePath("sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,7 +43,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D/sprite:region_rect")
+tracks/0/path = NodePath("sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,7 +59,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D/sprite:region_rect")
+tracks/0/path = NodePath("sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,7 +74,7 @@ resource_name = "idle_up"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D/sprite:region_rect")
+tracks/0/path = NodePath("sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -92,7 +92,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D/sprite:region_rect")
+tracks/0/path = NodePath("sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -110,7 +110,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D/sprite:region_rect")
+tracks/0/path = NodePath("sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -128,7 +128,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D/sprite:region_rect")
+tracks/0/path = NodePath("sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -146,7 +146,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D/sprite:region_rect")
+tracks/0/path = NodePath("sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -169,37 +169,24 @@ _data = {
 &"walking_up": SubResource("Animation_1jxqw")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rv78h"]
-radius = 6.0827627
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fa2pw"]
+size = Vector2(20, 16)
 
 [node name="enemy" type="Area2D" unique_id=1496379246]
 y_sort_enabled = true
 script = ExtResource("1_md0e3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1012479758]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_cvnsp")
-
-[node name="sprite" type="Sprite2D" parent="CollisionShape2D" unique_id=1993956008]
+[node name="sprite" type="Sprite2D" parent="." unique_id=1993956008]
 modulate = Color(0.54509807, 0.54509807, 1, 1)
-position = Vector2(0, -20)
+position = Vector2(0, -28)
 texture = ExtResource("2_4ra3w")
 region_enabled = true
 region_rect = Rect2(51, 5, 25, 56)
 metadata/_edit_lock_ = true
 
-[node name="interactPivot" type="Marker2D" parent="." unique_id=1476173452]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1012479758]
 position = Vector2(0, -8)
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="InteractionArea" type="Area2D" parent="interactPivot" unique_id=847892205]
-visible = false
-position = Vector2(0, 8)
-metadata/_edit_group_ = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="interactPivot/InteractionArea" unique_id=2001163436]
-polygon = PackedVector2Array(16, 0, 16, 24, -16, 24, -16, 0)
+shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1363230967]
 libraries/ = SubResource("AnimationLibrary_dw050")
@@ -209,5 +196,5 @@ libraries/ = SubResource("AnimationLibrary_dw050")
 [node name="Npc" type="StaticBody2D" parent="." unique_id=1018762005]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npc" unique_id=2127951904]
-position = Vector2(0, -10)
-shape = SubResource("CircleShape2D_rv78h")
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_fa2pw")

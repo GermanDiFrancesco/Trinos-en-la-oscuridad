@@ -184,10 +184,10 @@ region_rect = Rect2(51, 5, 25, 56)
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_cvnsp")
 
-[node name="Timer" type="Timer" parent="." unique_id=583750666]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=75024829]
 libraries/ = SubResource("AnimationLibrary_xfg7p")
+
+[node name="Timer" type="Timer" parent="." unique_id=583750666]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1941429570]
 
