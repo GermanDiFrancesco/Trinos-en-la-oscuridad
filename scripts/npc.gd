@@ -1,14 +1,10 @@
 extends Area2D
 @export_group("Configuración de Diálogo")
 @export_multiline var texto: String = "" 
-
 # Enums para dirección y sprite
 enum Facing { DOWN, UP, LEFT, RIGHT }
 @export var facing: Facing = Facing.DOWN
-@export_enum (
-	"ANTONELLA", "AXEL", "AZUL", "BENJAMIN", "DANIEL", "FREYJA", "ISIDORO", "JESS", "JOHANNA", "JOHN",
-	"JONATHAN", "JUAN", "kruta", "LEONA", "LUCERO", "MARCELO", "MARÍA", "MILENA", "MINSI", "PATRI",
-	"PETER", "RAFAEL", "RICARDO", "RIHANNA", "RUTH", "SHAO", "THIAGO", "VALENTÍN") var npcSprite: String = ""
+@export_enum ("james", "lean", "kruta") var npcSprite: String = ""
 
 @onready var sprite_sheet = $Spritesheet
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

@@ -29,19 +29,18 @@ var patrol_origin: Vector2
 
 # Timer
 @onready var wait_timer: Timer = $Timer
+@export var texto: String
 
 signal wait_timer_timeout
 var interacted: bool = false
 
 
-func interact(_target):
-	# Ahora pasa los datos de los enemigos configurados en el Inspector
-	if encounter_enemies.is_empty():
-		print("[NPC] No tiene enemigos configurados, usando batalla por defecto")
-		Global.change_state("BATTLE")
-	else:
-		Global.start_battle(encounter_enemies)
-	return true
+func interact(target):
+	var texto_a_mostrar = texto
+	var opciones_a_mostrar = []
+	UIManager.dialog_panel.show()
+	UIManager.dialog_panel.show_dialog(texto_a_mostrar, opciones_a_mostrar)
+
 
 
 # El resto del código de patrulla/movimiento permanece IGUAL

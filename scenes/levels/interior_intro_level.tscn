@@ -8,6 +8,7 @@ y_sort_enabled = true
 
 [node name="Npc" parent="." unique_id=1496379246 instance=ExtResource("2_epxbk")]
 position = Vector2(128, 32)
-texto = "hola juan carlos"
+texto = "Hola dolape, como te va?"
+npcSprite = "lean"
 
 [node name="interior" parent="." unique_id=1470388169 instance=ExtResource("2_5dnus")]

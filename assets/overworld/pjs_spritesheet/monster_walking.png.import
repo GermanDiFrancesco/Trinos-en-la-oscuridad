@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d24mo6jqhwy56"
-path="res://.godot/imported/otro archivo piter.png-e44b27ad524d03257424d17573551f8c.ctex"
+uid="uid://b7xojel366fm0"
+path="res://.godot/imported/monster_walking.png-bf2b55f3e943004a1dea69d06ae7c4dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/overworld/tilesets/otro archivo piter.png"
-dest_files=["res://.godot/imported/otro archivo piter.png-e44b27ad524d03257424d17573551f8c.ctex"]
+source_file="res://assets/overworld/pjs_spritesheet/monster_walking.png"
+dest_files=["res://.godot/imported/monster_walking.png-bf2b55f3e943004a1dea69d06ae7c4dd.ctex"]
 
 [params]
 

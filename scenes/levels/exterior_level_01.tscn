@@ -1,9 +1,17 @@
 [gd_scene format=3 uid="uid://df0duhhgl0j4r"]
 
 [ext_resource type="PackedScene" uid="uid://bvap0b4dg8jdx" path="res://scenes/exterior_map_1.tscn" id="1_m611h"]
+[ext_resource type="PackedScene" uid="uid://dvtlorgjnvae4" path="res://scenes/overworld/enemy.tscn" id="2_rluco"]
+[ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://scripts/enemy_data.gd" id="3_8u4wm"]
+[ext_resource type="Resource" uid="uid://8apgpw5sv5sy" path="res://assets/resources/Enemies/Deli/Deli.tres" id="4_5m5fi"]
 
 [node name="interior_1" type="Node2D" unique_id=757472470]
 y_sort_enabled = true
 
 [node name="exterior" parent="." unique_id=1470388169 instance=ExtResource("1_m611h")]
 position = Vector2(16, 0)
+
+[node name="enemy" parent="." unique_id=1496379246 instance=ExtResource("2_rluco")]
+position = Vector2(96, 64)
+encounter_enemies = Array[ExtResource("3_8u4wm")]([ExtResource("4_5m5fi")])
+texto = "no se que me pasa me siento muy raro"

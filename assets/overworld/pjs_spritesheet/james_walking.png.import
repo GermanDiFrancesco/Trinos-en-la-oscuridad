@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clp2svxye7c6j"
-path="res://.godot/imported/new-tiles.png-b88c4268a5d032b1391d202ef112a83c.ctex"
+uid="uid://2yextodtvwe3"
+path="res://.godot/imported/james_walking.png-627f0258f002aedcc1218c8b590ee1c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/overworld/tilesets/new-tiles.png"
-dest_files=["res://.godot/imported/new-tiles.png-b88c4268a5d032b1391d202ef112a83c.ctex"]
+source_file="res://assets/overworld/pjs_spritesheet/james_walking.png"
+dest_files=["res://.godot/imported/james_walking.png-627f0258f002aedcc1218c8b590ee1c6.ctex"]
 
 [params]
 
