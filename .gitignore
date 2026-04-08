@@ -3,6 +3,7 @@
 /android/
 task.tracker/
 *.tmp
+*.kra
 *.import~
 *.translation~
 
