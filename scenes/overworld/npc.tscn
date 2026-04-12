@@ -171,7 +171,6 @@ _data = {
 [node name="Npc" type="Area2D" unique_id=1496379246]
 y_sort_enabled = true
 script = ExtResource("1_abqhh")
-facing = null
 npcSprite = "kruta"
 datos_dialogo = ExtResource("2_i1w3n")
 

@@ -2,13 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://bjngioyerdpml" path="res://scenes/intro_interior_map.tscn" id="2_5dnus"]
 [ext_resource type="PackedScene" uid="uid://bjxvrb3xc1gqr" path="res://scenes/overworld/npc.tscn" id="2_epxbk"]
+[ext_resource type="Resource" uid="uid://dvxmmkydhs6tm" path="res://assets/resources/dialogues/chord_election.tres" id="2_ouxyh"]
 
 [node name="InteriorIntroLevel" type="Node2D" unique_id=757472470]
 y_sort_enabled = true
 
 [node name="Npc" parent="." unique_id=1496379246 instance=ExtResource("2_epxbk")]
 position = Vector2(128, 32)
-texto = "Hola dolape, como te va?"
-npcSprite = "lean"
+npcSprite = "daniel"
+
+[node name="chor_sleect_npc" parent="." unique_id=2078228599 instance=ExtResource("2_epxbk")]
+position = Vector2(65, 111)
+facing = 2
+datos_dialogo = ExtResource("2_ouxyh")
 
 [node name="interior" parent="." unique_id=1470388169 instance=ExtResource("2_5dnus")]
+metadata/_edit_lock_ = true

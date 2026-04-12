@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgywxe0xkyuel"
-path="res://.godot/imported/lean_walking.png-8f08ca32b2c5f6523e6cd6a9ef189cab.ctex"
+uid="uid://ci8yp1bn5jwjg"
+path="res://.godot/imported/Kruta.png-247909bfd99338e5cc0a0863bc2c7ce8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/overworld/pjs_spritesheet/lean_walking.png"
-dest_files=["res://.godot/imported/lean_walking.png-8f08ca32b2c5f6523e6cd6a9ef189cab.ctex"]
+source_file="res://assets/UI/Coreutas fullart/Kruta.png"
+dest_files=["res://.godot/imported/Kruta.png-247909bfd99338e5cc0a0863bc2c7ce8.ctex"]
 
 [params]
 

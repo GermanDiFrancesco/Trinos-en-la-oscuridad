@@ -5,7 +5,7 @@ extends Area2D
 @export var WAIT_TIME: float = 2.0
 @export var PATROL_DISTANCE: int = 64
 
-# NUEVO: Enemigos que este NPC triggerea al interactuar
+# Enemigos que este NPC triggerea al interactuar
 @export var encounter_enemies: Array[EnemyData] = []
 
 # Animation
