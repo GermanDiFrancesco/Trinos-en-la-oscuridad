@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bw574fihnr4hx" path="res://scripts/ui/cinematic_panel.gd" id="1_wm5gi"]
 [ext_resource type="Texture2D" uid="uid://dwbijp6xr3fp8" path="res://assets/cinematicas/00_intro_flautista/Captura de pantalla 2026-03-27 134808.png" id="2_82evs"]
+[ext_resource type="FontFile" uid="uid://il7i6d2sene8" path="res://assets/fonts/Born2bSportyFS.otf" id="3_br4t4"]
 
 [sub_resource type="Animation" id="Animation_82evs"]
 length = 0.001
@@ -110,6 +111,7 @@ theme_override_constants/margin_bottom = 10
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=418002347]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.06575812, 0.06575813, 0.06575812, 1)
+theme_override_fonts/normal_font = ExtResource("3_br4t4")
 theme_override_font_sizes/normal_font_size = 20
 text = "Flautista: Que bella noche que tenemos en nuestra ciudad. 
 La ciudad que de noche brilla, la ciudad de los mil ángulos, la ciudad de los encuentros. 
