@@ -1,63 +1,79 @@
 extends Panel
+
 signal dialog_start
 signal dialog_end
 
 @export var text_container: RichTextLabel 
 @export var options_container: HBoxContainer 
+@export var typing_speed: float = 0.05 # Tiempo entre caracteres
 
-
-# Flag para saber si se está mostrando el texto letra por letra
 var is_showing_text := false
-# Texto completo actual
-var _full_text := ""
-# Referencia al coroutine de display_text
-var _display_text_coroutine = null
 
-#Recibe un texto general y una lista de opciones, cada opción es un diccionario con nombre, funcion y descripcion
 func show_dialog(_text: String = "", options: Array = []) -> void:
 	dialog_start.emit()
 	show()
 	$anim.play("apear")
-	clean_text(options_container)
-	_full_text = _text
+	
+	# Limpieza de opciones previas
+	for child in options_container.get_children():
+		child.queue_free()
+
+	# Configuración inicial del texto
+	text_container.text = _text
+	text_container.visible_ratio = 0.0
 	is_showing_text = true
-	await display_text(_full_text)
-	options.append({
-		"nombre": "ok",
-		"funcion": "_end_dialog"
-	})
-	#carga de opciones
+	
+	# Ejecutar el efecto de escritura
+	await display_text_smooth()
+	
+	# Si no hay opciones personalizadas, añadir botón de cerrar por defecto
+	if options.is_empty():
+		options.append({
+			"nombre": "Ok",
+			"callback": func(): pass # No hace nada extra antes de cerrar
+		})
+
+	# Crear botones para cada opción
 	for option in options:
 		var btn := Button.new()
 		btn.text = option["nombre"]
 		btn.focus_mode = Control.FOCUS_ALL
-		# Crea un callable con parámetros si existen
-		btn.pressed.connect(Callable(self, option["funcion"]))
+		
+		# Conectamos con una lambda que ejecuta el callback y luego cierra el diálogo
+		btn.pressed.connect(func():
+			if option.has("callback") and option["callback"] is Callable:
+				option["callback"].call()
+			_end_dialog()
+		)
+		
 		options_container.add_child(btn)
 
+	# Esperar un frame para que el contenedor actualice el layout y dar foco
 	await get_tree().process_frame
-	options_container.get_child(0).grab_focus()
+	if options_container.get_child_count() > 0:
+		options_container.get_child(0).grab_focus()
 
-func clean_text(container):
-	for child in container.get_children():
-		child.queue_free()
-
-# Muestra el texto letra por letra, puede ser acelerado por input
-func display_text(text: String) -> void:
-	text_container.text = ""
-	for i in text.length():
-		if not is_showing_text:
-			text_container.text = text
-			return
-		text_container.text += text[i]
-		await get_tree().create_timer(0.05).timeout
-	is_showing_text = false
+# Muestra el texto usando visible_ratio (mejor para BBCode y rendimiento)
+func display_text_smooth() -> void:
+	var total_chars = text_container.get_total_character_count()
+	var duration = total_chars * typing_speed
 	
+	var tween = create_tween()
+	tween.tween_property(text_container, "visible_ratio", 1.0, duration)
+	
+	# Permitir saltar la animación
+	while tween.is_running() and is_showing_text:
+		await get_tree().process_frame
+	
+	# Si el usuario presionó saltar, forzamos el final
+	tween.kill()
+	text_container.visible_ratio = 1.0
+	is_showing_text = false
+
 func _unhandled_input(event):
-	if is_showing_text and (event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_select") or event.is_action_pressed("ui_focus_next")):
+	if is_showing_text and (event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_select")):
 		is_showing_text = false
 
-	
 func _end_dialog() -> void:
 	$anim.play_backwards("apear")
 	await $anim.animation_finished

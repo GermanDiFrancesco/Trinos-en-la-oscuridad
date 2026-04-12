@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4syqikur733q" path="res://scripts/npc.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://qtkv1uc7g8f1" path="res://assets/overworld/pjs_spritesheet/kruta_walking.png" id="2_21txg"]
+[ext_resource type="Resource" uid="uid://dpt6h6scdlrnx" path="res://assets/resources/dialogues/dialogue_test.tres" id="2_i1w3n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(16, 16)
@@ -170,7 +171,9 @@ _data = {
 [node name="Npc" type="Area2D" unique_id=1496379246]
 y_sort_enabled = true
 script = ExtResource("1_abqhh")
+facing = null
 npcSprite = "kruta"
+datos_dialogo = ExtResource("2_i1w3n")
 
 [node name="Spritesheet" type="Sprite2D" parent="." unique_id=1993956008]
 position = Vector2(0, -28)

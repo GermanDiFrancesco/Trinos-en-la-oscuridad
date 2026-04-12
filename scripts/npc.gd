@@ -1,31 +1,53 @@
 extends Area2D
-@export_group("Configuración de Diálogo")
-@export_multiline var texto: String = "" 
-# Enums para dirección y sprite
+
+@export_group("Configuración Visual")
 enum Facing { DOWN, UP, LEFT, RIGHT }
 @export var facing: Facing = Facing.DOWN
-@export_enum ("james", "lean", "kruta") var npcSprite: String = ""
+@export_enum("james", "lean", "kruta") var npcSprite: String = ""
+
+@export_group("Contenido")
+@export var datos_dialogo: DialogueData # Aquí arrastras tu recurso .tres
 
 @onready var sprite_sheet = $Spritesheet
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
-	var path = "res://assets/overworld/pjs_spritesheet/"+npcSprite+"_walking.png"
-	if path != "":
-		sprite_sheet.texture = load(path)
+	setup_visuals()
+func interact(_target):
+	if not datos_dialogo:
+		print("Falta el recurso de diálogo en este NPC")
+		return
 
-	match facing:
-		Facing.DOWN:
-			animation_player.play("idle_down")
-		Facing.UP:
-			animation_player.play("idle_up")	
-		Facing.LEFT:
-			animation_player.play("idle_left")
-		Facing.RIGHT:
-			animation_player.play("idle_right")
+	var opciones_preparadas = []
+	
+	# Recorremos cada recurso DialogueOptionData en el array
+	for opt in datos_dialogo.opciones:
+		if opt: # Verificamos que no esté vacío el slot
+			var id_actual = opt.evento_id
+			opciones_preparadas.append({
+				"nombre": opt.nombre,
+				"callback": func(): _procesar_evento(id_actual)
+			})
+	
+	# Enviamos al controlador de UI
+	UIManager.dialog_panel.show_dialog(datos_dialogo.texto_principal, opciones_preparadas)
 
-func interact(target):
-	var texto_a_mostrar = texto
-	var opciones_a_mostrar = []
-	UIManager.dialog_panel.show()
-	UIManager.dialog_panel.show_dialog(texto_a_mostrar, opciones_a_mostrar)
+func _procesar_evento(id: String):
+	match id:
+		"baritono_selected":
+			Global.select_chord("baritono")
+		"tenor_selected":
+			Global.select_chord("tenor")
+		_:
+			if id != "":
+				print("Evento no reconocido: ", id)
+
+func dar_item(nombre):
+	print("Obtenido: " + nombre)
+
+func setup_visuals():
+	var path = "res://assets/overworld/pjs_spritesheet/" + npcSprite + "_walking.png"
+	sprite_sheet.texture = load(path)
+	
+	var anims = { Facing.DOWN: "idle_down", Facing.UP: "idle_up", Facing.LEFT: "idle_left", Facing.RIGHT: "idle_right" }
+	animation_player.play(anims[facing])

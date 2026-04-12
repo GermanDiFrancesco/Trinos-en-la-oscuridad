@@ -89,3 +89,7 @@ func save_data():
 		var json_string = JSON.stringify(saved_data)
 		file.store_string(json_string)
 		file.close()
+
+func select_chord(_chord:String="desafinado"):
+	saved_data.player_stats.chord = _chord
+	save_data()
