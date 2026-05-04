@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="game_save" format=3 uid="uid://oyquhvcbn8tj"]
+
+[ext_resource type="Resource" uid="uid://bkkv4luanuy0" path="res://assets/resources/Coreutas/Prota.tres" id="1_4f6lt"]
+[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://skill_data.gd" id="1_wcmn7"]
+[ext_resource type="Script" uid="uid://bpobihlj284yf" path="res://game_save_data.gd" id="2_4wrsn"]
+[ext_resource type="Script" uid="uid://bcb8m4q6fa5mx" path="res://coreuta_data.gd" id="2_56ukk"]
+
+[sub_resource type="Resource" id="Resource_bnrj7"]
+script = ExtResource("2_56ukk")
+display_name = "jaunito"
+metadata/_custom_type_script = "uid://bcb8m4q6fa5mx"
+
+[resource]
+script = ExtResource("2_4wrsn")
+party = Array[Object]([SubResource("Resource_bnrj7")])
+metadata/_custom_type_script = "uid://bpobihlj284yf"

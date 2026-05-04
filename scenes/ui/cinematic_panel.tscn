@@ -117,3 +117,5 @@ text = "Flautista: Que bella noche que tenemos en nuestra ciudad.
 La ciudad que de noche brilla, la ciudad de los mil ángulos, la ciudad de los encuentros. 
 Tantas voces, pidiendo, rogando, suplicando. Tanta… Discordancia.
 El mundo solo necesita una melodía… la mía."
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CoreutaData" format=3 uid="uid://bkkv4luanuy0"]
+
+[ext_resource type="Texture2D" uid="uid://dchn7ldxcbj0j" path="res://assets/UI/batalla/prota_back.png" id="1_h8jr3"]
+[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://skill_data.gd" id="1_j6kbd"]
+[ext_resource type="Script" uid="uid://bcb8m4q6fa5mx" path="res://coreuta_data.gd" id="2_h8jr3"]
+
+[resource]
+script = ExtResource("2_h8jr3")
+back = ExtResource("1_h8jr3")
+metadata/_custom_type_script = "uid://bcb8m4q6fa5mx"

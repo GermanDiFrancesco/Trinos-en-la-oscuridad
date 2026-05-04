@@ -1,12 +1,5 @@
 extends Control
-@export var pause_panel: Panel 
-@export var player_hud: Panel 
 
-#cuando se inicia en el fondo:
-func _ready() -> void:
-	pause_panel.hide()
-
-func _pause(paused:bool):
-	pause_panel.inventario_panel.draw_data()
-	pause_panel.visible = paused
-	if paused : pause_panel.continuar_btn.grab_focus()
+@export var continuar_btn: TextureButton
+@export var salir_btn: TextureButton
+@export var inventory_panel: Control

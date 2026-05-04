@@ -19,6 +19,7 @@ var overlapping_interactables: Array = []
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 var interacting = false
 func _ready() -> void:
+	#señal-> concectarcon (funcion)
 	UIManager.dialog_panel.dialog_start.connect(_on_dialog_start)
 	UIManager.dialog_panel.dialog_end.connect(_on_dialog_end)
 	_update_animation()

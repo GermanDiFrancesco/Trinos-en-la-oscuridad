@@ -1,78 +1,64 @@
 extends Panel
 
-@onready var party_container: HBoxContainer = $DialogBox/PartyContainer
-@onready var enemies_container: HBoxContainer = $EnemiesContainer
-
-@onready var actions_container: VBoxContainer = $FondoDelMenu/ActionsContainer
-@onready var atacar_btn: TextureButton = $FondoDelMenu/ActionsContainer/AtacarBtn
-@onready var cantar_btn: TextureButton = $FondoDelMenu/ActionsContainer/CantarBtn
-@onready var usar_btn: TextureButton = $FondoDelMenu/ActionsContainer/UsarBtn
-@onready var hablar_btn: TextureButton = $FondoDelMenu/ActionsContainer/HablarBtn
-@onready var correr_btn: TextureButton = $FondoDelMenu/ActionsContainer/CorrerBtn
-
-@onready var text_container: RichTextLabel = $DialogBox/MarginContainer/TextContainer
-@onready var action_options_container: HBoxContainer = $DialogBox/ActionOptionsContainer
-
-@export var combatant_panel: PackedScene
+@export var party_container: Control 
+@export var enemies_containers: Control 
+@export var actions_container: Control
+@export var text_container: RichTextLabel 
+@export var action_options_container: Control 
+@export var enemy_container_scene: PackedScene = preload("res://scenes/ui/enemy_container.tscn")
 var _enemy_panels: Dictionary = {}
 
 func _ready() -> void:
 	# Conectar señales del BattleManager
 	BattleManager.battle_ready.connect(_on_battle_ready)
-	BattleManager.damage_dealt.connect(_on_damage_dealt)
-	BattleManager.heal_applied.connect(_on_heal_applied)
-	BattleManager.combatant_died.connect(_on_combatant_died)
-	BattleManager.battle_ended.connect(_on_battle_ended)
-	BattleManager.player_action_needed.connect(_on_player_action_needed)
-	BattleManager.turn_started.connect(_on_turn_started)
-func init() -> void:
-	visible = true
-	_show_main_actions()
-
+	#BattleManager.damage_dealt.connect(_on_damage_dealt)
+	#BattleManager.heal_applied.connect(_on_heal_applied)
+	#BattleManager.combatant_died.connect(_on_combatant_died)
+	#BattleManager.battle_ended.connect(_on_battle_ended)
+	#BattleManager.player_action_needed.connect(_on_player_action_needed)
+	#BattleManager.turn_started.connect(_on_turn_started)
 
 func _on_battle_ready() -> void:
 	_enemy_panels.clear()
-	for child in enemies_container.get_children():
-		child.queue_free()
+	enemies_containers.clear_childs()
+	print('enemies cleared')
 	# Crear paneles visuales para cada enemigo
+	
 	for enemy in BattleManager.enemies:
-		var panel = combatant_panel.instantiate()
-		enemies_container.add_child(panel)
-		panel.setup(enemy)
-		_enemy_panels[enemy] = panel
-
+		var enemyContainer = enemy_container_scene.instantiate()
+		enemies_containers.add_child(enemyContainer)
+		enemyContainer.setup(enemy)
+		_enemy_panels[enemy] = enemyContainer
+	# Crear paneles visuales para cada enemigo
+	for coreuta in BattleManager.party:
+		var coreutapng =  TextureRect.new()
+		coreutapng.texture = coreuta.back
+		party_container.add_child(coreutapng)
 
 func _on_turn_started(who: Combatant) -> void:
 	display_text("Turno de " + who.display_name)
 
-
 func _on_player_action_needed(_combatant: Combatant) -> void:
 	_show_main_actions()
-
 
 func _on_damage_dealt(attacker: Combatant, target: Combatant, part_index: int, amount: int) -> void:
 	var part_text = ""
 	if part_index >= 0 and part_index < target.parts.size():
 		part_text = " (parte: " + target.parts[part_index].display_name + ")"
-	
 	display_text(attacker.display_name + " ataca a " + target.display_name + part_text + " por " + str(amount) + " de daño!")
-	
-	# Actualizar la barra de vida del target
+
 	if _enemy_panels.has(target):
 		_enemy_panels[target].refresh()
-
 
 func _on_heal_applied(target: Combatant, amount: int) -> void:
 	display_text(target.display_name + " se cura " + str(amount) + " HP!")
 	if _enemy_panels.has(target):
 		_enemy_panels[target].refresh()
 
-
 func _on_combatant_died(who: Combatant) -> void:
 	display_text("¡" + who.display_name + " ha caído!")
 	if _enemy_panels.has(who):
 		_enemy_panels[who].refresh()
-
 
 func _on_battle_ended(result: String) -> void:
 	match result:
@@ -89,27 +75,14 @@ func _on_battle_ended(result: String) -> void:
 			await get_tree().create_timer(1.5).timeout
 			Global.change_state("OVERWORLD")
 
-
-
 #  UI — Mostrar acciones principales
-
-
 func _show_main_actions() -> void:
-	# Limpiar opciones dinámicas
-	for child in action_options_container.get_children():
-		child.queue_free()
-	atacar_btn.grab_focus()
+	action_options_container.clear_childs()
 
 
 func display_text(text: String) -> void:
-	for child in action_options_container.get_children():
-		child.queue_free()
+	action_options_container.clear_childs()
 	text_container.text = text
-
-
-
-#  FOCUS — descripciones de acciones
-
 
 func _on_atacar_btn_focus_entered() -> void:
 	display_text("Ataca al enemigo cuerpo a cuerpo")
@@ -212,19 +185,11 @@ func _on_enemy_focus(enemy_index: int) -> void:
 	if enemy_index < alive_enemies.size() and _enemy_panels.has(alive_enemies[enemy_index]):
 		_enemy_panels[alive_enemies[enemy_index]].indicator()
 
-
-
-#  SISTEMA DE OPCIONES DINÁMICAS (igual que antes pero mejorado)
-
-
 func show_options(general_text: String = "", options: Array = []) -> void:
-	for child in action_options_container.get_children():
-		child.queue_free()
-	
+	action_options_container.clear_childs()
 	if options.is_empty():
 		general_text = "No hay opciones disponibles"
 	display_text(general_text)
-	
 	# Agregar botón cancelar
 	options.append({
 		"nombre": "Cancelar",

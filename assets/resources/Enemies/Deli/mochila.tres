@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="EnemyPartData" format=3 uid="uid://bstqk1cqs06lq"]
 
-[ext_resource type="Script" uid="uid://ge2tppl251nb" path="res://scripts/enemy_part_data.gd" id="1_d16rs"]
+[ext_resource type="Script" uid="uid://ge2tppl251nb" path="res://enemy_part_data.gd" id="1_d16rs"]
 [ext_resource type="Texture2D" uid="uid://d3yd7xef4miu0" path="res://assets/UI/deli/Deli backpack.png" id="1_d35qv"]
-[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://scripts/skill_data.gd" id="1_q00yc"]
+[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://skill_data.gd" id="1_q00yc"]
 
 [resource]
 script = ExtResource("1_d16rs")

@@ -13,6 +13,7 @@ var is_showing_text := false
 
 func show_dialog(speaker:String, _text: String = "", options: Array = []) -> void:
 	speaker_label.text = speaker
+	#evaluar que sea npc
 	speaker_img.texture = load("res://assets/UI/Coreutas fullart/"+str(speaker)+".png")
 	dialog_start.emit()
 	show()

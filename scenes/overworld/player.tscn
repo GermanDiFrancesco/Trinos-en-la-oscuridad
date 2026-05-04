@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dpp642gyvp3l3"]
 
 [ext_resource type="Script" uid="uid://df1kwtq7lecxm" path="res://scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://bqw46f2bwwsww" path="res://assets/overworld/pjs_spritesheet/base npc walking.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://dwrf0jn2tsfve" path="res://assets/overworld/pjs_spritesheet/prota_walking.png" id="2_b5l7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(16, 14)
@@ -170,7 +170,6 @@ _data = {
 [node name="Player" type="CharacterBody2D" unique_id=1646615467 groups=["Player"]]
 y_sort_enabled = true
 script = ExtResource("1_cvnsp")
-WALK_SPEED = 60
 
 [node name="interactPivot" type="Marker2D" parent="." unique_id=1476173452]
 position = Vector2(0, -8)
@@ -185,12 +184,13 @@ metadata/_edit_group_ = true
 polygon = PackedVector2Array(16, 0, 16, 24, -16, 24, -16, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2082054061]
+position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_left_margin = 0.1
-drag_top_margin = 0.1
-drag_right_margin = 0.1
-drag_bottom_margin = 0.1
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
 editor_draw_drag_margin = true
 
 [node name="coll" type="CollisionShape2D" parent="." unique_id=1012479758]
@@ -203,7 +203,7 @@ autoplay = &"idle_down"
 
 [node name="Spritesheet" type="Sprite2D" parent="." unique_id=12102801]
 position = Vector2(0, -28)
-texture = ExtResource("2_6t5aa")
+texture = ExtResource("2_b5l7a")
 hframes = 3
 vframes = 4
 frame = 1

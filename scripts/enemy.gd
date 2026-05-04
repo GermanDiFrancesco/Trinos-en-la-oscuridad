@@ -1,9 +1,9 @@
-extends Area2D
-
+extends Interactuable
 # Configuration
 @export var WALK_SPEED: int = 100
 @export var WAIT_TIME: float = 2.0
 @export var PATROL_DISTANCE: int = 64
+@export_enum("???") var npcSprite: String = ""
 
 # Enemigos que este NPC triggerea al interactuar
 @export var encounter_enemies: Array[EnemyData] = []
@@ -31,14 +31,26 @@ var patrol_origin: Vector2
 signal wait_timer_timeout
 var interacted: bool = false
 
+func procesar_dialogo():
+	var opciones_preparadas = []
+	for opt in datos_dialogo.opciones:
+		if opt:
+			var id_actual = opt.evento_id
+			opciones_preparadas.append({
+				"nombre": opt.nombre,
+				"callback": func(): _procesar_evento(id_actual)
+			})
+	UIManager.dialog_panel.show_dialog(npcSprite.capitalize(), datos_dialogo.texto_principal, opciones_preparadas)
 
-func interact(target):
-	var texto_a_mostrar = texto
-	var opciones_a_mostrar = []
-	UIManager.dialog_panel.show()
-	UIManager.dialog_panel.show_dialog(texto_a_mostrar, opciones_a_mostrar)
-
-
+func _procesar_evento(id: String):#esto se puede pasar al global, implementar  herrencia con las entidades
+	match id:
+		"battle":
+			Global.change_state("BATTLE")
+		"custom":
+			UIManager.dialog_panel.show_dialog(npcSprite.capitalize(),'siguiente dialogo')
+		_:
+			if id != "":
+				print("Evento no reconocido: ", id)
 
 # El resto del código de patrulla/movimiento permanece IGUAL
 func _ready() -> void:

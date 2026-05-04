@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cm7hejp5eyvmj" path="res://scripts/enemy.gd" id="1_md0e3"]
 [ext_resource type="Texture2D" uid="uid://6v3b0iybj5fm" path="res://assets/overworld/pjs_spritesheet/base enemy walking.png" id="2_4ra3w"]
+[ext_resource type="Resource" uid="uid://dmtg5np1kkk7h" path="res://assets/resources/dialogues/enemy_test.tres" id="2_g5mxg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(16, 16)
@@ -175,6 +176,7 @@ size = Vector2(20, 16)
 [node name="enemy" type="Area2D" unique_id=1496379246]
 y_sort_enabled = true
 script = ExtResource("1_md0e3")
+datos_dialogo = ExtResource("2_g5mxg")
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=1993956008]
 modulate = Color(0.54509807, 0.54509807, 1, 1)

@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bb6lw13s7v8vl"]
+
+[ext_resource type="FontFile" uid="uid://c6rraba70gu6i" path="res://assets/fonts/Alkhemikal.ttf" id="1_4cwoa"]
+
+[resource]
+line_spacing = 4.0
+font = ExtResource("1_4cwoa")
+font_size = 24
+font_color = Color(0, 0, 0, 1)

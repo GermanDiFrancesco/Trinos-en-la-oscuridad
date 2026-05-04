@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ch1p53ggnh18p"]
+
+[ext_resource type="Shader" uid="uid://c0q3qqis7humn" path="res://assets/resources/niebla_shader.gdshader" id="1_kahsi"]
+[ext_resource type="Script" uid="uid://dg6w71dyytwid" path="res://scenes/ui/niebla_effect.gd" id="2_7umft"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_201gg"]
+shader = ExtResource("1_kahsi")
+shader_parameter/fog_color = Color(0.23529412, 0.15294118, 0.25490198, 1)
+shader_parameter/density = 0.6610000313975
+shader_parameter/octaves = 8
+shader_parameter/speed = 0.2330000110675
+shader_parameter/hole_radius = 0.0
+shader_parameter/hole_softness = 0.0
+shader_parameter/pixel_size = 128.00000532
+shader_parameter/alpha_steps = 9.2610003923975
+
+[node name="NieblaEffect" type="ColorRect" unique_id=375438181]
+material = SubResource("ShaderMaterial_201gg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.60284907, 0.33884054, 0.37758923, 1)
+script = ExtResource("2_7umft")

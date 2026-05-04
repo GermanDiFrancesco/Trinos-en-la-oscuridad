@@ -1,45 +1,41 @@
-extends Area2D
+extends Interactuable
 
 @export_group("Configuración Visual")
 enum Facing { DOWN, UP, LEFT, RIGHT }
 @export var facing: Facing = Facing.DOWN
-@export_enum("james", "daniel", "kruta") var npcSprite: String = ""
+@export_enum("james", "daniel", "kruta","piter") var npcSprite: String = ""
 
 @export_group("DIALOGO")
-@export var datos_dialogo: DialogueData # Aquí arrastras tu recurso .tres
 
 @onready var sprite_sheet = $Spritesheet
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	setup_visuals()
-func interact(_target):
-	if not datos_dialogo:
-		print("Falta el recurso de diálogo en este NPC")
-		return
+
+func procesar_dialogo():
 	var opciones_preparadas = []
-	# Recorremos cada recurso DialogueOptionData en el array
 	for opt in datos_dialogo.opciones:
-		if opt: # Verificamos que no esté vacío el slot
+		if opt:
 			var id_actual = opt.evento_id
 			opciones_preparadas.append({
 				"nombre": opt.nombre,
 				"callback": func(): _procesar_evento(id_actual)
 			})
-	
-	# Enviamos al controlador de UI
-	UIManager.dialog_panel.show_dialog(npcSprite.capitalize(),datos_dialogo.texto_principal, opciones_preparadas)
+	UIManager.dialog_panel.show_dialog(npcSprite.capitalize(), datos_dialogo.texto_principal, opciones_preparadas)
 
 func _procesar_evento(id: String):#esto se puede pasar al global, implementar  herrencia con las entidades
 	match id:
 		"baritono_selected":
-			Global.select_chord("baritono")
+			Global.saved_data.select_chord("baritono")
 		"tenor_selected":
-			Global.select_chord("tenor")
+			Global.saved_data.select_chord("tenor")
 		"mezzo_selected":
-			Global.select_chord("mezzo")
+			Global.saved_data.select_chord("mezzo")
 		"soprano_selected":
-			Global.select_chord("soprano")
+			Global.saved_data.select_chord("soprano")
+		"battle":
+			Global.change_state("BATTLE")
 		"custom":
 			UIManager.dialog_panel.show_dialog(npcSprite.capitalize(),'siguiente dialogo')
 		_:

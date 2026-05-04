@@ -1,0 +1,100 @@
+[gd_scene format=4 uid="uid://dsonffecvtrns"]
+
+[ext_resource type="PackedScene" uid="uid://bk6kx134ekjmj" path="res://scenes/zona_tuto.tscn" id="2_s60ba"]
+[ext_resource type="PackedScene" uid="uid://cglkboeqxbj1p" path="res://scenes/zona_tuto_02.tscn" id="3_ekkkt"]
+[ext_resource type="PackedScene" uid="uid://bapp2a006m4fn" path="res://scenes/misc/Obj_base.tscn" id="3_r1bmr"]
+[ext_resource type="Script" uid="uid://b2vab87mxdeby" path="res://dialogue_option_data.gd" id="4_gvioi"]
+[ext_resource type="Resource" uid="uid://bqh4hcyaq6a8a" path="res://assets/resources/dialogues/revisar_basura_01.tres" id="4_trrji"]
+[ext_resource type="PackedScene" uid="uid://bjxvrb3xc1gqr" path="res://scenes/overworld/npc.tscn" id="4_xh2ts"]
+[ext_resource type="Script" uid="uid://bysbdjbxh4rbp" path="res://dialogue_data.gd" id="5_aqb53"]
+[ext_resource type="Resource" uid="uid://dvxmmkydhs6tm" path="res://assets/resources/dialogues/chord_election.tres" id="5_trrji"]
+[ext_resource type="PackedScene" uid="uid://dvtlorgjnvae4" path="res://scenes/overworld/enemy.tscn" id="6_gvioi"]
+[ext_resource type="PackedScene" uid="uid://fghxcf7uybln" path="res://scenes/overworld/exit_scene.tscn" id="10_ekkkt"]
+
+[sub_resource type="Resource" id="Resource_uxjjq"]
+script = ExtResource("4_gvioi")
+nombre = "JAJAJA, gracias.."
+metadata/_custom_type_script = "uid://b2vab87mxdeby"
+
+[sub_resource type="Resource" id="Resource_exqah"]
+script = ExtResource("5_aqb53")
+texto_principal = "No te preocupes, no le voy a decir a nadie que te vi hacer eso.."
+opciones = Array[ExtResource("4_gvioi")]([SubResource("Resource_uxjjq")])
+metadata/_custom_type_script = "uid://bysbdjbxh4rbp"
+
+[sub_resource type="Resource" id="Resource_aqb53"]
+script = ExtResource("4_gvioi")
+nombre = "*miras para atras de reojo*"
+metadata/_custom_type_script = "uid://b2vab87mxdeby"
+
+[sub_resource type="Resource" id="Resource_ekkkt"]
+script = ExtResource("5_aqb53")
+texto_principal = "Y ese de alla lo viste? no sé que le pasa"
+opciones = Array[ExtResource("4_gvioi")]([SubResource("Resource_aqb53")])
+metadata/_custom_type_script = "uid://bysbdjbxh4rbp"
+
+[node name="zona_tuto_level" type="Node2D" unique_id=757472470]
+y_sort_enabled = true
+
+[node name="ztuto_03" parent="." unique_id=1470388169 instance=ExtResource("3_ekkkt")]
+position = Vector2(-912, -208)
+
+[node name="exterior2" parent="." unique_id=714381584 instance=ExtResource("2_s60ba")]
+position = Vector2(496, -208)
+
+[node name="exterior" parent="." unique_id=1000005970 instance=ExtResource("2_s60ba")]
+position = Vector2(-48, -208)
+tile_map_data = PackedByteArray("AAAIAAQAAwADAAIAAAAHAAQAAwADAAIAAAAGAAQAAwADAAIAAAADAAQAAwADAAIAAAAJAAYAAwACAAIAAAAKAAYAAwACAAIAAAALAAYAAwACAAIAAAAMAAYAAwACAAIAAAANAAYAAwACAAIAAAAOAAYAAwACAAIAAAAPAAYAAwACAAIAAAAPAAcAAwACAAIAAAAOAAcAAwACAAIAAAANAAcAAwACAAIAAAAMAAcAAwACAAIAAAALAAcAAwACAAIAAAAKAAcAAwACAAIAAAAJAAcAAwACAAIAAAAIAAcAAwACAAIAAAAIAAYAAwACAAIAAAAHAAYAAwACAAIAAAAGAAYAAwACAAIAAAAFAAYAAwACAAIAAAAEAAYAAwACAAIAAAADAAYAAwACAAIAAAACAAYAAwACAAIAAAABAAYAAwACAAIAAAAAAAYAAwACAAIAAAAAAAcAAwACAAIAAAABAAcAAwACAAIAAAACAAcAAwACAAIAAAADAAcAAwACAAIAAAAEAAcAAwACAAIAAAAFAAcAAwACAAIAAAAGAAcAAwACAAIAAAAHAAcAAwACAAIAAAAQAAcAAwACAAIAAAAQAAYAAwACAAIAAAACAAQAAwADAAIAAAABAAQAAwADAAIAAAAAAAQAAwADAAIAAAAFAAQAAwADAAIAAAAJAAQAAwADAAIAAAAJAAMAAwADAAIAAAAIAAMAAwADAAIAAAAHAAMAAwADAAIAAAAHAAIAAwADAAIAAAAGAAIAAwADAAIAAAAFAAIAAwADAAIAAAAFAAMAAwADAAIAAAAEAAMAAwADAAIAAAADAAMAAwADAAIAAAADAAIAAwADAAIAAAAEAAIAAwADAAIAAAACAAIAAwADAAIAAAABAAIAAwADAAIAAAABAAMAAwADAAIAAAAAAAMAAwADAAIAAAAAAAIAAwADAAIAAAAIAAIAAwADAAIAAAAJAAIAAwADAAIAAAAEAAQAAwADAAIAAAACAAMAAwADAAIAAAAGAAMAAwADAAIAAAAEAAgAAwACAAIAAAAFAAgAAwACAAIAAAAGAAgAAwACAAIAAAAHAAgAAwACAAIAAAAIAAgAAwACAAIAAAAJAAgAAwACAAIAAAAKAAgAAwACAAIAAAALAAgAAwACAAIAAAAMAAgAAwACAAIAAAANAAgAAwACAAIAAAAOAAgAAwACAAIAAAAPAAgAAwACAAIAAAAQAAgAAwACAAIAAAAQAAkAAwACAAIAAAAPAAkAAwACAAIAAAAOAAkAAwACAAIAAAANAAkAAwACAAIAAAAMAAkAAwACAAIAAAALAAkAAwACAAIAAAAKAAkAAwACAAIAAAAJAAkAAwACAAIAAAAIAAkAAwACAAIAAAAHAAkAAwACAAIAAAADAAgAAwACAAIAAAAGAAkAAwACAAIAAAAFAAkAAwACAAIAAAAEAAkAAwACAAIAAAADAAkAAwACAAIAAAACAAkAAwACAAIAAAABAAkAAwACAAIAAAAAAAkAAwACAAIAAAAAAAgAAwACAAIAAAABAAgAAwACAAIAAAACAAgAAwACAAIAAAAKAAIAAwADAAIAAAAKAAMAAwADAAIAAAAKAAQAAwADAAIAAAARAAIAAQAAAAIAAAARAAMAAQAAAAIAAAARAAQAAQAAAAIAAAA=")
+
+[node name="ztuto_02" parent="." unique_id=1176763649 instance=ExtResource("3_ekkkt")]
+position = Vector2(1056, -208)
+
+[node name="obj" parent="." unique_id=1932605250 instance=ExtResource("3_r1bmr")]
+position = Vector2(416, 160)
+datos_dialogo = ExtResource("4_trrji")
+speaker = "tacho"
+
+[node name="obj2" parent="." unique_id=1529964921 instance=ExtResource("3_r1bmr")]
+position = Vector2(512, -32)
+datos_dialogo = ExtResource("4_trrji")
+speaker = "tacho"
+
+[node name="Npc" parent="." unique_id=1496379246 instance=ExtResource("4_xh2ts")]
+position = Vector2(624, 144)
+facing = 2
+datos_dialogo = SubResource("Resource_exqah")
+
+[node name="Npc2" parent="." unique_id=126606603 instance=ExtResource("4_xh2ts")]
+position = Vector2(304, 0)
+npcSprite = "piter"
+datos_dialogo = ExtResource("5_trrji")
+
+[node name="Npc3" parent="." unique_id=1937450104 instance=ExtResource("4_xh2ts")]
+position = Vector2(896, -32)
+npcSprite = "james"
+datos_dialogo = SubResource("Resource_ekkkt")
+
+[node name="enemy" parent="." unique_id=2017525810 instance=ExtResource("6_gvioi")]
+position = Vector2(1024, 80)
+texto = "no me siento bien"
+
+[node name="enemy2" parent="." unique_id=853090648 instance=ExtResource("6_gvioi")]
+position = Vector2(-496, 48)
+npcSprite = "???"
+texto = "no me siento bien"
+
+[node name="enemy3" parent="." unique_id=1398528581 instance=ExtResource("6_gvioi")]
+position = Vector2(-144, 368)
+texto = "no me siento bien"
+
+[node name="enemy4" parent="." unique_id=809405757 instance=ExtResource("6_gvioi")]
+position = Vector2(-832, 144)
+texto = "no me siento bien"
+
+[node name="enemy5" parent="." unique_id=1192129880 instance=ExtResource("6_gvioi")]
+position = Vector2(-832, 144)
+texto = "no me siento bien"
+
+[node name="Exit" parent="." unique_id=1185498034 instance=ExtResource("10_ekkkt")]
+position = Vector2(144, -48)
+to_map = "zona_tuto_level"

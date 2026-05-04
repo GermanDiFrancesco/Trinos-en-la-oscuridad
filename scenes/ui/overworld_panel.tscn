@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://l7fb02cn00da"]
 
 [ext_resource type="Script" uid="uid://d35imt6xkvowy" path="res://scripts/ui/overworld_panel.gd" id="1_nfcer"]
-[ext_resource type="PackedScene" uid="uid://cg53hstm34eke" path="res://scenes/ui/pause_panel.tscn" id="3_oprsy"]
+[ext_resource type="Script" uid="uid://2ka5lvbuhtoo" path="res://scripts/ui/inventory_panel.gd" id="2_fvgq8"]
+[ext_resource type="Texture2D" uid="uid://bilwrqhkubev3" path="res://assets/UI/botones/continuar_buton.png" id="2_tnmfw"]
+[ext_resource type="Texture2D" uid="uid://r60scfrgmkqt" path="res://assets/UI/botones/continuar_buton_focus.png" id="3_fvgq8"]
+[ext_resource type="Texture2D" uid="uid://cjnvkysoff6ld" path="res://assets/UI/botones/salir_buton.png" id="4_18iba"]
+[ext_resource type="Texture2D" uid="uid://pg684o3x80n" path="res://assets/UI/botones/salir_buton_focus.png" id="5_gv6g4"]
 
-[node name="Overworld" type="Control" unique_id=1604371975 node_paths=PackedStringArray("pause_panel", "player_hud")]
+[node name="OverworldPanel" type="Control" unique_id=1604371975 node_paths=PackedStringArray("continuar_btn", "salir_btn", "inventory_panel")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -12,15 +16,49 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nfcer")
-pause_panel = NodePath("PausePanel")
-player_hud = NodePath("Player_hud")
+continuar_btn = NodePath("invnetory_panel/HBoxContainer/OptionsContainer/ContinuarBtn")
+salir_btn = NodePath("invnetory_panel/HBoxContainer/OptionsContainer/SalirBtn")
+inventory_panel = NodePath("invnetory_panel")
 
-[node name="PausePanel" parent="." unique_id=300566441 instance=ExtResource("3_oprsy")]
-layout_mode = 1
-
-[node name="Player_hud" type="Panel" parent="." unique_id=249387348]
-visible = false
-modulate = Color(0.38563886, 0.721153, 0.5613174, 1)
+[node name="invnetory_panel" type="Panel" parent="." unique_id=300566441 node_paths=PackedStringArray("continuar_btn", "salir_btn")]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0.4862745)
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("2_fvgq8")
+continuar_btn = NodePath("HBoxContainer/OptionsContainer/ContinuarBtn")
+salir_btn = NodePath("HBoxContainer/OptionsContainer/SalirBtn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="invnetory_panel" unique_id=105740645]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="OptionsContainer" type="VBoxContainer" parent="invnetory_panel/HBoxContainer" unique_id=534652391]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="ContinuarBtn" type="TextureButton" parent="invnetory_panel/HBoxContainer/OptionsContainer" unique_id=111118104]
+layout_mode = 2
+texture_normal = ExtResource("2_tnmfw")
+texture_focused = ExtResource("3_fvgq8")
+stretch_mode = 3
+
+[node name="SalirBtn" type="TextureButton" parent="invnetory_panel/HBoxContainer/OptionsContainer" unique_id=1949296120]
+layout_mode = 2
+texture_normal = ExtResource("4_18iba")
+texture_focused = ExtResource("5_gv6g4")
+stretch_mode = 3
+
+[connection signal="pressed" from="invnetory_panel/HBoxContainer/OptionsContainer/ContinuarBtn" to="invnetory_panel" method="_on_continuar_btn_pressed"]
+[connection signal="pressed" from="invnetory_panel/HBoxContainer/OptionsContainer/SalirBtn" to="invnetory_panel" method="_on_salir_btn_pressed"]

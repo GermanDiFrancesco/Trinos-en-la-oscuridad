@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vehvjdj6hye3"]
 
 [ext_resource type="Script" uid="uid://ci6faqk7fsx3r" path="res://MAN/DialogManager.gd" id="1_3hgc7"]
-[ext_resource type="Texture2D" uid="uid://ba3turrfxbcd1" path="res://assets/UI/batalla/dialog_box.png" id="1_mvrie"]
+[ext_resource type="Texture2D" uid="uid://ci06v2qpr8t24" path="res://assets/UI/batalla/dialog_box.png" id="1_mvrie"]
 [ext_resource type="Texture2D" uid="uid://ci8yp1bn5jwjg" path="res://assets/UI/Coreutas fullart/Kruta.png" id="2_3hgc7"]
 [ext_resource type="Texture2D" uid="uid://dwo54psu4b5ti" path="res://assets/UI/botones/buton_bg.png" id="3_0brwx"]
 [ext_resource type="FontFile" uid="uid://c6rraba70gu6i" path="res://assets/fonts/Alkhemikal.ttf" id="4_3hgc7"]

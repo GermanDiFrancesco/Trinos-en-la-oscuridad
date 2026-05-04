@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://db628nn1jcf6l"]
-
-[ext_resource type="PackedScene" uid="uid://cvvr0iuwb8e82" path="res://scenes/interior_map_2.tscn" id="1_eakt7"]
-
-[node name="interior_1" type="Node2D" unique_id=757472470]
-y_sort_enabled = true
-
-[node name="interior_2" parent="." unique_id=1470388169 instance=ExtResource("1_eakt7")]

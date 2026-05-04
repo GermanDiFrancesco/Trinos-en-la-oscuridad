@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://75cscmygekig"]
+
+[ext_resource type="Script" uid="uid://4cmg2we8lv5u" path="res://scripts/ui/menu_panel.gd" id="1_33qjm"]
+[ext_resource type="PackedScene" uid="uid://bbvr33xp3dq81" path="res://scenes/ui/bgscene_fondo.tscn" id="2_02id0"]
+[ext_resource type="Texture2D" uid="uid://62bkmpko2g5w" path="res://assets/cinematicas/game screen prota anim 1.png" id="2_33qjm"]
+[ext_resource type="Texture2D" uid="uid://drj8tfys3buvk" path="res://assets/cinematicas/game screen prota anim luz 1.png" id="3_02id0"]
+[ext_resource type="Texture2D" uid="uid://cil70rw1mhll3" path="res://assets/cinematicas/game screen prota anim 2.png" id="8_bdqle"]
+[ext_resource type="Texture2D" uid="uid://bwwxg5ohvj8bq" path="res://assets/cinematicas/game screen prota anim 3.png" id="9_m5xtq"]
+[ext_resource type="Texture2D" uid="uid://c16o4fpjucn48" path="res://assets/cinematicas/game screen prota anim 4.png" id="10_4qamw"]
+[ext_resource type="Texture2D" uid="uid://b5po0g2bx4trj" path="res://assets/UI/botones/comenzar_buton.png" id="11_nfkht"]
+[ext_resource type="Texture2D" uid="uid://iktruy85qma6" path="res://assets/cinematicas/game screen prota anim luz 2.png" id="11_wpx3c"]
+[ext_resource type="Texture2D" uid="uid://bwfgd6438xyps" path="res://assets/cinematicas/game screen prota anim luz 3.png" id="12_jewci"]
+[ext_resource type="Texture2D" uid="uid://b5bgpcgv5ygde" path="res://assets/UI/botones/comenzar_hover_buton.png" id="12_nfkht"]
+[ext_resource type="Texture2D" uid="uid://b8x08bkbg3pm1" path="res://assets/cinematicas/game screen prota anim luz 4.png" id="13_url0x"]
+[ext_resource type="Texture2D" uid="uid://bilwrqhkubev3" path="res://assets/UI/botones/continuar_buton.png" id="13_ynf2p"]
+[ext_resource type="Texture2D" uid="uid://daud6qeut5wy0" path="res://assets/UI/botones/continuar_hover_buton.png" id="14_33qjm"]
+
+[sub_resource type="Animation" id="Animation_ku1ey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BGSCENE/prota:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_33qjm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BGSCENE/prota-reflect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_02id0")]
+}
+
+[sub_resource type="Animation" id="Animation_iwtmf"]
+resource_name = "new_animation"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BGSCENE/prota:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_33qjm"), ExtResource("8_bdqle"), ExtResource("9_m5xtq"), ExtResource("10_4qamw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BGSCENE/prota-reflect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.40523148, 0.609235),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_02id0"), ExtResource("11_wpx3c"), ExtResource("12_jewci"), ExtResource("13_url0x")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lyb20"]
+_data = {
+&"RESET": SubResource("Animation_ku1ey"),
+&"new_animation": SubResource("Animation_iwtmf")
+}
+
+[sub_resource type="InputEventKey" id="InputEventKey_33qjm"]
+device = -1
+keycode = 4194312
+
+[sub_resource type="Shortcut" id="Shortcut_02id0"]
+events = [SubResource("InputEventKey_33qjm")]
+
+[node name="MainMenuPanel" type="Panel" unique_id=839390933 node_paths=PackedStringArray("version")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_33qjm")
+version_text = "kcoro_0.0.4"
+version = NodePath("HBoxContainer/project_version")
+
+[node name="BGSCENE" parent="." unique_id=40716647 instance=ExtResource("2_02id0")]
+layout_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2070912388]
+libraries/ = SubResource("AnimationLibrary_lyb20")
+autoplay = &"new_animation"
+
+[node name="OptionsContainer" type="VBoxContainer" parent="." unique_id=157035541]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -331.0
+offset_right = 384.0
+grow_vertical = 0
+alignment = 1
+
+[node name="ContinuarBtn" type="TextureButton" parent="OptionsContainer" unique_id=1310494344]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("13_ynf2p")
+texture_focused = ExtResource("14_33qjm")
+stretch_mode = 3
+
+[node name="ComenzarBtn" type="TextureButton" parent="OptionsContainer" unique_id=1855201068]
+layout_mode = 2
+texture_normal = ExtResource("11_nfkht")
+texture_focused = ExtResource("12_nfkht")
+stretch_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=26577611]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 384.0
+grow_vertical = 0
+
+[node name="project_version" type="Label" parent="HBoxContainer" unique_id=458237817]
+layout_mode = 2
+text = "kcoro_version"
+
+[node name="delete" type="Button" parent="HBoxContainer" unique_id=786610709]
+layout_mode = 2
+focus_mode = 1
+shortcut = SubResource("Shortcut_02id0")
+text = "delete_save"
+
+[connection signal="pressed" from="OptionsContainer/ContinuarBtn" to="." method="_on_continuar_btn_pressed"]
+[connection signal="pressed" from="OptionsContainer/ComenzarBtn" to="." method="_on_comenzar_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/delete" to="." method="_on_button_pressed"]
