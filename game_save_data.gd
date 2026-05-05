@@ -11,6 +11,8 @@ var current_map: String = "zona_tuto_level"
 var player_spawn_position: Vector2 = Vector2(0, 0)
 
 var cinematic_watched = {"intro": false}
+var music_track = {"intro": false}
+
 
 # Inicializa un nuevo save con valores por defecto.
 func init():
@@ -20,6 +22,7 @@ func init():
 	party.clear()
 	party.append(player)
 	cinematic_watched = {"intro": false}
+	music_track = {"intro": false}
 	save("init")
 # Guarda el estado actual en un archivo JSON.
 func save(from:String =""):
@@ -42,6 +45,7 @@ func save(from:String =""):
 		})
 	var data = {
 		"cinematic_watched": cinematic_watched,
+		"music_track": music_track,
 		"current_map": current_map,
 		"player_spawn_position": {
 			"x": player_spawn_position.x,
@@ -70,7 +74,7 @@ func save(from:String =""):
 		file.store_string(json_string)
 		file.close()
 		print_rich("[color=Steel_Blue][b]Saved[/b] "+from+"[/color]")
-		print(data)
+		#print(data)
 
 # Carga el archivo JSON si existe
 func load():

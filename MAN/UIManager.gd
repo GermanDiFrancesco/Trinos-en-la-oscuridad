@@ -40,4 +40,5 @@ func hide_invnetory():
 func show_cinematic(cinematic_name:String):
 	await Transition.fade_to_black()
 	show_panel("CINEMATIC")
+	MusicManager.stop_all()
 	await cinematic_panel.play(cinematic_name)

@@ -11,7 +11,7 @@ func _ready():
 	saved_data = game_save.new()
 	var file = FileAccess.open(save_path, FileAccess.ModeFlags.READ)
 	if file:saved_data.load()
-	call_deferred("change_state", "MENU")
+	call_deferred("change_state", "BATTLE")
 
 func change_state(state: String) -> String:
 	current_state = state

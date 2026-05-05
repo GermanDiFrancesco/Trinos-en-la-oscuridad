@@ -1,32 +1,35 @@
 extends Node
 
-@onready var opening_main_menu: AudioStreamPlayer = $OpeningMainMenu
-@onready var menu_music: AudioStreamPlayer = $MenuMusic
-@onready var overworld_music: AudioStreamPlayer = $OverworldMusic
-@onready var battle_music: AudioStreamPlayer = $BattleMusic
-
+@export var opening_main_menu: AudioStreamPlayer 
+@export var menu_music: AudioStreamPlayer
+@export var overworld_music: AudioStreamPlayer 
+@export var battle_music: AudioStreamPlayer 
+@export var cinematics_music: AudioStreamPlayer 
 
 func _ready() -> void:
-	opening_main_menu.play()
-	_stop_all()
+	opening_main_menu.finished.connect(play_menu_music)
 
-func _on_opening_main_menu_finished() -> void:
-	play_menu_music()
+func play(track_name: String):
+	print('track: ',track_name)
+	stop_all()
+	cinematics_music.stream = load("res://assets/audio/music/cinematics/"+track_name+".mp3")
+	cinematics_music.play()
 
-func _stop_all():
+func stop_all():
 	menu_music.stop()
 	overworld_music.stop()
 	battle_music.stop()
 	opening_main_menu.stop()
+	cinematics_music.stop()
 	
 func play_menu_music():
-	_stop_all()
+	stop_all()
 	menu_music.play()
 
 func play_overworld_music():
-	_stop_all()
+	stop_all()
 	overworld_music.play()
 
 func play_battle_music():
-	_stop_all()
+	stop_all()
 	battle_music.play()

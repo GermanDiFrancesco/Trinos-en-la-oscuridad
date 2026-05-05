@@ -6,7 +6,7 @@ extends Panel
 @export var text_container: RichTextLabel 
 @export var action_options_container: Control 
 @export var enemy_container_scene: PackedScene = preload("res://scenes/ui/enemy_container.tscn")
-var _enemy_panels: Dictionary = {}
+var enemy_panels: Dictionary = {}
 
 func _ready() -> void:
 	# Conectar señales del BattleManager
@@ -19,21 +19,21 @@ func _ready() -> void:
 	#BattleManager.turn_started.connect(_on_turn_started)
 
 func _on_battle_ready() -> void:
-	_enemy_panels.clear()
+	enemy_panels.clear()
 	enemies_containers.clear_childs()
 	print('enemies cleared')
 	# Crear paneles visuales para cada enemigo
-	
 	for enemy in BattleManager.enemies:
 		var enemyContainer = enemy_container_scene.instantiate()
 		enemies_containers.add_child(enemyContainer)
 		enemyContainer.setup(enemy)
-		_enemy_panels[enemy] = enemyContainer
+		enemy_panels[enemy] = enemyContainer
 	# Crear paneles visuales para cada enemigo
 	for coreuta in BattleManager.party:
 		var coreutapng =  TextureRect.new()
 		coreutapng.texture = coreuta.back
 		party_container.add_child(coreutapng)
+	actions_container.get_child(0).grab_focus()
 
 func _on_turn_started(who: Combatant) -> void:
 	display_text("Turno de " + who.display_name)
@@ -47,18 +47,18 @@ func _on_damage_dealt(attacker: Combatant, target: Combatant, part_index: int, a
 		part_text = " (parte: " + target.parts[part_index].display_name + ")"
 	display_text(attacker.display_name + " ataca a " + target.display_name + part_text + " por " + str(amount) + " de daño!")
 
-	if _enemy_panels.has(target):
-		_enemy_panels[target].refresh()
+	if enemy_panels.has(target):
+		enemy_panels[target].refresh()
 
 func _on_heal_applied(target: Combatant, amount: int) -> void:
 	display_text(target.display_name + " se cura " + str(amount) + " HP!")
-	if _enemy_panels.has(target):
-		_enemy_panels[target].refresh()
+	if enemy_panels.has(target):
+		enemy_panels[target].refresh()
 
 func _on_combatant_died(who: Combatant) -> void:
 	display_text("¡" + who.display_name + " ha caído!")
-	if _enemy_panels.has(who):
-		_enemy_panels[who].refresh()
+	if enemy_panels.has(who):
+		enemy_panels[who].refresh()
 
 func _on_battle_ended(result: String) -> void:
 	match result:
@@ -182,8 +182,8 @@ func _battle_escape() -> void:
 
 func _on_enemy_focus(enemy_index: int) -> void:
 	var alive_enemies = BattleManager.get_alive_enemies()
-	if enemy_index < alive_enemies.size() and _enemy_panels.has(alive_enemies[enemy_index]):
-		_enemy_panels[alive_enemies[enemy_index]].indicator()
+	if enemy_index < alive_enemies.size() and enemy_panels.has(alive_enemies[enemy_index]):
+		enemy_panels[alive_enemies[enemy_index]].indicator()
 
 func show_options(general_text: String = "", options: Array = []) -> void:
 	action_options_container.clear_childs()
