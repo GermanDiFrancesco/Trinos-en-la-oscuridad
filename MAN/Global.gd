@@ -2,7 +2,6 @@
 extends Node
 var save_path: String = "user://game_save.json"
 var saved_data: game_save 
-var overworld: Node
 var current_state
 @export_enum("zona_tuto_level","interior_intro_level", "interior_level_01", "interior_level_02","exterior_level_01") var to_map: String = ""
 
@@ -11,7 +10,7 @@ func _ready():
 	saved_data = game_save.new()
 	var file = FileAccess.open(save_path, FileAccess.ModeFlags.READ)
 	if file:saved_data.load()
-	call_deferred("change_state", "BATTLE")
+	call_deferred("change_state", "MENU")
 
 func change_state(state: String) -> String:
 	current_state = state
@@ -32,5 +31,5 @@ func change_state(state: String) -> String:
 func delete_save():
 	if FileAccess.file_exists(save_path):
 		var error = DirAccess.remove_absolute(save_path)
-		print("archivo borrado")
+		print_rich("[color=red]◈borrado[/color]")
 		Global._ready()

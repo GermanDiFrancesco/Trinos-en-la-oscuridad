@@ -119,7 +119,7 @@ func load():
 				c.description = cdata.description
 				party.append(c)
 		file.close()
-		print_rich("[color=Steel_Blue][b]Loaded\n [/b]- Cinematica: "+str(cinematic_watched.intro)+"\n- Map: "+ current_map +"\n - Pos: " + str(player_spawn_position) + " [/color]")
+		print_rich("[color=Steel_Blue][b]Loaded\n[/b]-Intro: "+str(cinematic_watched.intro)+"\n-Map: "+ current_map +"\n-SpawnPos: " + str(player_spawn_position) + " [/color]")
 	file.close()
 	return false
 

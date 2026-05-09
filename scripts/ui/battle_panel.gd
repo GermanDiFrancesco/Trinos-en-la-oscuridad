@@ -11,6 +11,9 @@ var enemy_panels: Dictionary = {}
 func _ready() -> void:
 	# Conectar señales del BattleManager
 	BattleManager.battle_ready.connect(_on_battle_ready)
+	for btn in actions_container.get_children():
+		btn.focus_in.connect(show_description)
+		btn.do_action.connect(execute)
 	#BattleManager.damage_dealt.connect(_on_damage_dealt)
 	#BattleManager.heal_applied.connect(_on_heal_applied)
 	#BattleManager.combatant_died.connect(_on_combatant_died)
@@ -35,6 +38,12 @@ func _on_battle_ready() -> void:
 		party_container.add_child(coreutapng)
 	actions_container.get_child(0).grab_focus()
 
+func show_description(desc:String):
+	$"bg-container/DescriptionContainer".text = desc
+func execute(action:String):
+	match action:
+		"Huir":
+			Overworld.game_start()
 func _on_turn_started(who: Combatant) -> void:
 	display_text("Turno de " + who.display_name)
 

@@ -250,3 +250,10 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("6_1jy7h")
 stretch_mode = 2
+
+[node name="DescriptionContainer" type="RichTextLabel" parent="bg-container" unique_id=749685846]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 488.0
+offset_bottom = 122.0

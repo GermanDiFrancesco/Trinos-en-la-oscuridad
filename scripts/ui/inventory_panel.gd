@@ -1,12 +1,9 @@
 extends Panel
+@onready var continuar: battle_button = $menu/butons/Continuar
 
-@export var continuar_btn: TextureButton 	
-@export var salir_btn: TextureButton
-
-
-func _on_salir_btn_pressed() -> void:
+func quit_to_menu(action:String) -> void:
 	#Overworld.save_scene()
 	Global.change_state("MENU")
 
-func _on_continuar_btn_pressed() -> void:
+func end_pause(action:String) -> void:
 	Overworld.set_paused(false)

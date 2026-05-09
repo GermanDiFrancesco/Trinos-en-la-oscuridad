@@ -52,8 +52,8 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("accept"):
 		if !active : return
 		var target = _get_interaction_target()
-		print("~interacting:", target)
 		if target:
+			print("~interacting:", target)
 			_do_interact(target)
 	_update_animation()
 
