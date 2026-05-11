@@ -27,13 +27,13 @@ func procesar_dialogo():
 func _procesar_evento(id: String):#esto se puede pasar al global, implementar  herrencia con las entidades
 	match id:
 		"baritono_selected":
-			Global.saved_data.select_chord("baritono")
+			Global.saved_data.select_cuerda("baritono")
 		"tenor_selected":
-			Global.saved_data.select_chord("tenor")
+			Global.saved_data.select_cuerda("tenor")
 		"mezzo_selected":
-			Global.saved_data.select_chord("mezzo")
+			Global.saved_data.select_cuerda("mezzo")
 		"soprano_selected":
-			Global.saved_data.select_chord("soprano")
+			Global.saved_data.select_cuerda("soprano")
 		"battle":
 			Global.change_state("BATTLE")
 		"custom":

@@ -8,7 +8,7 @@ signal dialog_end
 @export var typing_speed: float = 0.05 # Tiempo entre caracteres
 @onready var speaker_img: TextureRect = $Speaker
 @onready var speaker_label: RichTextLabel = $speaker/TextContainer
-
+var dialog_on = false
 var is_showing_text := false
 
 func show_dialog(speaker:String, _text: String = "", options: Array = []) -> void:
@@ -16,6 +16,7 @@ func show_dialog(speaker:String, _text: String = "", options: Array = []) -> voi
 	#evaluar que sea npc
 	speaker_img.texture = load("res://assets/UI/Coreutas fullart/"+str(speaker)+".png")
 	dialog_start.emit()
+	dialog_on= true
 	show()
 	$anim.play("apear")
 	# Limpieza de opciones previas
@@ -81,3 +82,4 @@ func _end_dialog() -> void:
 	await $anim.animation_finished
 	hide()
 	dialog_end.emit()
+	dialog_on = false

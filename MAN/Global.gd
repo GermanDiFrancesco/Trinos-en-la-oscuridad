@@ -8,6 +8,7 @@ var current_state
 func _ready():
 	RenderingServer.set_default_clear_color(Color.BLACK)
 	saved_data = game_save.new()
+	
 	var file = FileAccess.open(save_path, FileAccess.ModeFlags.READ)
 	if file:saved_data.load()
 	call_deferred("change_state", "MENU")

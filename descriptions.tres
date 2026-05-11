@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://df4gqc80bho1f"]
+
+[ext_resource type="FontFile" uid="uid://c6rraba70gu6i" path="res://assets/fonts/Alkhemikal.ttf" id="1_h5nuy"]
+
+[resource]
+line_spacing = 4.0
+font = ExtResource("1_h5nuy")
+font_size = 20
+font_color = Color(0.8689852, 0.8689848, 0.8689849, 1)

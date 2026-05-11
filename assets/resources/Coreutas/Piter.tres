@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CoreutaData" format=3 uid="uid://07ekt2haiv8u"]
+
+[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://skill_data.gd" id="1_2d36q"]
+[ext_resource type="Script" uid="uid://bcb8m4q6fa5mx" path="res://coreuta_data.gd" id="2_j3ud3"]
+[ext_resource type="Texture2D" uid="uid://c6fi1w4xhtst0" path="res://assets/UI/Coreutas fullart/Piter.png" id="2_rfkuq"]
+
+[resource]
+script = ExtResource("2_j3ud3")
+display_name = "Piter"
+description = "El dr piter."
+portrait = ExtResource("2_rfkuq")
+metadata/_custom_type_script = "uid://bcb8m4q6fa5mx"

@@ -2,9 +2,7 @@
 extends Resource
 class_name game_save
 
-# PROTA como recurso CoreutaData
 @export var player: CoreutaData = preload("res://assets/resources/Coreutas/Prota.tres")
-# Party: array de CoreutaDatas (1 a 4 integrantes)
 @export var party: Array[CoreutaData] = [player]
 
 var current_map: String = "zona_tuto_level"
@@ -12,7 +10,6 @@ var player_spawn_position: Vector2 = Vector2(0, 0)
 
 var cinematic_watched = {"intro": false}
 var music_track = {"intro": false}
-
 
 # Inicializa un nuevo save con valores por defecto.
 func init():
@@ -40,7 +37,7 @@ func save(from:String =""):
 			"magic_armor": c.magic_armor,
 			"max_mana": c.max_mana,
 			"magic_defense": c.magic_defense,
-			"chord": c.chord,
+			"cuerda": c.cuerda,
 			"description": c.description,
 		})
 	var data = {
@@ -50,20 +47,6 @@ func save(from:String =""):
 		"player_spawn_position": {
 			"x": player_spawn_position.x,
 			"y": player_spawn_position.y
-		},
-		"player": {
-			"display_name": player.display_name,
-			"max_hp": player.max_hp,
-			"hp": player.hp,
-			"attack": player.attack,
-			"defense": player.defense,
-			"speed": player.speed,
-			"armor": player.armor,
-			"magic_armor": player.magic_armor,
-			"max_mana": player.max_mana,
-			"magic_defense": player.magic_defense,
-			"chord": player.chord,
-			"description": player.description,
 		},
 		"party": party_data
 	}
@@ -80,27 +63,13 @@ func save(from:String =""):
 func load():
 	var file = FileAccess.open(Global.save_path, FileAccess.ModeFlags.READ)
 	if !file:return
+	
 	var json_string = file.get_as_text()
 	var parsed = JSON.parse_string(json_string)
 	if parsed:
 		cinematic_watched = parsed.cinematic_watched
 		current_map = parsed.current_map
 		player_spawn_position = Vector2(parsed.player_spawn_position.x, parsed.player_spawn_position.y)
-		if parsed.has("player"):
-			var pdata = parsed.player
-			player.display_name = pdata.display_name
-			player.max_hp = pdata.max_hp
-			player.hp = pdata.hp
-			player.attack = pdata.attack
-			player.defense = pdata.defense
-			player.speed = pdata.speed
-			player.armor = pdata.armor
-			player.magic_armor = pdata.magic_armor
-			player.max_mana = pdata.max_mana
-			player.magic_defense = pdata.magic_defense
-			player.chord = pdata.chord
-			player.description = pdata.description
-		# Cargar party
 		if parsed.has("party"):
 			party.clear()
 			for cdata in parsed.party:
@@ -115,7 +84,7 @@ func load():
 				c.magic_armor = cdata.magic_armor
 				c.max_mana = cdata.max_mana
 				c.magic_defense = cdata.magic_defense
-				c.chord = cdata.chord
+				c.cuerda = cdata.cuerda
 				c.description = cdata.description
 				party.append(c)
 		file.close()
@@ -126,9 +95,9 @@ func load():
 
 
 # Cambia el acorde del jugador principal y guarda.
-func select_chord(_chord: String = "desafinado"):
-	player.chord = _chord
-	save("chord")
+func select_cuerda(_cuerda: String = "desafinado"):
+	player.cuerda = _cuerda
+	save("cuerda")
 
 
 # Actualiza la posición de guardado y el mapa actual.
@@ -154,7 +123,7 @@ func update_party(new_party: Array):
 		coreuta.magic_armor = c.magic_armor
 		coreuta.max_mana = c.max_mana
 		coreuta.magic_defense = c.magic_defense
-		coreuta.chord = c.chord
+		coreuta.cuerda = c.cuerda
 		coreuta.description = c.description
 		coreuta.tipo = c.tipo
 		# Si tienes más campos, agrégalos aquí

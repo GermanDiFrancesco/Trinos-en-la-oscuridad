@@ -21,6 +21,7 @@ func game_start():
 #switch de pausa
 func _unhandled_input(event):
 	if event.is_action_pressed("back"):
+		if UIManager.dialog_panel.dialog_on:return
 		var paused = !get_tree().paused
 		set_paused(paused)
 

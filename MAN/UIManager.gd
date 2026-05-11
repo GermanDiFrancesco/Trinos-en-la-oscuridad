@@ -32,7 +32,7 @@ func show_panel(panel: String):
 func show_inventory():
 	if Global.current_state != "OVERWORLD": return
 	overworld_panel.inventory_panel.show()
-	overworld_panel.inventory_panel.continuar.grab_focus()
+	overworld_panel.inventory_panel.set_focus()
 	
 func hide_invnetory():
 	overworld_panel.inventory_panel.hide()
