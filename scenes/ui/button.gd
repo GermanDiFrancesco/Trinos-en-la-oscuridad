@@ -7,7 +7,6 @@ signal do_action
 func _ready() -> void:
 	$Label.text = self.name
 
-
 func _on_pressed() -> void:
 	do_action.emit(self.name)
 

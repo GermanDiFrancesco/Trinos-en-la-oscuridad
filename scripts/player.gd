@@ -90,6 +90,7 @@ func _do_interact(target: Object) -> void:
 	if !target : state = State.IDLE
 	if target.has_method("interact"):
 		interacting=true
+		target.face_direction(self.position)
 		target.interact(self)
 		state = State.INTERACT
 #cunado detecta un area con interaccion lo agrega a la lista de interaccion

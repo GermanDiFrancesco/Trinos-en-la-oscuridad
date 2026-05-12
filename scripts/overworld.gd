@@ -27,6 +27,7 @@ func _unhandled_input(event):
 
 # Setea el estado de pausa del Overworld
 func set_paused(paused: bool):
+	if !map:load_map(Global.saved_data.current_map)#asegura que haya mapa, para debug
 	get_tree().paused = paused
 	if get_tree().paused == true :
 		is_paused.emit()

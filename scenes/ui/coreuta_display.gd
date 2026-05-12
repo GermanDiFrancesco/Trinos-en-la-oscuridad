@@ -19,7 +19,7 @@ extends PanelContainer
 	
 func load_coreuta_info(coreuta:CoreutaData):
 	portrait.texture = coreuta.portrait
-	display_name.text = coreuta.display_name
+	display_name.text = coreuta.coreuta_name
 	vida.text = "Vida: " + str(coreuta.hp)
 	vientos.text = "Vientos: " + str(coreuta.max_mana)
 	velocidad.text = "Velocidad: " + str(coreuta.speed)

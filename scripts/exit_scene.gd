@@ -1,6 +1,6 @@
 extends Area2D
 
-@export_enum("zona_tuto_level","interior_intro_level", "interior_level_01", "interior_level_02","exterior_level_01") var to_map: String = ""
+@export_enum("zona_tuto_level","interior") var to_map: String = ""
 @export var playerpos = Vector2(120,140) #esto hay que pasarlo al diccionario
 
 func _on_body_entered(body: Node2D) -> void:

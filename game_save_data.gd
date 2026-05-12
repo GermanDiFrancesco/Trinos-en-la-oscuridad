@@ -27,7 +27,7 @@ func save(from:String =""):
 	var party_data = []
 	for c in party:
 		party_data.append({
-			"display_name": c.display_name,
+			"name": c.coreuta_name,
 			"max_hp": c.max_hp,
 			"hp": c.hp,
 			"attack": c.attack,
@@ -50,7 +50,6 @@ func save(from:String =""):
 		},
 		"party": party_data
 	}
-	#Busca o crea el archivo
 	var file = FileAccess.open(Global.save_path, FileAccess.ModeFlags.WRITE)
 	if file:
 		var json_string = JSON.stringify(data)
@@ -74,7 +73,7 @@ func load():
 			party.clear()
 			for cdata in parsed.party:
 				var c = CoreutaData.new()
-				c.display_name = cdata.display_name
+				c.coreuta_name = cdata.name
 				c.max_hp = cdata.max_hp
 				c.hp = cdata.hp
 				c.attack = cdata.attack
@@ -113,7 +112,7 @@ func update_party(new_party: Array):
 	party.clear()
 	for c in new_party:
 		var coreuta = CoreutaData.new()
-		coreuta.display_name = c.display_name
+		coreuta.name = c.name
 		coreuta.max_hp = c.max_hp
 		coreuta.hp = c.hp
 		coreuta.attack = c.attack

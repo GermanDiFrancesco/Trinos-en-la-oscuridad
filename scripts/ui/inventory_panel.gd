@@ -17,7 +17,7 @@ func set_focus():
 	
 func show_selected(action:String,description:String):
 	if action == "Party":
-		print(Global.saved_data.party[0].display_name,Global.saved_data.party[0].cuerda)
+		print(Global.saved_data.party[0].coreuta_name,Global.saved_data.party[0].cuerda)
 	for child in display.get_children():
 		child.hide()
 	if display.has_node(action):

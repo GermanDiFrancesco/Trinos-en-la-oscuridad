@@ -1,13 +1,13 @@
 extends Resource
 class_name CoreutaData
 
-@export var display_name: String = "Prota"
-@export var description: String = ""
-@export var portrait: Texture2D
-@export var back: Texture2D
+@export var coreuta_name: String = "coreuta"
+@export var description: String = "descripcion"
+@export var portrait: Texture2D		#IMAGEN DEL COREUTA en inventario
+@export var back: Texture2D		#IMAGEN DEL COREUTA en batalla
 
-@export var hp: int = 85       #VIDA
-@export var max_hp: int = 85       #VIDA
+@export var hp: int = 85       #VIDA actual, para mostrar la barra de vida
+@export var max_hp: int = 85       #VIDA maxima, para mostrar la barra de vida
 @export var max_mana: int = 40     #VIENTOS
 
 @export var speed: int = 35			#VELOCIDAD
@@ -20,13 +20,13 @@ class_name CoreutaData
 @export var defense: int = 90		#DEFENSA FISICA
 @export var magic_defense: int = 85	#DEFENSA MAGICA
 
-@export var cuerda: String = "Baritono"
-@export var habilities: Array[SkillData] = []
+@export var cuerda: String = "Baritono"		#TIPO DE CUERDA, habilidades que puede usar
+@export var habilities: Array[SkillData] = [] 
 
 
 func _init(coreuta:CoreutaData = null):
 	if coreuta == null: return
-	display_name = coreuta.display_name
+	coreuta_name = coreuta.coreuta_name
 	description = coreuta.description
 	portrait = coreuta.portrait
 	back = coreuta.back

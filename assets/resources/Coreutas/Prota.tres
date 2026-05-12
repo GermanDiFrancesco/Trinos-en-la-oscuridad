@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d2ms6e70xdbyy" path="res://assets/UI/batalla/prota_back.png" id="1_h8jr3"]
 [ext_resource type="Script" uid="uid://j5yol176db3a" path="res://skill_data.gd" id="1_j6kbd"]
 [ext_resource type="Script" uid="uid://bcb8m4q6fa5mx" path="res://coreuta_data.gd" id="2_h8jr3"]
+[ext_resource type="Resource" uid="uid://d4dawuv3w73g1" path="res://assets/resources/Skills/trino_agudo.tres" id="3_2gp6m"]
 [ext_resource type="Texture2D" uid="uid://c7jptkeltrjsp" path="res://assets/UI/Valky/Valky.png" id="3_iqssu"]
 
 [resource]
@@ -10,4 +11,5 @@ script = ExtResource("2_h8jr3")
 description = "el prota pero muestra a valky"
 portrait = ExtResource("3_iqssu")
 back = ExtResource("1_h8jr3")
+habilities = Array[ExtResource("1_j6kbd")]([ExtResource("3_2gp6m")])
 metadata/_custom_type_script = "uid://bcb8m4q6fa5mx"

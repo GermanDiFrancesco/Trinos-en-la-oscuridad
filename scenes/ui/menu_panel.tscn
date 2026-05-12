@@ -7,13 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://cil70rw1mhll3" path="res://assets/cinematicas/game screen prota anim 2.png" id="8_bdqle"]
 [ext_resource type="Texture2D" uid="uid://bwwxg5ohvj8bq" path="res://assets/cinematicas/game screen prota anim 3.png" id="9_m5xtq"]
 [ext_resource type="Texture2D" uid="uid://c16o4fpjucn48" path="res://assets/cinematicas/game screen prota anim 4.png" id="10_4qamw"]
-[ext_resource type="Texture2D" uid="uid://b5po0g2bx4trj" path="res://assets/UI/botones/comenzar_buton.png" id="11_nfkht"]
+[ext_resource type="Script" uid="uid://u705m7aqcad4" path="res://scenes/ui/button.gd" id="11_cmc5s"]
+[ext_resource type="Texture2D" uid="uid://dwo54psu4b5ti" path="res://assets/UI/botones/buton_bg.png" id="11_ug5dj"]
 [ext_resource type="Texture2D" uid="uid://iktruy85qma6" path="res://assets/cinematicas/game screen prota anim luz 2.png" id="11_wpx3c"]
 [ext_resource type="Texture2D" uid="uid://bwfgd6438xyps" path="res://assets/cinematicas/game screen prota anim luz 3.png" id="12_jewci"]
-[ext_resource type="Texture2D" uid="uid://b5bgpcgv5ygde" path="res://assets/UI/botones/comenzar_hover_buton.png" id="12_nfkht"]
+[ext_resource type="FontFile" uid="uid://c6rraba70gu6i" path="res://assets/fonts/Alkhemikal.ttf" id="13_dux1n"]
 [ext_resource type="Texture2D" uid="uid://b8x08bkbg3pm1" path="res://assets/cinematicas/game screen prota anim luz 4.png" id="13_url0x"]
-[ext_resource type="Texture2D" uid="uid://bilwrqhkubev3" path="res://assets/UI/botones/continuar_buton.png" id="13_ynf2p"]
-[ext_resource type="Texture2D" uid="uid://daud6qeut5wy0" path="res://assets/UI/botones/continuar_hover_buton.png" id="14_33qjm"]
 
 [sub_resource type="Animation" id="Animation_ku1ey"]
 length = 0.001
@@ -77,6 +76,18 @@ _data = {
 &"new_animation": SubResource("Animation_iwtmf")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_l8cl3"]
+line_spacing = 4.0
+font = ExtResource("13_dux1n")
+font_size = 26
+font_color = Color(0.92279786, 0.9227979, 0.9227979, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_081kt"]
+line_spacing = 4.0
+font = ExtResource("13_dux1n")
+font_size = 26
+font_color = Color(0.92279786, 0.9227979, 0.9227979, 1)
+
 [sub_resource type="InputEventKey" id="InputEventKey_33qjm"]
 device = -1
 keycode = 4194312
@@ -101,28 +112,60 @@ layout_mode = 1
 libraries/ = SubResource("AnimationLibrary_lyb20")
 autoplay = &"new_animation"
 
-[node name="OptionsContainer" type="VBoxContainer" parent="." unique_id=157035541]
+[node name="Butons" type="VBoxContainer" parent="." unique_id=157035541]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_left = 108.0
 offset_top = -331.0
-offset_right = 384.0
+offset_right = 278.0
 grow_vertical = 0
 alignment = 1
 
-[node name="ContinuarBtn" type="TextureButton" parent="OptionsContainer" unique_id=1310494344]
-visible = false
+[node name="Comenzar" type="TextureButton" parent="Butons" unique_id=1205125585]
 layout_mode = 2
-texture_normal = ExtResource("13_ynf2p")
-texture_focused = ExtResource("14_33qjm")
-stretch_mode = 3
+texture_normal = ExtResource("11_ug5dj")
+script = ExtResource("11_cmc5s")
+metadata/_custom_type_script = "uid://u705m7aqcad4"
+metadata/_edit_group_ = true
 
-[node name="ComenzarBtn" type="TextureButton" parent="OptionsContainer" unique_id=1855201068]
+[node name="Label" type="Label" parent="Butons/Comenzar" unique_id=1349426052]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -20.0
+offset_right = 147.0
+offset_bottom = 20.0
+grow_vertical = 2
+text = "txt btn"
+label_settings = SubResource("LabelSettings_l8cl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continuar" type="TextureButton" parent="Butons" unique_id=705903978]
 layout_mode = 2
-texture_normal = ExtResource("11_nfkht")
-texture_focused = ExtResource("12_nfkht")
-stretch_mode = 3
+texture_normal = ExtResource("11_ug5dj")
+script = ExtResource("11_cmc5s")
+metadata/_custom_type_script = "uid://u705m7aqcad4"
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Butons/Continuar" unique_id=1742762838]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -20.0
+offset_right = 147.0
+offset_bottom = 20.0
+grow_vertical = 2
+text = "txt btn"
+label_settings = SubResource("LabelSettings_081kt")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=26577611]
 layout_mode = 1
@@ -143,6 +186,6 @@ focus_mode = 1
 shortcut = SubResource("Shortcut_02id0")
 text = "delete_save"
 
-[connection signal="pressed" from="OptionsContainer/ContinuarBtn" to="." method="_on_continuar_btn_pressed"]
-[connection signal="pressed" from="OptionsContainer/ComenzarBtn" to="." method="_on_comenzar_btn_pressed"]
+[connection signal="do_action" from="Butons/Comenzar" to="." method="comenzar_game"]
+[connection signal="do_action" from="Butons/Continuar" to="." method="continuar_game"]
 [connection signal="pressed" from="HBoxContainer/delete" to="." method="_on_button_pressed"]

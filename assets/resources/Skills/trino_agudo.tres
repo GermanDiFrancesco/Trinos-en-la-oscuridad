@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://d4dawuv3w73g1"]
+
+[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://skill_data.gd" id="1_xxyg3"]
+
+[resource]
+script = ExtResource("1_xxyg3")
+skill_name = "Trino agudo"
+mana_cost = 10
+cuerda = "Soprano"
+element = null
+target = null
+power = 20
+description = ""
+metadata/_custom_type_script = "uid://j5yol176db3a"

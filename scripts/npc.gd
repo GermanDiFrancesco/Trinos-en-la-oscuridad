@@ -41,10 +41,31 @@ func _procesar_evento(id: String):#esto se puede pasar al global, implementar  h
 		_:
 			if id != "":
 				print("Evento no reconocido: ", id)
+func face_direction(target_position: Vector2) -> void:
+	var direction = target_position - global_position
+	if abs(direction.x) > abs(direction.y):
+		if direction.x > 0:
+			facing = Facing.RIGHT
+		else:
+			facing = Facing.LEFT
+	else:
+		# Es vertical
+		if direction.y > 0:
+			facing = Facing.DOWN
+		else:
+			facing = Facing.UP
+	_update_animation()
 
+func _update_animation() -> void:
+	var anims = { 
+		Facing.DOWN: "idle_down", 
+		Facing.UP: "idle_up", 
+		Facing.LEFT: "idle_left", 
+		Facing.RIGHT: "idle_right" 
+	}
+	if animation_player.has_animation(anims[facing]):
+		animation_player.play(anims[facing])
 func setup_visuals():
 	var path = "res://assets/overworld/pjs_spritesheet/" + npcSprite + "_walking.png"
 	sprite_sheet.texture = load(path)
-	
-	var anims = { Facing.DOWN: "idle_down", Facing.UP: "idle_up", Facing.LEFT: "idle_left", Facing.RIGHT: "idle_right" }
-	animation_player.play(anims[facing])
+	_update_animation()
