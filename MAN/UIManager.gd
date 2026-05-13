@@ -19,14 +19,13 @@ func show_panel(panel: String):
 	match panel:
 		"MENU":
 			menu_panel.show()
-			menu_panel._ready()
 		"BATTLE":
 			battle_panel.show()
 		"OVERWORLD":
 			overworld_panel.show()
 		"CINEMATIC":
 			cinematic_panel.show()
-	print_rich("[color=green]Panel "+str(panel)+"[/color]")
+	print_rich("[color=green]❑▫"+str(panel)+"[/color]")
 	await Transition.fade_from_black()
 	
 func show_inventory():
