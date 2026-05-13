@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://buy57oaywoh8y"]
+
+[ext_resource type="Script" uid="uid://bw574fihnr4hx" path="res://UI/panels/cinematic_panel.gd" id="1_wm5gi"]
+[ext_resource type="Texture2D" uid="uid://cfpk6j4vy6e5p" path="res://assets/cinematicas/00_intro_flautista/cin intro 1.png" id="2_wm5gi"]
+[ext_resource type="FontFile" uid="uid://il7i6d2sene8" path="res://assets/fonts/Born2bSportyFS.otf" id="3_br4t4"]
+[ext_resource type="Texture2D" uid="uid://bo30hqstmdbx0" path="res://assets/cinematicas/00_intro_flautista/cin intro 2.png" id="3_obbhq"]
+[ext_resource type="Texture2D" uid="uid://cacynacjuqk5c" path="res://assets/cinematicas/00_intro_flautista/cin intro 3.png" id="4_03ah5"]
+[ext_resource type="Texture2D" uid="uid://1b8esllbk2jm" path="res://assets/cinematicas/00_intro_flautista/cin intro 4.png" id="5_28e0l"]
+[ext_resource type="Texture2D" uid="uid://b845xe6b1cwlt" path="res://assets/cinematicas/00_intro_flautista/cin intro 5.png" id="6_lo2it"]
+[ext_resource type="Texture2D" uid="uid://ddli4gyi756gx" path="res://assets/cinematicas/00_intro_flautista/cin intro 6.png" id="7_r0234"]
+[ext_resource type="Texture2D" uid="uid://ia67yv5wkget" path="res://assets/cinematicas/00_intro_flautista/cin intro 7.png" id="8_5nl8y"]
+[ext_resource type="Texture2D" uid="uid://ocelcp142ep5" path="res://assets/cinematicas/00_intro_flautista/cin intro 8.png" id="9_jmdyy"]
+[ext_resource type="Texture2D" uid="uid://clajy358cq1ww" path="res://assets/cinematicas/00_intro_flautista/cin intro 9.png" id="10_5krcp"]
+[ext_resource type="Texture2D" uid="uid://ywrvmh5kbock" path="res://assets/cinematicas/00_intro_flautista/cin intro 10.png" id="11_dt2j4"]
+[ext_resource type="Texture2D" uid="uid://bsxx30w1w3qg4" path="res://assets/cinematicas/00_intro_flautista/cin intro 11.png" id="12_4xkue"]
+[ext_resource type="Texture2D" uid="uid://bxco1ah75634m" path="res://assets/cinematicas/00_intro_flautista/cin intro 12.png" id="13_8x5yi"]
+
+[sub_resource type="Animation" id="Animation_82evs"]
+resource_name = "RESET"
+length = 14.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(720, 480)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 480)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 3, 4.5, 5.6, 6.4, 7.7, 9, 10.3, 11.9, 12.6, 13.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_wm5gi"), ExtResource("3_obbhq"), ExtResource("4_03ah5"), ExtResource("5_28e0l"), ExtResource("6_lo2it"), ExtResource("7_r0234"), ExtResource("8_5nl8y"), ExtResource("9_jmdyy"), ExtResource("10_5krcp"), ExtResource("11_dt2j4"), ExtResource("12_4xkue"), ExtResource("13_8x5yi")]
+}
+
+[sub_resource type="Animation" id="Animation_wm5gi"]
+resource_name = "intro_flautista"
+length = 14.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(720, 480)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 480)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 3, 4.5, 5.6, 6.4, 7.7, 9, 10.3, 11.9, 12.6, 13.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_wm5gi"), ExtResource("3_obbhq"), ExtResource("4_03ah5"), ExtResource("5_28e0l"), ExtResource("6_lo2it"), ExtResource("7_r0234"), ExtResource("8_5nl8y"), ExtResource("9_jmdyy"), ExtResource("10_5krcp"), ExtResource("11_dt2j4"), ExtResource("12_4xkue"), ExtResource("13_8x5yi")]
+}
+
+[sub_resource type="Animation" id="Animation_br4t4"]
+resource_name = "intro_flautista_old"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(720, 480), Vector2(544.5, 363)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 480), Vector2(0, 340)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h8ysp"]
+_data = {
+&"RESET": SubResource("Animation_82evs"),
+&"intro_flautista": SubResource("Animation_wm5gi"),
+&"intro_flautista_old": SubResource("Animation_br4t4")
+}
+
+[node name="Cinematic" type="Control" unique_id=1568062660]
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wm5gi")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2110058247]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1720879745]
+libraries/ = SubResource("AnimationLibrary_h8ysp")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=231427760]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wm5gi")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1636010117]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 200.99884
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=418002347]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.06575812, 0.06575813, 0.06575812, 1)
+theme_override_fonts/normal_font = ExtResource("3_br4t4")
+theme_override_font_sizes/normal_font_size = 20
+text = "Flautista: Que bella noche que tenemos en nuestra ciudad. 
+La ciudad que de noche brilla, la ciudad de los mil ángulos, la ciudad de los encuentros. 
+Tantas voces, pidiendo, rogando, suplicando. Tanta… Discordancia.
+El mundo solo necesita una melodía… la mía."
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

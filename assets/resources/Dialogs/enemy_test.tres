@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://dmtg5np1kkk7h"]
+
+[ext_resource type="Script" uid="uid://b2vab87mxdeby" path="res://assets/resources/Dialogs/dialogue_option_data.gd" id="1_oyh7y"]
+[ext_resource type="Script" uid="uid://bysbdjbxh4rbp" path="res://assets/resources/Dialogs/dialogue_data.gd" id="2_loa0g"]
+
+[sub_resource type="Resource" id="Resource_gol20"]
+script = ExtResource("1_oyh7y")
+nombre = "*alejarse*"
+metadata/_custom_type_script = "uid://b2vab87mxdeby"
+
+[sub_resource type="Resource" id="Resource_oyh7y"]
+script = ExtResource("1_oyh7y")
+nombre = "dejame ayudarte"
+evento_id = "battle"
+metadata/_custom_type_script = "uid://b2vab87mxdeby"
+
+[resource]
+script = ExtResource("2_loa0g")
+texto_principal = "No me siento bien!"
+opciones = Array[ExtResource("1_oyh7y")]([SubResource("Resource_gol20"), SubResource("Resource_oyh7y")])
+metadata/_custom_type_script = "uid://bysbdjbxh4rbp"

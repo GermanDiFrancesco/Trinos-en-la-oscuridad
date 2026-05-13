@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bapp2a006m4fn"]
 
-[ext_resource type="Script" uid="uid://cd7fl7wn7ax5" path="res://scripts/Interactuable.gd" id="1_7bhnc"]
+[ext_resource type="Script" uid="uid://cd7fl7wn7ax5" path="res://overworld/Interactuable.gd" id="1_7bhnc"]
 [ext_resource type="Texture2D" uid="uid://cxs40up3ev3ce" path="res://assets/overworld/objetos.png" id="1_kbjw4"]
-[ext_resource type="Script" uid="uid://b2vab87mxdeby" path="res://dialogue_option_data.gd" id="2_fsfyg"]
-[ext_resource type="Script" uid="uid://bysbdjbxh4rbp" path="res://dialogue_data.gd" id="3_wnk0v"]
+[ext_resource type="Script" uid="uid://b2vab87mxdeby" path="res://assets/resources/Dialogs/dialogue_option_data.gd" id="2_fsfyg"]
+[ext_resource type="Script" uid="uid://bysbdjbxh4rbp" path="res://assets/resources/Dialogs/dialogue_data.gd" id="3_wnk0v"]
 
 [sub_resource type="Resource" id="Resource_3x6j1"]
 script = ExtResource("3_wnk0v")

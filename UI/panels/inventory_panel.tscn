@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://boiagvsann2xv"]
+
+[ext_resource type="Script" uid="uid://2ka5lvbuhtoo" path="res://UI/panels/inventory_panel.gd" id="1_b11k6"]
+[ext_resource type="PackedScene" uid="uid://055c72hkne21" path="res://UI/coreuta_display.tscn" id="2_3mpu8"]
+[ext_resource type="PackedScene" uid="uid://bvbhk0jgts7dp" path="res://UI/button.tscn" id="2_cvy6a"]
+[ext_resource type="LabelSettings" uid="uid://df4gqc80bho1f" path="res://assets/resources/descriptions.tres" id="4_ta3uk"]
+[ext_resource type="Texture2D" uid="uid://ci06v2qpr8t24" path="res://UI/batalla/dialog_box.png" id="5_lcq1t"]
+
+[node name="invnetory_panel" type="Panel" unique_id=300566441]
+process_mode = 3
+self_modulate = Color(0.753875, 0.7646075, 0.9288545, 0.69411767)
+custom_minimum_size = Vector2(300, 300)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+focus_behavior_recursive = 2
+script = ExtResource("1_b11k6")
+coreuta_display = ExtResource("2_3mpu8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1413111486]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=292279323]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="menu" type="HBoxContainer" parent="MarginContainer" unique_id=1383740306]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="butons" type="VBoxContainer" parent="MarginContainer/menu" unique_id=534652391]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Party" parent="MarginContainer/menu/butons" unique_id=2026758929 instance=ExtResource("2_cvy6a")]
+layout_mode = 2
+
+[node name="Continuar" parent="MarginContainer/menu/butons" unique_id=430506860 instance=ExtResource("2_cvy6a")]
+layout_mode = 2
+
+[node name="Salir" parent="MarginContainer/menu/butons" unique_id=230431189 instance=ExtResource("2_cvy6a")]
+layout_mode = 2
+
+[node name="Objetos" parent="MarginContainer/menu/butons" unique_id=2120897192 instance=ExtResource("2_cvy6a")]
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/menu" unique_id=1944377204]
+self_modulate = Color(0.19607843, 0.21176471, 0.85490197, 0.75686276)
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../butons/Party")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/menu/PanelContainer" unique_id=1920249929]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="display" type="VBoxContainer" parent="MarginContainer/menu/PanelContainer/MarginContainer" unique_id=437741804]
+layout_mode = 2
+focus_mode = 2
+
+[node name="Party" type="HBoxContainer" parent="MarginContainer/menu/PanelContainer/MarginContainer/display" unique_id=1630676088]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+focus_neighbor_left = NodePath("../../../../butons/Party")
+
+[node name="Objetos" type="VBoxContainer" parent="MarginContainer/menu/PanelContainer/MarginContainer/display" unique_id=1087870576]
+visible = false
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/menu/PanelContainer/MarginContainer/display/Objetos" unique_id=2070309841]
+layout_mode = 2
+texture = ExtResource("5_lcq1t")
+
+[node name="Continuar" type="Label" parent="MarginContainer/menu/PanelContainer/MarginContainer/display" unique_id=31257385]
+visible = false
+layout_mode = 2
+text = "Continuar con la partida."
+label_settings = ExtResource("4_ta3uk")
+
+[node name="Salir" type="Label" parent="MarginContainer/menu/PanelContainer/MarginContainer/display" unique_id=1403428539]
+visible = false
+layout_mode = 2
+text = "Volver al menu principal.
+(Perderas el progreso no guardado)"
+label_settings = ExtResource("4_ta3uk")
+
+[connection signal="do_action" from="MarginContainer/menu/butons/Continuar" to="." method="end_pause"]
+[connection signal="do_action" from="MarginContainer/menu/butons/Salir" to="." method="quit_to_menu"]

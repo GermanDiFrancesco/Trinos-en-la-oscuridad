@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="EnemyPartData" format=3 uid="uid://tf0rqxdv87pq"]
 
-[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://skill_data.gd" id="1_ttffb"]
-[ext_resource type="Texture2D" uid="uid://c0mnyydd0xhkh" path="res://assets/UI/Valky/Valky torso.png" id="2_0p6f0"]
-[ext_resource type="Script" uid="uid://ge2tppl251nb" path="res://enemy_part_data.gd" id="3_ge07v"]
+[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://assets/resources/Skills/skill_data.gd" id="1_ttffb"]
+[ext_resource type="Texture2D" uid="uid://c0mnyydd0xhkh" path="res://assets/enemies_parts/Valky/Valky torso.png" id="2_0p6f0"]
+[ext_resource type="Script" uid="uid://ge2tppl251nb" path="res://assets/resources/Enemies/enemy_part_data.gd" id="3_ge07v"]
 
 [resource]
 script = ExtResource("3_ge07v")

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="CoreutaData" format=3 uid="uid://bkkv4luanuy0"]
 
-[ext_resource type="Texture2D" uid="uid://d2ms6e70xdbyy" path="res://assets/UI/batalla/prota_back.png" id="1_h8jr3"]
-[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://skill_data.gd" id="1_j6kbd"]
-[ext_resource type="Script" uid="uid://bcb8m4q6fa5mx" path="res://coreuta_data.gd" id="2_h8jr3"]
+[ext_resource type="Texture2D" uid="uid://d2ms6e70xdbyy" path="res://UI/batalla/prota_back.png" id="1_h8jr3"]
+[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://assets/resources/Skills/skill_data.gd" id="1_j6kbd"]
+[ext_resource type="Script" uid="uid://bcb8m4q6fa5mx" path="res://assets/resources/Coreutas/coreuta_data.gd" id="2_h8jr3"]
 [ext_resource type="Resource" uid="uid://d4dawuv3w73g1" path="res://assets/resources/Skills/trino_agudo.tres" id="3_2gp6m"]
-[ext_resource type="Texture2D" uid="uid://c7jptkeltrjsp" path="res://assets/UI/Valky/Valky.png" id="3_iqssu"]
+[ext_resource type="Texture2D" uid="uid://c7jptkeltrjsp" path="res://assets/enemies_parts/Valky/Valky.png" id="3_iqssu"]
 
 [resource]
 script = ExtResource("2_h8jr3")

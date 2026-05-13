@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dj1y42prl5hdn"]
 
-[ext_resource type="TileSet" uid="uid://ck7ko44ejv6d0" path="res://new_tile_set.tres" id="1_jgqar"]
+[ext_resource type="TileSet" uid="uid://ck7ko44ejv6d0" path="res://assets/resources/new_tile_set.tres" id="1_jgqar"]
 [ext_resource type="Texture2D" uid="uid://cxs40up3ev3ce" path="res://assets/overworld/objetos.png" id="2_i62id"]
 
 [node name="Ztuto01" type="TileMapLayer" unique_id=1470388169]

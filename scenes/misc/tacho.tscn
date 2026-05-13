@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dxkia4d6jwcxn"]
 
-[ext_resource type="Script" uid="uid://bwl3jivqybjsr" path="res://scripts/tacho.gd" id="1_1j7xv"]
+[ext_resource type="Script" uid="uid://bwl3jivqybjsr" path="res://overworld/tacho.gd" id="1_1j7xv"]
 [ext_resource type="Texture2D" uid="uid://bk0tvphxdv458" path="res://assets/misc/tacho.png" id="2_cvii5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdv46"]

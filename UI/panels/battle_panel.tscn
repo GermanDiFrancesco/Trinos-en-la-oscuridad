@@ -1,0 +1,259 @@
+[gd_scene format=3 uid="uid://cslmep0kwafng"]
+
+[ext_resource type="Script" uid="uid://x3vda2fbicac" path="res://UI/panels/battle_panel.gd" id="1_mv0hn"]
+[ext_resource type="Texture2D" uid="uid://br7f1ot346fqj" path="res://UI/batalla/fondo.png" id="3_7f25i"]
+[ext_resource type="Script" uid="uid://cvwgibx10xnsx" path="res://UI/contenedor.gd" id="3_bftqb"]
+[ext_resource type="Script" uid="uid://dg6w71dyytwid" path="res://UI/niebla_effect.gd" id="4_7f25i"]
+[ext_resource type="PackedScene" uid="uid://bvbhk0jgts7dp" path="res://UI/button.tscn" id="4_bftqb"]
+[ext_resource type="Texture2D" uid="uid://8ameun5l6npr" path="res://UI/batalla/detalle de opciones.png" id="6_1jy7h"]
+
+[sub_resource type="Shader" id="Shader_1jy7h"]
+code = "shader_type canvas_item;
+
+// Colores y transparencia
+uniform vec4 fog_color : source_color = vec4(0.5, 0.6, 0.5, 1.0);
+uniform float density : hint_range(0.0, 1.0) = 0.7;
+
+// Configuración del Ruido (FBM)
+uniform int octaves : hint_range(1, 8) = 4;
+uniform float speed : hint_range(0.0, 1.0) = 0.1;
+
+// Configuración de la Máscara (El \"agujero\" central)
+uniform float hole_radius : hint_range(0.0, 1.0) = 0.3;
+uniform float hole_softness : hint_range(0.0, 1.0) = 0.1;
+
+// --- PARÁMETROS PIXEL ART ---
+// Controla el tamaño de los \"bloques\". Menos valor = más grande el píxel.
+uniform float pixel_size : hint_range(16.0, 512.0) = 128.0; 
+// Controla cuántos pasos de transparencia hay (ej: 2.0 es binario, 4.0 es más suave)
+uniform float alpha_steps : hint_range(1.0, 10.0) = 3.0;
+
+float rand(vec2 coord) {
+	return fract(sin(dot(coord, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+float noise(vec2 coord) {
+	vec2 i = floor(coord);
+	vec2 f = fract(coord);
+	float a = rand(i);
+	float b = rand(i + vec2(1.0, 0.0));
+	float c = rand(i + vec2(0.0, 1.0));
+	float d = rand(i + vec2(1.0, 1.0));
+	vec2 u = f * f * (3.0 - 2.0 * f);
+	return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+}
+
+float fbm(vec2 coord) {
+	float value = 0.0;
+	float scale = 0.5;
+	for (int i = 0; i < octaves; i++) {
+		value += noise(coord) * scale;
+		coord *= 2.0;
+		scale *= 0.5;
+	}
+	return value;
+}
+// ... (mantén tus uniformes anteriores)
+
+// Nuevo uniforme para controlar la intensidad del dithering
+uniform float dither_strength : hint_range(0.0, 1.0) = 0.5;
+
+void fragment() {
+	// 1. Pixelamos las coordenadas
+	vec2 grid_uv = round(UV * pixel_size) / pixel_size;
+	
+	// 2. Movimiento y Ruido
+	vec2 coord = grid_uv * 5.0;
+	vec2 motion = vec2(fbm(coord + TIME * speed));
+	float final_noise = fbm(coord + motion);
+	
+	// 3. Máscara circular (Ajustada para que el centro sea 0.0)
+	float dist = distance(grid_uv, vec2(0.55, 0.65));
+	float circle_mask = smoothstep(hole_radius, hole_radius + hole_softness, dist);
+	
+	// Alpha base sin procesar
+	float alpha = final_noise * density * circle_mask;
+	
+	// --- LÓGICA DE DITHERING SUTIL ---
+	ivec2 pixel_pos = ivec2(UV * pixel_size);
+	int x = pixel_pos.x % 4;
+	int y = pixel_pos.y % 4;
+	
+	float bayer[16] = float[](
+		0.0,    0.5,    0.125,  0.625,
+		0.75,   0.25,   0.875,  0.375,
+		0.1875, 0.6875, 0.0625, 0.5625,
+		0.9375, 0.4375, 0.8125, 0.3125
+	);
+	
+	float bayer_value = bayer[y * 4 + x];
+	
+	// Multiplicamos el valor de la matriz por el circle_mask.
+	// Esto hace que en el centro (donde mask es 0), el dither sea inexistente.
+	float dither_effect = (bayer_value - 0.5) * dither_strength;
+	float alpha_with_dither = alpha + (dither_effect * circle_mask);
+	
+	// 4. Posterización (Alpha steps)
+	// Aplicamos el recorte sobre el alpha ya \"alterado\" por el dither
+	alpha = floor(alpha_with_dither * alpha_steps) / alpha_steps;
+	
+	// Limpieza extra: forzar a 0 si la máscara es muy baja
+	alpha *= step(0.01, circle_mask);
+	
+	COLOR = vec4(fog_color.rgb, clamp(alpha, 0.0, 1.0));
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7f25i"]
+shader = SubResource("Shader_1jy7h")
+shader_parameter/fog_color = Color(0.48456162, 0.33641496, 0.7017173, 0.61960787)
+shader_parameter/density = 0.6000000285
+shader_parameter/octaves = 8
+shader_parameter/speed = 0.2000000095
+shader_parameter/hole_radius = 0.0
+shader_parameter/hole_softness = 0.0
+shader_parameter/pixel_size = 480.00002204
+shader_parameter/alpha_steps = 5.00000019
+shader_parameter/dither_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxnom"]
+shader = SubResource("Shader_1jy7h")
+shader_parameter/fog_color = Color(0.48456162, 0.33641496, 0.7017173, 0.61960787)
+shader_parameter/density = 0.6000000285
+shader_parameter/octaves = 8
+shader_parameter/speed = 0.10000000475
+shader_parameter/hole_radius = 0.0
+shader_parameter/hole_softness = 0.0
+shader_parameter/pixel_size = 480.00002204
+shader_parameter/alpha_steps = 5.00000019
+shader_parameter/dither_strength = 0.400000019
+
+[node name="BattlePanel" type="Panel" unique_id=860409160 node_paths=PackedStringArray("party_container", "enemies_containers", "actions_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mv0hn")
+party_container = NodePath("PartyContainer")
+enemies_containers = NodePath("EnemyContainer")
+actions_container = NodePath("ActionsContainer")
+
+[node name="fondo" type="TextureRect" parent="." unique_id=1851685680]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7f25i")
+
+[node name="NieblaEffect" type="ColorRect" parent="fondo" unique_id=2007865377]
+material = SubResource("ShaderMaterial_7f25i")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -23.0
+offset_right = 157.0
+offset_bottom = -242.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.60284907, 0.33884054, 0.37758923, 1)
+script = ExtResource("4_7f25i")
+
+[node name="EnemyContainer" type="HBoxContainer" parent="." unique_id=64557727]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -171.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+script = ExtResource("3_bftqb")
+
+[node name="PartyContainer" type="HBoxContainer" parent="." unique_id=1624846392]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24700001
+anchor_top = 1.0
+anchor_right = 0.24700001
+anchor_bottom = 1.0
+offset_left = 11.159988
+offset_top = -236.0
+offset_right = 534.16
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 15
+script = ExtResource("3_bftqb")
+
+[node name="NieblaEffect" type="ColorRect" parent="." unique_id=375438181]
+visible = false
+material = SubResource("ShaderMaterial_hxnom")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.60284907, 0.33884054, 0.37758923, 1)
+script = ExtResource("4_7f25i")
+
+[node name="ActionsContainer" type="VBoxContainer" parent="." unique_id=663740444]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -256.0
+offset_right = 153.0
+offset_bottom = -10.0
+grow_vertical = 0
+alignment = 2
+script = ExtResource("3_bftqb")
+
+[node name="Atacar" parent="ActionsContainer" unique_id=2026758929 instance=ExtResource("4_bftqb")]
+layout_mode = 2
+
+[node name="Cantar" parent="ActionsContainer" unique_id=1026417876 instance=ExtResource("4_bftqb")]
+layout_mode = 2
+
+[node name="Hablar" parent="ActionsContainer" unique_id=1449680340 instance=ExtResource("4_bftqb")]
+layout_mode = 2
+
+[node name="Objeto" parent="ActionsContainer" unique_id=496983892 instance=ExtResource("4_bftqb")]
+layout_mode = 2
+
+[node name="Huir" parent="ActionsContainer" unique_id=342984846 instance=ExtResource("4_bftqb")]
+layout_mode = 2
+
+[node name="bg-container" type="TextureRect" parent="." unique_id=106930951]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -547.0
+offset_top = -148.0
+offset_right = -29.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_1jy7h")
+stretch_mode = 2
+
+[node name="DescriptionContainer" type="RichTextLabel" parent="bg-container" unique_id=749685846]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 488.0
+offset_bottom = 122.0

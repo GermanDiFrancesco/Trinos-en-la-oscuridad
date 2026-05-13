@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bk6kx134ekjmj"]
 
-[ext_resource type="TileSet" uid="uid://ck7ko44ejv6d0" path="res://new_tile_set.tres" id="1_gnw2w"]
+[ext_resource type="TileSet" uid="uid://ck7ko44ejv6d0" path="res://assets/resources/new_tile_set.tres" id="1_gnw2w"]
 [ext_resource type="Texture2D" uid="uid://cxs40up3ev3ce" path="res://assets/overworld/objetos.png" id="4_53ijs"]
 
 [node name="ZonaTuto" type="TileMapLayer" unique_id=1470388169]

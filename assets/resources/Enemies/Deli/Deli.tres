@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://8apgpw5sv5sy"]
 
-[ext_resource type="Script" uid="uid://ge2tppl251nb" path="res://enemy_part_data.gd" id="1_7c5p8"]
-[ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://enemy_data.gd" id="1_enemy_data"]
-[ext_resource type="Texture2D" uid="uid://gfqs50o7i7cs" path="res://assets/UI/deli/Deli.png" id="2_portrait"]
+[ext_resource type="Script" uid="uid://ge2tppl251nb" path="res://assets/resources/Enemies/enemy_part_data.gd" id="1_7c5p8"]
+[ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://assets/resources/Enemies/enemy_data.gd" id="1_enemy_data"]
+[ext_resource type="Texture2D" uid="uid://gfqs50o7i7cs" path="res://assets/enemies_parts/deli/Deli.png" id="2_portrait"]
 [ext_resource type="Resource" uid="uid://bstqk1cqs06lq" path="res://assets/resources/Enemies/Deli/mochila.tres" id="2_to5f1"]
 
 [resource]

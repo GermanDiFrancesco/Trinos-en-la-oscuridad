@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://055c72hkne21"]
+
+[ext_resource type="Texture2D" uid="uid://c7jptkeltrjsp" path="res://assets/enemies_parts/Valky/Valky.png" id="1_eftar"]
+[ext_resource type="Script" uid="uid://cperpj2gwhqdr" path="res://UI/coreuta_display.gd" id="1_ho5w1"]
+[ext_resource type="LabelSettings" uid="uid://df4gqc80bho1f" path="res://assets/resources/descriptions.tres" id="3_4it0l"]
+
+[node name="coreuta" type="PanelContainer" unique_id=677224954]
+focus_mode = 2
+script = ExtResource("1_ho5w1")
+
+[node name="container" type="HBoxContainer" parent="." unique_id=482746740]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="container" unique_id=1308561476]
+layout_mode = 2
+vertical = true
+
+[node name="display_name" type="Label" parent="container/BoxContainer" unique_id=1972665563]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Valky"
+label_settings = ExtResource("3_4it0l")
+
+[node name="Cuerda" type="Label" parent="container/BoxContainer" unique_id=1695053102]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "cuerda"
+label_settings = ExtResource("3_4it0l")
+
+[node name="portrait" type="TextureRect" parent="container/BoxContainer" unique_id=60742226]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+texture = ExtResource("1_eftar")
+expand_mode = 3
+
+[node name="data" type="VBoxContainer" parent="container" unique_id=1664830521]
+layout_mode = 2
+
+[node name="detail" type="VBoxContainer" parent="container" unique_id=1076341164]
+visible = false
+layout_mode = 2
+
+[node name="Vida" type="Label" parent="container/detail" unique_id=1394541144]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Vida"
+label_settings = ExtResource("3_4it0l")
+
+[node name="Vientos" type="Label" parent="container/detail" unique_id=1914476651]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Vientos"
+label_settings = ExtResource("3_4it0l")
+
+[node name="Velocidad" type="Label" parent="container/detail" unique_id=1541622922]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Velocidad	"
+label_settings = ExtResource("3_4it0l")
+
+[node name="Ataque fisico" type="Label" parent="container/detail" unique_id=1056662981]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "ATK fis"
+label_settings = ExtResource("3_4it0l")
+
+[node name="Ataque magico" type="Label" parent="container/detail" unique_id=410327285]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "ATK mag"
+label_settings = ExtResource("3_4it0l")
+
+[node name="Dureza" type="Label" parent="container/detail" unique_id=1866581348]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Vientos"
+label_settings = ExtResource("3_4it0l")
+
+[node name="Tonicidad" type="Label" parent="container/detail" unique_id=285192087]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Vientos"
+label_settings = ExtResource("3_4it0l")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
