@@ -1,9 +1,9 @@
 extends Area2D
 class_name Interactuable
-# Clase base para objetos interactuables
+
 @export_group("DIALOGO")
-@export var datos_dialogo: DialogueData #recurso
-@export var speaker: String #recurso
+@export var datos_dialogo: DialogueData
+@export var speaker: String
 
 func interact(_target):
 	if not datos_dialogo:
@@ -12,6 +12,10 @@ func interact(_target):
 	procesar_dialogo()
 
 func procesar_dialogo():
+	var opciones_preparadas = _preparar_opciones()
+	UIManager.dialog_panel.show_dialog(speaker.capitalize(), datos_dialogo.texto_principal, opciones_preparadas)
+
+func _preparar_opciones() -> Array:
 	var opciones_preparadas = []
 	for opt in datos_dialogo.opciones:
 		if opt:
@@ -20,10 +24,10 @@ func procesar_dialogo():
 				"nombre": opt.nombre,
 				"callback": func(): _procesar_evento(id_actual)
 			})
-	UIManager.dialog_panel.show_dialog(speaker.capitalize(), datos_dialogo.texto_principal, opciones_preparadas)
+	return opciones_preparadas
 
-func _procesar_evento(id: String):#esto se puede pasar al global, implementar  herrencia con las entidades
+func _procesar_evento(id: String):
 	match id:
 		_:
 			if id != "":
-				print("Evento no reconocido: ", id)
+				print("Evento no reconocido en base: ", id)

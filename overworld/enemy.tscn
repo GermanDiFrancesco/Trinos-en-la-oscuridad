@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dvtlorgjnvae4"]
 
 [ext_resource type="Script" uid="uid://cm7hejp5eyvmj" path="res://overworld/enemy.gd" id="1_md0e3"]
-[ext_resource type="Texture2D" uid="uid://6v3b0iybj5fm" path="res://assets/pjs_spritesheet/base enemy walking.png" id="2_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://6v3b0iybj5fm" path="res://assets/pjs_spritesheet/enemy_walking.png" id="2_4ra3w"]
 [ext_resource type="Resource" uid="uid://dmtg5np1kkk7h" path="res://assets/resources/Dialogs/enemy_test.tres" id="2_g5mxg"]
+[ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://assets/resources/Enemies/enemy_data.gd" id="2_h4i76"]
+[ext_resource type="Resource" uid="uid://8apgpw5sv5sy" path="res://assets/resources/Enemies/Deli/Deli.tres" id="3_ry6yy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(16, 16)
@@ -12,7 +14,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/path = NodePath("Spritesheet:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +30,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/path = NodePath("Spritesheet:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -44,7 +46,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/path = NodePath("Spritesheet:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,7 +62,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/path = NodePath("Spritesheet:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -75,7 +77,7 @@ resource_name = "idle_up"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/path = NodePath("Spritesheet:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -93,7 +95,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/path = NodePath("Spritesheet:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -111,7 +113,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/path = NodePath("Spritesheet:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -129,7 +131,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/path = NodePath("Spritesheet:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -147,7 +149,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/path = NodePath("Spritesheet:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -176,9 +178,10 @@ size = Vector2(20, 16)
 [node name="enemy" type="Area2D" unique_id=1496379246]
 y_sort_enabled = true
 script = ExtResource("1_md0e3")
+encounter_enemies = Array[ExtResource("2_h4i76")]([ExtResource("3_ry6yy")])
 datos_dialogo = ExtResource("2_g5mxg")
 
-[node name="sprite" type="Sprite2D" parent="." unique_id=1993956008]
+[node name="Spritesheet" type="Sprite2D" parent="." unique_id=1993956008]
 modulate = Color(0.54509807, 0.54509807, 1, 1)
 position = Vector2(0, -28)
 texture = ExtResource("2_4ra3w")

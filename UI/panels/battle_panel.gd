@@ -39,7 +39,8 @@ func _on_battle_ready() -> void:
 		party_container.add_child(coreutapng)
 	actions_container.get_child(0).grab_focus()
 
-func show_description(desc:String):
+func show_description(name,desc:String):
+	print(desc)
 	$"bg-container/DescriptionContainer".text = desc
 func execute(action:String):
 	match action:

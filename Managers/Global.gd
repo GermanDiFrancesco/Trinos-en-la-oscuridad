@@ -31,6 +31,6 @@ func change_state(state: String) -> String:
 # Elimina el archivo de guardado
 func delete_save():
 	if FileAccess.file_exists(save_path):
-		var error = DirAccess.remove_absolute(save_path)
+		DirAccess.remove_absolute(save_path)
 		print_rich("[color=red]◈borrado[/color]")
 		Global._ready()

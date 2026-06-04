@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _on_draw() -> void:
 	MusicManager.opening_main_menu.play()
-	if Global.saved_data.cinematic.intro:
+	if Global.saved_data.cinematic.intro_wached:
 		continuar.show()
 		continuar.grab_focus()
 	else:

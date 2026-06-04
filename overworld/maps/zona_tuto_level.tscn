@@ -75,25 +75,25 @@ npcSprite = "james"
 datos_dialogo = SubResource("Resource_ekkkt")
 
 [node name="enemy" parent="." unique_id=2017525810 instance=ExtResource("6_gvioi")]
-position = Vector2(1024, 80)
-texto = "no me siento bien"
+position = Vector2(64, 48)
+npcSprite = "enemy"
+datos_dialogo = null
 
 [node name="enemy2" parent="." unique_id=853090648 instance=ExtResource("6_gvioi")]
 position = Vector2(-496, 48)
-npcSprite = "???"
-texto = "no me siento bien"
+npcSprite = "andante"
 
 [node name="enemy3" parent="." unique_id=1398528581 instance=ExtResource("6_gvioi")]
 position = Vector2(-144, 368)
-texto = "no me siento bien"
+npcSprite = "caminante"
 
 [node name="enemy4" parent="." unique_id=809405757 instance=ExtResource("6_gvioi")]
 position = Vector2(-832, 144)
-texto = "no me siento bien"
+npcSprite = "caminante"
 
 [node name="enemy5" parent="." unique_id=1192129880 instance=ExtResource("6_gvioi")]
 position = Vector2(-832, 144)
-texto = "no me siento bien"
+npcSprite = "enemy"
 
 [node name="Exit" parent="." unique_id=1185498034 instance=ExtResource("10_ekkkt")]
 position = Vector2(144, -48)

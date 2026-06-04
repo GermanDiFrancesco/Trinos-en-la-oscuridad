@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cslmep0kwafng"]
 
 [ext_resource type="Script" uid="uid://x3vda2fbicac" path="res://UI/panels/battle_panel.gd" id="1_mv0hn"]
+[ext_resource type="PackedScene" uid="uid://b7gh7xjkxmgti" path="res://UI/container/enemy_container.tscn" id="2_rsiyi"]
 [ext_resource type="Texture2D" uid="uid://br7f1ot346fqj" path="res://UI/batalla/fondo.png" id="3_7f25i"]
 [ext_resource type="Script" uid="uid://cvwgibx10xnsx" path="res://UI/contenedor.gd" id="3_bftqb"]
 [ext_resource type="Script" uid="uid://dg6w71dyytwid" path="res://UI/niebla_effect.gd" id="4_7f25i"]
@@ -137,6 +138,7 @@ script = ExtResource("1_mv0hn")
 party_container = NodePath("PartyContainer")
 enemies_containers = NodePath("EnemyContainer")
 actions_container = NodePath("ActionsContainer")
+enemy_container_scene = ExtResource("2_rsiyi")
 
 [node name="fondo" type="TextureRect" parent="." unique_id=1851685680]
 layout_mode = 1
@@ -222,18 +224,23 @@ script = ExtResource("3_bftqb")
 
 [node name="Atacar" parent="ActionsContainer" unique_id=2026758929 instance=ExtResource("4_bftqb")]
 layout_mode = 2
+description = "realizar un ataque"
 
 [node name="Cantar" parent="ActionsContainer" unique_id=1026417876 instance=ExtResource("4_bftqb")]
 layout_mode = 2
+description = "canto"
 
 [node name="Hablar" parent="ActionsContainer" unique_id=1449680340 instance=ExtResource("4_bftqb")]
 layout_mode = 2
+description = "hablar"
 
 [node name="Objeto" parent="ActionsContainer" unique_id=496983892 instance=ExtResource("4_bftqb")]
 layout_mode = 2
+description = "usar un objeto"
 
 [node name="Huir" parent="ActionsContainer" unique_id=342984846 instance=ExtResource("4_bftqb")]
 layout_mode = 2
+description = "huir de este enfrentamiento"
 
 [node name="bg-container" type="TextureRect" parent="." unique_id=106930951]
 layout_mode = 1

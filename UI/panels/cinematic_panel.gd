@@ -5,7 +5,7 @@ func play(cinematic_name):
 	MusicManager.play(cinematic_name)
 	await $AnimationPlayer.animation_finished
 	if cinematic_name =="intro_flautista":
-		Global.saved_data.cinematic= {"intro": true}
+		Global.saved_data.cinematic= {"intro_wached": true}
 	Overworld.game_start()
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -8,7 +8,7 @@ class_name game_save
 var current_map: String = "zona_tuto_level"
 var player_spawn_position: Vector2 = Vector2(0, 0)
 
-var cinematic = {"intro": false}
+var cinematic = {"intro_wached": false}
 var music_track = {"intro": false}
 
 # Inicializa un nuevo save con valores por defecto.
@@ -18,7 +18,7 @@ func init():
 	player = preload("res://assets/resources/Coreutas/Prota.tres")
 	party.clear()
 	party.append(player)
-	cinematic = {"intro": false}
+	cinematic = {"intro_wached": false}
 	music_track = {"intro": false}
 	save("init")
 # Guarda el estado actual en un archivo JSON.
@@ -87,7 +87,7 @@ func load():
 				c.description = cdata.description
 				party.append(c)
 		file.close()
-		print_rich("[color=Steel_Blue][b]Loaded\n[/b]-Intro: "+str(cinematic.intro)+"\n-Map: "+ current_map +"\n-SpawnPos: " + str(player_spawn_position) + " [/color]")
+		print_rich("[color=Steel_Blue][b]Loaded\n[/b]-Intro: "+str(cinematic.intro_wached)+"\n-Map: "+ current_map +"\n-SpawnPos: " + str(player_spawn_position) + " [/color]")
 	file.close()
 	return false
 
