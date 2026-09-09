@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4elkkyse5qt3"
-path="res://.godot/imported/prota_walking.png-32f0cf0f0d9af7d0cb8136c25b574851.ctex"
+uid="uid://c7s2g1kxfdhg4"
+path="res://.godot/imported/escalera2.png-f320c9a15feb487b8d8d9dbea0916f29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pjs_spritesheet/prota_walking.png"
-dest_files=["res://.godot/imported/prota_walking.png-32f0cf0f0d9af7d0cb8136c25b574851.ctex"]
+source_file="res://assets/overworld/escalera2.png"
+dest_files=["res://.godot/imported/escalera2.png-f320c9a15feb487b8d8d9dbea0916f29.ctex"]
 
 [params]
 

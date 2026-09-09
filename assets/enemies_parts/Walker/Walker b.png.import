@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4elkkyse5qt3"
-path="res://.godot/imported/prota_walking.png-32f0cf0f0d9af7d0cb8136c25b574851.ctex"
+uid="uid://c1r147565hv6d"
+path="res://.godot/imported/Walker b.png-90c32f8922035e8df4efe1c45892a3d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pjs_spritesheet/prota_walking.png"
-dest_files=["res://.godot/imported/prota_walking.png-32f0cf0f0d9af7d0cb8136c25b574851.ctex"]
+source_file="res://assets/enemies_parts/Walker/Walker b.png"
+dest_files=["res://.godot/imported/Walker b.png-90c32f8922035e8df4efe1c45892a3d2.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4elkkyse5qt3"
-path="res://.godot/imported/prota_walking.png-32f0cf0f0d9af7d0cb8136c25b574851.ctex"
+uid="uid://b7e5s15njon71"
+path="res://.godot/imported/farola.png-4dc49c59308e0f0ec06b34148156c6c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pjs_spritesheet/prota_walking.png"
-dest_files=["res://.godot/imported/prota_walking.png-32f0cf0f0d9af7d0cb8136c25b574851.ctex"]
+source_file="res://assets/misc/farola.png"
+dest_files=["res://.godot/imported/farola.png-4dc49c59308e0f0ec06b34148156c6c2.ctex"]
 
 [params]
 

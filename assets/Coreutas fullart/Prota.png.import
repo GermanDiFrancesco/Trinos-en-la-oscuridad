@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4elkkyse5qt3"
-path="res://.godot/imported/prota_walking.png-32f0cf0f0d9af7d0cb8136c25b574851.ctex"
+uid="uid://dafw8a2tukt7o"
+path="res://.godot/imported/Prota.png-7c278aa635f78e0ed49dc2f6e09a3d18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pjs_spritesheet/prota_walking.png"
-dest_files=["res://.godot/imported/prota_walking.png-32f0cf0f0d9af7d0cb8136c25b574851.ctex"]
+source_file="res://assets/Coreutas fullart/Prota.png"
+dest_files=["res://.godot/imported/Prota.png-7c278aa635f78e0ed49dc2f6e09a3d18.ctex"]
 
 [params]
 

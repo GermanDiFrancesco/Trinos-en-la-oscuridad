@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4elkkyse5qt3"
-path="res://.godot/imported/prota_walking.png-32f0cf0f0d9af7d0cb8136c25b574851.ctex"
+uid="uid://bvwjkpr61wrry"
+path="res://.godot/imported/ciudad_hub_map.png-15f4890d8cf878affe3b3d546c06974f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pjs_spritesheet/prota_walking.png"
-dest_files=["res://.godot/imported/prota_walking.png-32f0cf0f0d9af7d0cb8136c25b574851.ctex"]
+source_file="res://assets/mapas/ciudad_hub_map.png"
+dest_files=["res://.godot/imported/ciudad_hub_map.png-15f4890d8cf878affe3b3d546c06974f.ctex"]
 
 [params]
 

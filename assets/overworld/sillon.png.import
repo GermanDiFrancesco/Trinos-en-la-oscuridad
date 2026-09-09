@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4elkkyse5qt3"
-path="res://.godot/imported/prota_walking.png-32f0cf0f0d9af7d0cb8136c25b574851.ctex"
+uid="uid://dskexcwta4i71"
+path="res://.godot/imported/sillon.png-d3862d1f2b6d2336a9aaed00dcd519d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pjs_spritesheet/prota_walking.png"
-dest_files=["res://.godot/imported/prota_walking.png-32f0cf0f0d9af7d0cb8136c25b574851.ctex"]
+source_file="res://assets/overworld/sillon.png"
+dest_files=["res://.godot/imported/sillon.png-d3862d1f2b6d2336a9aaed00dcd519d6.ctex"]
 
 [params]
 
