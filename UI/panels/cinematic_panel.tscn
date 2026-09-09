@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ywrvmh5kbock" path="res://assets/cinematicas/00_intro_flautista/cin intro 10.png" id="11_dt2j4"]
 [ext_resource type="Texture2D" uid="uid://bsxx30w1w3qg4" path="res://assets/cinematicas/00_intro_flautista/cin intro 11.png" id="12_4xkue"]
 [ext_resource type="Texture2D" uid="uid://bxco1ah75634m" path="res://assets/cinematicas/00_intro_flautista/cin intro 12.png" id="13_8x5yi"]
+[ext_resource type="Texture2D" uid="uid://ctpqns3pbmore" path="res://UI/saltar cinematica.png" id="15_rilso"]
 
 [sub_resource type="Animation" id="Animation_82evs"]
 resource_name = "RESET"
@@ -184,5 +185,18 @@ text = "Flautista: Que bella noche que tenemos en nuestra ciudad.
 La ciudad que de noche brilla, la ciudad de los mil ángulos, la ciudad de los encuentros. 
 Tantas voces, pidiendo, rogando, suplicando. Tanta… Discordancia.
 El mundo solo necesita una melodía… la mía."
+
+[node name="SkipProgressBar" type="TextureProgressBar" parent="." unique_id=1494369038]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_progress = ExtResource("15_rilso")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

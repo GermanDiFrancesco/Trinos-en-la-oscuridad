@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dpp642gyvp3l3"]
 
 [ext_resource type="Script" uid="uid://df1kwtq7lecxm" path="res://overworld/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://dwrf0jn2tsfve" path="res://assets/pjs_spritesheet/prota_walking.png" id="2_b5l7a"]
+[ext_resource type="Texture2D" uid="uid://b4elkkyse5qt3" path="res://assets/pjs_spritesheet/prota_walking.png" id="2_b5l7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(16, 14)
@@ -176,39 +176,37 @@ position = Vector2(0, -8)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="InteractionArea" type="Area2D" parent="interactPivot" unique_id=847892205]
+[node name="InteractionArea" type="Area2D" parent="interactPivot" unique_id=847892205 groups=["interaction"]]
 position = Vector2(0, 8)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="interactPivot/InteractionArea" unique_id=2001163436]
 polygon = PackedVector2Array(16, 0, 16, 24, -16, 24, -16, 0)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2082054061]
-position_smoothing_enabled = true
-position_smoothing_speed = 2.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.1
-drag_top_margin = 0.1
-drag_right_margin = 0.1
-drag_bottom_margin = 0.1
-editor_draw_drag_margin = true
-
 [node name="coll" type="CollisionShape2D" parent="." unique_id=1012479758]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_cvnsp")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=779735796]
-libraries/ = SubResource("AnimationLibrary_r34na")
-autoplay = &"idle_down"
+[node name="OverworldCamera" type="Camera2D" parent="." unique_id=2082054061]
+limit_smoothed = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+editor_draw_drag_margin = true
 
 [node name="Spritesheet" type="Sprite2D" parent="." unique_id=12102801]
-position = Vector2(0, -28)
+position = Vector2(0, -14)
 texture = ExtResource("2_b5l7a")
+offset = Vector2(0, -14)
 hframes = 3
 vframes = 4
 frame = 1
 region_rect = Rect2(51, 5, 25, 56)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=779735796]
+libraries/ = SubResource("AnimationLibrary_r34na")
+autoplay = &"idle_down"
 
 [connection signal="area_entered" from="interactPivot/InteractionArea" to="." method="_on_interaction_area_entered"]
 [connection signal="area_exited" from="interactPivot/InteractionArea" to="." method="_on_interaction_area_exited"]

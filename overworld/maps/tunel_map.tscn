@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c562s2duv5nrw"]
+
+[ext_resource type="Texture2D" uid="uid://d1yxey45x5jvn" path="res://assets/mapas/tunel.png" id="1_dijic"]
+[ext_resource type="Texture2D" uid="uid://bbm10b5r86rfr" path="res://assets/interior_top.png" id="2_5me44"]
+[ext_resource type="PackedScene" uid="uid://djeg8f7ei5hrg" path="res://overworld/puerta.tscn" id="3_5me44"]
+[ext_resource type="PackedScene" uid="uid://fghxcf7uybln" path="res://overworld/exit_scene.tscn" id="3_l02qn"]
+
+[sub_resource type="GDScript" id="GDScript_txhqi"]
+script/source = "extends Map
+"
+
+[node name="interior_map" type="Node2D" unique_id=896681006 node_paths=PackedStringArray("spawnpos")]
+y_sort_enabled = true
+script = SubResource("GDScript_txhqi")
+spawnpos = NodePath("Exit/Marker2D")
+
+[node name="Interior" type="Sprite2D" parent="." unique_id=1149274209]
+z_index = -1
+position = Vector2(-210, -13)
+texture = ExtResource("1_dijic")
+
+[node name="Interior2" type="Sprite2D" parent="." unique_id=382010365]
+visible = false
+z_index = 1
+texture = ExtResource("2_5me44")
+
+[node name="Puerta" parent="." unique_id=2086559895 instance=ExtResource("3_5me44")]
+position = Vector2(-2, 219)
+
+[node name="Exit" parent="." unique_id=1185498034 instance=ExtResource("3_l02qn")]
+z_index = 1
+position = Vector2(0, 242)
+next_map = "casa_a_map"
+
+[node name="Marker2D" type="Marker2D" parent="Exit" unique_id=1023977598]
+position = Vector2(0, -19)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1495357341]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1348820468]
+position = Vector2(96, 7)
+polygon = PackedVector2Array(-131, 226, -306, 182, -781, -20, -902, -92, -881, -349, -205, -251, 227, -10, 293, 128, 216, 252, -132, 246, -131, 226, 153, 226, 228, 195, 229, 101, 152, 132, -131, 131, -213, 99, -213, -116, -487, -117, -659, -188, -841, -184, -839, -89, -659, -89, -487, -21, -299, -21, -299, 159)

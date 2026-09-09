@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://skl8mufl3mh7"]
+
+[ext_resource type="Texture2D" uid="uid://drmpomvsuvtig" path="res://assets/overworld/organo.png" id="1_u2ta8"]
+
+[node name="organo" type="StaticBody2D" unique_id=1051641785]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1991522619]
+position = Vector2(0, -34)
+texture = ExtResource("1_u2ta8")
+offset = Vector2(0, -2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=419323491]
+polygon = PackedVector2Array(35, 0, 35, -30, -34, -30, -34, 0, -13, 0, -13, 6, 0, 3, 14, 6, 14, 0)

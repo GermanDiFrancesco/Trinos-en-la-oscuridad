@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://bjxvrb3xc1gqr"]
+[gd_scene format=3 uid="uid://n62p7low5qys"]
 
-[ext_resource type="Script" uid="uid://c4syqikur733q" path="res://overworld/npc.gd" id="1_abqhh"]
-[ext_resource type="PackedScene" uid="uid://behsku5t70i4o" path="res://overworld/Interactuable.tscn" id="2_e0e48"]
-[ext_resource type="Texture2D" uid="uid://gv6hux6g156h" path="res://assets/misc/msj.png" id="3_0nanp"]
-[ext_resource type="Texture2D" uid="uid://bqw46f2bwwsww" path="res://assets/pjs_spritesheet/base npc walking.png" id="3_e0e48"]
+[ext_resource type="Script" uid="uid://c4f722oct7ubc" path="res://overworld/overworld_entity.gd" id="1_5e5q6"]
+[ext_resource type="PackedScene" uid="uid://behsku5t70i4o" path="res://overworld/Interactuable.tscn" id="2_1nqon"]
+[ext_resource type="Texture2D" uid="uid://6v3b0iybj5fm" path="res://assets/pjs_spritesheet/enemy_walking.png" id="3_5e5q6"]
+[ext_resource type="Texture2D" uid="uid://gv6hux6g156h" path="res://assets/misc/msj.png" id="4_y6hd5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(16, 16)
@@ -169,33 +169,25 @@ _data = {
 &"walking_up": SubResource("Animation_u13xr")
 }
 
-[node name="Npc" type="CharacterBody2D" unique_id=974210886]
+[node name="Npe" type="CharacterBody2D" unique_id=974210886]
 y_sort_enabled = true
-script = ExtResource("1_abqhh")
-facing = 3
-entity_sprite = "kruta"
+script = ExtResource("1_5e5q6")
 
-[node name="coll" type="StaticBody2D" parent="." unique_id=1941429570]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="coll" unique_id=150408072]
+[node name="Coll" type="CollisionShape2D" parent="." unique_id=1012479758]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_cvnsp")
 
-[node name="Interactuable" parent="." unique_id=1496379246 node_paths=PackedStringArray("icon") instance=ExtResource("2_e0e48")]
-position = Vector2(0, -18)
+[node name="Interactuable" parent="." unique_id=1496379246 node_paths=PackedStringArray("icon") instance=ExtResource("2_1nqon")]
+position = Vector2(0, -24)
 icon = NodePath("../icon")
 
 [node name="Spritesheet" type="Sprite2D" parent="." unique_id=1993956008]
 position = Vector2(0, -28)
-texture = ExtResource("3_e0e48")
+texture = ExtResource("3_5e5q6")
 hframes = 3
 vframes = 4
 frame = 1
 region_rect = Rect2(51, 5, 25, 56)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1012479758]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=75024829]
 libraries/ = SubResource("AnimationLibrary_xfg7p")
@@ -204,4 +196,4 @@ libraries/ = SubResource("AnimationLibrary_xfg7p")
 visible = false
 z_index = 1
 position = Vector2(-2, -44)
-texture = ExtResource("3_0nanp")
+texture = ExtResource("4_y6hd5")

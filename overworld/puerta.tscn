@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://djeg8f7ei5hrg"]
+
+[ext_resource type="Texture2D" uid="uid://djwon847h4e50" path="res://assets/overworld/puertas.png" id="2_3mgjg"]
+[ext_resource type="Script" uid="uid://brwc8v1mq8yop" path="res://overworld/puerta.gd" id="2_6b2jt"]
+
+[node name="Puerta" type="Sprite2D" unique_id=2086559895]
+texture = ExtResource("2_3mgjg")
+flip_h = true
+hframes = 2
+vframes = 6
+frame = 1
+region_rect = Rect2(2, 1, 25, 78)
+script = ExtResource("2_6b2jt")
+view = "int_front"

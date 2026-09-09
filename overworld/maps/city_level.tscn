@@ -1,0 +1,1108 @@
+[gd_scene format=3 uid="uid://b3s7eg6ikdmr"]
+
+[ext_resource type="Script" uid="uid://bsf4b1fn4rsih" path="res://overworld/maps/city_level.gd" id="1_8wxpc"]
+[ext_resource type="Texture2D" uid="uid://bvwjkpr61wrry" path="res://assets/mapas/ciudad_hub_map.png" id="2_3omf0"]
+[ext_resource type="Script" uid="uid://kjjmulttubik" path="res://overworld/maps/01_aparecen_enemigos.gd" id="2_b2pxc"]
+[ext_resource type="Texture2D" uid="uid://bkd3orqxbyri6" path="res://assets/overworld/fences.png" id="3_gdsbl"]
+[ext_resource type="Texture2D" uid="uid://npqebdn4rymr" path="res://assets/mapas/blocked.png" id="3_pp285"]
+[ext_resource type="Shader" uid="uid://d0dxwpplqyxqg" path="res://assets/shaders/niebla_col.gdshader" id="4_mdg3o"]
+[ext_resource type="PackedScene" uid="uid://bfrxabb0blv6q" path="res://UI/fog_wall.tscn" id="4_ukv0y"]
+[ext_resource type="Texture2D" uid="uid://cuiribq46puh1" path="res://assets/misc/techo_on_top.png" id="5_u33gx"]
+[ext_resource type="PackedScene" uid="uid://4c7nrtkjsl1x" path="res://overworld/objs/cono.tscn" id="7_chg5e"]
+[ext_resource type="PackedScene" uid="uid://fghxcf7uybln" path="res://overworld/exit_scene.tscn" id="7_qub3r"]
+[ext_resource type="PackedScene" uid="uid://cc5f4ntx08xyu" path="res://overworld/ojo.tscn" id="8_chg5e"]
+[ext_resource type="Texture2D" uid="uid://cgshnqly2y0bg" path="res://assets/misc/greenery.png" id="9_mdg3o"]
+[ext_resource type="Texture2D" uid="uid://d2pcupobyrij6" path="res://assets/misc/troncos.png" id="10_oqiiv"]
+[ext_resource type="PackedScene" uid="uid://ca06faxyuol5a" path="res://scenes/misc/luz_calle.tscn" id="11_oqiiv"]
+[ext_resource type="PackedScene" uid="uid://dxkia4d6jwcxn" path="res://scenes/misc/tacho.tscn" id="12_3omf0"]
+[ext_resource type="PackedScene" uid="uid://bjxvrb3xc1gqr" path="res://overworld/npc.tscn" id="15_xk3wf"]
+[ext_resource type="PackedScene" uid="uid://djeg8f7ei5hrg" path="res://overworld/puerta.tscn" id="16_4mx6b"]
+[ext_resource type="Script" uid="uid://d0dlfn3mwf0wd" path="res://overworld/maps/dialogo_con_ corista.gd" id="16_bx1xa"]
+[ext_resource type="PackedScene" uid="uid://dvtlorgjnvae4" path="res://overworld/enemy.tscn" id="17_b2pxc"]
+[ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://assets/resources/Enemies/EnemyData.gd" id="18_y7df0"]
+[ext_resource type="Resource" uid="uid://8apgpw5sv5sy" path="res://assets/resources/Enemies/Deli/Deli.tres" id="20_646ri"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bx1xa"]
+viewport_path = NodePath("../SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s088a"]
+resource_local_to_scene = true
+shader = ExtResource("4_mdg3o")
+shader_parameter/use_mask = true
+shader_parameter/mask_texture = SubResource("ViewportTexture_bx1xa")
+shader_parameter/mask_softness = 0.02
+shader_parameter/fog_color = Color(0.534615, 0.3119526, 0.8985799, 0.9019608)
+shader_parameter/density = 0.800000038
+shader_parameter/speed = 0.10000000475
+shader_parameter/move_direction = Vector2(1, 0.5)
+shader_parameter/noise_scale = 50.0
+shader_parameter/pixel_size = 1024.0
+shader_parameter/alpha_steps = 8.0000003325
+shader_parameter/edge_fade_distance = 0.02000000025148
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_646ri"]
+viewport_path = NodePath("../SubViewport2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fx7ue"]
+resource_local_to_scene = true
+shader = ExtResource("4_mdg3o")
+shader_parameter/use_mask = true
+shader_parameter/mask_texture = SubResource("ViewportTexture_646ri")
+shader_parameter/mask_softness = 0.02
+shader_parameter/fog_color = Color(0.41477412, 0.39391467, 0.86994284, 0.9019608)
+shader_parameter/density = 0.5890000279775
+shader_parameter/speed = 0.12800000608
+shader_parameter/move_direction = Vector2(1, 0.5)
+shader_parameter/noise_scale = 50.0
+shader_parameter/pixel_size = 1024.0
+shader_parameter/alpha_steps = 10.7250004619375
+shader_parameter/edge_fade_distance = 0.02000000025148
+
+[node name="CiudadHub" type="Node2D" unique_id=1627755828 node_paths=PackedStringArray("spawnpos")]
+y_sort_enabled = true
+script = ExtResource("1_8wxpc")
+spawnpos = NodePath("CitySpawn")
+
+[node name="Coll" type="StaticBody2D" parent="." unique_id=1427300573]
+visible = false
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Coll" unique_id=1089420223]
+position = Vector2(-1206, -567)
+polygon = PackedVector2Array(-16, 448, -832, 768, -454, 997, -414, 1056, -469, 1095, -782, 1214, -651, 1542, -520.3007, 1543.8744, -163, 1346, 201, 1351, 387, 1421, 566, 1559, 847, 1563, 855, 1563, 1846, 1575, 1862, 1575, 2294, 1575, 2418, 1504, 2110, 1156, 2144, 1045, 2277, 899, 2386, 794, 1684, 525, 1633, 236, 1072, 16, 810, 125, 720, 0, 1072, -48, 3235, 879, 3296, 1680, -992, 1696, -944, -512, -448, -464, 720, 0, 816, 138, 853, 184, 805, 207, 731, 202, 625, 148, 601, 103, -448, -320, -448, -240, -440, -77, -394, 86, -235, 151, -16, 336)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coll" unique_id=1582302049]
+position = Vector2(-190, 0)
+polygon = PackedVector2Array(656, 1008, 640, 1008, 158, 828, 60, 804, -10, 777, -160, 779, -160, 771, 32, 771)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Coll" unique_id=308222623]
+position = Vector2(-494.00006, 16)
+polygon = PackedVector2Array(48, 763, -45, 763, -45, 980, -55, 980, -55, 757, -48, 752, 48, 752)
+
+[node name="triger_enemigos" type="Area2D" parent="." unique_id=1172853159 node_paths=PackedStringArray("focus_target")]
+position = Vector2(-929, -81)
+script = ExtResource("2_b2pxc")
+focus_target = NodePath("../Marker2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="triger_enemigos" unique_id=15077041]
+polygon = PackedVector2Array(173, 28, 15, -126, 480, 74, 653, 406, 793, 845, 384, 849, 359, 462, 296, 255)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1829981479]
+position = Vector2(792, 372)
+
+[node name="TestMap_png" type="Sprite2D" parent="." unique_id=333417663]
+z_index = -3
+texture = ExtResource("2_3omf0")
+metadata/_edit_lock_ = true
+
+[node name="Blocked" type="Sprite2D" parent="TestMap_png" unique_id=388230374]
+texture = ExtResource("3_pp285")
+
+[node name="rejas" type="Sprite2D" parent="." unique_id=1985216626]
+y_sort_enabled = true
+position = Vector2(-158, 758)
+texture = ExtResource("3_gdsbl")
+offset = Vector2(222, 107)
+metadata/_edit_lock_ = true
+
+[node name="TechoOnTop" type="Sprite2D" parent="." unique_id=1477955572]
+z_index = 1
+position = Vector2(811, 15)
+texture = ExtResource("5_u33gx")
+
+[node name="TechoOnTop3" type="Sprite2D" parent="." unique_id=1764296658]
+z_index = 1
+position = Vector2(-1587, -918)
+texture = ExtResource("5_u33gx")
+region_enabled = true
+region_rect = Rect2(0, 0, 72, 64)
+
+[node name="TechoOnTop2" type="Sprite2D" parent="." unique_id=417934017]
+z_index = 1
+position = Vector2(-1561, -56)
+texture = ExtResource("5_u33gx")
+flip_h = true
+
+[node name="FogWall" parent="." unique_id=992773463 instance=ExtResource("4_ukv0y")]
+material = SubResource("ShaderMaterial_s088a")
+
+[node name="FogWall2" parent="." unique_id=998044768 instance=ExtResource("4_ukv0y")]
+material = SubResource("ShaderMaterial_fx7ue")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1753148587]
+transparent_bg = true
+size = Vector2i(4296, 2248)
+
+[node name="poso1" type="Polygon2D" parent="SubViewport" unique_id=234012459]
+polygon = PackedVector2Array(-52.617188, 1412.9456, 182.13513, 1351.1687, 637.0232, 1632.7118, -101.61749, 1845.1106)
+uv = PackedVector2Array(-131.66669, -47.555206, -79.44446, -25.332985, -81.66669, 21.33368, -141.66669, 23.555908)
+
+[node name="borde parque" type="Polygon2D" parent="SubViewport" unique_id=1069483436]
+polygon = PackedVector2Array(516.41846, 2028.2177, 811.7797, 1859.4398, 1275.9188, 1901.6343, 1467.7118, 2058.9045, 3608.063, 2090.7317, 3734.912, 2548.2842, -542.2838, 2365.7705, -251.30334, 770.27246, 351.46606, 2158.6313)
+uv = PackedVector2Array(267.0891, 2143.2935, 581.6297, 1901.6344, 1114.8142, 1882.4551, 1298.9355, 2081.92, 2587.7844, 2212.339, 577.79376, 2189.324, 455.04633, 2193.1597, 401.34418, 2193.1597, 332.29877, 2196.9956)
+
+[node name="top" type="Polygon2D" parent="SubViewport" unique_id=38871555]
+polygon = PackedVector2Array(487.5719, 179.84543, 466.46008, 83.408005, -60.863068, 98.41313, -60.861816, 479.97272, 376.43054, 597.8702, 954.4417, 944.9987, 970.00586, 885.3438, 850.6937, 732.313, 684.6941, 651.9069, 596.50757, 524.8135, 510.91406, 475.53238, 479.78906, 374.37637, 427.91418, 286.1891)
+uv = PackedVector2Array(416.46326, 243.54453, 463.5398, -145.62079, -236.33014, 230.99078, 780.5211, 896.338, 912.3352, 836.70776, 802.49023, 638.9867, 676.953, 632.70984, 642.4303, 626.433, 664.3993, 547.97217, 614.1843, 513.44946, 604.76904, 475.7883, 529.4468, 403.60446, 457.26294, 340.83585)
+
+[node name="poso centro" type="Polygon2D" parent="SubViewport" unique_id=603988020]
+polygon = PackedVector2Array(1491.4341, 665.0333, 1687.9822, 322.65918, 1748.2148, 690.3944, 1735.7949, 820.68713)
+uv = PackedVector2Array(-131.66669, -47.555206, -79.44446, -25.332985, -81.66669, 21.33368, -141.66669, 23.555908)
+
+[node name="atras barricada" type="Polygon2D" parent="SubViewport" unique_id=808146703]
+polygon = PackedVector2Array(2715.8916, 760.85767, 3019.8423, 592.92334, 3346.5962, 393.80768, 3001.5093, 348.5751, 2871.8218, 351.45703, 3031.5964, 290.16815, 2425.5974, 217.81006, 2404.948, 394.6861, 1926.0421, 439.09018, 2145.2097, 588.6453, 2488.911, 552.46625, 2226.6128, 651.9587, 2436.5952, 755.5487, 2516.7646, 882.1321, 2488.8672, 980.9437, 2565.45, 991.1548)
+uv = PackedVector2Array(2658.5586, 772.22, 3517.376, 423.5055, 3102.377, 362.9848, 3001.5093, 348.5751, 2871.8218, 351.45703, 2733.4888, 362.9848, 2543.281, 374.51254, 2404.948, 394.6861, 2246.4414, 440.79712, 2260.851, 504.19977, 2309.844, 561.8385, 2384.7744, 619.4773, 2476.9963, 668.4702, 2531.7532, 708.8174, 2606.6836, 766.4562, 2629.739, 783.7478)
+
+[node name="calle hacia laderecha" type="Polygon2D" parent="SubViewport" unique_id=640289155]
+polygon = PackedVector2Array(2916.585, 1622.8833, 3278.3755, 1333.4512, 5340.58, 2011.8079, 3875.3296, 2644.941)
+uv = PackedVector2Array(-131.66669, -47.555206, -79.44446, -25.332985, -81.66669, 21.33368, -141.66669, 23.555908)
+
+[node name="SubViewport2" type="SubViewport" parent="." unique_id=2010798459]
+transparent_bg = true
+size = Vector2i(4296, 2248)
+
+[node name="poso1" type="Polygon2D" parent="SubViewport2" unique_id=1193383804]
+polygon = PackedVector2Array(-52.617188, 1412.9456, 182.13513, 1351.1687, 637.0232, 1632.7118, -101.61749, 1845.1106)
+uv = PackedVector2Array(-131.66669, -47.555206, -79.44446, -25.332985, -81.66669, 21.33368, -141.66669, 23.555908)
+
+[node name="borde parque" type="Polygon2D" parent="SubViewport2" unique_id=485873867]
+polygon = PackedVector2Array(657.7667, 1990.9482, 444.72693, 2082.8477, 221.57275, 2193.9797, 247.79297, 1997.3296, 129.80273, 2062.8796, 77.36279, 1918.6697, -27.51709, 1800.6794, 51.143066, 1617.1394, -53.737305, 1472.9294, 51.143066, 1132.0693, -53.737305, 1000.9692, -145.50732, 909.19916, -211.05713, 1171.3993, -329.04736, 1354.9395, -460.14746, 1512.2595, -604.3574, 1748.2395, -630.57715, 1944.8896, -591.24756, 2220.1997, -683.0176, 2443.0698, -787.89746, 2547.9497, -447.0371, 2626.6099, -355.2671, 2692.16, -1.296875, 2744.5999, 326.45313, 2718.38, 614.87305, 2783.93, 1008.17285, 2757.71, 1493.2432, 2744.5999, 2555.1528, 2797.04, 3735.0537, 2626.6099, 4534.7637, 2180.8696, 3944.8135, 1695.7996, 3630.1729, 1879.3396, 2800.696, 2078.6704, 2307.7805, 2112.0884, 1973.6006, 2053.607, 1714.6111, 2095.3794, 1263.468, 2082.8477, 837.3884, 2049.4297)
+uv = PackedVector2Array(352.67285, 2154.6497, 326.45313, 2154.6497, 274.01318, 2115.3196, 247.79297, 1997.3296, 234.6831, 1879.3396, 234.6831, 1813.7896, 195.35303, 1682.6895, 169.13281, 1512.2595, 142.91309, 1328.7192, 51.143066, 1132.0693, -53.737305, 1000.9692, -145.50732, 909.19916, -211.05713, 1171.3993, -329.04736, 1354.9395, -460.14746, 1512.2595, -604.3574, 1748.2395, -630.57715, 1944.8896, -591.24756, 2220.1997, -683.0176, 2443.0698, -787.89746, 2547.9497, -447.0371, 2626.6099, -355.2671, 2692.16, -1.296875, 2744.5999, 326.45313, 2718.38, 614.87305, 2783.93, 1008.17285, 2757.71, 1493.2432, 2744.5999, 1873.4336, 2692.16, 2017.6436, 2600.39, 2279.8438, 2416.8496, 2410.9443, 2233.3098, 2358.504, 2062.8796, 1886.544, 1957.9995, 1506.3535, 2154.6497, 1204.8232, 2207.0896, 955.7334, 2220.1997, 732.8633, 2207.0896, 627.9834, 2193.9797)
+
+[node name="top" type="Polygon2D" parent="SubViewport2" unique_id=299053868]
+polygon = PackedVector2Array(479.47034, 169.1516, 449.46008, 83.408005, -77.86307, 98.41313, -77.86182, 479.97272, 359.43054, 597.8702, 985.35876, 972.9984, 736.7024, 773.64453, 970.35364, 870.1061, 893.18445, 773.64453, 816.01526, 730.77277, 719.5537, 670.75226, 475.1844, 550.71124, 423.737, 261.326)
+uv = PackedVector2Array(416.46326, 243.54453, 463.5398, -145.62079, -236.33014, 230.99078, 780.5211, 896.338, 912.3352, 836.70776, 802.49023, 638.9867, 676.953, 632.70984, 642.4303, 626.433, 664.3993, 547.97217, 614.1843, 513.44946, 604.76904, 475.7883, 529.4468, 403.60446, 457.26294, 340.83585)
+
+[node name="poso centro" type="Polygon2D" parent="SubViewport2" unique_id=1077799199]
+polygon = PackedVector2Array(1657.2644, 543.4341, 1616.4648, 587.3721, 1594.4958, 637.587, 1619.6033, 684.6634, 1669.8181, 716.04767, 1713.7561, 716.04767, 1751.4172, 687.8018, 1745.1404, 643.86383, 1723.1714, 631.31006, 1720.033, 593.6489, 1707.4792, 565.4031)
+uv = PackedVector2Array(1657.2644, 543.4341, 1616.4648, 587.3721, 1594.4958, 637.587, 1619.6033, 684.6634, 1669.8181, 716.04767, 1713.7561, 716.04767, 1751.4172, 687.8018, 1745.1404, 643.86383, 1723.1714, 631.31006, 1720.033, 593.6489, 1707.4792, 565.4031)
+
+[node name="atras barricada" type="Polygon2D" parent="SubViewport2" unique_id=119160932]
+polygon = PackedVector2Array(2715.8916, 760.85767, 3019.8423, 592.92334, 3346.5962, 393.80768, 3001.5093, 348.5751, 2871.8218, 351.45703, 3031.5964, 290.16815, 2425.5974, 217.81006, 2404.948, 394.6861, 1926.0421, 439.09018, 2145.2097, 588.6453, 2488.911, 552.46625, 2226.6128, 651.9587, 2436.5952, 755.5487, 2516.7646, 882.1321, 2488.8672, 980.9437, 2565.45, 991.1548)
+uv = PackedVector2Array(2658.5586, 772.22, 3517.376, 423.5055, 3102.377, 362.9848, 3001.5093, 348.5751, 2871.8218, 351.45703, 2733.4888, 362.9848, 2543.281, 374.51254, 2404.948, 394.6861, 2246.4414, 440.79712, 2260.851, 504.19977, 2309.844, 561.8385, 2384.7744, 619.4773, 2476.9963, 668.4702, 2531.7532, 708.8174, 2606.6836, 766.4562, 2629.739, 783.7478)
+
+[node name="calle hacia laderecha" type="Polygon2D" parent="SubViewport2" unique_id=2090300788]
+polygon = PackedVector2Array(5572.393, 2266.3525, 5406.255, 2095.3398, 5188.7676, 1593.9731, 4397.198, 1487.1654, 4300.6934, 1467.4586, 4435.1494, 1752.1324, 4026.1338, 1658.2917, 3602.0464, 1397.9044, 3557.8115, 1480.2622, 3545.2705, 1541.675, 3530.938, 1611.8612, 3537.7354, 1668.0837, 3551.5142, 1734.8712, 3605.5767, 1828.1628, 3687.75, 1918.056, 3833.128, 2011.7166, 4101.3315, 2130.4585, 4206.426, 2197.615, 4156.8164, 2306.2925, 4054.567, 2404.2212, 4410.5034, 2540.8787, 5306.2974, 2495.3264)
+uv = PackedVector2Array(5477.9893, 2056.477, 5280.995, 1922.1624, 4170.66, 1492.3556, 3687.1277, 1268.4979, 3588.6306, 1349.0867, 3427.453, 1465.4927, 3400.59, 1537.1272, 3373.7268, 1599.8074, 3346.864, 1689.3503, 3346.864, 1752.0305, 3346.864, 1823.665, 3364.7727, 1877.3909, 3391.6355, 1940.071, 3463.2703, 2020.6598, 3561.7673, 2092.2944, 3722.945, 2154.9746, 4009.4832, 2217.6545, 4125.8887, 2262.4263, 4099.0264, 2378.832, 4018.4373, 2495.2383, 4394.5186, 2557.9185, 5263.086, 2334.0605)
+
+[node name="CitySpawn" type="Marker2D" parent="." unique_id=1664600815]
+position = Vector2(-1921, 195)
+
+[node name="obj" parent="." unique_id=1051641785 instance=ExtResource("7_chg5e")]
+position = Vector2(-271, -395)
+metadata/_edit_lock_ = true
+
+[node name="obj2" parent="." unique_id=511715122 instance=ExtResource("7_chg5e")]
+position = Vector2(-286, -481)
+metadata/_edit_lock_ = true
+
+[node name="obj3" parent="." unique_id=1011385052 instance=ExtResource("7_chg5e")]
+position = Vector2(-236, -453)
+metadata/_edit_lock_ = true
+
+[node name="obj4" parent="." unique_id=2136915876 instance=ExtResource("7_chg5e")]
+position = Vector2(-153, -377)
+metadata/_edit_lock_ = true
+
+[node name="obj5" parent="." unique_id=46670943 instance=ExtResource("7_chg5e")]
+position = Vector2(-73, -391)
+metadata/_edit_lock_ = true
+
+[node name="obj6" parent="." unique_id=181461404 instance=ExtResource("7_chg5e")]
+position = Vector2(40, -353)
+metadata/_edit_lock_ = true
+
+[node name="obj7" parent="." unique_id=1699469099 instance=ExtResource("7_chg5e")]
+position = Vector2(51, -335)
+metadata/_edit_lock_ = true
+
+[node name="obj8" parent="." unique_id=1580475941 instance=ExtResource("7_chg5e")]
+position = Vector2(199, -275)
+metadata/_edit_lock_ = true
+
+[node name="obj9" parent="." unique_id=1609629146 instance=ExtResource("7_chg5e")]
+position = Vector2(295, -267)
+metadata/_edit_lock_ = true
+
+[node name="obj10" parent="." unique_id=511258387 instance=ExtResource("7_chg5e")]
+position = Vector2(397, -234)
+metadata/_edit_lock_ = true
+
+[node name="obj12" parent="." unique_id=916437621 instance=ExtResource("7_chg5e")]
+position = Vector2(354, -254)
+metadata/_edit_lock_ = true
+
+[node name="obj13" parent="." unique_id=561178702 instance=ExtResource("7_chg5e")]
+position = Vector2(354, -254)
+metadata/_edit_lock_ = true
+
+[node name="obj11" parent="." unique_id=1811183691 instance=ExtResource("7_chg5e")]
+position = Vector2(435, -198)
+metadata/_edit_lock_ = true
+
+[node name="ojo" parent="." unique_id=1436571058 instance=ExtResource("8_chg5e")]
+position = Vector2(-1764, 50)
+metadata/_edit_lock_ = true
+
+[node name="greenery" type="Node2D" parent="." unique_id=796628358]
+position = Vector2(-503, 801)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="greenery" unique_id=849006590]
+position = Vector2(-2, 10)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(2, -10)
+region_enabled = true
+region_rect = Rect2(263, 340, 62, 42)
+
+[node name="obj" type="StaticBody2D" parent="greenery" unique_id=243798368]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery/obj" unique_id=537236092]
+position = Vector2(-6, -2)
+polygon = PackedVector2Array(23, 5, 10, 1, -14, 1, -21, 4, -19, 13, -5, 19, 7, 19, 23, 13)
+
+[node name="greenery2" type="Node2D" parent="." unique_id=1509350625]
+position = Vector2(-75, 843)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="greenery2" unique_id=553024503]
+texture = ExtResource("9_mdg3o")
+region_enabled = true
+region_rect = Rect2(263, 340, 62, 42)
+
+[node name="obj" type="StaticBody2D" parent="greenery2" unique_id=400086362]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery2/obj" unique_id=1075022349]
+position = Vector2(-5, -1)
+polygon = PackedVector2Array(23, 5, 10, 1, -27, -11, -17, 17, -5, 19, 15, 20, 22, 17)
+
+[node name="greenery3" type="Node2D" parent="." unique_id=573770137]
+position = Vector2(-116, 818)
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery3" unique_id=1534426343]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(0, 0, 31, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery3" unique_id=1754775443]
+z_index = 1
+position = Vector2(0, 24)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(0, -118)
+region_enabled = true
+region_rect = Rect2(1, 104, 262, 168)
+
+[node name="obj" type="StaticBody2D" parent="greenery3" unique_id=1677804018]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery3/obj" unique_id=1357423503]
+polygon = PackedVector2Array(9, 13, -13, 7, -15, 34, -9, 38, 18, 38, 14, 28)
+
+[node name="greenery4" type="Node2D" parent="." unique_id=1676664546]
+position = Vector2(-276, 945)
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery4" unique_id=1489533292]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(63, 0, 21, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery4" unique_id=35532800]
+z_index = 1
+position = Vector2(0, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(147, 0, 137, 97)
+
+[node name="obj" type="StaticBody2D" parent="greenery4" unique_id=905181597]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery4/obj" unique_id=306057998]
+polygon = PackedVector2Array(8, 10, -8, 10, -8, 35, 0, 38, 11, 36, 9, 26)
+
+[node name="greenery5" type="Node2D" parent="." unique_id=1870180977]
+position = Vector2(-1854, 817)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery5" unique_id=2092082391]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(63, 0, 21, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery5" unique_id=456717792]
+z_index = 1
+position = Vector2(0, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(147, 0, 137, 97)
+
+[node name="obj" type="StaticBody2D" parent="greenery5" unique_id=432255694]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery5/obj" unique_id=1986635419]
+polygon = PackedVector2Array(8, 10, -8, 10, -8, 35, 0, 38, 11, 36, 9, 26)
+
+[node name="greenery6" type="Node2D" parent="." unique_id=369199520]
+position = Vector2(-1930, 745)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery6" unique_id=359675848]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(63, 0, 21, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery6" unique_id=1132964196]
+z_index = 1
+position = Vector2(0, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(147, 0, 137, 97)
+
+[node name="obj" type="StaticBody2D" parent="greenery6" unique_id=1194923393]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery6/obj" unique_id=3240525]
+polygon = PackedVector2Array(8, 10, -8, 10, -8, 35, 0, 38, 11, 36, 9, 26)
+
+[node name="greenery7" type="Node2D" parent="." unique_id=1478463447]
+position = Vector2(-998, 427)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery7" unique_id=441158559]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(63, 0, 21, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery7" unique_id=228494106]
+z_index = 1
+position = Vector2(0, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(147, 0, 137, 97)
+
+[node name="obj" type="StaticBody2D" parent="greenery7" unique_id=44387281]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery7/obj" unique_id=1624342498]
+polygon = PackedVector2Array(8, 10, -8, 10, -8, 35, 0, 38, 11, 36, 9, 26)
+
+[node name="greenery8" type="Node2D" parent="." unique_id=117286876]
+position = Vector2(407, 672)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery8" unique_id=1722100053]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(63, 0, 21, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery8" unique_id=1669762368]
+z_index = 1
+position = Vector2(0, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(147, 0, 137, 97)
+
+[node name="obj" type="StaticBody2D" parent="greenery8" unique_id=146918850]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery8/obj" unique_id=1166855167]
+polygon = PackedVector2Array(8, 10, -8, 10, -8, 35, 0, 38, 11, 36, 9, 26)
+
+[node name="greenery9" type="Node2D" parent="." unique_id=1647727719]
+position = Vector2(-45, 310)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery9" unique_id=1694147604]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(63, 0, 21, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery9" unique_id=161012047]
+z_index = 1
+position = Vector2(0, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(147, 0, 137, 97)
+
+[node name="obj" type="StaticBody2D" parent="greenery9" unique_id=1588035732]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery9/obj" unique_id=1113582796]
+polygon = PackedVector2Array(8, 10, -8, 10, -8, 35, 0, 38, 11, 36, 9, 26)
+
+[node name="greenery10" type="Node2D" parent="." unique_id=304653111]
+position = Vector2(748, 926)
+metadata/_edit_group_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery10" unique_id=1721950386]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(63, 0, 21, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery10" unique_id=1442483181]
+z_index = 1
+position = Vector2(0, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(4, 279, 177, 116)
+
+[node name="obj" type="StaticBody2D" parent="greenery10" unique_id=403614966]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery10/obj" unique_id=806228622]
+polygon = PackedVector2Array(8, 10, -8, 10, -8, 35, 0, 38, 11, 36, 9, 26)
+
+[node name="greenery17" type="Node2D" parent="." unique_id=984890694]
+position = Vector2(658, 70)
+metadata/_edit_group_ = true
+
+[node name="copa" type="Sprite2D" parent="greenery17" unique_id=114431432]
+z_index = -1
+position = Vector2(-136, -81)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(265, 103, 112, 85)
+
+[node name="greenery19" type="Node2D" parent="." unique_id=152467317]
+position = Vector2(1351, 344)
+metadata/_edit_group_ = true
+
+[node name="copa" type="Sprite2D" parent="greenery19" unique_id=2068278193]
+z_index = -1
+position = Vector2(-136, -81)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(265, 103, 112, 85)
+
+[node name="greenery20" type="Node2D" parent="." unique_id=1382998399]
+position = Vector2(1438, 379)
+metadata/_edit_group_ = true
+
+[node name="copa" type="Sprite2D" parent="greenery20" unique_id=237878647]
+z_index = -1
+position = Vector2(-136, -81)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(265, 103, 112, 85)
+
+[node name="greenery21" type="Node2D" parent="." unique_id=538421643]
+position = Vector2(1760, 505)
+metadata/_edit_group_ = true
+
+[node name="copa" type="Sprite2D" parent="greenery21" unique_id=853880946]
+z_index = -1
+position = Vector2(-136, -81)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(265, 103, 112, 85)
+
+[node name="greenery11" type="Node2D" parent="." unique_id=1885638747]
+position = Vector2(894, 655)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery11" unique_id=2130680829]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(33, 0, 28, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery11" unique_id=1457185491]
+z_index = 1
+position = Vector2(-5, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(287, 16, 104, 81)
+
+[node name="obj" type="StaticBody2D" parent="greenery11" unique_id=525035737]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery11/obj" unique_id=878696559]
+polygon = PackedVector2Array(8, 9, -8, 8, -10, 10, -14, 34, -8, 37, 0, 38, 10, 37, 14, 36, 11, 26, 10, 12)
+
+[node name="greenery12" type="Node2D" parent="." unique_id=618770463]
+position = Vector2(-662, 336)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery12" unique_id=469136590]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(33, 0, 28, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery12" unique_id=2126175540]
+z_index = 1
+position = Vector2(-5, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(287, 16, 104, 81)
+
+[node name="obj" type="StaticBody2D" parent="greenery12" unique_id=1217320998]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery12/obj" unique_id=1891527605]
+polygon = PackedVector2Array(8, 9, -8, 8, -10, 10, -14, 34, -8, 37, 0, 38, 10, 37, 14, 36, 11, 26, 10, 12)
+
+[node name="greenery18" type="Node2D" parent="." unique_id=1984517943]
+position = Vector2(306, 387)
+metadata/_edit_group_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery18" unique_id=856905839]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(33, 0, 28, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery18" unique_id=26721502]
+z_index = 1
+position = Vector2(-5, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(287, 16, 104, 81)
+
+[node name="obj" type="StaticBody2D" parent="greenery18" unique_id=1794084651]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery18/obj" unique_id=343772794]
+polygon = PackedVector2Array(8, 9, -8, 8, -10, 10, -14, 34, -8, 37, 0, 38, 10, 37, 14, 36, 11, 26, 10, 12)
+
+[node name="greenery13" type="Node2D" parent="." unique_id=1591233747]
+position = Vector2(-653, 612)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery13" unique_id=1405897888]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(33, 0, 28, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery13" unique_id=1198946213]
+z_index = 1
+position = Vector2(-5, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(287, 16, 104, 81)
+
+[node name="obj" type="StaticBody2D" parent="greenery13" unique_id=496595489]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery13/obj" unique_id=1611300520]
+polygon = PackedVector2Array(8, 9, -8, 8, -10, 10, -14, 34, -8, 37, 0, 38, 10, 37, 14, 36, 11, 26, 10, 12)
+
+[node name="greenery14" type="Node2D" parent="." unique_id=112477733]
+position = Vector2(-1340, 575)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery14" unique_id=1470855764]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(33, 0, 28, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery14" unique_id=931823969]
+z_index = 1
+position = Vector2(-5, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(287, 16, 104, 81)
+
+[node name="obj" type="StaticBody2D" parent="greenery14" unique_id=1968374615]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery14/obj" unique_id=1122205523]
+polygon = PackedVector2Array(8, 9, -8, 8, -10, 10, -14, 34, -8, 37, 0, 38, 10, 37, 14, 36, 11, 26, 10, 12)
+
+[node name="greenery15" type="Node2D" parent="." unique_id=1363131348]
+position = Vector2(-1740, 958)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery15" unique_id=1386505998]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(33, 0, 28, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery15" unique_id=1003749460]
+z_index = 1
+position = Vector2(-5, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(287, 16, 104, 81)
+
+[node name="obj" type="StaticBody2D" parent="greenery15" unique_id=2027378934]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery15/obj" unique_id=1042192322]
+polygon = PackedVector2Array(8, 9, -8, 8, -10, 10, -14, 34, -8, 37, 0, 38, 10, 37, 14, 36, 11, 26, 10, 12)
+
+[node name="greenery16" type="Node2D" parent="." unique_id=420944348]
+position = Vector2(-1869, 957)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery16" unique_id=1765250505]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(33, 0, 28, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery16" unique_id=1971993367]
+z_index = 1
+position = Vector2(-5, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(9, 2, 106, 101)
+
+[node name="obj" type="StaticBody2D" parent="greenery16" unique_id=569059662]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery16/obj" unique_id=1736614062]
+polygon = PackedVector2Array(8, 9, -8, 8, -10, 10, -14, 34, -8, 37, 0, 38, 10, 37, 14, 36, 11, 26, 10, 12)
+
+[node name="greenery22" type="Node2D" parent="." unique_id=1757659227]
+position = Vector2(-1322, 847)
+metadata/_edit_group_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery22" unique_id=378501427]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(33, 0, 28, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery22" unique_id=759460711]
+z_index = 1
+position = Vector2(-5, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(9, 2, 106, 101)
+
+[node name="obj" type="StaticBody2D" parent="greenery22" unique_id=1667933161]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery22/obj" unique_id=612403792]
+polygon = PackedVector2Array(8, 9, -8, 8, -10, 10, -14, 34, -8, 37, 0, 38, 10, 37, 14, 36, 11, 26, 10, 12)
+
+[node name="greenery23" type="Node2D" parent="." unique_id=1754144862]
+position = Vector2(-986, 891)
+metadata/_edit_group_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery23" unique_id=2431844]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(33, 0, 28, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery23" unique_id=488411790]
+z_index = 1
+position = Vector2(-5, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(4, 279, 177, 116)
+
+[node name="obj" type="StaticBody2D" parent="greenery23" unique_id=952938564]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery23/obj" unique_id=1668948235]
+polygon = PackedVector2Array(8, 9, -8, 8, -10, 10, -14, 34, -8, 37, 0, 38, 10, 37, 14, 36, 11, 26, 10, 12)
+
+[node name="greenery25" type="Node2D" parent="." unique_id=861110837]
+position = Vector2(-1073, 635)
+metadata/_edit_group_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery25" unique_id=834821681]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(33, 0, 28, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery25" unique_id=1223821900]
+z_index = 1
+position = Vector2(-5, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(4, 279, 177, 116)
+
+[node name="obj" type="StaticBody2D" parent="greenery25" unique_id=1999280572]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery25/obj" unique_id=397148539]
+polygon = PackedVector2Array(8, 9, -8, 8, -10, 10, -14, 34, -8, 37, 0, 38, 10, 37, 14, 36, 11, 26, 10, 12)
+
+[node name="greenery24" type="Node2D" parent="." unique_id=1041995376]
+position = Vector2(-873, 790)
+metadata/_edit_group_ = true
+
+[node name="tronco" type="Sprite2D" parent="greenery24" unique_id=1620618407]
+position = Vector2(-1, 25)
+texture = ExtResource("10_oqiiv")
+offset = Vector2(1, -25)
+region_enabled = true
+region_rect = Rect2(33, 0, 28, 76)
+
+[node name="copa" type="Sprite2D" parent="greenery24" unique_id=1510546755]
+z_index = 1
+position = Vector2(-5, -28)
+texture = ExtResource("9_mdg3o")
+offset = Vector2(3, -37)
+region_enabled = true
+region_rect = Rect2(9, 2, 106, 101)
+
+[node name="obj" type="StaticBody2D" parent="greenery24" unique_id=1247059119]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="greenery24/obj" unique_id=609735617]
+polygon = PackedVector2Array(8, 9, -8, 8, -10, 10, -14, 34, -8, 37, 0, 38, 10, 37, 14, 36, 11, 26, 10, 12)
+
+[node name="luz_calle" parent="." unique_id=1901957286 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1579, 440)
+
+[node name="luz_calle3" parent="." unique_id=192606075 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1267, 318)
+
+[node name="luz_calle4" parent="." unique_id=1407822171 instance=ExtResource("11_oqiiv")]
+position = Vector2(-975, 203)
+
+[node name="luz_calle5" parent="." unique_id=933793191 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1865, 183)
+
+[node name="luz_calle6" parent="." unique_id=1714054822 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1589, 72)
+
+[node name="luz_calle7" parent="." unique_id=824548233 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1352, -21)
+
+[node name="luz_calle8" parent="." unique_id=589350541 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1130, -107)
+
+[node name="luz_calle9" parent="." unique_id=708509819 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1113, -242)
+
+[node name="luz_calle10" parent="." unique_id=622610015 instance=ExtResource("11_oqiiv")]
+position = Vector2(206, -256)
+
+[node name="luz_calle43" parent="." unique_id=1278448145 instance=ExtResource("11_oqiiv")]
+position = Vector2(685, -446)
+
+[node name="luz_calle13" parent="." unique_id=1710699536 instance=ExtResource("11_oqiiv")]
+position = Vector2(-673, 83)
+
+[node name="luz_calle14" parent="." unique_id=1230385201 instance=ExtResource("11_oqiiv")]
+position = Vector2(-676, -447)
+
+[node name="luz_calle15" parent="." unique_id=573039597 instance=ExtResource("11_oqiiv")]
+position = Vector2(-929, -549)
+
+[node name="luz_calle16" parent="." unique_id=898897304 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1183, -645)
+
+[node name="luz_calle17" parent="." unique_id=1935565228 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1389, -726)
+
+[node name="luz_calle18" parent="." unique_id=979145694 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1626, -810)
+
+[node name="luz_calle19" parent="." unique_id=85597271 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1357, -336)
+
+[node name="luz_calle20" parent="." unique_id=333117708 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1598, -439)
+
+[node name="luz_calle21" parent="." unique_id=1609028669 instance=ExtResource("11_oqiiv")]
+position = Vector2(-1829, -520)
+
+[node name="luz_calle22" parent="." unique_id=152152808 instance=ExtResource("11_oqiiv")]
+position = Vector2(-2049, -608)
+
+[node name="luz_calle23" parent="." unique_id=1600795763 instance=ExtResource("11_oqiiv")]
+position = Vector2(686, 458)
+
+[node name="luz_calle24" parent="." unique_id=2090364776 instance=ExtResource("11_oqiiv")]
+position = Vector2(1123, 253)
+
+[node name="luz_calle25" parent="." unique_id=193858291 instance=ExtResource("11_oqiiv")]
+position = Vector2(870, 151)
+
+[node name="luz_calle26" parent="." unique_id=1558226962 instance=ExtResource("11_oqiiv")]
+position = Vector2(616, 55)
+
+[node name="luz_calle27" parent="." unique_id=389744553 instance=ExtResource("11_oqiiv")]
+position = Vector2(410, -26)
+
+[node name="luz_calle28" parent="." unique_id=3242222 instance=ExtResource("11_oqiiv")]
+position = Vector2(173, -110)
+
+[node name="luz_calle29" parent="." unique_id=1270878253 instance=ExtResource("11_oqiiv")]
+position = Vector2(442, 364)
+
+[node name="luz_calle30" parent="." unique_id=2938441 instance=ExtResource("11_oqiiv")]
+position = Vector2(201, 261)
+
+[node name="luz_calle31" parent="." unique_id=2017683834 instance=ExtResource("11_oqiiv")]
+position = Vector2(-30, 180)
+
+[node name="luz_calle32" parent="." unique_id=987181686 instance=ExtResource("11_oqiiv")]
+position = Vector2(-250, 92)
+
+[node name="luz_calle33" parent="." unique_id=602916122 instance=ExtResource("11_oqiiv")]
+position = Vector2(1867, 918)
+
+[node name="luz_calle34" parent="." unique_id=1726625772 instance=ExtResource("11_oqiiv")]
+position = Vector2(2304, 713)
+
+[node name="luz_calle35" parent="." unique_id=304791726 instance=ExtResource("11_oqiiv")]
+position = Vector2(2051, 611)
+
+[node name="luz_calle36" parent="." unique_id=1900674751 instance=ExtResource("11_oqiiv")]
+position = Vector2(1797, 515)
+
+[node name="luz_calle37" parent="." unique_id=471455665 instance=ExtResource("11_oqiiv")]
+position = Vector2(1591, 434)
+
+[node name="luz_calle38" parent="." unique_id=1312550401 instance=ExtResource("11_oqiiv")]
+position = Vector2(1354, 350)
+
+[node name="luz_calle39" parent="." unique_id=1106583112 instance=ExtResource("11_oqiiv")]
+position = Vector2(1623, 824)
+
+[node name="luz_calle40" parent="." unique_id=1850955697 instance=ExtResource("11_oqiiv")]
+position = Vector2(1382, 721)
+
+[node name="luz_calle41" parent="." unique_id=1656553714 instance=ExtResource("11_oqiiv")]
+position = Vector2(1151, 640)
+
+[node name="luz_calle42" parent="." unique_id=2001869038 instance=ExtResource("11_oqiiv")]
+position = Vector2(931, 552)
+
+[node name="luz_calle11" parent="." unique_id=206280550 instance=ExtResource("11_oqiiv")]
+position = Vector2(-141, -490)
+
+[node name="luz_calle12" parent="." unique_id=2020886134 instance=ExtResource("11_oqiiv")]
+position = Vector2(154, -606)
+
+[node name="tacho" parent="." unique_id=47546869 instance=ExtResource("12_3omf0")]
+position = Vector2(-1283, -92)
+
+[node name="Kruta" parent="." unique_id=1496379246 instance=ExtResource("15_xk3wf")]
+position = Vector2(-1295, -676)
+scripted_scene = ExtResource("16_bx1xa")
+WALK_SPEED = 20
+
+[node name="Daniel" parent="." unique_id=2133160733 instance=ExtResource("15_xk3wf")]
+position = Vector2(-1715, 105)
+scripted_scene = ExtResource("16_bx1xa")
+entity_sprite = "Daniel"
+
+[node name="James" parent="." unique_id=369943239 instance=ExtResource("15_xk3wf")]
+position = Vector2(-940, 313)
+scripted_scene = ExtResource("16_bx1xa")
+entity_sprite = "james"
+WALK_SPEED = 20
+
+[node name="to_CasaProta" parent="." unique_id=2086559895 instance=ExtResource("16_4mx6b")]
+position = Vector2(-1928, 123)
+view = "side"
+metadata/_edit_lock_ = true
+
+[node name="ExitScene2" parent="to_CasaProta" unique_id=1185498034 instance=ExtResource("7_qub3r")]
+position = Vector2(0, 24)
+next_map = "casa_prota_00_map"
+
+[node name="to_Depto" parent="." unique_id=1381737758 instance=ExtResource("16_4mx6b")]
+position = Vector2(-1663, 17)
+view = "side"
+metadata/_edit_lock_ = true
+
+[node name="ExitScene2" parent="to_Depto" unique_id=963789054 instance=ExtResource("7_qub3r")]
+position = Vector2(0, 24)
+next_map = "casa_a_map"
+
+[node name="to_negocio" parent="." unique_id=333378704 instance=ExtResource("16_4mx6b")]
+position = Vector2(-1581, -15)
+view = "side"
+metadata/_edit_lock_ = true
+
+[node name="to_negocio2" parent="to_negocio" unique_id=842833708 instance=ExtResource("16_4mx6b")]
+position = Vector2(22, -8)
+view = "side"
+metadata/_edit_lock_ = true
+
+[node name="ExitScene2" parent="to_negocio" unique_id=926372351 instance=ExtResource("7_qub3r")]
+position = Vector2(0, 24)
+next_map = "casa_b_map"
+
+[node name="to_negocio3" parent="." unique_id=1748622175 instance=ExtResource("16_4mx6b")]
+position = Vector2(-1587, -890)
+flip = false
+view = "side"
+metadata/_edit_lock_ = true
+
+[node name="ExitScene2" parent="to_negocio3" unique_id=1909786113 instance=ExtResource("7_qub3r")]
+position = Vector2(0, 26)
+
+[node name="to_negocio4" parent="." unique_id=2103617393 instance=ExtResource("16_4mx6b")]
+position = Vector2(-918, -626)
+flip = false
+view = "side"
+metadata/_edit_lock_ = true
+
+[node name="ExitScene2" parent="to_negocio4" unique_id=1443339857 instance=ExtResource("7_qub3r")]
+position = Vector2(0, 26)
+
+[node name="to_negocio5" parent="." unique_id=1863652439 instance=ExtResource("16_4mx6b")]
+position = Vector2(-305, -513)
+view = "side"
+metadata/_edit_lock_ = true
+
+[node name="ExitScene2" parent="to_negocio5" unique_id=426549876 instance=ExtResource("7_qub3r")]
+position = Vector2(0, 26)
+
+[node name="to_negociodoble" parent="." unique_id=1014847073 instance=ExtResource("16_4mx6b")]
+position = Vector2(-1045, -675)
+flip = false
+view = "side"
+metadata/_edit_lock_ = true
+
+[node name="ExitScene2" parent="to_negociodoble" unique_id=702151282 instance=ExtResource("7_qub3r")]
+position = Vector2(0, 26)
+next_map = "casa_a_map"
+
+[node name="to_negociodoble2" parent="to_negociodoble" unique_id=1066203520 instance=ExtResource("16_4mx6b")]
+position = Vector2(-24, -10)
+flip = false
+view = "side"
+metadata/_edit_lock_ = true
+
+[node name="to_negocio8" parent="." unique_id=744855219 instance=ExtResource("16_4mx6b")]
+position = Vector2(801, 50)
+flip = false
+view = "side"
+metadata/_edit_lock_ = true
+
+[node name="ExitScene2" parent="to_negocio8" unique_id=14423098 instance=ExtResource("7_qub3r")]
+position = Vector2(0, 26)
+
+[node name="to_iglesia" parent="." unique_id=1571948908 instance=ExtResource("16_4mx6b")]
+position = Vector2(1067, 154)
+flip = false
+view = "side"
+metadata/_edit_lock_ = true
+
+[node name="ExitScene2" parent="to_iglesia" unique_id=1598160366 instance=ExtResource("7_qub3r")]
+position = Vector2(0, 26)
+next_map = "iglesia_map"
+
+[node name="iglesia" parent="to_iglesia" unique_id=1012725505 instance=ExtResource("16_4mx6b")]
+position = Vector2(-23, -9)
+flip = false
+view = "side"
+metadata/_edit_lock_ = true
+
+[node name="enemy2" parent="." unique_id=1049044788 instance=ExtResource("17_b2pxc")]
+position = Vector2(653, 643)
+facing = 2
+entity_sprite = "walker"
+
+[node name="enemy" parent="." unique_id=1584829568 instance=ExtResource("17_b2pxc")]
+position = Vector2(735, 223)
+encounter_enemies = Array[ExtResource("18_y7df0")]([ExtResource("20_646ri")])
+facing = 2
+entity_sprite = "monster"
+
+[node name="enemy3" parent="." unique_id=887060444 instance=ExtResource("17_b2pxc")]
+position = Vector2(898, 230)
+encounter_enemies = Array[ExtResource("18_y7df0")]([ExtResource("20_646ri")])
+facing = 2
+entity_sprite = "monster"
+
+[node name="enemy4" parent="." unique_id=393439477 instance=ExtResource("17_b2pxc")]
+position = Vector2(705, 352)
+encounter_enemies = Array[ExtResource("18_y7df0")]([ExtResource("20_646ri")])
+facing = 2
+entity_sprite = "monster"
+
+[node name="enemy5" parent="." unique_id=1985943112 instance=ExtResource("17_b2pxc")]
+position = Vector2(756, 594)
+encounter_enemies = Array[ExtResource("18_y7df0")]([ExtResource("20_646ri")])
+facing = 2
+entity_sprite = "monster"
+
+[node name="enemy6" parent="." unique_id=938118532 instance=ExtResource("17_b2pxc")]
+position = Vector2(875, 356)
+encounter_enemies = Array[ExtResource("18_y7df0")]([ExtResource("20_646ri")])
+facing = 2
+entity_sprite = "monster"
+
+[node name="CameraLimits" type="ReferenceRect" parent="." unique_id=328793986]
+custom_minimum_size = Vector2(1200, 0)
+offset_left = -2047.0
+offset_top = -1023.0
+offset_right = 2051.0
+offset_bottom = 1024.0
+border_width = 3.8
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="triger_enemigos" to="triger_enemigos" method="_on_area_entered"]

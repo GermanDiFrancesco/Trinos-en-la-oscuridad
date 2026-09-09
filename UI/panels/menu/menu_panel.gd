@@ -7,7 +7,6 @@ extends Panel
 
 func _ready() -> void:
 	version.text =version_text
-	print(Global.saved_data.cinematic)
 
 func _on_draw() -> void:
 	MusicManager.opening_main_menu.play()
@@ -27,3 +26,10 @@ func _on_continuar_btn_pressed() -> void:
 func _on_button_pressed() -> void:
 	Global.delete_save()
 	Global.change_state('MENU')
+
+
+func _on_togglefullscreen_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

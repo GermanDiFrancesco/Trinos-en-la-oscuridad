@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dbbtj275o5710"]
+
+[ext_resource type="Texture2D" uid="uid://n2hid566ddap" path="res://assets/mapas/introa.png" id="1_6gtkb"]
+[ext_resource type="Texture2D" uid="uid://bbm10b5r86rfr" path="res://assets/interior_top.png" id="2_6gtkb"]
+[ext_resource type="PackedScene" uid="uid://fghxcf7uybln" path="res://overworld/exit_scene.tscn" id="3_brs2m"]
+
+[sub_resource type="GDScript" id="GDScript_txhqi"]
+script/source = "extends Map
+"
+
+[node name="casa_b2_map" type="Node2D" unique_id=896681006 node_paths=PackedStringArray("spawnpos")]
+y_sort_enabled = true
+script = SubResource("GDScript_txhqi")
+spawnpos = NodePath("ExitScene/SpawnPos")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1495357341]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=2127747834]
+polygon = PackedVector2Array(-143, 114, -143, 13, -97, -3, 80.35622, -3, 79, 37, 157, 34, 159, -4, 182, -3, 182, 96, -143, 97, -140, 120, 191, 107, 196, -16, -95, -15, -149, 1, -152, 115)
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1149274209]
+z_index = -1
+texture = ExtResource("1_6gtkb")
+
+[node name="TOp" type="Sprite2D" parent="." unique_id=382010365]
+visible = false
+z_index = 1
+texture = ExtResource("2_6gtkb")
+
+[node name="ExitScene" parent="." unique_id=1185498034 instance=ExtResource("3_brs2m")]
+position = Vector2(147, 24)
+next_map = "casa_b_map"
+
+[node name="SpawnPos" type="Marker2D" parent="ExitScene" unique_id=1997543001]
+position = Vector2(25, -3)

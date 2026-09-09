@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cm7hejp5eyvmj" path="res://overworld/enemy.gd" id="1_md0e3"]
 [ext_resource type="Texture2D" uid="uid://6v3b0iybj5fm" path="res://assets/pjs_spritesheet/enemy_walking.png" id="2_4ra3w"]
-[ext_resource type="Resource" uid="uid://dmtg5np1kkk7h" path="res://assets/resources/Dialogs/enemy_test.tres" id="2_g5mxg"]
-[ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://assets/resources/Enemies/enemy_data.gd" id="2_h4i76"]
-[ext_resource type="Resource" uid="uid://8apgpw5sv5sy" path="res://assets/resources/Enemies/Deli/Deli.tres" id="3_ry6yy"]
+[ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://assets/resources/Enemies/EnemyData.gd" id="2_h4i76"]
+[ext_resource type="Resource" uid="uid://m3hgwcnx4mmu" path="res://assets/resources/Enemies/Walker/Walker.tres" id="3_ry6yy"]
+[ext_resource type="PackedScene" uid="uid://behsku5t70i4o" path="res://overworld/Interactuable.tscn" id="5_h4i76"]
+[ext_resource type="Texture2D" uid="uid://gya12y0jok3l" path="res://assets/misc/alert.png" id="6_ry6yy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(16, 16)
@@ -172,14 +173,11 @@ _data = {
 &"walking_up": SubResource("Animation_1jxqw")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fa2pw"]
-size = Vector2(20, 16)
-
-[node name="enemy" type="Area2D" unique_id=1496379246]
+[node name="enemy" type="CharacterBody2D" unique_id=1584829568]
 y_sort_enabled = true
 script = ExtResource("1_md0e3")
 encounter_enemies = Array[ExtResource("2_h4i76")]([ExtResource("3_ry6yy")])
-datos_dialogo = ExtResource("2_g5mxg")
+entity_sprite = "Enemy"
 
 [node name="Spritesheet" type="Sprite2D" parent="." unique_id=1993956008]
 modulate = Color(0.54509807, 0.54509807, 1, 1)
@@ -196,10 +194,12 @@ shape = SubResource("RectangleShape2D_cvnsp")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1363230967]
 libraries/ = SubResource("AnimationLibrary_dw050")
 
-[node name="Timer" type="Timer" parent="." unique_id=583750666]
+[node name="Interactuable" parent="." unique_id=1496379246 node_paths=PackedStringArray("icon") instance=ExtResource("5_h4i76")]
+position = Vector2(0, -13)
+icon = NodePath("../Icon")
 
-[node name="Npc" type="StaticBody2D" parent="." unique_id=1018762005]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc" unique_id=2127951904]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_fa2pw")
+[node name="Icon" type="Sprite2D" parent="." unique_id=468031893]
+visible = false
+position = Vector2(-1, -20)
+texture = ExtResource("6_ry6yy")
+offset = Vector2(2, -30)

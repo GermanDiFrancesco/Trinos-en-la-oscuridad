@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b7m36ectfirrc"]
+
+[ext_resource type="Texture2D" uid="uid://cauim577mmgb2" path="res://assets/overworld/mesa.png" id="1_n8r08"]
+
+[node name="mesa" type="StaticBody2D" unique_id=1051641785]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1991522619]
+position = Vector2(0, -8)
+texture = ExtResource("1_n8r08")
+offset = Vector2(0, -2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=419323491]
+polygon = PackedVector2Array(34, 10, 34, -9, -34, -9, -34, 10, -30, 13, -27, 13, -23, 9, 23, 9, 27, 13, 30, 13)

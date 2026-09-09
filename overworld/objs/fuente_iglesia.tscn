@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b6310s7j6cwaf"]
+
+[ext_resource type="Texture2D" uid="uid://cjurs0cvqh6lc" path="res://assets/overworld/fuente_iglesia.png" id="1_eomsy"]
+
+[node name="organo" type="StaticBody2D" unique_id=1051641785]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1991522619]
+position = Vector2(0, -17)
+texture = ExtResource("1_eomsy")
+offset = Vector2(0, -2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=419323491]
+polygon = PackedVector2Array(12, -7, 7, -9, -7, -9, -12, -7, -12, -2, -5, 3, 5, 3, 12, -2)

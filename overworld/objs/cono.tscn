@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://4c7nrtkjsl1x"]
+
+[ext_resource type="Texture2D" uid="uid://bkd8hcq4m4ssl" path="res://assets/misc/cono.png" id="1_tmsgl"]
+
+[node name="cono" type="StaticBody2D" unique_id=1051641785]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1991522619]
+position = Vector2(0, -8)
+texture = ExtResource("1_tmsgl")
+offset = Vector2(0, -2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=419323491]
+polygon = PackedVector2Array(4, 4, 9, 3, 11, 3, 11, -1, 9, -1, 0, -3, -9, -1, -11, -1, -11, 3, -9, 3, -4, 4)

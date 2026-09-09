@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://dsfddfh2ilam7"]
+
+[ext_resource type="Texture2D" uid="uid://32u5eidmiidx" path="res://assets/mapas/casa_b.png" id="1_3v1ri"]
+[ext_resource type="Texture2D" uid="uid://bbm10b5r86rfr" path="res://assets/interior_top.png" id="2_4aeic"]
+[ext_resource type="PackedScene" uid="uid://fghxcf7uybln" path="res://overworld/exit_scene.tscn" id="3_bo02f"]
+[ext_resource type="PackedScene" uid="uid://bjxvrb3xc1gqr" path="res://overworld/npc.tscn" id="5_4aeic"]
+[ext_resource type="Texture2D" uid="uid://dskexcwta4i71" path="res://assets/overworld/sillon.png" id="6_bo02f"]
+[ext_resource type="Script" uid="uid://b3m5o5d3yvfnb" path="res://overworld/maps/dialogo_piter_inicio.gd" id="6_u6dx5"]
+[ext_resource type="Texture2D" uid="uid://c08sf24mlcv2g" path="res://assets/overworld/escalera.png" id="7_sabb0"]
+[ext_resource type="PackedScene" uid="uid://djeg8f7ei5hrg" path="res://overworld/puerta.tscn" id="8_sabb0"]
+[ext_resource type="Texture2D" uid="uid://djgx7oqey4bh4" path="res://assets/misc/sillaMaderaSide.png" id="12_sbpwx"]
+[ext_resource type="Texture2D" uid="uid://b7xqvyy4cs7gv" path="res://assets/misc/mesaDeLuzCajon.png" id="13_wo337"]
+[ext_resource type="Texture2D" uid="uid://du7w0i48gus2n" path="res://assets/misc/muebleB.png" id="14_uow54"]
+[ext_resource type="Texture2D" uid="uid://u8d35xtyn0ys" path="res://assets/misc/muebleSide.png" id="15_yhqoe"]
+
+[sub_resource type="GDScript" id="GDScript_txhqi"]
+script/source = "extends Map
+"
+
+[node name="casa_prota_00_map" type="Node2D" unique_id=896681006 node_paths=PackedStringArray("spawnpos")]
+y_sort_enabled = true
+script = SubResource("GDScript_txhqi")
+spawnpos = NodePath("SpawnPos")
+
+[node name="coll" type="StaticBody2D" parent="." unique_id=1495357341]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="coll" unique_id=2127747834]
+z_index = 1
+polygon = PackedVector2Array(-143, 114, -143, 13, -97, -3, -58.439125, -3, -58, 13, -55, 20, -22, 20, -21, 13, -20, -3, 114, -3, 114, 18, 172, 18, 172, 52, 182, 52, 182, 97, -143, 97, -143, 114, 195, 113, 195, -17, 91, -17, -95, -15, -149, 1, -152, 115)
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1149274209]
+z_index = -1
+texture = ExtResource("1_3v1ri")
+
+[node name="Sillon" type="Sprite2D" parent="." unique_id=842230425]
+position = Vector2(-40, 0)
+texture = ExtResource("6_bo02f")
+region_enabled = true
+region_rect = Rect2(89, 4, 41, 40)
+
+[node name="TOP" type="Sprite2D" parent="." unique_id=382010365]
+visible = false
+z_index = 1
+texture = ExtResource("2_4aeic")
+
+[node name="escaleras" parent="." unique_id=1469410020 instance=ExtResource("3_bo02f")]
+position = Vector2(123, 8)
+next_map = "casa_prota_01_map"
+
+[node name="Piter" parent="." unique_id=1496379246 instance=ExtResource("5_4aeic")]
+position = Vector2(9, 51)
+scripted_scene = ExtResource("6_u6dx5")
+entity_sprite = "piter"
+WALK_SPEED = 0
+
+[node name="Escalera" type="Sprite2D" parent="." unique_id=194969666]
+position = Vector2(150, -23)
+texture = ExtResource("7_sabb0")
+
+[node name="Puerta" parent="." unique_id=2086559895 instance=ExtResource("8_sabb0")]
+position = Vector2(98, 87)
+
+[node name="ExitScene" parent="Puerta" unique_id=1185498034 instance=ExtResource("3_bo02f")]
+position = Vector2(-1, 20)
+
+[node name="SpawnPos" type="Marker2D" parent="." unique_id=13788743]
+position = Vector2(103, 9)
+
+[node name="SillaMaderaSide" type="Sprite2D" parent="." unique_id=1457341138]
+position = Vector2(-104, 13)
+texture = ExtResource("12_sbpwx")
+
+[node name="SillaMaderaSide2" type="Sprite2D" parent="." unique_id=1060785930]
+position = Vector2(-122, 42)
+texture = ExtResource("12_sbpwx")
+
+[node name="MesaDeLuzCajon" type="Sprite2D" parent="." unique_id=1140517706]
+position = Vector2(-77, -3)
+texture = ExtResource("13_wo337")
+
+[node name="MuebleB" type="Sprite2D" parent="." unique_id=149059811]
+position = Vector2(8, -20)
+texture = ExtResource("14_uow54")
+
+[node name="MuebleSide" type="Sprite2D" parent="." unique_id=1502715687]
+position = Vector2(179, 22)
+texture = ExtResource("15_yhqoe")

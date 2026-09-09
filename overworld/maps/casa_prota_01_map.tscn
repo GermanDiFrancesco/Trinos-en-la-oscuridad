@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://d3mlrletau6hb"]
+
+[ext_resource type="Texture2D" uid="uid://dun5mdbxriq27" path="res://assets/mapas/casa_C.png.png" id="1_vfh0l"]
+[ext_resource type="Texture2D" uid="uid://bbm10b5r86rfr" path="res://assets/interior_top.png" id="2_ger24"]
+[ext_resource type="Texture2D" uid="uid://c7s2g1kxfdhg4" path="res://assets/overworld/escalera2.png" id="3_sw60t"]
+[ext_resource type="PackedScene" uid="uid://fghxcf7uybln" path="res://overworld/exit_scene.tscn" id="4_8k7d3"]
+[ext_resource type="Texture2D" uid="uid://ca6d2lnhl5664" path="res://assets/misc/banquito.png" id="5_ycw2b"]
+[ext_resource type="Texture2D" uid="uid://du7w0i48gus2n" path="res://assets/misc/muebleB.png" id="6_3howq"]
+[ext_resource type="Texture2D" uid="uid://u8d35xtyn0ys" path="res://assets/misc/muebleSide.png" id="7_8t31u"]
+[ext_resource type="Texture2D" uid="uid://dgd6ec6w0gw2k" path="res://assets/misc/sillaMadera.png" id="8_engur"]
+[ext_resource type="Texture2D" uid="uid://djgx7oqey4bh4" path="res://assets/misc/sillaMaderaSide.png" id="9_6xnbk"]
+[ext_resource type="Texture2D" uid="uid://bi2jylmbnbpcv" path="res://assets/misc/camaA.png" id="10_uitfe"]
+[ext_resource type="Texture2D" uid="uid://b7xqvyy4cs7gv" path="res://assets/misc/mesaDeLuzCajon.png" id="11_lds3e"]
+[ext_resource type="Script" uid="uid://dtnonwbnryg7e" path="res://overworld/maps/dialogo_intro.gd" id="12_ycw2b"]
+
+[sub_resource type="GDScript" id="GDScript_txhqi"]
+script/source = "extends Map
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fp4vn"]
+height = 48.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fp4vn"]
+size = Vector2(31.5, 28)
+
+[node name="casa_prota_01_map" type="Node2D" unique_id=896681006 node_paths=PackedStringArray("spawnpos")]
+y_sort_enabled = true
+script = SubResource("GDScript_txhqi")
+spawnpos = NodePath("SpawPos")
+
+[node name="Coll" type="StaticBody2D" parent="." unique_id=1495357341]
+position = Vector2(-46, -17)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coll" unique_id=2127747834]
+polygon = PackedVector2Array(-114, 129, -114, 110, -99, 110, -99, 50, -114, 50, -114, 22, -57, 22, -57, 1, -23, 1, -23, 47, 19, 47, 19, 16, 42, 16, 42, 1, 70, 1, 70, 77, 85, 77, 85, 39, 158, 39, 158, 1, 206, 1, 206, 129, -27, 129, -27, 117, -84, 117, -84, 129, -114, 129, -130, 145, 222, 145, 222, -15, -130, -15, -130, 145)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coll" unique_id=888713533]
+position = Vector2(-55, 91)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_fp4vn")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1149274209]
+z_index = -1
+texture = ExtResource("1_vfh0l")
+region_enabled = true
+region_rect = Rect2(128, 0, 320, 224)
+
+[node name="Escalera" type="Sprite2D" parent="." unique_id=1263001082]
+position = Vector2(75, 3)
+texture = ExtResource("3_sw60t")
+
+[node name="TOP" type="Sprite2D" parent="." unique_id=382010365]
+visible = false
+z_index = 1
+texture = ExtResource("2_ger24")
+
+[node name="SpawPos" type="Marker2D" parent="." unique_id=1997543001]
+position = Vector2(-84, 3)
+
+[node name="ExitScene" parent="." unique_id=1185498034 instance=ExtResource("4_8k7d3")]
+position = Vector2(101, 12)
+next_map = "casa_prota_00_map"
+
+[node name="Banquito" type="Sprite2D" parent="." unique_id=1544395402]
+position = Vector2(-109, 70)
+texture = ExtResource("5_ycw2b")
+
+[node name="MuebleB" type="Sprite2D" parent="." unique_id=1188852055]
+position = Vector2(-132, -25)
+texture = ExtResource("6_3howq")
+
+[node name="MuebleB2" type="Sprite2D" parent="." unique_id=1529332834]
+position = Vector2(-102, 108)
+texture = ExtResource("6_3howq")
+region_enabled = true
+region_rect = Rect2(0, 0, 57, 16)
+
+[node name="MuebleSide" type="Sprite2D" parent="." unique_id=224079429]
+position = Vector2(31, -8)
+texture = ExtResource("7_8t31u")
+
+[node name="MuebleSide3" type="Sprite2D" parent="." unique_id=745264359]
+position = Vector2(31, 11)
+texture = ExtResource("7_8t31u")
+
+[node name="MuebleSide4" type="Sprite2D" parent="." unique_id=1025408168]
+position = Vector2(31, 30)
+texture = ExtResource("7_8t31u")
+
+[node name="SillaMadera" type="Sprite2D" parent="." unique_id=1323471190]
+position = Vector2(-109, 52)
+texture = ExtResource("8_engur")
+
+[node name="SillaMaderaSide" type="Sprite2D" parent="." unique_id=189631834]
+position = Vector2(-85, 64)
+texture = ExtResource("9_6xnbk")
+flip_h = true
+
+[node name="CamaA" type="Sprite2D" parent="." unique_id=863202411]
+position = Vector2(-48, 0)
+texture = ExtResource("10_uitfe")
+
+[node name="MesaDeLuzCajon" type="Sprite2D" parent="." unique_id=539365495]
+position = Vector2(-16, -16)
+texture = ExtResource("11_lds3e")
+
+[node name="MuebleSide2" type="Sprite2D" parent="." unique_id=359692305]
+position = Vector2(-153, 63)
+texture = ExtResource("7_8t31u")
+
+[node name="dialogo-intro" type="Area2D" parent="." unique_id=257534249]
+position = Vector2(-86, -9)
+script = ExtResource("12_ycw2b")
+metadata/_custom_type_script = "uid://cd7fl7wn7ax5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogo-intro" unique_id=554620795]
+position = Vector2(0.25, 8)
+shape = SubResource("RectangleShape2D_fp4vn")
+
+[connection signal="area_entered" from="dialogo-intro" to="dialogo-intro" method="_on_area_entered"]

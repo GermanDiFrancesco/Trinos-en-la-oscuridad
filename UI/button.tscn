@@ -6,9 +6,9 @@
 [ext_resource type="LabelSettings" uid="uid://bb6lw13s7v8vl" path="res://assets/resources/buttons.tres" id="3_vgxan"]
 
 [node name="Button" type="TextureButton" unique_id=2026758929]
-texture_normal = ExtResource("2_vgxan")
-texture_hover = ExtResource("1_3xo2w")
-texture_focused = ExtResource("1_3xo2w")
+texture_normal = ExtResource("1_3xo2w")
+texture_hover = ExtResource("2_vgxan")
+texture_focused = ExtResource("2_vgxan")
 script = ExtResource("3_mrrss")
 
 [node name="Label" type="Label" parent="." unique_id=1155818622]

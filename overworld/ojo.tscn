@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://cc5f4ntx08xyu"]
+
+[ext_resource type="Texture2D" uid="uid://b5pylfrc1a0xb" path="res://assets/misc/ojo.png" id="1_bb2di"]
+[ext_resource type="Script" uid="uid://gdbnpu1qdob7" path="res://overworld/ojo.gd" id="2_42dud"]
+
+[sub_resource type="Animation" id="Animation_42dud"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_l1f77"]
+resource_name = "idle"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_rbfbu"]
+resource_name = "left_look"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 5]
+}
+
+[sub_resource type="Animation" id="Animation_a3alq"]
+resource_name = "right_look"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 6, 5]
+}
+
+[sub_resource type="Animation" id="Animation_31rhd"]
+resource_name = "wink"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 10, 11, 12, 11, 10, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p57al"]
+_data = {
+&"RESET": SubResource("Animation_42dud"),
+&"idle": SubResource("Animation_l1f77"),
+&"left_look": SubResource("Animation_rbfbu"),
+&"right_look": SubResource("Animation_a3alq"),
+&"wink": SubResource("Animation_31rhd")
+}
+
+[node name="ojo" type="Node2D" unique_id=1436571058]
+script = ExtResource("2_42dud")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1647211374]
+texture = ExtResource("1_bb2di")
+hframes = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=538362714]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_p57al")
+autoplay = &"idle"

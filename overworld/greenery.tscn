@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cq230xmai6ewj"]
+
+[ext_resource type="Texture2D" uid="uid://cgshnqly2y0bg" path="res://assets/misc/greenery.png" id="1_iq80h"]
+[ext_resource type="Texture2D" uid="uid://d2pcupobyrij6" path="res://assets/misc/troncos.png" id="2_58h6b"]
+
+[node name="greenery" type="Node2D" unique_id=796628358]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=849006590]
+texture = ExtResource("1_iq80h")
+region_enabled = true
+region_rect = Rect2(263, 340, 62, 42)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1584116477]
+visible = false
+texture = ExtResource("2_58h6b")
+region_enabled = true
+region_rect = Rect2(33, 0, 28, 76)
+
+[node name="obj" type="StaticBody2D" parent="." unique_id=1051641785]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obj" unique_id=419323491]
+polygon = PackedVector2Array(23, 5, 10, 1, -14, 1, -21, 4, -19, 13, -5, 19, 7, 19, 23, 13)

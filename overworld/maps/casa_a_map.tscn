@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dj7r6cr62qb4h"]
+
+[ext_resource type="Texture2D" uid="uid://ce55vr5bswjnc" path="res://assets/mapas/casa_a.png" id="2_0g08c"]
+[ext_resource type="Texture2D" uid="uid://bbm10b5r86rfr" path="res://assets/interior_top.png" id="3_46tr5"]
+[ext_resource type="PackedScene" uid="uid://djeg8f7ei5hrg" path="res://overworld/puerta.tscn" id="4_0g08c"]
+[ext_resource type="PackedScene" uid="uid://fghxcf7uybln" path="res://overworld/exit_scene.tscn" id="4_67rp6"]
+
+[sub_resource type="GDScript" id="GDScript_txhqi"]
+script/source = "extends Map
+"
+
+[node name="casa_a_map" type="Node2D" unique_id=896681006 node_paths=PackedStringArray("spawnpos")]
+y_sort_enabled = true
+script = SubResource("GDScript_txhqi")
+spawnpos = NodePath("SpawnPos")
+
+[node name="Interior" type="Sprite2D" parent="." unique_id=1149274209]
+z_index = -1
+texture = ExtResource("2_0g08c")
+
+[node name="Interior2" type="Sprite2D" parent="." unique_id=382010365]
+visible = false
+z_index = 1
+texture = ExtResource("3_46tr5")
+
+[node name="city_level" parent="." unique_id=1185498034 instance=ExtResource("4_67rp6")]
+z_index = 1
+position = Vector2(-103, 88)
+
+[node name="tunel" parent="." unique_id=79980315 instance=ExtResource("4_67rp6")]
+position = Vector2(-151, -13)
+next_map = "tunel_map"
+
+[node name="tunel2" parent="." unique_id=1606515881 instance=ExtResource("4_67rp6")]
+position = Vector2(-34, -14)
+next_map = "tunel_map"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1495357341]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=2127747834]
+polygon = PackedVector2Array(-174, 87, -174, -3, -73, -3, -73, 47, -61, 47, -61, -3, 178, -3, 178, 87, -174, 87, -182, 98, 183, 109, 196, -16, -195, -17)
+
+[node name="Puerta" parent="." unique_id=2086559895 instance=ExtResource("4_0g08c")]
+position = Vector2(-152, -38)
+view = "front"
+
+[node name="Puerta3" parent="." unique_id=1944262758 instance=ExtResource("4_0g08c")]
+position = Vector2(-104, 75)
+
+[node name="Puerta2" parent="." unique_id=1333935109 instance=ExtResource("4_0g08c")]
+position = Vector2(-35, -38)
+view = "front"
+
+[node name="SpawnPos" type="Marker2D" parent="." unique_id=339421403]
+position = Vector2(-104, 76)

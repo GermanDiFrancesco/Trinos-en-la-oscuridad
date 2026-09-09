@@ -1,0 +1,355 @@
+[gd_scene format=3 uid="uid://dasglbgquwtrn"]
+
+[ext_resource type="Script" uid="uid://hs7gpfujia5p" path="res://overworld/michellin.gd" id="1_tpum7"]
+[ext_resource type="Texture2D" uid="uid://csbej2h5hn5yv" path="res://assets/pjs_spritesheet/Michelin runner.png" id="2_tpum7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(16, 14)
+
+[sub_resource type="Animation" id="Animation_b5l7a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_i1w3n"]
+resource_name = "idle_down"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tpum7"]
+resource_name = "idle_down_left"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [35]
+}
+
+[sub_resource type="Animation" id="Animation_4sr0e"]
+resource_name = "idle_down_right"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_6ion6"]
+resource_name = "idle_left"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [42]
+}
+
+[sub_resource type="Animation" id="Animation_8bbd7"]
+resource_name = "idle_right"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+
+[sub_resource type="Animation" id="Animation_sso7b"]
+resource_name = "idle_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+
+[sub_resource type="Animation" id="Animation_ogyag"]
+resource_name = "idle_up_left"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [49]
+}
+
+[sub_resource type="Animation" id="Animation_476mp"]
+resource_name = "idle_up_right"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [21]
+}
+
+[sub_resource type="Animation" id="Animation_u13xr"]
+resource_name = "move_down"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_0llgs"]
+resource_name = "move_down_left"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41]
+}
+
+[sub_resource type="Animation" id="Animation_73l5k"]
+resource_name = "move_down_right"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_rw2rg"]
+resource_name = "move_left"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [43, 44, 45, 46, 47, 48]
+}
+
+[sub_resource type="Animation" id="Animation_5eoyh"]
+resource_name = "move_right"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_vtgt1"]
+resource_name = "move_up"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [34, 29, 30, 31, 32, 33]
+}
+
+[sub_resource type="Animation" id="Animation_o01ox"]
+resource_name = "move_up_left"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [50, 51, 52, 53, 54, 55]
+}
+
+[sub_resource type="Animation" id="Animation_s5s1f"]
+resource_name = "move_up_right"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [22, 23, 24, 25, 26, 27]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r34na"]
+_data = {
+&"RESET": SubResource("Animation_b5l7a"),
+&"idle_down": SubResource("Animation_i1w3n"),
+&"idle_down_left": SubResource("Animation_tpum7"),
+&"idle_down_right": SubResource("Animation_4sr0e"),
+&"idle_left": SubResource("Animation_6ion6"),
+&"idle_right": SubResource("Animation_8bbd7"),
+&"idle_up": SubResource("Animation_sso7b"),
+&"idle_up_left": SubResource("Animation_ogyag"),
+&"idle_up_right": SubResource("Animation_476mp"),
+&"move_down": SubResource("Animation_u13xr"),
+&"move_down_left": SubResource("Animation_0llgs"),
+&"move_down_right": SubResource("Animation_73l5k"),
+&"move_left": SubResource("Animation_rw2rg"),
+&"move_right": SubResource("Animation_5eoyh"),
+&"move_up": SubResource("Animation_vtgt1"),
+&"move_up_left": SubResource("Animation_o01ox"),
+&"move_up_right": SubResource("Animation_s5s1f")
+}
+
+[node name="michellin" type="CharacterBody2D" unique_id=1646615467 groups=["Player"]]
+y_sort_enabled = true
+script = ExtResource("1_tpum7")
+
+[node name="interactPivot" type="Marker2D" parent="." unique_id=1476173452]
+position = Vector2(0, -8)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="InteractionArea" type="Area2D" parent="interactPivot" unique_id=847892205 groups=["interaction"]]
+position = Vector2(0, 8)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="interactPivot/InteractionArea" unique_id=2001163436]
+polygon = PackedVector2Array(16, 0, 16, 24, -16, 24, -16, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2082054061]
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+editor_draw_drag_margin = true
+
+[node name="coll" type="CollisionShape2D" parent="." unique_id=1012479758]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_cvnsp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=779735796]
+libraries/ = SubResource("AnimationLibrary_r34na")
+autoplay = &"idle_down"
+
+[node name="Spritesheet" type="Sprite2D" parent="." unique_id=12102801]
+position = Vector2(0, -28)
+texture = ExtResource("2_tpum7")
+hframes = 7
+vframes = 8
+frame = 1
+region_rect = Rect2(51, 5, 25, 56)
+
+[connection signal="area_entered" from="interactPivot/InteractionArea" to="." method="_on_interaction_area_entered"]
+[connection signal="area_exited" from="interactPivot/InteractionArea" to="." method="_on_interaction_area_exited"]

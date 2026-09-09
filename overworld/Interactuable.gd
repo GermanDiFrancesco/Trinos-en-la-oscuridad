@@ -1,33 +1,27 @@
 extends Area2D
 class_name Interactuable
 
-@export_group("DIALOGO")
-@export var datos_dialogo: DialogueData
-@export var speaker: String
+signal on_interact(target: Node2D) # Avisa a su padre que lo activaron
 
-func interact(_target):
-	if not datos_dialogo:
-		print("Falta el recurso de diálogo en este objeto interactuable")
-		return
-	procesar_dialogo()
+var interacted: bool = false
+@export var icon: Sprite2D 
 
-func procesar_dialogo():
-	var opciones_preparadas = _preparar_opciones()
-	UIManager.dialog_panel.show_dialog(speaker.capitalize(), datos_dialogo.texto_principal, opciones_preparadas)
+func _ready() -> void:
+	if not area_entered.is_connected(_on_area_entered):
+		area_entered.connect(_on_area_entered)
+	if not area_exited.is_connected(_on_area_exited):
+		area_exited.connect(_on_area_exited)
+	if icon:
+		icon.hide()
 
-func _preparar_opciones() -> Array:
-	var opciones_preparadas = []
-	for opt in datos_dialogo.opciones:
-		if opt:
-			var id_actual = opt.evento_id
-			opciones_preparadas.append({
-				"nombre": opt.nombre,
-				"callback": func(): _procesar_evento(id_actual)
-			})
-	return opciones_preparadas
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group('interaction') and not interacted:
+		if icon: icon.show()
 
-func _procesar_evento(id: String):
-	match id:
-		_:
-			if id != "":
-				print("Evento no reconocido en base: ", id)
+func _on_area_exited(area: Area2D) -> void:
+	if area.is_in_group('interaction'):
+		if icon: icon.hide()
+
+func interact(target: Node2D) -> void:
+	if icon: icon.hide()
+	on_interact.emit(target) # emite la señal
