@@ -1,36 +1,34 @@
-extends Resource
+extends CombatantData
 class_name EnemyPartData
 
+@export_group("Propiedades de Parte")
 @export var id: StringName
-
-@export var display_name: String = "Parte corrupta"
-@export var portrait: Texture2D
-@export var max_hp: int = 30
-@export var attack: int = 10
-@export var speed: int = 8
-@export var armor: int = 0
-@export var magic_armor: int = 0
-
 @export var targetable: bool = true
 @export var is_weak_point: bool = false
 
-@export var habilities: Array[SkillData] = []
-var data: EnemyPartData  ## Referencia al Resource original
-var hp: int = 0
-
-func _init(part_data: EnemyPartData = null) -> void:
-	if part_data == null:
+func _init(source: EnemyPartData = null) -> void:
+	if source == null:
 		return
-	data = part_data
-	display_name = part_data.display_name
-	max_hp = part_data.max_hp
-	hp = max_hp
-	portrait = part_data.portrait
+	id = source.id
+	display_name = source.display_name
+	description = source.description
+	portrait = source.portrait
+	hp_max = source.hp_max
+	hp = source.hp_max
+	mana_max = source.mana_max
+	mana = source.mana_max
+	speed = source.speed
+	attack = source.attack
+	magic_attack = source.magic_attack
+	armor = source.armor
+	magic_armor = source.magic_armor
+	targetable = source.targetable
+	is_weak_point = source.is_weak_point
+	
+	habilities.clear()
+	for skill in source.habilities:
+		if skill:
+			habilities.append(skill)
 
-	attack = part_data.attack
-	speed = part_data.speed
-	armor = part_data.armor
-	magic_armor = part_data.magic_armor
-	targetable = part_data.targetable
-	is_weak_point = part_data.is_weak_point
-	habilities = part_data.habilities.duplicate()
+func clone() -> EnemyPartData:
+	return EnemyPartData.new(self)

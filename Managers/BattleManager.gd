@@ -1,32 +1,31 @@
 extends Node
 
-var test_party: Array[CoreutaData] = [load("res://assets/resources/Coreutas/Prota.tres")]
-var test_enemies: Array[EnemyData] = [load("res://assets/resources/Enemies/Deli/Deli.tres"),load("res://assets/resources/Enemies/Valky/Valky.tres")]
-
-var party: Array[CoreutaData] = [preload("res://assets/resources/Coreutas/Prota.tres")]
+var party: Array[CoreutaData] = []
 var enemies: Array[EnemyData] = []
 
 signal battle_ready
-## Configura la batalla con los datos de enemigos y party.
-func setup_battle(enemy_data_list: Array =enemies, party_data_list: Array = party) -> void:
-	print("iniciando batalla")
-	if enemy_data_list.is_empty():
-		enemy_data_list = test_enemies
-	if party_data_list.is_empty():
-		party_data_list = test_party
-	# Crear combatientes del enemy
-	var enemy := EnemyData.new(enemy_data_list[0])
-	enemies.append(enemy)
-	
-	#for enemy_data in enemy_data_list:
-	#	var enemy := EnemyData.new(enemy_data)
-	#	enemies.append(enemy)
-	# Crear combatientes del party
-	#for coreuta_data in party_data_list:
-	#	var coreuta := CoreutaData.new(coreuta_data)
-	#	party.append(coreuta)
-	print(enemy_data_list)
-	battle_ready.emit()
-	
 
+## Configura la batalla recibiendo la lista de enemigos. 
+## La party se carga directamente de Global/SaveData a menos que se pase una personalizada.
+func setup_battle(enemy_data_list: Array[EnemyData], party_data_list: Array[CoreutaData] = []) -> void:
+	print("Iniciando batalla...")
 	
+	enemies.clear()
+	party.clear()
+	var source_party: Array[CoreutaData] = party_data_list
+	if source_party.is_empty():
+		source_party = Global.saved_data.party
+	# 2. Clonar la party
+	for coreuta_data in source_party:
+		if coreuta_data:
+			party.append(coreuta_data.clone())
+
+	# 3. Clonar los enemigos pasados explícitamente
+	for enemy_data in enemy_data_list:
+		if enemy_data:
+			enemies.append(enemy_data.clone())
+
+	print("Enemigos cargados: ", enemies.size())
+	print("Party cargada desde SaveData: ", party.size())
+	
+	battle_ready.emit()

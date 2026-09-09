@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://055c72hkne21"]
 
-[ext_resource type="Texture2D" uid="uid://c7jptkeltrjsp" path="res://assets/enemies_parts/Valky/Valky.png" id="1_eftar"]
 [ext_resource type="Script" uid="uid://cperpj2gwhqdr" path="res://UI/coreuta_display.gd" id="1_ho5w1"]
+[ext_resource type="Resource" uid="uid://bkkv4luanuy0" path="res://assets/resources/Coreutas/Prota.tres" id="2_ui13m"]
 [ext_resource type="LabelSettings" uid="uid://df4gqc80bho1f" path="res://assets/resources/descriptions.tres" id="3_4it0l"]
+[ext_resource type="Texture2D" uid="uid://dafw8a2tukt7o" path="res://assets/Coreutas fullart/Prota.png" id="4_ui13m"]
 
 [node name="coreuta" type="PanelContainer" unique_id=677224954]
 focus_mode = 2
 script = ExtResource("1_ho5w1")
+coreuta_data = ExtResource("2_ui13m")
 
 [node name="container" type="HBoxContainer" parent="." unique_id=482746740]
 layout_mode = 2
@@ -17,21 +19,33 @@ vertical = true
 
 [node name="display_name" type="Label" parent="container/BoxContainer" unique_id=1972665563]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Valky"
+text = "Prota"
 label_settings = ExtResource("3_4it0l")
+
+[node name="portrait2" type="ColorRect" parent="container/BoxContainer/display_name" unique_id=1172107553]
+z_index = -1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_right = 64.0
+offset_bottom = 24.0
+grow_horizontal = 2
+color = Color(0.047288246, 0.23912495, 0.2778675, 1)
 
 [node name="Cuerda" type="Label" parent="container/BoxContainer" unique_id=1695053102]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "cuerda"
+theme_override_font_sizes/font_size = 10
+text = "sin elegir"
 label_settings = ExtResource("3_4it0l")
 
 [node name="portrait" type="TextureRect" parent="container/BoxContainer" unique_id=60742226]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
-texture = ExtResource("1_eftar")
+texture = ExtResource("4_ui13m")
 expand_mode = 3
+stretch_mode = 5
 
 [node name="data" type="VBoxContainer" parent="container" unique_id=1664830521]
 layout_mode = 2

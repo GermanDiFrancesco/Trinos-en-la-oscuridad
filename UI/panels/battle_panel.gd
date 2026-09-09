@@ -24,20 +24,34 @@ func _ready() -> void:
 
 func _on_battle_ready() -> void:
 	enemy_panels.clear()
-	enemies_containers.clear_childs()
-	print('enemies cleared')
+	
+	# 1. Limpiar nodos de enemigos anteriores
+	for child in enemies_containers.get_children():
+		child.queue_free()
+		
+	# 2. LIMPIAR NODOS DE LA PARTY ANTERIORES (Esto evita la duplicación)
+	for child in party_container.get_children():
+		child.queue_free()
+
+	print('Enemigos y party limpiados')
+
 	# Crear paneles visuales para cada enemigo
 	for enemy in BattleManager.enemies:
 		var enemyContainer = enemy_container_scene.instantiate()
 		enemies_containers.add_child(enemyContainer)
 		enemyContainer.setup(enemy)
 		enemy_panels[enemy] = enemyContainer
-	# Crear paneles visuales para cada enemigo
+
+	# Crear sprites para la party
 	for coreuta in BattleManager.party:
-		var coreutapng =  TextureRect.new()
-		coreutapng.texture = coreuta.back
-		party_container.add_child(coreutapng)
-	actions_container.get_child(0).grab_focus()
+		if coreuta and coreuta.back:
+			var coreutapng = TextureRect.new()
+			coreutapng.texture = coreuta.back
+			coreutapng.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			party_container.add_child(coreutapng)
+
+	if actions_container.get_child_count() > 0:
+		actions_container.get_child(0).grab_focus()
 
 func show_description(name,desc:String):
 	print(desc)

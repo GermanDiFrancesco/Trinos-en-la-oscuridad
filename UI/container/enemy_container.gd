@@ -5,12 +5,6 @@ class_name EnemyPanel
 @onready var life_bar: ProgressBar = $LifeBar
 @onready var sprite_container: CenterContainer = $SpriteContainer
 @onready var npc: TextureRect = $SpriteContainer/Npc
-@onready var part_1: TextureRect = $SpriteContainer/part1
-@onready var part_2: TextureRect = $SpriteContainer/part2
-@onready var part_3: TextureRect = $SpriteContainer/part3
-@onready var part_4: TextureRect = $SpriteContainer/part4
-@onready var part_5: TextureRect = $SpriteContainer/part5
-@onready var part_6: TextureRect = $SpriteContainer/part6
 
 var unit: EnemyData
 
@@ -28,15 +22,37 @@ func refresh() -> void:
 func _refresh() -> void:
 	if unit == null:
 		return
+		
 	label_name.text = unit.display_name
-	life_bar.max_value = unit.max_hp
-	life_bar.value = unit.hp
-	npc.texture = unit.portrait
-	# Cargar texturas de las partes
-	for i in range(unit.parts.size()):
-		var part = unit.parts[i]
-		var part_data = part.data
-		var part_texture_rect = TextureRect.new()
-		part_texture_rect.texture = part_data.portrait
-		part_texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		sprite_container.add_child(part_texture_rect)
+	
+	# 1. Ajustar retrato principal del contenedor si existe
+	if unit.portrait:
+		npc.texture = unit.portrait
+		npc.show()
+	else:
+		npc.hide()
+
+	# 2. Calcular HP total o promedio de las partes activas
+	var total_hp_max: int = 0
+	var total_current_hp: int = 0
+	
+	for part in unit.parts:
+		if part:
+			total_hp_max += part.hp_max
+			total_current_hp += part.hp
+			
+	life_bar.max_value = total_hp_max
+	life_bar.value = total_current_hp
+
+	# 3. Limpiar texturas de partes previas creadas dinámicamente
+	for child in sprite_container.get_children():
+		if child != npc:
+			child.queue_free()
+
+	# 4. Renderizar visualmente las partes vivas
+	for part in unit.parts:
+		if part and part.portrait and part.is_alive():
+			var part_texture_rect := TextureRect.new()
+			part_texture_rect.texture = part.portrait
+			part_texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			sprite_container.add_child(part_texture_rect)
