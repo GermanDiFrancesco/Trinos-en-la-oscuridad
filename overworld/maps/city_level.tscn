@@ -19,17 +19,15 @@
 [ext_resource type="PackedScene" uid="uid://djeg8f7ei5hrg" path="res://overworld/puerta.tscn" id="16_4mx6b"]
 [ext_resource type="Script" uid="uid://d0dlfn3mwf0wd" path="res://overworld/maps/dialogo_con_ corista.gd" id="16_bx1xa"]
 [ext_resource type="PackedScene" uid="uid://dvtlorgjnvae4" path="res://overworld/enemy.tscn" id="17_b2pxc"]
-[ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://assets/resources/Enemies/EnemyData.gd" id="18_y7df0"]
-[ext_resource type="Resource" uid="uid://8apgpw5sv5sy" path="res://assets/resources/Enemies/Deli/Deli.tres" id="20_646ri"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bx1xa"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_y7df0"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s088a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2pxc"]
 resource_local_to_scene = true
 shader = ExtResource("4_mdg3o")
 shader_parameter/use_mask = true
-shader_parameter/mask_texture = SubResource("ViewportTexture_bx1xa")
+shader_parameter/mask_texture = SubResource("ViewportTexture_y7df0")
 shader_parameter/mask_softness = 0.02
 shader_parameter/fog_color = Color(0.534615, 0.3119526, 0.8985799, 0.9019608)
 shader_parameter/density = 0.800000038
@@ -40,14 +38,14 @@ shader_parameter/pixel_size = 1024.0
 shader_parameter/alpha_steps = 8.0000003325
 shader_parameter/edge_fade_distance = 0.02000000025148
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_646ri"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bx1xa"]
 viewport_path = NodePath("../SubViewport2")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fx7ue"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s088a"]
 resource_local_to_scene = true
 shader = ExtResource("4_mdg3o")
 shader_parameter/use_mask = true
-shader_parameter/mask_texture = SubResource("ViewportTexture_646ri")
+shader_parameter/mask_texture = SubResource("ViewportTexture_bx1xa")
 shader_parameter/mask_softness = 0.02
 shader_parameter/fog_color = Color(0.41477412, 0.39391467, 0.86994284, 0.9019608)
 shader_parameter/density = 0.5890000279775
@@ -125,10 +123,10 @@ texture = ExtResource("5_u33gx")
 flip_h = true
 
 [node name="FogWall" parent="." unique_id=992773463 instance=ExtResource("4_ukv0y")]
-material = SubResource("ShaderMaterial_s088a")
+material = SubResource("ShaderMaterial_b2pxc")
 
 [node name="FogWall2" parent="." unique_id=998044768 instance=ExtResource("4_ukv0y")]
-material = SubResource("ShaderMaterial_fx7ue")
+material = SubResource("ShaderMaterial_s088a")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1753148587]
 transparent_bg = true
@@ -187,7 +185,7 @@ polygon = PackedVector2Array(5572.393, 2266.3525, 5406.255, 2095.3398, 5188.7676
 uv = PackedVector2Array(5477.9893, 2056.477, 5280.995, 1922.1624, 4170.66, 1492.3556, 3687.1277, 1268.4979, 3588.6306, 1349.0867, 3427.453, 1465.4927, 3400.59, 1537.1272, 3373.7268, 1599.8074, 3346.864, 1689.3503, 3346.864, 1752.0305, 3346.864, 1823.665, 3364.7727, 1877.3909, 3391.6355, 1940.071, 3463.2703, 2020.6598, 3561.7673, 2092.2944, 3722.945, 2154.9746, 4009.4832, 2217.6545, 4125.8887, 2262.4263, 4099.0264, 2378.832, 4018.4373, 2495.2383, 4394.5186, 2557.9185, 5263.086, 2334.0605)
 
 [node name="CitySpawn" type="Marker2D" parent="." unique_id=1664600815]
-position = Vector2(-1921, 195)
+position = Vector2(1011, 231)
 
 [node name="obj" parent="." unique_id=1051641785 instance=ExtResource("7_chg5e")]
 position = Vector2(-271, -395)
@@ -1053,7 +1051,7 @@ metadata/_edit_lock_ = true
 
 [node name="ExitScene2" parent="to_iglesia" unique_id=1598160366 instance=ExtResource("7_qub3r")]
 position = Vector2(0, 26)
-next_map = "iglesia_map"
+next_map = "iglesia_grande_map"
 
 [node name="iglesia" parent="to_iglesia" unique_id=1012725505 instance=ExtResource("16_4mx6b")]
 position = Vector2(-23, -9)
@@ -1068,31 +1066,26 @@ entity_sprite = "walker"
 
 [node name="enemy" parent="." unique_id=1584829568 instance=ExtResource("17_b2pxc")]
 position = Vector2(735, 223)
-encounter_enemies = Array[ExtResource("18_y7df0")]([ExtResource("20_646ri")])
 facing = 2
 entity_sprite = "monster"
 
 [node name="enemy3" parent="." unique_id=887060444 instance=ExtResource("17_b2pxc")]
 position = Vector2(898, 230)
-encounter_enemies = Array[ExtResource("18_y7df0")]([ExtResource("20_646ri")])
 facing = 2
 entity_sprite = "monster"
 
 [node name="enemy4" parent="." unique_id=393439477 instance=ExtResource("17_b2pxc")]
 position = Vector2(705, 352)
-encounter_enemies = Array[ExtResource("18_y7df0")]([ExtResource("20_646ri")])
 facing = 2
 entity_sprite = "monster"
 
 [node name="enemy5" parent="." unique_id=1985943112 instance=ExtResource("17_b2pxc")]
 position = Vector2(756, 594)
-encounter_enemies = Array[ExtResource("18_y7df0")]([ExtResource("20_646ri")])
 facing = 2
 entity_sprite = "monster"
 
 [node name="enemy6" parent="." unique_id=938118532 instance=ExtResource("17_b2pxc")]
 position = Vector2(875, 356)
-encounter_enemies = Array[ExtResource("18_y7df0")]([ExtResource("20_646ri")])
 facing = 2
 entity_sprite = "monster"
 

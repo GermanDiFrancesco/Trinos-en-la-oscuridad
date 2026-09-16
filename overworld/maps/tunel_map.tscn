@@ -12,7 +12,13 @@ script/source = "extends Map
 [node name="interior_map" type="Node2D" unique_id=896681006 node_paths=PackedStringArray("spawnpos")]
 y_sort_enabled = true
 script = SubResource("GDScript_txhqi")
-spawnpos = NodePath("Exit/Marker2D")
+spawnpos = NodePath("SpawnPos")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1495357341]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1348820468]
+position = Vector2(96, 7)
+polygon = PackedVector2Array(-131, 226, -306, 182, -781, -20, -902, -92, -881, -349, -205, -251, 227, -10, 293, 128, 216, 252, -132, 246, -131, 226, 153, 226, 228, 195, 229, 101, 152, 132, -131, 131, -213, 99, -213, -116, -487, -117, -659, -188, -841, -184, -839, -89, -659, -89, -487, -21, -299, -21, -299, 159)
 
 [node name="Interior" type="Sprite2D" parent="." unique_id=1149274209]
 z_index = -1
@@ -32,11 +38,14 @@ z_index = 1
 position = Vector2(0, 242)
 next_map = "casa_a_map"
 
-[node name="Marker2D" type="Marker2D" parent="Exit" unique_id=1023977598]
-position = Vector2(0, -19)
+[node name="SpawnPos" type="Marker2D" parent="." unique_id=1023977598]
+position = Vector2(0, 223)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1495357341]
+[node name="Puerta2" parent="." unique_id=138596409 instance=ExtResource("3_5me44")]
+position = Vector2(277, 92)
+view = "side"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1348820468]
-position = Vector2(96, 7)
-polygon = PackedVector2Array(-131, 226, -306, 182, -781, -20, -902, -92, -881, -349, -205, -251, 227, -10, 293, 128, 216, 252, -132, 246, -131, 226, 153, 226, 228, 195, 229, 101, 152, 132, -131, 131, -213, 99, -213, -116, -487, -117, -659, -188, -841, -184, -839, -89, -659, -89, -487, -21, -299, -21, -299, 159)
+[node name="Exit2" parent="." unique_id=780246528 instance=ExtResource("3_l02qn")]
+z_index = 1
+position = Vector2(279, 115)
+next_map = "casa_a_map"

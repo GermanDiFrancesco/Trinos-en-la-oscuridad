@@ -12,11 +12,11 @@ func _on_area_entered(area: Area2D) -> void:
 			{
 				"speaker": "Prota",
 				"text": "Qué sueño más extraño, tengo que dejar de mirar películas raras.",
-				"options": [{"nombre": "Oh no"}]
+				"options": [{"nombre": "Oh no!"}]
 			},
 			{
 				"speaker": "Prota",
-				"text": "¡Me quedé dormido!. . . ¡El concierto!",
+				"text": "¡Me dormí!. . . ¡El concierto!",
 				"options": [{"nombre": "¡Tengo que apurarme!"}]
 			}
 		]

@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://d0o77vdko143c"]
+
+[ext_resource type="Texture2D" uid="uid://c6wh8l2l6he1" path="res://assets/mapas/iglesia_grande_mapa.png" id="1_8wedp"]
+[ext_resource type="PackedScene" uid="uid://dhjtqo034tk54" path="res://overworld/objs/banco_iglesia.tscn" id="5_8hg8d"]
+[ext_resource type="Texture2D" uid="uid://cvx0g22jyxcxw" path="res://assets/mapas/top_iglesia.png" id="5_emp7n"]
+[ext_resource type="PackedScene" uid="uid://b6310s7j6cwaf" path="res://overworld/objs/fuente_iglesia.tscn" id="6_nvl2c"]
+[ext_resource type="PackedScene" uid="uid://djeg8f7ei5hrg" path="res://overworld/puerta.tscn" id="7_voxj0"]
+[ext_resource type="PackedScene" uid="uid://fghxcf7uybln" path="res://overworld/exit_scene.tscn" id="8_tofpe"]
+
+[sub_resource type="GDScript" id="GDScript_txhqi"]
+script/source = "extends Map
+"
+
+[node name="interior_map" type="Node2D" unique_id=896681006 node_paths=PackedStringArray("spawnpos")]
+y_sort_enabled = true
+script = SubResource("GDScript_txhqi")
+spawnpos = NodePath("Puerta/Exit/Marker2D")
+
+[node name="Interior" type="Sprite2D" parent="." unique_id=1149274209]
+z_index = -1
+position = Vector2(384, -32)
+texture = ExtResource("1_8wedp")
+
+[node name="TopIglesia" type="Sprite2D" parent="." unique_id=950084179]
+position = Vector2(260, 9)
+texture = ExtResource("5_emp7n")
+offset = Vector2(58, -22)
+region_enabled = true
+region_rect = Rect2(812, 418, 119, 124)
+
+[node name="TopIglesia2" type="Sprite2D" parent="." unique_id=404322433]
+position = Vector2(627, 110)
+texture = ExtResource("5_emp7n")
+region_enabled = true
+region_rect = Rect2(1066, 559, 220, 86)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1495357341]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1348820468]
+position = Vector2(164, 67)
+polygon = PackedVector2Array(-344, 104, 152, -172, 675, -57, 721, 65, 571, 143, -1, 290, -356, 108, 9, 251, 358, 115, 551, 113, 659, 71, 573, 38, 452, 86, 353, 46, 375, 39, 366.18253, 44.903584, 453, 80, 567, 36, 204, -103, 104, -59, 190, -23, 208, -27, 214, -26, 193, -19, 94, -58, 198, -106, 139, -130, 36, -90, 36, -14, -314, 122)
+
+[node name="Puerta" parent="." unique_id=2086559895 instance=ExtResource("7_voxj0")]
+position = Vector2(0, 224)
+flip = false
+view = "int_side"
+
+[node name="Exit" parent="Puerta" unique_id=1931772373 instance=ExtResource("8_tofpe")]
+z_index = 1
+position = Vector2(1, 14)
+
+[node name="Marker2D" type="Marker2D" parent="Puerta/Exit" unique_id=1023977598]
+position = Vector2(15, -14)
+
+[node name="Puerta2" parent="." unique_id=2023534646 instance=ExtResource("7_voxj0")]
+position = Vector2(796, 94)
+flip = false
+view = "side"
+
+[node name="Exit" parent="Puerta2" unique_id=1185498034 instance=ExtResource("8_tofpe")]
+z_index = 1
+position = Vector2(0, 16)
+next_map = "tunel_map"
+
+[node name="banco" parent="." unique_id=774098873 instance=ExtResource("5_8hg8d")]
+position = Vector2(-55, 188)
+
+[node name="banco2" parent="." unique_id=482600878 instance=ExtResource("5_8hg8d")]
+position = Vector2(-3, 169)
+
+[node name="banco3" parent="." unique_id=122027333 instance=ExtResource("5_8hg8d")]
+position = Vector2(46, 148)
+
+[node name="banco4" parent="." unique_id=2037434988 instance=ExtResource("5_8hg8d")]
+position = Vector2(98, 129)
+
+[node name="banco5" parent="." unique_id=1214552134 instance=ExtResource("5_8hg8d")]
+position = Vector2(145, 108)
+
+[node name="banco6" parent="." unique_id=1962411882 instance=ExtResource("5_8hg8d")]
+position = Vector2(197, 89)
+
+[node name="banco7" parent="." unique_id=212264158 instance=ExtResource("5_8hg8d")]
+position = Vector2(144, 269)
+
+[node name="banco8" parent="." unique_id=164239012 instance=ExtResource("5_8hg8d")]
+position = Vector2(196, 250)
+
+[node name="banco9" parent="." unique_id=569737155 instance=ExtResource("5_8hg8d")]
+position = Vector2(245, 229)
+
+[node name="banco10" parent="." unique_id=1780099593 instance=ExtResource("5_8hg8d")]
+position = Vector2(297, 210)
+
+[node name="banco11" parent="." unique_id=1025197177 instance=ExtResource("5_8hg8d")]
+position = Vector2(344, 189)
+
+[node name="banco12" parent="." unique_id=1226898418 instance=ExtResource("5_8hg8d")]
+position = Vector2(396, 170)
+
+[node name="feunte iglesia" parent="." unique_id=1051641785 instance=ExtResource("6_nvl2c")]
+position = Vector2(220, 46)
