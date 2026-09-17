@@ -45,7 +45,7 @@ texture = ExtResource("2_4aeic")
 
 [node name="escaleras" parent="." unique_id=1469410020 instance=ExtResource("3_bo02f")]
 position = Vector2(123, 8)
-next_map = "casa_prota_01_map"
+next_map = "depto_naomi_map"
 
 [node name="Piter" parent="." unique_id=1496379246 instance=ExtResource("5_4aeic")]
 position = Vector2(9, 51)

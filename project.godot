@@ -28,8 +28,8 @@ BattleManager="*uid://180v555xaqee"
 
 window/size/viewport_width=720
 window/size/viewport_height=480
-window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [global_group]
 

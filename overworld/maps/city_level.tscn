@@ -19,15 +19,20 @@
 [ext_resource type="PackedScene" uid="uid://djeg8f7ei5hrg" path="res://overworld/puerta.tscn" id="16_4mx6b"]
 [ext_resource type="Script" uid="uid://d0dlfn3mwf0wd" path="res://overworld/maps/dialogo_con_ corista.gd" id="16_bx1xa"]
 [ext_resource type="PackedScene" uid="uid://dvtlorgjnvae4" path="res://overworld/enemy.tscn" id="17_b2pxc"]
+[ext_resource type="Script" uid="uid://bxlx35expgkm8" path="res://assets/resources/Enemies/EnemyData.gd" id="20_fx7ue"]
+[ext_resource type="Resource" uid="uid://m3hgwcnx4mmu" path="res://assets/resources/Enemies/Walker/Walker.tres" id="21_md5dl"]
+[ext_resource type="Script" uid="uid://ge2tppl251nb" path="res://assets/resources/Enemies/enemy_part_data.gd" id="22_41t6w"]
+[ext_resource type="Script" uid="uid://j5yol176db3a" path="res://assets/resources/Skills/skill_data.gd" id="23_1jnxx"]
+[ext_resource type="Texture2D" uid="uid://cxpfc7hbj8nuu" path="res://assets/enemies_parts/Walker/Walker torso.png" id="24_fx7ue"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_y7df0"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fx7ue"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2pxc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_md5dl"]
 resource_local_to_scene = true
 shader = ExtResource("4_mdg3o")
 shader_parameter/use_mask = true
-shader_parameter/mask_texture = SubResource("ViewportTexture_y7df0")
+shader_parameter/mask_texture = SubResource("ViewportTexture_fx7ue")
 shader_parameter/mask_softness = 0.02
 shader_parameter/fog_color = Color(0.534615, 0.3119526, 0.8985799, 0.9019608)
 shader_parameter/density = 0.800000038
@@ -38,14 +43,14 @@ shader_parameter/pixel_size = 1024.0
 shader_parameter/alpha_steps = 8.0000003325
 shader_parameter/edge_fade_distance = 0.02000000025148
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bx1xa"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_41t6w"]
 viewport_path = NodePath("../SubViewport2")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s088a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jnxx"]
 resource_local_to_scene = true
 shader = ExtResource("4_mdg3o")
 shader_parameter/use_mask = true
-shader_parameter/mask_texture = SubResource("ViewportTexture_bx1xa")
+shader_parameter/mask_texture = SubResource("ViewportTexture_41t6w")
 shader_parameter/mask_softness = 0.02
 shader_parameter/fog_color = Color(0.41477412, 0.39391467, 0.86994284, 0.9019608)
 shader_parameter/density = 0.5890000279775
@@ -55,6 +60,83 @@ shader_parameter/noise_scale = 50.0
 shader_parameter/pixel_size = 1024.0
 shader_parameter/alpha_steps = 10.7250004619375
 shader_parameter/edge_fade_distance = 0.02000000025148
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5tkq1"]
+load_path = "res://.godot/imported/Walker head.png-9796cd46bd0a37d91133de160fe0af15.ctex"
+
+[sub_resource type="Resource" id="Resource_k8pxl"]
+script = ExtResource("22_41t6w")
+is_weak_point = true
+display_name = "Cabeza "
+portrait = SubResource("CompressedTexture2D_5tkq1")
+hp_max = 40
+hp = 40
+metadata/_custom_type_script = "uid://ge2tppl251nb"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yyxce"]
+load_path = "res://.godot/imported/Walker l arm.png-81e12c5b8009a9cbf1039ec5a8b73ce4.ctex"
+
+[sub_resource type="Resource" id="Resource_dkcax"]
+script = ExtResource("22_41t6w")
+display_name = "Brazo der."
+description = "ojo con ese"
+portrait = SubResource("CompressedTexture2D_yyxce")
+hp_max = 30
+hp = 30
+metadata/_custom_type_script = "uid://ge2tppl251nb"
+
+[sub_resource type="Resource" id="Resource_nxv5t"]
+script = ExtResource("22_41t6w")
+display_name = "Torso"
+description = "el cuerpo del tipo"
+portrait = ExtResource("24_fx7ue")
+hp_max = 80
+hp = 80
+metadata/_custom_type_script = "uid://ge2tppl251nb"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cn1js"]
+load_path = "res://.godot/imported/Walker a.png-3e87d9c3f2c322de33f6fb524812b253.ctex"
+
+[sub_resource type="Resource" id="Resource_m4241"]
+script = ExtResource("20_fx7ue")
+display_name = "Walker 2"
+portrait = SubResource("CompressedTexture2D_cn1js")
+description = "Un caminante que a sido atrapado por la bruma."
+parts = Array[ExtResource("22_41t6w")]([SubResource("Resource_k8pxl"), SubResource("Resource_dkcax"), SubResource("Resource_nxv5t")])
+metadata/_custom_type_script = "uid://bxlx35expgkm8"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_md5dl"]
+load_path = "res://.godot/imported/Walker head.png-9796cd46bd0a37d91133de160fe0af15.ctex"
+
+[sub_resource type="Resource" id="Resource_41t6w"]
+script = ExtResource("22_41t6w")
+is_weak_point = true
+display_name = "Cabeza "
+portrait = SubResource("CompressedTexture2D_md5dl")
+metadata/_custom_type_script = "uid://ge2tppl251nb"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1jnxx"]
+load_path = "res://.godot/imported/Walker l arm.png-81e12c5b8009a9cbf1039ec5a8b73ce4.ctex"
+
+[sub_resource type="Resource" id="Resource_huiuo"]
+script = ExtResource("22_41t6w")
+display_name = "Brazo der."
+description = "ojo con ese"
+portrait = SubResource("CompressedTexture2D_1jnxx")
+hp_max = 30
+hp = 30
+metadata/_custom_type_script = "uid://ge2tppl251nb"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dkcax"]
+load_path = "res://.godot/imported/Walker a.png-3e87d9c3f2c322de33f6fb524812b253.ctex"
+
+[sub_resource type="Resource" id="Resource_cn1js"]
+script = ExtResource("20_fx7ue")
+display_name = "Walker 2"
+portrait = SubResource("CompressedTexture2D_dkcax")
+description = "Un caminante que a sido atrapado por la bruma."
+parts = Array[ExtResource("22_41t6w")]([SubResource("Resource_41t6w"), SubResource("Resource_huiuo")])
+metadata/_custom_type_script = "uid://bxlx35expgkm8"
 
 [node name="CiudadHub" type="Node2D" unique_id=1627755828 node_paths=PackedStringArray("spawnpos")]
 y_sort_enabled = true
@@ -123,10 +205,10 @@ texture = ExtResource("5_u33gx")
 flip_h = true
 
 [node name="FogWall" parent="." unique_id=992773463 instance=ExtResource("4_ukv0y")]
-material = SubResource("ShaderMaterial_b2pxc")
+material = SubResource("ShaderMaterial_md5dl")
 
 [node name="FogWall2" parent="." unique_id=998044768 instance=ExtResource("4_ukv0y")]
-material = SubResource("ShaderMaterial_s088a")
+material = SubResource("ShaderMaterial_1jnxx")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1753148587]
 transparent_bg = true
@@ -967,7 +1049,7 @@ metadata/_edit_lock_ = true
 
 [node name="ExitScene2" parent="to_CasaProta" unique_id=1185498034 instance=ExtResource("7_qub3r")]
 position = Vector2(0, 24)
-next_map = "casa_prota_00_map"
+next_map = "hall_edificio_map"
 
 [node name="to_Depto" parent="." unique_id=1381737758 instance=ExtResource("16_4mx6b")]
 position = Vector2(-1663, 17)
@@ -1066,11 +1148,13 @@ entity_sprite = "walker"
 
 [node name="enemy" parent="." unique_id=1584829568 instance=ExtResource("17_b2pxc")]
 position = Vector2(735, 223)
+encounter_enemies = Array[ExtResource("20_fx7ue")]([ExtResource("21_md5dl"), SubResource("Resource_m4241")])
 facing = 2
 entity_sprite = "monster"
 
 [node name="enemy3" parent="." unique_id=887060444 instance=ExtResource("17_b2pxc")]
 position = Vector2(898, 230)
+encounter_enemies = Array[ExtResource("20_fx7ue")]([ExtResource("21_md5dl"), SubResource("Resource_cn1js")])
 facing = 2
 entity_sprite = "monster"
 

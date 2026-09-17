@@ -15,7 +15,6 @@ shape = SubResource("RectangleShape2D_4mx6b")
 
 [node name="icon" type="Sprite2D" parent="." unique_id=537453887]
 visible = false
-z_index = 1
 position = Vector2(0, -25)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_he6rv")

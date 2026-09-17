@@ -20,7 +20,7 @@ func _init(source: EnemyData = null) -> void:
 	parts.clear()
 	for part_data in source.parts:
 		if part_data:
-			parts.append(EnemyPartData.new(part_data))
+			parts.append(EnemyPartData.new(part_data).clone())
 
 func clone() -> EnemyData:
 	return EnemyData.new(self)

@@ -59,7 +59,7 @@ position = Vector2(-84, 3)
 
 [node name="ExitScene" parent="." unique_id=1185498034 instance=ExtResource("4_8k7d3")]
 position = Vector2(101, 12)
-next_map = "casa_prota_00_map"
+next_map = "hall_edificio_map"
 
 [node name="Banquito" type="Sprite2D" parent="." unique_id=1544395402]
 position = Vector2(-109, 70)

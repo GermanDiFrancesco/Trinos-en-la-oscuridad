@@ -24,7 +24,6 @@ func _init(source: EnemyPartData = null) -> void:
 	magic_armor = source.magic_armor
 	targetable = source.targetable
 	is_weak_point = source.is_weak_point
-	
 	habilities.clear()
 	for skill in source.habilities:
 		if skill:

@@ -7,7 +7,9 @@
 
 [resource]
 script = ExtResource("2_h8jr3")
+back = ExtResource("1_h8jr3")
+display_name = "Prota"
 description = "El protagonista de esta historia"
 portrait = ExtResource("4_2gp6m")
-back = ExtResource("1_h8jr3")
+attack = 40
 metadata/_custom_type_script = "uid://bcb8m4q6fa5mx"

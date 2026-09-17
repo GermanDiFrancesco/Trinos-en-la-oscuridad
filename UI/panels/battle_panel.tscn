@@ -228,19 +228,32 @@ description = "realizar un ataque"
 
 [node name="Cantar" parent="ActionsContainer" unique_id=1026417876 instance=ExtResource("4_bftqb")]
 layout_mode = 2
-description = "canto"
+description = "canto- desact"
 
 [node name="Hablar" parent="ActionsContainer" unique_id=1449680340 instance=ExtResource("4_bftqb")]
 layout_mode = 2
-description = "hablar"
+description = "hablar -desact"
 
 [node name="Objeto" parent="ActionsContainer" unique_id=496983892 instance=ExtResource("4_bftqb")]
 layout_mode = 2
-description = "usar un objeto"
+description = "usar un objeto- desact"
 
 [node name="Huir" parent="ActionsContainer" unique_id=342984846 instance=ExtResource("4_bftqb")]
 layout_mode = 2
 description = "huir de este enfrentamiento"
+
+[node name="Contenedor" type="BoxContainer" parent="." unique_id=347865702]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -140.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("3_bftqb")
+metadata/_custom_type_script = "uid://cvwgibx10xnsx"
 
 [node name="bg-container" type="TextureRect" parent="." unique_id=106930951]
 layout_mode = 1
