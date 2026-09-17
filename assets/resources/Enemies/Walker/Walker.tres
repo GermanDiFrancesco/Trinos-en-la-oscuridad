@@ -12,6 +12,8 @@ script = ExtResource("1_ts3wh")
 is_weak_point = true
 display_name = "Cabeza "
 portrait = ExtResource("3_7nrn2")
+hp_max = 40
+hp = 40
 metadata/_custom_type_script = "uid://ge2tppl251nb"
 
 [sub_resource type="Resource" id="Resource_rsiyi"]

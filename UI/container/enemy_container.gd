@@ -19,16 +19,13 @@ func _refresh() -> void:
 	if active_parts.is_empty():
 		queue_free()
 		return
-
 	label_name.text = unit.display_name
 	npc.texture = unit.portrait
-
 	# Limpiar sprites visuales anteriores
 	for child in sprite_container.get_children():
 		if child != npc:
 			child.queue_free()
 	part_sprites.clear()
-
 	var total_hp_max: int = 0
 	var total_current_hp: int = 0
 

@@ -71,7 +71,7 @@ func _show_target_selection() -> void:
 				selectable_parts.append(part)
 
 	if selectable_parts.is_empty():
-		show_description("No hay objetivos válidos.")
+		show_description('',"No hay objetivos válidos.")
 		return
 
 	actions_container.modulate = Color(1, 1, 1, 0.5)
@@ -94,7 +94,7 @@ func _change_target_highlight(dir: int) -> void:
 func _update_target_visuals() -> void:
 	var target = selectable_parts[current_target_index]
 	_set_part_highlight(target, true)
-	show_description("Objetivo: %s | Vida: %d/%d" % [target.display_name, target.hp, target.hp_max])
+	show_description('',"Objetivo: %s | Vida: %d/%d" % [target.display_name, target.hp, target.hp_max])
 
 func _set_part_highlight(part: EnemyPartData, enable: bool) -> void:
 	for enemy in enemy_panels:
@@ -112,7 +112,7 @@ func _confirm_target_selection() -> void:
 	
 	var damage_dealt = BattleManager.atack_enemy_part(selected_part)
 	
-	show_description("%s atacó a %s causando %d puntos de daño." % [
+	show_description('',"%s atacó a %s causando %d puntos de daño." % [
 		BattleManager.current_combatant.display_name, 
 		selected_part.display_name, 
 		damage_dealt
@@ -134,7 +134,8 @@ func _cancel_target_selection() -> void:
 func _on_target_atacked(_target: EnemyPartData) -> void:
 	# Refresca barras de vida y destruye automáticamente partes muertas
 	for enemy in enemy_panels:
-		enemy_panels[enemy]._refresh()
+		if enemy_panels[enemy] :
+			enemy_panels[enemy]._refresh()
 
 func _on_turn_started(combatant: CombatantData) -> void:
 	if combatant is CoreutaData:
@@ -142,29 +143,29 @@ func _on_turn_started(combatant: CombatantData) -> void:
 		actions_container.show()
 		if actions_container.get_child_count() > 0:
 			actions_container.get_child(0).grab_focus()
-		show_description("Turno de " + combatant.display_name + ". Que debe hacer?")
+		show_description('',"Turno de " + combatant.display_name + ". Que debe hacer?")
 	else:
 		actions_container.modulate = Color(1, 1, 1, 0.5)
-		show_description("Turno enemigo: " + combatant.display_name)
+		show_description('',"Turno enemigo: " + combatant.display_name)
 		
 		await get_tree().create_timer(1.0).timeout
 		var action = BattleManager.enemy_part_resolve()
-		show_description(combatant.display_name + " intenta realizar " + action)
+		show_description('',combatant.display_name + " intenta realizar " + action)
 		
 		await get_tree().create_timer(1.0).timeout
 		BattleManager.next_turn()
 
 func _on_battle_ended(msg: String) -> void:
 	actions_container.modulate = Color(1, 1, 1, 0.5)
-	show_description(msg)
+	show_description('',msg)
 
 func execute(action: String) -> void:
 	match action:
 		"Atacar":
 			_show_target_selection()
 		"Huir":
-			show_description("Intentando huir...")
+			show_description('',"Intentando huir...")
 			BattleManager.intentar_huir()
 
-func show_description(desc: String) -> void:
+func show_description(name,desc: String) -> void:
 	$"bg-container/DescriptionContainer".text = desc

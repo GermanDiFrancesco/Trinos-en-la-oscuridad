@@ -1,7 +1,7 @@
 extends Resource
 class_name GameSave 
 
-var base_player: CoreutaData = preload("res://assets/resources/Coreutas/Prota.tres")
+var base_player: CoreutaData = preload("res://assets/resources/Coreutas/Naomi.tres")
 
 # Todo lo que tiene @export se guardará en el archivo automáticamente.
 @export var current_map: String = "depto_naomi_map"

@@ -12,4 +12,4 @@ func _on_pressed() -> void:
 	do_action.emit(self.name)
 
 func _on_focus_entered() -> void:
-	focus_in.emit(description)
+	focus_in.emit(self.name,description)
